@@ -1,4 +1,4 @@
-[![REUSE status]()]()
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-docs/btp-process-orchestration-migration-guide)](https://api.reuse.software/info/github.com/SAP-docs/btp-process-orchestration-migration-guide)
 
 # Contributions to Migration Guide for SAP Process Orchestration
 
