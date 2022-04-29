@@ -59,4 +59,3 @@ Discover important aspects regarding the tools and services available that suppo
 -   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md "Learn about the different aspects involved in migrating your interfaces from SAP Process
 		Orchestration to SAP Integration Suite.")**  
 Learn about the different aspects involved in migrating your interfaces from SAP Process Orchestration to SAP Integration Suite.
-
