@@ -10,7 +10,7 @@ Use this guide to migrate from the on-premise solution SAP Process Orchestration
 
 ## When Should You Use This Guide?
 
-This guide addresses customers of SAP Process Orchestration who want to move to the SAP Integration Suite. Here you can find all information needed when preparing for the migration, and during the migration process itself.
+This guide addresses customers of SAP Process Orchestration who want to move to the SAP Integration Suite. Here you can find all information needed when preparing for the migration, and during the migration process itself.  
 
 
 
