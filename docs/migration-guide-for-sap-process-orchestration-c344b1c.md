@@ -12,7 +12,7 @@ Use this guide to migrate from the on-premise solution SAP Process Orchestration
 
 This guide addresses customers of SAP Process Orchestration who want to move to the SAP Integration Suite. Here you can find all information needed when preparing for the migration, and during the migration process itself.
 
-
+STEP 5: Reset whatever
 
 <a name="loioc344b1c395144095834a961699293889__section_pkf_qyg_wrb"/>
 
