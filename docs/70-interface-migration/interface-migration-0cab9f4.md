@@ -16,6 +16,9 @@ Get an overview of the scenarios and objects that are common scope of migration 
 		critical business processes and lowers the human effort to cover the test tasks of part or
 		most of the interfaces.")**  
 As part of the testing phase in every migration project, you can find several products on the market that enable you to create automatic testing scenarios. This reduces risks to critical business processes and lowers the human effort to cover the test tasks of part or most of the interfaces.
+-   **[Migrating ESR Proxies](migrating-esr-proxies-0797dc0.md "Migrate existing ESR proxies from the Enterprise Services Repository (ESR) to the
+		Metadata Repository (MDR).")**  
+Migrate existing ESR proxies from the Enterprise Services Repository \(ESR\) to the Metadata Repository \(MDR\).
 -   **[Interface Design and Implementation](interface-design-and-implementation-b763478.md "In a migration project, you may need to redesign a particular integration flow or
 		develop one from scratch in an implementation project.")**  
 In a migration project, you may need to redesign a particular integration flow or develop one from scratch in an implementation project.

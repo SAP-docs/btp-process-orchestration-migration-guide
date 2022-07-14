@@ -1,6 +1,7 @@
 # Migration Guide for SAP Process Orchestration
 
 -   [Migration Guide for SAP Process Orchestration](migration-guide-for-sap-process-orchestration-c344b1c.md)
+    -   [What's New](what-s-new-40a5d8e.md)
     -   [Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md)
         -   [Value Proposition: Why You Should Move to SAP Integration Suite](10-introduction/value-proposition-why-you-should-move-to-sap-integration-suite-e592803.md)
         -   [Transition to SAP Integration Suite](10-introduction/transition-to-sap-integration-suite-0efebfb.md)
@@ -43,6 +44,7 @@
         -   [Interface Migration Strategy](70-interface-migration/interface-migration-strategy-46c8a36.md)
         -   [Scenario and Object Assessment](70-interface-migration/scenario-and-object-assessment-1e83249.md)
         -   [Test Automation](70-interface-migration/test-automation-4566dd2.md)
+        -   [Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md)
         -   [Interface Design and Implementation](70-interface-migration/interface-design-and-implementation-b763478.md)
             -   [Guidelines to Design Integration Flows](70-interface-migration/guidelines-to-design-integration-flows-f9d7627.md)
             -   [Integration Patterns](70-interface-migration/integration-patterns-980eace.md)

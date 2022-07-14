@@ -35,6 +35,8 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 -   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md)**: Discover the different aspects involved in moving interfaces from SAP Process Integration and SAP Process Orchestration to SAP Integration Suite, as well as scenario and object assessment and how testing can be automated.
 
 
+-   **[What's New](what-s-new-40a5d8e.md "Find out what's new in the Migration Guide for SAP Process Orchestration.")**  
+Find out what's new in the Migration Guide for SAP Process Orchestration.
 -   **[Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md "Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API
 		Management, Open Connectors, and Integration Advisor.")**  
 Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API Management, Open Connectors, and Integration Advisor.

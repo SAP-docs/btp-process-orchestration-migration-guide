@@ -167,14 +167,14 @@ JDBC
 </td>
 <td valign="top">
 
-JDBC
+Planned for future
 
 
 
 </td>
 <td valign="top">
 
-Cloud Integration is working on supporting multiple cloud and on-premise database vendors.
+Alternative – Use timer event along with JDBC receiver adapter to achieve the same JDBC polling mechanism.
 
 
 
