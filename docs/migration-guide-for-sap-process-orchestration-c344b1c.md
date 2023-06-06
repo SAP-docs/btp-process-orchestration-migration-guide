@@ -1,5 +1,7 @@
 <!-- loioc344b1c395144095834a961699293889 -->
 
+<link rel="stylesheet" type="text/css" href="css/sap-icons.css"/>
+
 # Migration Guide for SAP Process Orchestration
 
 Use this guide to migrate from the on-premise solution SAP Process Orchestration to the cloud solution SAP Integration Suite.
@@ -20,13 +22,13 @@ This guide addresses customers of SAP Process Orchestration who want to move to 
 
 This guide describes what you need to know when you want to migrate from SAP Process Orchestration to SAP Integration Suite. It covers a variety of topics related to the migration process:
 
--   **[Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md)**: Before you start your migration, you should get to know SAP Integration Suite, learn about its advantages, and get an overview of the migration process from SAP Process Orchestration to SAP Integration Suite.
+-   **[Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md)**: Before you start your migration, get to know SAP Integration Suite, learn about its advantages, and get an overview of the migration process from SAP Process Orchestration to SAP Integration Suite.
 
 -   **[Landscape](20-landscape/landscape-ca24a08.md)**: Assess your existing integration landscape and plan your target landscape.
 
 -   **[Connectivity](30-connectivity/connectivity-94ab030.md)**: Learn how to move your connectivity options to the connectors and adapters of the SAP Integration Suite.
 
--   **[Security](40-security/security-dd0fb21.md)**: Get an overview of the security aspects you should consider while migrating and how to manage them in SAP Integration Suite.
+-   **[Security](40-security/security-dd0fb21.md)**: Get an overview of the security aspects you must consider while migrating and how to manage them in SAP Integration Suite.
 
 -   **[Error Handling and Logging Strategy](50-error-handling-and-logging/error-handling-and-logging-strategy-8faa23e.md)**: Learn about cloud-based error handling and logging strategies and understand the different approaches available to you.
 
@@ -35,8 +37,28 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 -   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md)**: Discover the different aspects involved in moving interfaces from SAP Process Integration and SAP Process Orchestration to SAP Integration Suite, as well as scenario and object assessment and how testing can be automated.
 
 
--   **[What's New](what-s-new-40a5d8e.md "Find out what's new in the Migration Guide for SAP Process Orchestration.")**  
-Find out what's new in the Migration Guide for SAP Process Orchestration.
+
+
+> ### Tip:  
+> This guide is open for contributions and feedback using GitHub. This allows you to get in contact with responsible authors of SAP Help Portal pages and the development team to discuss documentation-related issues. To contribute to this guide, or to provide feedback, choose the corresponding option on SAP Help Portal:
+> 
+> -   :pencil2:: Contribute to a documentation page. This option opens a pull request on GitHub.
+> 
+> -   <span class="SAP-icons"></span> Feedback: Provide feedback about a documentation page. This option opens an issue on GitHub.
+> 
+> 
+> You need a GitHub account to use these options.
+> 
+> More information:
+> 
+> -   [Contribution Guidelines](https://help.sap.com/docs/open-documentation-initiative/contribution-guidelines/readme.html)
+> 
+> -   [Introduction Video: Open Documentation Initiative](https://www.youtube.com/watch?v=WJ0oarMlVW4)
+> 
+> -   [Blog Post: Introducing the Open Documentation Initiative](https://blogs.sap.com/2021/05/20/introducing-the-open-documentation-initiative/)
+
+-   **[What's New](what-s-new-40a5d8e.md "Find out what's new in the migration guide for SAP Process Orchestration.")**  
+Find out what's new in the migration guide for SAP Process Orchestration.
 -   **[Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md "Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API
 		Management, Open Connectors, and Integration Advisor.")**  
 Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API Management, Open Connectors, and Integration Advisor.

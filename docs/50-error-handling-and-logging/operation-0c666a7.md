@@ -51,7 +51,7 @@ The following system logs are stored with multiseverity:
 
 You can access the Log Viewer by going to *SAP NetWeaver Administrator* \> *Troubleshooting* \> *Logs and Traces* \> *Log Viewer*.
 
-For Cloud Integration, you must use the SAP Audit Log service to monitor the security-relevant chronological records such as events, activity logs, and application logs. For more information, see [Audit Logging in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/f92c86ab11f6474ea5579d839051c334.html). You can also use the Audit Log Retrieval API to extract possessed by the tenant. For more information, access the [API Business Hub](https://api.sap.com/api/CFAuditLogRetrievalAPI/overview).
+For Cloud Integration, you must use the SAP Audit Log service to monitor the security-relevant chronological records such as events, activity logs, and application logs. For more information, see [Audit Logging in the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/f92c86ab11f6474ea5579d839051c334.html). You can also use the Audit Log Retrieval API to extract possessed by the tenant. For more information, access the [SAP Business Accelerator Hub](https://api.sap.com/api/CFAuditLogRetrievalAPI/overview).
 
 
 
@@ -61,7 +61,7 @@ For Cloud Integration, you must use the SAP Audit Log service to monitor the sec
 
 Most of these administrative tasks described for Cloud Integration and SAP Process Orchestration, such as read integration messages, security artifacts, log files, and communication channels, are available in APIs to be used externally. This way, you can automate some procedures using custom script or even build your own toolset. In Cloud Integration, the most common usage is to build your own alert notification mechanism, but you can even create a procedure to automatically maintain some objects in the tenant keystore \(e.g. key pair, certificate chain\).
 
-To access the most updated list of APIs for Cloud Integration, visit the [API Business Hub](https://api.sap.com/package/CloudIntegrationAPI/odata). The capabilities include:
+To access the most updated list of APIs for Cloud Integration, visit the [SAP Business Accelerator Hub](https://api.sap.com/package/CloudIntegrationAPI/odata). The capabilities include:
 
 -   Manage and query integration artifacts at design time and runtime.
 

@@ -6,102 +6,70 @@ When migrating from SAP Process Orchestration to SAP Integration Suite on Cloud 
 
 
 
-At the current state, SAP is working on a migration tool to support customers on a fully automated migration of integration artifacts. The tool is not available yet and might be released with different function sets in the first stages, but in general it will include:
-
--   Extraction tool to extract required information about the SAP Process Orchestration system such as:
-
-    -   Landscape
-
-    -   Integration Scenarios
-
-    -   Protocols / Adapters / Attributes / Mappings
-
-
-    This information will be used to generate a high-level list of artifacts that need to be considered. It can also be used to feed the migration tool for an automatic conversion.
-
--   Automatic migration/conversion
-    -   Using the extracted data of objects from SAP Process Orchestration, these objects are converted automatically to artifacts in SAP Integration Suite.
-
-    -   Depending on the release level and the particular scenarios, some manual activities might be required.
-
-
-
 The migration process itself can be covered by a migration project, which can contain different phases as illustrated in the following diagram:
 
 ![](images/InterfaceMigration_MigrationProcess_bbb3ffa.png)
 
+The migration phases can be adjusted to your needs and the preferred project methodology. There are different options to execute the phases.
+
 1.  **Evaluate**
-    -   Analyze the current and the to-be landscape. SAP recommends using the [SAP Integration Solution Advisory Methodology](https://blogs.sap.com/2019/02/24/integration-solution-advisory-methodology-isa-m-define-integration-guidelines-for-your-organization/).
+    -   Estimate the effort involved in the migration process and how your integration scenarios can be migrated using [Migration Assessment](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/5c5e50ee2d644cc59d864409d5b7871c.html?locale=en-US&version=CLOUD).
+    -   Analyze the current and the to-be landscape, for example, using the [SAP Integration Solution Advisory Methodology](https://blogs.sap.com/2019/02/24/integration-solution-advisory-methodology-isa-m-define-integration-guidelines-for-your-organization/).
 
-    -   If not available, create a high-level architecture for the connected systems and a detailed list of these systems with the used protocols, adapters, triggers, and authentication.
+    -   Create a high-level architecture for the connected systems and a list of these systems with the protocols, adapters, triggers, and authentication used.
 
-    -   Check if there are other options to integrate the systems on the [SAP API Business Hub](https://api.sap.com/) such as:
-
-        -   Standard Integration Packages
-
-        -   Standard APIs documentation
+    -   Check if there are other options to integrate the systems on the [SAP Business Accelerator Hub](https://api.sap.com/), such as standard integration packages or standard API documentation.
 
 
-
-2.  **Plan**
-
-    Create a migration strategy.
-
+2.  **Plan**: create a migration strategy
     -   Migration of integration scenarios
 
-        -   Automatically migrated \(depending on the availability and features of SAP Migration Tool\)
+        -   Automatically migrated \(depending on the features of the [Migration Tooling](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/60610163aec44849ac4783c92fb2e55c.html?locale=en-US&version=CLOUD)\)
 
-        -   Semiautomatic migrated \(SAP Migration Tool, import of mappings, import of artifacts\)
+        -   Semiautomatically migrated \([Migration Tooling](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/60610163aec44849ac4783c92fb2e55c.html?locale=en-US&version=CLOUD), import of mappings, import of artifacts\)
 
-        -   Redesign scenarios \(standard content, standard APIs, interfaces not covered by the SAP Migration Tool\)
-
-
-    -   Side-By-Side Migration
-
-        Scenarios can be converted and run in parallel to SAP Process Orchestration.
-
-    -   Prioritization of the integration scenario
-
-        Depending on different aspects of the customer like business or functional requirements and availability of features on Cloud Integration
+        -   Redesign scenarios \(standard content, standard APIs, interfaces not covered by the Migration Tooling\)
 
 
-3.  **Preparation/Implementation**
-    -   Cloud Foundry Setup
+    -   Side-by-side migration: Scenarios can be converted and run in parallel to SAP Process Orchestration.
 
-        -   Provisioning of tenant and SAP Integration Suite
-
-        -   Configuration of SAP Integration Suite \(authorization and roles\)
+    -   Prioritize integration scenarios depending on customer-specific aspects, for example business or functional requirements, and availability of features on Cloud Integration.
 
 
-    -   Import / Configuration of artifacts
+3.  **Prepare/Implement**
+    -   Set up Cloud Foundry
 
-        -   Certificates, user credentials, known-host file, public and private keyring.
+        -   Provision the tenant and SAP Integration Suite
+
+        -   Configure SAP Integration Suite \(authorization and roles\)
 
 
-    -   Setup of Cloud Connector \(if required\)
+    -   Import or configure artifacts \(certificates, user credentials, known-host file, public and private keyring\)
 
-    -   Connectivity test to the connected applications \(optional\)
+    -   Setup Cloud Connector \(if required\)
 
-    -   Setup of implementation guidelines and architecture, mainly in case of redesigning integration scenarios
+    -   Test the connectivity to the connected applications \(optional\)
 
-    -   Migration of content
+    -   Setup implementation guidelines and architecture \(if you plan to redesign integration scenarios\)
 
-        -   Configuration of standard content
+    -   Migrate content
 
-        -   Automatic migration
+        -   Configure standard content
 
-        -   Reimplementation for redesigned interfaces and non-supported objects by the SAP Migration Tool.
+        -   Migrate automatically using the [Migration Tooling](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/60610163aec44849ac4783c92fb2e55c.html?locale=en-US&version=CLOUD)
+
+        -   Reimplement redesigned interfaces and objects not supported by the Migration Tooling
 
 
 
 4.  **Test**
 
-    Different test phases to test the migrated content \(e.g., connectivity, developer, unit, process, system, acceptance\)
+    Run test phases to test the migrated content \(e.g. connectivity, developer, unit, process, system, acceptance\)
 
-5.  **Migrate Connected System / Go-Live**
-    -   Activate integration content on productive tenant
+5.  **Migrate Connected System / Go Live**
+    -   Activate integration content on the productive tenant
 
-    -   Configuration of connected system to switch over to Cloud Integration
+    -   Configure the connected system to switch over to Cloud Integration
 
 
 6.  **Live**
@@ -111,17 +79,17 @@ The migration process itself can be covered by a migration project, which can co
 
 
 
-The migration phases can be adjusted to the needs of the customer and the preferred project methodology. There are different options to execute the phases.
-
 
 
 <a name="loio46c8a368b7dd4f20826cfbe498d1601c__section_b3c_m53_qqb"/>
 
 ## Migrating Cloud Integration from the Neo Environment to the Multi-Cloud Foundation
 
-SAP provides a comprehensive [guide for migrating integration scenarios in the Cloud Integration tenant from Neo environment to the Multi-Cloud Foundation](https://help.sap.com/viewer/de9f95b388f1489abc3c7890a66bae2f/LATEST/en-US/e97a93d541ff45c6b513317ca3c5e620.html). The guide addresses Cloud Integration customers who have at least one existing integration scenario in the Neo environment that they would like to move to a tenant in the Multi-Cloud Foundation. It’s possible to also use this guide for migrating integration scenarios from one tenant to another tenant within the same environment.
+The [guide for migrating integration scenarios in the Cloud Integration tenant from Neo environment to the Multi-Cloud Foundation](https://help.sap.com/viewer/de9f95b388f1489abc3c7890a66bae2f/LATEST/en-US/e97a93d541ff45c6b513317ca3c5e620.html) addresses Cloud Integration customers who have at least one existing integration scenario in the Neo environment that they would like to move to a tenant in the multi-cloud foundation.
 
-The migration of Cloud Integration from Neo to Cloud Foundry allows you to keep current on the roadmap for the offerings inside SAP BTP and it brings benefits such as:
+You can also use this guide to migrate integration scenarios from one tenant to another tenant within the same environment.
+
+Migrating Cloud Integration from Neo to Cloud Foundry allows you to stay up to date with the newest updates and offerings of SAP BTP. Benefits include the following:
 
 -   Availability on hyperscale environments, such as Amazon Web Services, Microsoft Azure, and Alibaba Cloud
 
@@ -129,16 +97,16 @@ The migration of Cloud Integration from Neo to Cloud Foundry allows you to keep 
 
 -   Asynchronous JMS message queues
 
--   B2B Libraries
+-   B2B libraries
 
 -   Different services in SAP Integration Suite in a unified commercial offering
 
 -   No downtime for upgrade and maintenance activities
 
 
-Be aware of some restrictions that you may find while migrating from Neo to Cloud Foundry. Some of them are:
+Restrictions you may experience while migrating from Neo to Cloud Foundry include the following:
 
--   The audit log access via Cloud Integration Monitoring UI is not supported.
+-   The audit log access via Cloud Integration monitoring UI is not supported.
 
 -   Access to system log files is not supported.
 

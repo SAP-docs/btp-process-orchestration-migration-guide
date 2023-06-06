@@ -18,7 +18,7 @@ SAP Integration Suite is an open and enterprise-grade integration platform that 
 
 -   Leader in the Gartner 2020 Magic Quadrant™ for EiPaaS solutions
 
--   Simplified integrations with capabilities of Cloud Integration, API Management, Integration Advisor, AI-based development, SAP Integration Solution Advisory Methodology, the API Business Hub Enterprise, Cloud Connector, and Open Connectors for more than 170 non-SAP applications
+-   Simplified integrations with capabilities of Cloud Integration, API Management, Integration Advisor, AI-based development, SAP Integration Solution Advisory Methodology, the SAP Business Accelerator Hub, Cloud Connector, and Open Connectors for more than 170 non-SAP applications
 
 -   Time-to-live is accelerated with 2200+ pre-built integrations, 2500 APIs, 160 business events
 
@@ -41,7 +41,7 @@ SAP Integration Suite has four main capabilities: Cloud Integration, API Managem
 
 The Cloud Integration capability within SAP Integration Suite supports end-to-end process integration across cloud-based and on-premise applications through the exchange of messages, from to cloud to on-premise and vice versa. It provides capabilities to process messages in integration scenarios spanning different companies, organizations, or departments within an organization.
 
-Integration developers can use predefined integration content available on [SAP API Business Hub](https://api.sap.com) out of the box, enhance it, or develop their own integration content from scratch. Integration content refers to all design artifacts that define how a message is to be processed during an integration scenario. Cloud Integration provides a [set of adapters](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/1f066330e8314324bf3ebe3b6adc21b2.html) that allow you to specify a connection type and define, for example, which technical protocols should be used to connect a sender or a receiver system to the tenant and how this connection is protected.
+Integration developers can use predefined integration content available on [SAP Business Accelerator Hub](https://api.sap.com) out of the box, enhance it, or develop their own integration content from scratch. Integration content refers to all design artifacts that define how a message is to be processed during an integration scenario. Cloud Integration provides a [set of adapters](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/1f066330e8314324bf3ebe3b6adc21b2.html) that allow you to specify a connection type and define, for example, which technical protocols should be used to connect a sender or a receiver system to the tenant and how this connection is protected.
 
 Since Cloud Integration covers the majority of the capabilities provided by SAP Process Orchestration system, it’s addressed as main service when planning to migrate to SAP Integration Suite.
 
@@ -62,6 +62,6 @@ The final key capability is SAP Integration Advisor, a machine learning-based de
 		Orchestration. Here are a few significant points that highlight the value proposition of SAP
 		Integration Suite compared to SAP Process Orchestration.")**  
 SAP Integration Suite is a multi-cloud SaaS solution that offers a number of significant advantages over an on-premise offering like SAP Process Integration and SAP Process Orchestration. Here are a few significant points that highlight the value proposition of SAP Integration Suite compared to SAP Process Orchestration.
--   **[Transition to SAP Integration Suite](transition-to-sap-integration-suite-0efebfb.md "")**  
-
+-   **[Transition to SAP Integration Suite](transition-to-sap-integration-suite-0efebfb.md "Review the approaches you can use to transition to SAP Integration Suite.")**  
+Review the approaches you can use to transition to SAP Integration Suite.
 

@@ -44,5 +44,5 @@ For more information about how to use exception subprocess, see [Define Exceptio
 
 For documentation about best practices while handling errors in Cloud Integration, see [Handle Errors Gracefully](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/42c95f752c8d4b4cad98b7608223424f.html).
 
-If you want to access the delivered package for Cloud Integration with some examples of integration flows with error handling, go to the [API Business Hub](https://api.sap.com/package/DesignGuidelinesHandleErrors?section=Overview) or access it directly from the Cloud Integration tenant.
+If you want to access the delivered package for Cloud Integration with some examples of integration flows with error handling, go to the [SAP Business Accelerator Hub](https://api.sap.com/package/DesignGuidelinesHandleErrors?section=Overview) or access it directly from the Cloud Integration tenant.
 

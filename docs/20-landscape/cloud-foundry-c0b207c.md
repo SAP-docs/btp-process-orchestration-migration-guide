@@ -6,7 +6,7 @@ The Cloud Foundry environment allows you to create polyglot cloud applications. 
 
 The Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services. You can leverage a multitude of build packs, including community innovations and self-developed build packs. For more information, see the official [Cloud Foundry documentation](https://docs.cloudfoundry.org/).
 
-You have different options regarding which hyperscale and datacenter to use:
+The following hyperscales and datacenters are available:
 
 -   Microsoft Azure
 
@@ -66,7 +66,7 @@ In a Cloud Integration system, you have two key components:
 
     The following operations can be performed in the web interface:
 
-    -   **Discover**: Discover standard content available on API Business Hub and copy this content to the tenant workspace.
+    -   **Discover**: Discover standard content available on SAP Business Accelerator Hub and copy this content to the tenant workspace.
 
     -   **Design Content \(Workspace\)**: In the workspace you can:
 

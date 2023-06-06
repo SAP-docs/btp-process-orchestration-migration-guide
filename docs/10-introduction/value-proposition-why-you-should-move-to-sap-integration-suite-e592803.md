@@ -22,13 +22,13 @@ For more information, see [What Is SAP Integration Suite?](https://help.sap.com/
 
 ### Faster time to value
 
-SAP Integration Suite is a fully managed SaaS offering that can help you get started with no intervention from the service provider. It also offers 2000+ prebuilt integrations, 2500 APIs, and 150 business events on the SAP API Business Hub, and this list keeps growing. You can quickly get started and implement your integration projects with a combination of these features, helping you generate value in less time. In line with SAP’s motto of “Run Simple”, SAP Integration Suite aims to “simplify integration” as much as possible by democratizing integration using the low-code no-code approach, an intuitive graphical user interface, and intelligent technologies to improve productivity. The overall learning curve for SAP Integration Suite is significantly smaller compared to other integration solutions owing to the innovative and intuitive features it offers.
+SAP Integration Suite is a fully managed SaaS offering that can help you get started with no intervention from the service provider. It also offers 2000+ prebuilt integrations, 2500 APIs, and 150 business events on SAP Business Accelerator Hub, and this list keeps growing. You can quickly get started and implement your integration projects with a combination of these features, helping you generate value in less time. In line with SAP’s motto of “Run Simple”, SAP Integration Suite aims to “simplify integration” as much as possible by democratizing integration using the low-code no-code approach, an intuitive graphical user interface, and intelligent technologies to improve productivity. The overall learning curve for SAP Integration Suite is significantly smaller compared to other integration solutions owing to the innovative and intuitive features it offers.
 
 
 
 ### Accelerated integration with 2000+ integration packages
 
-SAP Integration Suite provides prepackaged business content for different line of business scenarios on [SAP API Business Hub](https://api.sap.com/) without any additional costs. These integration packages contain integration flows, message and value mappings, and scripts among other integration artifacts that can accelerate your integration projects and reduce the overall implementation time. This also results in significant cost savings, with some customers reporting as much as 60% cost savings. SAP also manages the lifecycle of these integration packages, providing updates and patches that can be consumed with a few clicks.
+SAP Integration Suite provides prepackaged business content for different line of business scenarios on [SAP Business Accelerator Hub](https://api.sap.com/) without any additional costs. These integration packages contain integration flows, message and value mappings, and scripts among other integration artifacts that can accelerate your integration projects and reduce the overall implementation time. This also results in significant cost savings, with some customers reporting as much as 60% cost savings. SAP also manages the lifecycle of these integration packages, providing updates and patches that can be consumed with a few clicks.
 
  ![](images/benefits_advantage_integrationpackages_4bf23ce.png) 
 
@@ -50,7 +50,7 @@ SAP fully manages and operates SAP Integration Suite, helping you focus your eff
 
     -   One license and metric for all capabilities of SAP Integration Suite
 
-    -   Free SAP-to-SAP messages via standard prepackaged content shipped by SAP via SAP API Business Hub
+    -   Free SAP-to-SAP messages via standard prepackaged content shipped by SAP via SAP Business Accelerator Hub
 
     -   Easy scalability with instances and messages. No limitation on “Connections or bandwidth”
 
@@ -100,7 +100,7 @@ The following image provides an overview of AmSty's architecture.
 
 ### QforIT
 
-QforIT streamlined enterprise integrations for its customers with SAP Integration Suite. They took advantage of the prepackaged integration scenarios available on the SAP API Business Hub, improving the speed of configuring integration scenarios by 400%. They also achieved a lift and shift approach to shifting scenarios from SAP Process Orchestration and SAP Process Integration to SAP Integration Suite with minimal efforts and risks. Improved monitoring capabilities provided by SAP Integration Suite helped them identify possible problems and enable fast, reactive monitoring support. QforIT uses SAP Integration Suite for smart integration of processes, people, things, and data.
+QforIT streamlined enterprise integrations for its customers with SAP Integration Suite. They took advantage of the prepackaged integration scenarios available on the SAP Business Accelerator Hub, improving the speed of configuring integration scenarios by 400%. They also achieved a lift and shift approach to shifting scenarios from SAP Process Orchestration and SAP Process Integration to SAP Integration Suite with minimal efforts and risks. Improved monitoring capabilities provided by SAP Integration Suite helped them identify possible problems and enable fast, reactive monitoring support. QforIT uses SAP Integration Suite for smart integration of processes, people, things, and data.
 
 For the full story, see [SAP Customer Story Finder portal](https://www.sap.com/documents/2020/12/a00c52aa-bf7d-0010-87a3-c30de2ffd8ff.html).
 

@@ -6,6 +6,9 @@ Migrate existing ESR proxies from the Enterprise Services Repository \(ESR\) to 
 
 Use transaction *SPXNMIG* and report *SPROX\_MDR\_MIGRATION* to migrate existing ESR proxies to the MDR. The web services are then available locally in the backend system where they can be changed and extended.
 
+> ### Note:  
+> You don't have to migrate all your existing proxies from ESR to MDR. You only need to migration the proxies that you need to maintain the structure later.
+
 
 
 <a name="loio0797dc0e8ee64589803fd2194e59eb64__section_dkt_2sf_ttb"/>
@@ -59,9 +62,57 @@ The following objects cannot be migrated and are therefore not displayed in the 
 
 Additionally, **inline types** cannot be migrated to the MDR automatically. You can migrate them manually by using one of the following options:
 
--   Change inline types to global types in the ESR and regenerate them to become global types in the backend, too.
+-   Change inline types to global types in the ESR and regenerating them to become global types. Instead of defining dependent elements inline, you need to create these elements separately and refer to them within the parent element. The following examples show the difference between an inline type and a global type:
 
--   Convert inline types using the migration tool semiautomatically. This means that inline types can be converted into global types by specifying a global name for each inline type the tool needs to generate a global type for. If this option is used, a migration back to ESR is not possible.
+    -   For the **inline type**, all XSD elements are contained within one sequence:
+
+        ```
+        <xsd:complexType name="dt_inline"> 
+        	<xsd:sequence> 
+        		<xsd:element name="tier_1">
+        			<xsd:complexType>
+        				<xsd:sequence> 
+        					<xsd:element name="tier_2"> 
+        						<xsd:complexType>
+        							<xsd:sequence>
+        								<xsd:element name="integer" type="xsd:integer"/>
+        							</xsd:sequence>
+        						</xsd:complexType>
+        					</xsd:element>
+        				</xsd:sequence>
+        			</xsd:complexType>
+        		</xsd:element>
+        	</xsd:sequence> 
+        </xsd:complexType> 
+        ```
+
+    -   However, the **global type** consists of three different XSD parts:
+
+        ```
+        <xsd:complexType name="dt_global"> 
+        	<xsd:sequence> 
+        		<xsd:element name="tier_1" type="dt_tier1"/> 
+        	</xsd:sequence> 
+        </xsd:complexType> 
+        <xsd:complexType name="dt_tier1"> 
+        	<xsd:sequence> 
+        		<xsd:element name="tier_2" type="dt_tier2"/> 
+        	</xsd:sequence> 
+        </xsd:complexType> 
+        <xsd:complexType name="dt_tier2"> 
+        	<xsd:sequence> 
+        		<xsd:element name="integer" type="xsd:integer"/> 
+        	</xsd:sequence> 
+        </xsd:complexType> 
+        ```
+
+
+-   **For systems classified as ***SAP*** only:** 
+
+    Using the migration tool, you can convert inline types semiautomatically with the button *Convert Inlines*. This means that inline types can be converted into global types by specifying a global name for each inline type the tool needs to generate a global type for. See SAP Note [3313582](https://launchpad.support.sap.com/#/notes/3313582).
+
+    > ### Note:  
+    > If this option is used, a migration back to ESR is not possible.
 
 
 
