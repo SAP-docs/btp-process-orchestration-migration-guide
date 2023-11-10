@@ -30,7 +30,7 @@ SAP Integration Suite is a fully managed SaaS offering that can help you get sta
 
 SAP Integration Suite provides prepackaged business content for different line of business scenarios on [SAP Business Accelerator Hub](https://api.sap.com/) without any additional costs. These integration packages contain integration flows, message and value mappings, and scripts among other integration artifacts that can accelerate your integration projects and reduce the overall implementation time. This also results in significant cost savings, with some customers reporting as much as 60% cost savings. SAP also manages the lifecycle of these integration packages, providing updates and patches that can be consumed with a few clicks.
 
- ![](images/benefits_advantage_integrationpackages_4bf23ce.png) 
+![](images/benefits_advantage_integrationpackages_4bf23ce.png)
 
 
 
@@ -72,7 +72,7 @@ Getting started with SAP Integration Suite has never been easier. Once you licen
 
 For detailed instructions on how to quickly get started with SAP Integration Suite, see [Initial Setup - SAP Integration Suite](https://help.sap.com/viewer/51ab953548be4459bfe8539ecaeee98d/sap.cp.integration.suite/en-US/3dcf507f92f54597bc203600bf8f94c5.html).
 
- ![](images/Benefits_Advantage_IShome_5989d9a.png) 
+![](images/Benefits_Advantage_IShome_5989d9a.png)
 
 
 
@@ -94,7 +94,7 @@ For the full story, see [American Styrenics LLC success story on SAP Innovations
 
 The following image provides an overview of AmSty's architecture.
 
- ![](images/Benefits_advantage_AmSty_092b168.png) 
+![](images/Benefits_advantage_AmSty_092b168.png)
 
 
 
@@ -106,5 +106,5 @@ For the full story, see [SAP Customer Story Finder portal](https://www.sap.com/d
 
 The following image is a graphical representation of QforIT’s integration strategy.
 
- ![](images/Benefits_Advantage_QforIT_0869f1a.png) 
+![](images/Benefits_Advantage_QforIT_0869f1a.png)
 

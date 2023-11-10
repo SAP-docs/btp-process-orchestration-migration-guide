@@ -27,7 +27,7 @@ Description
 <tr>
 <td valign="top">
 
- [High Availability](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/3ea1e33606c24c27ad097d60b57b6e4e.html) 
+[High Availability](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/3ea1e33606c24c27ad097d60b57b6e4e.html) 
 
 
 
@@ -43,7 +43,7 @@ Carefully build an integration flow considering certain patterns that never brea
 <tr>
 <td valign="top">
 
- [Resource Management](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/f8cf97498d2549daab65db34f11e119d.html) 
+[Resource Management](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/f8cf97498d2549daab65db34f11e119d.html) 
 
 
 
@@ -59,7 +59,7 @@ To correctly process messages in Cloud Integration, some resources are needed, l
 <tr>
 <td valign="top">
 
- [Readability](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/578fa7780344468388f689455f38b3a4.html) 
+[Readability](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/578fa7780344468388f689455f38b3a4.html) 
 
 
 
@@ -75,7 +75,7 @@ When an integration developer is designing an integration flow, it’s important
 <tr>
 <td valign="top">
 
- [Handling Failures Gracefully](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/42c95f752c8d4b4cad98b7608223424f.html) 
+[Handling Failures Gracefully](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/42c95f752c8d4b4cad98b7608223424f.html) 
 
 
 
@@ -91,7 +91,7 @@ Even well-designed integration flows can break during message processing, but th
 <tr>
 <td valign="top">
 
- [Prepackaged Integration Content](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/95c68ce417e2476d994f082b9301a98d.html) 
+[Prepackaged Integration Content](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/95c68ce417e2476d994f082b9301a98d.html) 
 
 
 
@@ -107,7 +107,7 @@ Cloud Integration has prepackaged integration content available that contains in
 <tr>
 <td valign="top">
 
- [Highest Security Standards](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/201fd43d4dab4bce9144ebfd9cdfbb20.html) 
+[Highest Security Standards](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/201fd43d4dab4bce9144ebfd9cdfbb20.html) 
 
 
 
@@ -123,7 +123,7 @@ The integration flow ultimately specifies how a message is processed and which o
 <tr>
 <td valign="top">
 
- [Use Scripting Appropriately](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/d4dc13c927b044b2a38e458f4cea9da5.html) 
+[Use Scripting Appropriately](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/d4dc13c927b044b2a38e458f4cea9da5.html) 
 
 
 
@@ -153,7 +153,7 @@ If you don't consider the proposed guidelines during integration design, there's
 <tr>
 <td valign="top">
 
- [Use the Partner Directory Appropriately](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/6e00412aebd549f8b5771c9397c08c5d.html) 
+[Use the Partner Directory Appropriately](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/6e00412aebd549f8b5771c9397c08c5d.html) 
 
 
 

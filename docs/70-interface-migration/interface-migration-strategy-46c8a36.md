@@ -118,5 +118,5 @@ Restrictions you may experience while migrating from Neo to Cloud Foundry includ
     > Such “as-is” migration is not available for Enterprise Edition, App Edition, and Enterprise Messaging Upsell \(8005999\). SAP Integration licenses shall be considered for such cases. For more details, contact your SAP representative.
 
 
-For the full list, see SAP Note [2752867](https://launchpad.support.sap.com/#/notes/2752867).
+For the full list, see SAP Note [2752867](https://me.sap.com/notes/2752867).
 

@@ -32,7 +32,7 @@ Description
 <tr>
 <td valign="top">
 
- [SFTP Poll-Enrich](https://blogs.sap.com/2021/05/12/cloud-integration-use-poll-enrich-with-sftp-adapter/) 
+[SFTP Poll-Enrich](https://blogs.sap.com/2021/05/12/cloud-integration-use-poll-enrich-with-sftp-adapter/) 
 
 
 
@@ -78,7 +78,7 @@ Updated list on new enhancement and guidelines from SAP
 <tr>
 <td valign="top">
 
- [Asynchronous Messaging](https://blogs.sap.com/2017/06/19/cloud-integration-configure-asynchronous-messaging-with-retry-using-jms-adapter/) 
+[Asynchronous Messaging](https://blogs.sap.com/2017/06/19/cloud-integration-configure-asynchronous-messaging-with-retry-using-jms-adapter/) 
 
 
 
@@ -101,7 +101,7 @@ How to setup and configure asynchronous delivery on Cloud Integration
 <tr>
 <td valign="top">
 
- [CI/CD for SAP Integration Suite](https://blogs.sap.com/2021/06/02/ci-cd-for-sap-integration-suite-here-you-go/) 
+[CI/CD for SAP Integration Suite](https://blogs.sap.com/2021/06/02/ci-cd-for-sap-integration-suite-here-you-go/) 
 
 
 
@@ -124,7 +124,7 @@ Integration flows recipes
 <tr>
 <td valign="top">
 
- [Guidelines to Migrate/Integrate Data Into Cloud from/to On-Premise Systems](https://blogs.sap.com/2019/07/19/explosion-of-sap-cloud-dataintegration-sap-tool-procurement-guidelines-to-migrateintegrate-data-into-cloud-fromto-on-premise-systems/) 
+[Guidelines to Migrate/Integrate Data Into Cloud from/to On-Premise Systems](https://blogs.sap.com/2019/07/19/explosion-of-sap-cloud-dataintegration-sap-tool-procurement-guidelines-to-migrateintegrate-data-into-cloud-fromto-on-premise-systems/) 
 
 
 
@@ -147,7 +147,7 @@ Comprehensive article discussing about Digital Transformation, SAP cloud solutio
 <tr>
 <td valign="top">
 
- [B2B Capabilities](https://blogs.sap.com/2018/01/14/b2b-capabilities-in-sap-cloud-platform-integration-part-1/) 
+[B2B Capabilities](https://blogs.sap.com/2018/01/14/b2b-capabilities-in-sap-cloud-platform-integration-part-1/) 
 
 
 
@@ -170,7 +170,7 @@ Blog collections about B2B Integration
 <tr>
 <td valign="top">
 
- [Partner Directory](https://blogs.sap.com/2017/07/25/cloud-integration-partner-directory-step-by-step-example/) 
+[Partner Directory](https://blogs.sap.com/2017/07/25/cloud-integration-partner-directory-step-by-step-example/) 
 
 
 
@@ -192,7 +192,7 @@ Blog about B2B Partner Directory
 </tr>
 </table>
 
- 
 
- 
+
+
 

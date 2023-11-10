@@ -10,7 +10,7 @@ Moreover, many customers still use offline documents like spreadsheets to list t
 
 In addition, integration with the Interface & Connection Monitoring application is available: interface attribute data maintained in Interface Documentation can be used to configure Interface Channels for monitoring & alerting, without having to enter the same data into the system again. This integration reflects the best practice-like approach for Interface Management in SAP Solution Manager as indicated in the following figure.
 
- ![](images/InterfaceGovernance_InterfaceDocumentation_ad55847.png) 
+![](images/InterfaceGovernance_InterfaceDocumentation_ad55847.png)
 
 For more details and setup instructions, see the wiki page [Interface Documentation for Solution Manager 7.2](https://wiki.scn.sap.com/wiki/display/SM/Interface+Documentation+for+Solution+Manager+7.2) and the blog [Interface Documentation with SAP Solution Manager](https://blogs.sap.com/2020/04/16/interface-documentation-with-sap-solution-manager/).
 

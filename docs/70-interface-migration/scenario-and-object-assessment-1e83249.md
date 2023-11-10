@@ -127,7 +127,7 @@ For ground-to-ground scenarios, SAP plans to provide a [hybrid deployment option
 
 You can also use the Integration Gateway Component to execute and operate cloud integration content from the Cloud Integration in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentral Adapter Engine, SAP Process Orchestration and SAP PI dual usage type\).
 
-See [Enable the Integration Gateway Component](https://help.sap.com/viewer/5cf7d2de571a45cc81f91261668b7361/7.5.21/en-US/a68695d0e6eb4552ace156cf5352a420.html) and SAP Note [2428801](https://launchpad.support.sap.com/#/notes/2428801).
+See [Enable the Integration Gateway Component](https://help.sap.com/viewer/5cf7d2de571a45cc81f91261668b7361/7.5.21/en-US/a68695d0e6eb4552ace156cf5352a420.html) and SAP Note [2428801](https://me.sap.com/notes/2428801).
 
 
 
@@ -328,7 +328,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
 
 -   You can also **import mappings from the Enterprise Services Repository**. This feature lets you connect your cloud instance to the Enterprise Services Repository using Cloud Connector and move these mapping artifacts to your integration flow. See [Importing Content from ES Repository](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/53db5fb382b54bba86abb413bd3711a7.html?version=CLOUD).
 
-    ![](images/InterfaceMigration_CloudConnector_2c014b0.png)
+    ![Cloud Connector links Cloud Integration and the Enterprise Services Repository. The connection is bidirectional.](images/InterfaceMigration_CloudConnector_2c014b0.png)
 
     The following limitations and possible workarounds exist when importing content from the ES Repository:
 
@@ -352,14 +352,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Graphical Mapping \(UDF\)
 
 
     
     </td>
     <td valign="top">
-
+    
     User-Defined Functions \(UDFs\) with function libraries, imported archives, or parameters are not supported when importing the message mapping.
 
     However, local Java UDFs are supported and can be viewed and edited.
@@ -373,14 +373,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     XSLT
 
 
     
     </td>
     <td valign="top">
-
+    
     XSLT files are downloaded as .xsl under `src.main.resources.mapping`.
 
 
@@ -389,14 +389,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Value Mappings
 
 
     
     </td>
     <td valign="top">
-
+    
     Message mapping containing reference to value mapping is not supported at runtime. Instead, redesign your message mapping and use the value mapping of Cloud Integration.
 
     See also [Migration of Value Mappings](../30-connectivity/migration-of-value-mappings-f2621ed.md).
@@ -407,14 +407,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Fixed Values
 
 
     
     </td>
     <td valign="top">
-
+    
     Although it’s supported in the automatic import feature, it’s highly recommended to change the Fixed Values reference to a Value Mapping in Cloud Integration. This way, you can reuse this artifact and maintain the values without changing the integration flow when necessary.
 
     For more information about how to import a CSV file as a Value Mapping, see [Formatting Guidelines for CSV Files used in Value Mapping](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/8fa8203aff104e938bd7f51dd9daa3e1.html), or [Connectivity](../30-connectivity/connectivity-94ab030.md).
@@ -425,14 +425,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Libraries
 
 
     
     </td>
     <td valign="top">
-
+    
     The JAR files that contain the external Java libraries can be imported manually in Cloud Integration.
 
 
@@ -441,14 +441,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Function Libraries
 
 
     
     </td>
     <td valign="top">
-
+    
     Message mapping containing reference to function libraries is not supported. You need to redesign these mappings, using Javascript/Groovy script. The scripts can be created locally in the integration flow or you can create a script collection to make it available for different integration flows inside your package. See the blog [Script collection reusable artifact in SAP Cloud Integration](https://blogs.sap.com/2021/06/07/script-reusable-artifact-in-sap-cloud-integration/).
 
     > ### Note:  
@@ -460,14 +460,14 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     Java Mappings
 
 
     
     </td>
     <td valign="top">
-
+    
     The JAR files can be imported and reused in Cloud Integration.
 
     You can also work with Javascript/Groovy scripts, which is the preferable approach when working in Cloud Integration. In this option, you can edit the script without having to reimport a compiled version.
@@ -480,15 +480,33 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     <tr>
     <td valign="top">
-
+    
     ABAP Mapping
 
 
     
     </td>
     <td valign="top">
-
+    
     ABAP mapping is not supported. The logic must be reimplemented using any of other mapping methods in Cloud Integration: Graphical Mapping, XSLT, or Javascript/Groovy script.
+
+
+    
+    </td>
+    </tr>
+    <tr>
+    <td valign="top">
+    
+    Operation Mapping
+
+
+    
+    </td>
+    <td valign="top">
+    
+    Due to limitations, it's not recommended to import operation mappings into Cloud Integration. Instead, import message mappings.
+
+    See [Importing Mapping Content from ES Repository](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/importing-mapping-content-from-es-repository).
 
 
     

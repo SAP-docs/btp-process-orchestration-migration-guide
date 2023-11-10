@@ -6,7 +6,7 @@ Get an overview of the architecture and main components of SAP Process Orchestra
 
 In an SAP Process Orchestration system, there are different tools to define, design, and develop integration scenarios. The following figure illustrates its high-level architecture:
 
- ![](images/Landscape_POarchitecture_9d3953a.png) 
+![](images/Landscape_POarchitecture_9d3953a.png)
 
 The main components of SAP Process Orchestration are the following:
 
@@ -44,7 +44,7 @@ The main components of SAP Process Orchestration are the following:
 
 -   **Advanced Adapter Engine \(AAE\)**: With the Advanced Adapter Engine, you can connect SAP systems and non-SAP systems. You use the various adapters in the Advanced Adapter Engine to convert XML- and HTTP-based messages to the specific protocol and format required by these systems, and the other way around.
 
--   **Cloud Integration Content**: You can deploy, execute, and operate cloud integration content from the SAP Integration Content Catalog in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentralize Adapter Engine, SAP Process Orchestration and SAP Process Integration dual usage type\). For more information, see SAP Note [2197483](https://launchpad.support.sap.com/#/notes/2197483).
+-   **Cloud Integration Content**: You can deploy, execute, and operate cloud integration content from the SAP Integration Content Catalog in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentralize Adapter Engine, SAP Process Orchestration and SAP Process Integration dual usage type\). For more information, see SAP Note [2197483](https://me.sap.com/notes/2197483).
 
 -   **Configuration and Monitoring**: These components provide an overview of the status of the individual components of SAP Process Integration and SAP Process Orchestration and include the capability to perform test message execution to verify that the runtime components are working correctly, test connectivity, check the status of your communication channels or the Java Proxies, etc. For more information, see the section [Error Handling and Logging Strategy](../50-error-handling-and-logging/error-handling-and-logging-strategy-8faa23e.md).
 

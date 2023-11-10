@@ -6,6 +6,48 @@ Find out what's new in the migration guide for SAP Process Orchestration.
 
 
 
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_w2p_1z1_wyb"/>
+
+## September 2023
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+
+
+</th>
+<th valign="top">
+
+Update
+
+
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Adapter Modules](30-connectivity/adapter-modules-e402f4a.md)
+
+
+
+</td>
+<td valign="top">
+
+Learn how to migrate the archiver module `localejbs/ArchiverModuleBean` using the archiving feature provided by Cloud Integration.
+
+
+
+</td>
+</tr>
+</table>
+
+
+
 <a name="loio40a5d8e489d946f7a901403d4675bf12__section_zhm_pb2_4xb"/>
 
 ## May 2023
@@ -139,7 +181,7 @@ Update
 <tr>
 <td valign="top">
 
- [Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md) 
+[Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md) 
 
 
 

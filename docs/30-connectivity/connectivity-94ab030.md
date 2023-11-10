@@ -7,10 +7,9 @@ Get an overview of the important aspects regarding the connectivity migration, f
 -   **[Steps in a Migration](steps-in-a-migration-6130825.md "Follows these several structured steps to migrate your communication channels from an
 		SAP Process Orchestration format to a Cloud Integration format.")**  
 Follows these several structured steps to migrate your communication channels from an SAP Process Orchestration format to a Cloud Integration format.
--   **[Connected Systems and Protocols](connected-systems-and-protocols-efce256.md "When analyzing your SAP Process Orchestration system, extracting as many details as
-		possible with regards to what systems it connects to and which transport and messaging
-		protocols it uses is the first step.")**  
-When analyzing your SAP Process Orchestration system, extracting as many details as possible with regards to what systems it connects to and which transport and messaging protocols it uses is the first step.
+-   **[Connected Systems and Protocols](connected-systems-and-protocols-efce256.md "When you analyze your SAP Process Orchestration system, the first step is to extract as many details as possible with regards to what
+		systems it connects to and which transport and messaging protocols it uses.")**  
+When you analyze your SAP Process Orchestration system, the first step is to extract as many details as possible with regards to what systems it connects to and which transport and messaging protocols it uses.
 -   **[Standard Adapter Migration](standard-adapter-migration-2622c30.md "SAP Process Orchestration provides many adapter types as standard. Depending on the
 		adapter type, an equivalent may be available in Cloud Integration, or an alternative may
 		need to be used. ")**  

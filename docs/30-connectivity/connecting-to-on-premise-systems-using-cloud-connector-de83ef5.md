@@ -8,7 +8,7 @@ While businesses across the globe are rapidly adopting a cloud-centric approach 
 
 SAP Cloud Connector was implemented as a solution to bridge the gap between on-premise and the cloud. The SAP Cloud Connector is an on-premise piece of software that needs to be installed inside your landscape. Once configured and paired with your SAP BTP account, a secure tunnel is established between SAP BTP \(and all the services and applications that run on it\) and the Cloud Connector. This way, all communication between SAP BTP and the backend system gets routed via the Cloud Connector over the secure SSL tunnel. As a result, the access control now only needs to be configured in the Cloud Connector. Despite having a light footprint, SAP Cloud Connector is a secure, richly featured application that provides full logging, auditing, and traceability features together with the capability to be installed as a cluster to ensure high availability.
 
- ![](images/Connectivity_CloudConnectorOP_64787be.png) 
+![](images/Connectivity_CloudConnectorOP_64787be.png)
 
 
 

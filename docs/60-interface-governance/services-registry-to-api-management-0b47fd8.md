@@ -8,7 +8,7 @@ The API Management capability comes with the objective to create an enterprise-w
 
 The following image shows how you can position the API Management while migrating from SAP Process Orchestration:
 
- ![](images/InterfGov_SRtoAPIM_png_956a575.png) 
+![](images/InterfGov_SRtoAPIM_png_956a575.png)
 
 You can find more details about the API Management capability and how to provision it under the following links:
 

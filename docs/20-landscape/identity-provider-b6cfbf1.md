@@ -18,7 +18,7 @@ Additionally, you can enable single sign-on using the Identity Authentication se
 > ### Note:  
 > Once the custom IDP configuration is complete, it's necessary to grant permissions to users for SAP BTP applications through the SAP BTP cockpit before they try to access them. See [Configuring User Access to the Application](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/ed6033b2eabe4a64a20cce1e6076bacf.html).
 > 
-> You can find the different personas for administering the roles in [Persona](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/2937e5ca6ef448cfb21451a2461cc2a6.html) in the Cloud Integration documentation and in SAP Note [2872526](https://launchpad.support.sap.com/#/notes/2872526) on roles in API Management.
+> You can find the different personas for administering the roles in [Persona](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/2937e5ca6ef448cfb21451a2461cc2a6.html) in the Cloud Integration documentation and in SAP Note [2872526](https://me.sap.com/notes/2872526) on roles in API Management.
 
 
 

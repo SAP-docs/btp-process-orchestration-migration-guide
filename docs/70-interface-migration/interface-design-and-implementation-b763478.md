@@ -15,7 +15,7 @@ In general, an integration flow contains the following aspects:
 -   The steps that define the message processing
 
 
- ![](images/InterfaceMigration_IntegrationFlow_a4f6cda.png) 
+![](images/InterfaceMigration_IntegrationFlow_a4f6cda.png)
 
 Migration Tooling, a feature in the Cloud Integration capability, can help you migrate your integration artifacts from SAP Process Orchestration to SAP Integration Suite. See [Migration Tooling](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/60610163aec44849ac4783c92fb2e55c.html?locale=en-US&version=CLOUD).
 

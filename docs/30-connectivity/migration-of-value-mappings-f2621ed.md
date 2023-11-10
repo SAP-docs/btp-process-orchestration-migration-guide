@@ -6,7 +6,7 @@ Learn how you can import value mappings from SAP Process Orchestration to Cloud 
 
 In SAP Process Orchestration, the value mapping standard function is defined in ESR and is used to map different representations of an object to each other. At the same time, it's needed to define a value mapping group \(value-mapping tables\) in Integration Directory. The image below shows the representation of the value mapping defined in SAP Process Orchestration.
 
- ![](images/Value_mapping_ESR_ID_a7af7b2.png) 
+![](images/Value_mapping_ESR_ID_a7af7b2.png)
 
 This function can be used in different message mappings with the same key field, but the same value mapping group need to be referenced. Additionally, you can choose to use a rather static option called fixValues, which is a key-value list in which you can directly insert the value mapping in the message mapping while designing your interface in ESR. The fixValue mappings are automatically imported when importing the Message Mapping or Operation Mapping from SAP Process Orchestration.
 

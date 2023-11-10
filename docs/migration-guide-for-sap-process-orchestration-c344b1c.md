@@ -1,7 +1,5 @@
 <!-- loioc344b1c395144095834a961699293889 -->
 
-<link rel="stylesheet" type="text/css" href="css/sap-icons.css"/>
-
 # Migration Guide for SAP Process Orchestration
 
 Use this guide to migrate from the on-premise solution SAP Process Orchestration to the cloud solution SAP Integration Suite.
@@ -42,9 +40,9 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 > ### Tip:  
 > This guide is open for contributions and feedback using GitHub. This allows you to get in contact with responsible authors of SAP Help Portal pages and the development team to discuss documentation-related issues. To contribute to this guide, or to provide feedback, choose the corresponding option on SAP Help Portal:
 > 
-> -   :pencil2:: Contribute to a documentation page. This option opens a pull request on GitHub.
+> -   *Feedback* \> *Create issue*: Provide feedback about a documentation page. This option opens an issue on GitHub.
 > 
-> -   <span class="SAP-icons"></span> Feedback: Provide feedback about a documentation page. This option opens an issue on GitHub.
+> -   *Feedback* \> *Edit page*: Contribute to a documentation page. This option opens a pull request on GitHub.
 > 
 > 
 > You need a GitHub account to use these options.

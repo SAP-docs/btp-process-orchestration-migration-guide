@@ -10,7 +10,7 @@ Perform the following steps to set up the XI proxy runtime.
 
 ## Prerequisites
 
-If it's your first time setting up the outbound connectivity from SAP ERP to Cloud Integration, import the server certificates as described in SAP Note [3193513](https://launchpad.support.sap.com/#/notes/3193513).
+If it's your first time setting up the outbound connectivity from SAP ERP to Cloud Integration, import the server certificates as described in SAP Note [3193513](https://me.sap.com/notes/3193513).
 
 
 
@@ -52,15 +52,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *RFC Destination*
 
 
     
     </td>
     <td valign="top">
-
-    Enter an RFC destination name, for example, ***CI\_XI\_<Interface Identification\>***.
+    
+    Enter an RFC destination name, for example, `CI_XI_<Interface Identification>`.
 
 
     
@@ -68,15 +68,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Connection Type*
 
 
     
     </td>
     <td valign="top">
-
-    ***G HTTP connection to external server***
+    
+    `G HTTP connection to external server`
 
 
     
@@ -114,15 +114,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Sender/Receiver ID*
 
 
     
     </td>
     <td valign="top">
-
-    Identification of your interface, for example ***BP\_BULK***
+    
+    Identification of your interface, for example `BP_BULK`
 
 
     
@@ -130,14 +130,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Description*
 
 
     
     </td>
     <td valign="top">
-
+    
     Description of your settings
 
 
@@ -146,14 +146,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Agency*
 
 
     
     </td>
     <td valign="top">
-
+    
     Sender agency identification, if applicable.
 
 
@@ -162,14 +162,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Schema*
 
 
     
     </td>
     <td valign="top">
-
+    
     Sender schema identification, if applicable.
 
 
@@ -178,14 +178,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Party*
 
 
     
     </td>
     <td valign="top">
-
+    
     Sender party identification, if applicable
 
 
@@ -194,14 +194,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Component*
 
 
     
     </td>
     <td valign="top">
-
+    
     Sender business system/component name
 
 
@@ -232,15 +232,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Interface Name*
 
 
     
     </td>
     <td valign="top">
-
-    Identification of the sender service interface, for example ***BusinessPartnerSUITEBulkReplicateRequest\_Out***
+    
+    Identification of the sender service interface, for example `BusinessPartnerSUITEBulkReplicateRequest_Out`
 
 
     
@@ -248,15 +248,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Interface Namespace*
 
 
     
     </td>
     <td valign="top">
-
-    Identification of the service interface namespace, for example, ***http://sap.com/xi/SAP\_BS\_FND/MDG/Global2***
+    
+    Identification of the service interface namespace, for example, `http://sap.com/xi/SAP_BS_FND/MDG/Global2`
 
 
     
@@ -295,15 +295,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Category*
 
 
     
     </td>
     <td valign="top">
-
-    ***RUNTIME***
+    
+    `RUNTIME`
 
 
     
@@ -311,15 +311,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Parameters*
 
 
     
     </td>
     <td valign="top">
-
-    ***IS\_URL*** 
+    
+    `IS_URL` 
 
 
     
@@ -327,14 +327,14 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Subparameter*
 
 
     
     </td>
     <td valign="top">
-
+    
     Enter the sender/receiver ID
 
 
@@ -343,15 +343,15 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
+    
     *Current Value*
 
 
     
     </td>
     <td valign="top">
-
-    ***dest://<Destination ID\>***
+    
+    `dest://<Destination ID>`
 
 
     
@@ -404,36 +404,36 @@ You can also implement a router integration flow to receive multiples messages i
     </tr>
     <tr>
     <td valign="top">
-
-    ***<SID\><CLIENT\>***, for example ***PRD100***
+    
+    `<SID><CLIENT>`, for example `PRD100`
 
 
     
     </td>
     <td valign="top">
-
+    
     Date of creation
 
 
     
     </td>
     <td valign="top">
-
-    Identification of your choice, for example, ***PRDCLNT100***
+    
+    Identification of your choice, for example, `PRDCLNT100`
 
 
     
     </td>
     <td valign="top">
-
-    ***LOC***
+    
+    `LOC`
 
 
     
     </td>
     <td valign="top">
-
-    Caption of your choice, for example, ***PRDCLNT100***
+    
+    Caption of your choice, for example, `PRDCLNT100`
 
 
     

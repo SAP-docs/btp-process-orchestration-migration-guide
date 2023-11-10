@@ -23,7 +23,7 @@ Before the migration, define which namespaces should be considered by assigning 
 
 2.  Maintain the list of namespaces by selecting *Backend Metadata Repository* as the *Generation Source*.
 
-    Since wildcards are allowed, you can create a generic entry ***\**** that considers all valid namespaces.
+    Since wildcards are allowed, you can create a generic entry `*` that considers all valid namespaces.
 
 3.  Save your changes.
 
@@ -107,9 +107,9 @@ Additionally, **inline types** cannot be migrated to the MDR automatically. You 
         ```
 
 
--   **For systems classified as ***SAP*** only:** 
+-   **For systems classified as `SAP` only:** 
 
-    Using the migration tool, you can convert inline types semiautomatically with the button *Convert Inlines*. This means that inline types can be converted into global types by specifying a global name for each inline type the tool needs to generate a global type for. See SAP Note [3313582](https://launchpad.support.sap.com/#/notes/3313582).
+    Using the migration tool, you can convert inline types semiautomatically with the button *Convert Inlines*. This means that inline types can be converted into global types by specifying a global name for each inline type the tool needs to generate a global type for. See SAP Note [3313582](https://me.sap.com/notes/3313582).
 
     > ### Note:  
     > If this option is used, a migration back to ESR is not possible.

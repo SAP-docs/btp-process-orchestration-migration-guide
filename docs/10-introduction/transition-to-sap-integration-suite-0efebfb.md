@@ -16,11 +16,11 @@ There are two approaches in which you can plan to transition to SAP Integration 
 
     If you prefer this approach, follow these steps as a high-level strategy for choosing the integration platform:
 
-    -   Transition existing cloud and hybrid scenarios to SAP Integration Suite
+    -   Transition existing cloud and hybrid scenarios to SAP Integration Suite.
 
-    -   Upgrade to SAP NetWeaver 7.5
+    -   Upgrade to SAP NetWeaver 7.5.
 
-    -   Build all new scenarios on SAP Integration Suite and deploy on-premise scenarios on the Cloud Integration runtime available in SAP NetWeaver 7.5
+    -   Build all new scenarios on SAP Integration Suite and deploy on-premise scenarios on the Cloud Integration runtime available in SAP NetWeaver 7.5.
 
     -   Transition to the [Hybrid Deployment Option](https://roadmaps.sap.com/board?PRODUCT=000D3A47875C1EDB98A8A910864AC24B&range=CURRENT-LAST#;INNO=901B0ED1A0641EDABE80AF561BFAC0F8) when it's released
 
@@ -43,8 +43,6 @@ The following three steps build your process of transitioning to the cloud: asse
 Assess your existing landscape and identify areas of improvement and innovation for you envisioned target landscape, which can amplify the benefit of transitioning to the cloud.
 
 The following tools and assets can help with the assessment:
-
--   The **[Integration Value Calculator](https://www.sap.com/dmc/exp/2021-05-76145-integration-value-calculator/index.html)** considering parameters like the type of integrations, average price per hour for integration consultants, duration, etc. to provide a subjective view of the estimated cost savings that can be achieved with SAP Integration Suite.
 
 -   The **[SAP Integration Solution Advisory Methodology](https://www.sap.com/dmc/exp/2020-05-68434/en-us/index.html)** tool evaluates the current integration maturity level of an organization and provides possible improvements.
 

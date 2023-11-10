@@ -10,7 +10,7 @@ Several techniques can be employed to extract this information, for example the 
 
 Like the communication channel extraction, utilize the standard Web services that are available as part of the Integration Directory API. The blog [SAP PI/PO Directory API: Extract detailed Communication Channel configurations into an Excel sheet without custom codes/macros](https://blogs.sap.com/2017/11/07/sap-pipo-directory-api-extract-detailed-communication-channel-configurations-into-an-excel-sheet-without-custom-codesmacros/) provides details on how to extract the information for the communication channels. A similar approach can be employed, but in this case using an alternative Web service. Go to *SAP NetWeaver Administrator* \> *Configuration* \> *Connectivity* \> *Single Service Administration*, and in *Service Definitions*, search for *IntegratedConfiguration750In* instead of *CommunicationChannelIn*:
 
- ![](images/Connectivity_Service_Definitions_f420701.png) 
+![](images/Connectivity_Service_Definitions_f420701.png)
 
 Some of the columns that can be found in the extraction after converting to MS Excel are:
 

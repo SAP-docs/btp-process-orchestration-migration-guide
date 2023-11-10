@@ -87,7 +87,7 @@ SSH
 
 Used to read files from the system \(sender adapter\) or to write files to the system \(receiver adapter\).
 
-See SAP Note [2700759](https://launchpad.support.sap.com/#/notes/2700759) for information on how to obtain a Host Key to establish an SSH connection between Cloud Integration and an SFTP server.
+See SAP Note [2700759](https://me.sap.com/notes/2700759) for information on how to obtain a Host Key to establish an SSH connection between Cloud Integration and an SFTP server.
 
 
 

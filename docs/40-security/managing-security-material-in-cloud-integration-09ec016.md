@@ -50,7 +50,7 @@ Description
 <tr>
 <td valign="top">
 
- [Client certificate authentication](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7f84d16aa42741efb08dc9875743e47c.html) 
+[Client certificate authentication](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7f84d16aa42741efb08dc9875743e47c.html) 
 
 
 
@@ -70,7 +70,7 @@ This process is also describes in the blog [How to Set Up Secure HTTP Inbound Co
 <tr>
 <td valign="top">
 
- [OAuth with client credentials grant](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6c052ce62b27449385d3e75aeeb08f05.html) 
+[OAuth with client credentials grant](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6c052ce62b27449385d3e75aeeb08f05.html) 
 
 
 
@@ -88,7 +88,7 @@ An SAP BTP tenant administrator can generate the [service key](https://help.sap.
 <tr>
 <td valign="top">
 
- [Basic Authentication for a user with client credentials from the service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/647eeb3eca5d4c299009cacd1332247e.html) 
+[Basic Authentication for a user with client credentials from the service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/647eeb3eca5d4c299009cacd1332247e.html) 
 
 
 
@@ -106,7 +106,7 @@ The steps to create service instance and service key are the same as for the opt
 <tr>
 <td valign="top">
 
- [Basic authentication for user registered with an identity provider](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/5d46e56550a048e99995f23e1e20083a.html) 
+[Basic authentication for user registered with an identity provider](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/5d46e56550a048e99995f23e1e20083a.html) 
 
 
 
@@ -323,11 +323,11 @@ On this page, you can manage the application server Java certificates and keys. 
 
 Assuming that the certificate is in *TrustedCAs*, click on that to check the entries associated.
 
- ![](images/ManagingKeystore_TrustedCAs1_9be73fd.png) 
+![](images/ManagingKeystore_TrustedCAs1_9be73fd.png)
 
 In the details of *TrustedCAs*, select the certificate and select *Export Entry*. Save the key/certificate on your local file system.
 
- ![](images/ManagingKeystore_TrustedCAs2_b32da90.png) 
+![](images/ManagingKeystore_TrustedCAs2_b32da90.png)
 
 By default, SAP NetWeaver Java comes with some keystore views serving different purposes:
 
@@ -340,7 +340,7 @@ By default, SAP NetWeaver Java comes with some keystore views serving different 
 -   TrustedCAs \(contains trusted server certificates\)
 
 
-For more information about how to import a certificate into the keystore view, see [Uploading Certificates to SAP Process Integration](https://help.sap.com/viewer/d0802f41861a4f81a3610d873fdcf148/LBN/en-US/ed2d035ec16d44c387e93602f029cf52.html) and SAP Note [2056672](https://launchpad.support.sap.com/#/notes/2056672).
+For more information about how to import a certificate into the keystore view, see [Uploading Certificates to SAP Process Integration](https://help.sap.com/viewer/d0802f41861a4f81a3610d873fdcf148/LBN/en-US/ed2d035ec16d44c387e93602f029cf52.html) and SAP Note [2056672](https://me.sap.com/notes/2056672).
 
 **Importing Certificates to Cloud Integration**
 

@@ -8,7 +8,7 @@ For this assessment process, SAP recommends using the [SAP Integration Solution 
 
 There are three use cases on how the methodology can support enterprise architects:
 
- ![](images/Landscape_ISAM_UseCase_7bfaff9.png) 
+![](images/Landscape_ISAM_UseCase_7bfaff9.png)
 
 One of the first steps of SAP Integration Solution Advisory Methodology is to analyze the as-is landscape and define the to-be landscape. The focus is on the integration landscape, integration domains, integration patterns, and use cases. At this phase, there are no technologies evaluated. This provides a good overview of where the organization currently is and in which direction the organization is evolving in the next years with regards to the integration strategy.
 
