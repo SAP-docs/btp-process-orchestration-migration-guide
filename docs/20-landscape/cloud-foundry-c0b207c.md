@@ -145,21 +145,15 @@ A distributed architectural model on SAP Process Orchestration is defined by one
 
 Reason
 
-
-
 </th>
 <th valign="top">
 
 Description
 
-
-
 </th>
 <th valign="top">
 
 Behavior in the cloud
-
-
 
 </th>
 </tr>
@@ -168,21 +162,15 @@ Behavior in the cloud
 
 Localization
 
-
-
 </td>
 <td valign="top">
 
 Local processing of messages reduces network load while improving performance and reliability
 
-
-
 </td>
 <td valign="top">
 
 The business system can communicate with regional cloud data centers. On ground localization will be available in the future with the hybrid deployment option.
-
-
 
 </td>
 </tr>
@@ -190,8 +178,6 @@ The business system can communicate with regional cloud data centers. On ground 
 <td valign="top">
 
 Business Continuity
-
-
 
 </td>
 <td valign="top">
@@ -206,8 +192,6 @@ Business Continuity
 <td valign="top">
 
 SAP Integration Suite updates \(monthly\) are done with zero down time. There are up to 4 major upgrades planned on the SAP BTP per year \(up to 4 hours\). Depending on the datacenter location, the updates occur in different time slots.
-
-
 
 </td>
 </tr>
@@ -228,8 +212,6 @@ Due to the more complex architecture, the distributed \(model 2\) domain model a
 
 Assessment Summary
 
-
-
 </th>
 </tr>
 <tr>
@@ -237,14 +219,10 @@ Assessment Summary
 
 Advantages
 
-
-
 </th>
 <th valign="top">
 
 Disadvantages
-
-
 
 </th>
 </tr>
@@ -253,14 +231,10 @@ Disadvantages
 
 Local autonomy
 
-
-
 </td>
 <td valign="top">
 
 TCO
-
-
 
 </td>
 </tr>
@@ -269,14 +243,10 @@ TCO
 
 Flexibility
 
-
-
 </td>
 <td valign="top">
 
 Governance hard to enforce
-
-
 
 </td>
 </tr>
@@ -285,14 +255,10 @@ Governance hard to enforce
 
 Performance improvements due to local processing
 
-
-
 </td>
 <td valign="top">
 
 Monitoring / Operation complexity
-
-
 
 </td>
 </tr>
@@ -301,14 +267,10 @@ Monitoring / Operation complexity
 
 Availability and failover possible \(manually\)
 
-
-
 </td>
 <td valign="top">
 
 Multi Hop Scenarios may be introduced
-
-
 
 </td>
 </tr>
@@ -317,14 +279,10 @@ Multi Hop Scenarios may be introduced
 
 Network efficiency
 
-
-
 </td>
 <td valign="top">
 
 Common Business Process Delivery
-
-
 
 </td>
 </tr>
@@ -337,21 +295,15 @@ Common Business Process Delivery
 
 Reason
 
-
-
 </th>
 <th valign="top">
 
 Description
 
-
-
 </th>
 <th valign="top">
 
 Behavior in the cloud
-
-
 
 </th>
 </tr>
@@ -359,8 +311,6 @@ Behavior in the cloud
 <td valign="top">
 
 Segmentation
-
-
 
 </td>
 <td valign="top">
@@ -402,8 +352,6 @@ Segmentation use cases can be resolved with multiple SAP Integration Suite insta
 
 Business Continuity
 
-
-
 </td>
 <td valign="top">
 
@@ -418,8 +366,6 @@ Business Continuity
 <td valign="top">
 
 SAP Integration Suite updates \(monthly\) are done with zero down time. There are up to 4 major upgrades planned on the SAP BTP per year \(up to 4 hours\). Depending on the datacenter location, the updates occur on different time slots.
-
-
 
 </td>
 </tr>

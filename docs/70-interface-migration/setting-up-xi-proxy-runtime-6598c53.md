@@ -38,15 +38,11 @@ You can also implement a router integration flow to receive multiples messages i
     <th valign="top">
 
     Field
-
-
     
     </th>
     <th valign="top">
 
     Value
-
-
     
     </th>
     </tr>
@@ -54,15 +50,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *RFC Destination*
-
-
     
     </td>
     <td valign="top">
     
     Enter an RFC destination name, for example, `CI_XI_<Interface Identification>`.
-
-
     
     </td>
     </tr>
@@ -70,15 +62,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Connection Type*
-
-
     
     </td>
     <td valign="top">
     
     `G HTTP connection to external server`
-
-
     
     </td>
     </tr>
@@ -100,15 +88,11 @@ You can also implement a router integration flow to receive multiples messages i
     <th valign="top">
 
     Field
-
-
     
     </th>
     <th valign="top">
 
     Description
-
-
     
     </th>
     </tr>
@@ -116,15 +100,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Sender/Receiver ID*
-
-
     
     </td>
     <td valign="top">
     
     Identification of your interface, for example `BP_BULK`
-
-
     
     </td>
     </tr>
@@ -132,15 +112,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Description*
-
-
     
     </td>
     <td valign="top">
     
     Description of your settings
-
-
     
     </td>
     </tr>
@@ -148,15 +124,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Agency*
-
-
     
     </td>
     <td valign="top">
     
     Sender agency identification, if applicable.
-
-
     
     </td>
     </tr>
@@ -164,15 +136,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Schema*
-
-
     
     </td>
     <td valign="top">
     
     Sender schema identification, if applicable.
-
-
     
     </td>
     </tr>
@@ -180,15 +148,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Party*
-
-
     
     </td>
     <td valign="top">
     
     Sender party identification, if applicable
-
-
     
     </td>
     </tr>
@@ -196,15 +160,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Component*
-
-
     
     </td>
     <td valign="top">
     
     Sender business system/component name
-
-
     
     </td>
     </tr>
@@ -218,15 +178,11 @@ You can also implement a router integration flow to receive multiples messages i
     <th valign="top">
 
     Field
-
-
     
     </th>
     <th valign="top">
 
     Description
-
-
     
     </th>
     </tr>
@@ -234,15 +190,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Interface Name*
-
-
     
     </td>
     <td valign="top">
     
     Identification of the sender service interface, for example `BusinessPartnerSUITEBulkReplicateRequest_Out`
-
-
     
     </td>
     </tr>
@@ -250,15 +202,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Interface Namespace*
-
-
     
     </td>
     <td valign="top">
     
     Identification of the service interface namespace, for example, `http://sap.com/xi/SAP_BS_FND/MDG/Global2`
-
-
     
     </td>
     </tr>
@@ -281,15 +229,11 @@ You can also implement a router integration flow to receive multiples messages i
     <th valign="top">
 
     Field
-
-
     
     </th>
     <th valign="top">
 
     Value
-
-
     
     </th>
     </tr>
@@ -297,15 +241,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Category*
-
-
     
     </td>
     <td valign="top">
     
     `RUNTIME`
-
-
     
     </td>
     </tr>
@@ -313,15 +253,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Parameters*
-
-
     
     </td>
     <td valign="top">
     
     `IS_URL` 
-
-
     
     </td>
     </tr>
@@ -329,15 +265,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Subparameter*
-
-
     
     </td>
     <td valign="top">
     
     Enter the sender/receiver ID
-
-
     
     </td>
     </tr>
@@ -345,15 +277,11 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     *Current Value*
-
-
     
     </td>
     <td valign="top">
     
     `dest://<Destination ID>`
-
-
     
     </td>
     </tr>
@@ -369,36 +297,26 @@ You can also implement a router integration flow to receive multiples messages i
     <th valign="top">
 
     ID
-
-
     
     </th>
     <th valign="top">
 
     Creation Date
-
-
     
     </th>
     <th valign="top">
 
     Business System
-
-
     
     </th>
     <th valign="top">
 
     Role
-
-
     
     </th>
     <th valign="top">
 
     Caption
-
-
     
     </th>
     </tr>
@@ -406,36 +324,26 @@ You can also implement a router integration flow to receive multiples messages i
     <td valign="top">
     
     `<SID><CLIENT>`, for example `PRD100`
-
-
     
     </td>
     <td valign="top">
     
     Date of creation
-
-
     
     </td>
     <td valign="top">
     
     Identification of your choice, for example, `PRDCLNT100`
-
-
     
     </td>
     <td valign="top">
     
     `LOC`
-
-
     
     </td>
     <td valign="top">
     
     Caption of your choice, for example, `PRDCLNT100`
-
-
     
     </td>
     </tr>

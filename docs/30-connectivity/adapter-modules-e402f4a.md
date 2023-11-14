@@ -15,21 +15,15 @@ In SAP Process Orchestration, you can add a standard or custom adapter module wh
 
 SAP Process Orchestration
 
-
-
 </th>
 <th valign="top">
 
 Description
 
-
-
 </th>
 <th valign="top">
 
 Reimplementation strategy
-
-
 
 </th>
 </tr>
@@ -38,14 +32,10 @@ Reimplementation strategy
 
 AF\_Modules/PayloadSwapBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module to replace the application payload of the XI message that contains the business data with another payload that is appended to the XI message as an additional attachment.
-
-
 
 </td>
 <td valign="top">
@@ -70,21 +60,15 @@ Cloud Integration offers multiple options to handle this:
 
 AF\_Modules/StrictXml2PlainBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module to convert an XML document that is in the main payload of the XI message to text format.
 
-
-
 </td>
 <td valign="top">
 
 In Cloud Integration, you have different ways to convert your XML document to text format. The most common way is to use the conversion steps available \(e.g., XML to CSV, XML to EDI, XML to JSON\). You can also use Groovy script to convert the XML message as you want in a step before the adapter call.
-
-
 
 </td>
 </tr>
@@ -93,14 +77,10 @@ In Cloud Integration, you have different ways to convert your XML document to te
 
 AF\_Modules/XMLAnonymizerBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module to anonymize XML elements and attributes by removing namespaces or namespace prefixes from the XML document of the main payload.
-
-
 
 </td>
 <td valign="top">
@@ -109,8 +89,6 @@ In Cloud Integration, you can use an XSLT in the step before the adapter call to
 
 You can also use Groovy script to achieve it.
 
-
-
 </td>
 </tr>
 <tr>
@@ -118,21 +96,15 @@ You can also use Groovy script to achieve it.
 
 SAP\_XI\_IDOC/IDOCXmlToFlatConvertor
 
-
-
 </td>
 <td valign="top">
 
 You can use this module to convert IDoc XML to IDoc Flat format. If you add this module to the module chain, then it converts the data in the XI message payload from IDoc XML to IDoc Flat format. For example, you can add this module to the module chain of a receiver file adapter and create an IDoc Flat file.
 
-
-
 </td>
 <td valign="top">
 
 In Cloud Integration, you can use the standard XML to CSV converter to achieve it.
-
-
 
 </td>
 </tr>
@@ -141,21 +113,15 @@ In Cloud Integration, you can use the standard XML to CSV converter to achieve i
 
 SAP\_XI\_IDOC/IDOCFlatToXmlConvertor
 
-
-
 </td>
 <td valign="top">
 
 You can use this module to convert the data in the XI message payload from IDoc Flat format to XML format. For example, you can add this module in the module chain of a sender file adapter and create IDoc XML from IDoc Flat format.
 
-
-
 </td>
 <td valign="top">
 
 In Cloud Integration, you can use an external library or develop a custom Groovy/Javascript script to perform this conversion.
-
-
 
 </td>
 </tr>
@@ -164,21 +130,15 @@ In Cloud Integration, you can use an external library or develop a custom Groovy
 
 AF\_Modules/PayloadZipBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module to compress one or more payloads or extract payloads from a compressed file.
 
-
-
 </td>
 <td valign="top">
 
 In Cloud Integration, you can use the standard Encoder and Decoder steps to compress or extract payloads in ZIP, GZIP, Base64, or MIME.
-
-
 
 </td>
 </tr>
@@ -187,14 +147,10 @@ In Cloud Integration, you can use the standard Encoder and Decoder steps to comp
 
 AF\_Modules/DynamicConfigurationBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module to edit the message header for adapter-specific message attributes. You can add attributes to the header or delete attributes from the header.
-
-
 
 </td>
 <td valign="top">
@@ -203,8 +159,6 @@ In Cloud Integration, you don’t have the same concept of adapter-specific attr
 
 For more information about external parameters, see the blog [Externalizing parameters using SAP Cloud Platform Integration's Web Application](https://blogs.sap.com/2017/06/20/externalizing-parameters-using-sap-cloud-platform-integrations-web-application/).
 
-
-
 </td>
 </tr>
 <tr>
@@ -212,21 +166,15 @@ For more information about external parameters, see the blog [Externalizing para
 
 localejbs/ArchiverModuleBean
 
-
-
 </td>
 <td valign="top">
 
 You use this module for archiving messages from the sender and receiver channels.
 
-
-
 </td>
 <td valign="top">
 
 In Cloud Integration, you can either use the standard archiving feature \(see [Configuring the Communication Channel with Archiver Module](https://help.sap.com/docs/SAP_PROCESS_INTEGRATION,_BUSINESS-TO-BUSINESS_ADD-ON/22e34f550ba84f20b35b7652ba94ef9c/ce5c9a811c25452681888ddb139b2702.html)\) or external logging \(see [Archiver Module](adapter-modules-e402f4a.md#loioe402f4a382cb4088a16ef715edc7f956__section_pzy_yfv_ryb)\).
-
-
 
 </td>
 </tr>
@@ -249,14 +197,10 @@ The archiver module `localejbs/ArchiverModuleBean` of SAP Process Orchestration 
 
 Parameter Name
 
-
-
 </th>
 <th valign="top">
 
 Description
-
-
 
 </th>
 </tr>
@@ -265,14 +209,10 @@ Description
 
 `archiveBaseDir` 
 
-
-
 </td>
 <td valign="top">
 
 The parameter archives messages to a base directory on the SAP Process Integration server.
-
-
 
 </td>
 </tr>
@@ -281,14 +221,10 @@ The parameter archives messages to a base directory on the SAP Process Integrati
 
 `archiveFile` 
 
-
-
 </td>
 <td valign="top">
 
 The parameter archives messages to a directory on the SAP Process Integration server and describes the file name of the archived files.
-
-
 
 </td>
 </tr>
@@ -297,14 +233,10 @@ The parameter archives messages to a directory on the SAP Process Integration se
 
 `removeErroneous` 
 
-
-
 </td>
 <td valign="top">
 
 When set to true, the parameter removes the archived files created by a faulty archiver module or archive mapping. If the `remove erroneous` flag is set to false, the faulty combinations are ignored, and the files are archived for all combinations.
-
-
 
 </td>
 </tr>

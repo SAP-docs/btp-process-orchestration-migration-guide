@@ -12,7 +12,7 @@ Discover the different types of error messages and how they're handled in SAP Pr
 
 There are two types of errors that you can encounter when handling errors in SAP Process Orchestration and Cloud Integration:
 
--   **Technical Errors**: Errors triggered by the system because of technical issues. These can be a wrong password, the Web Service is down, scheduling error, mapping error, etc.
+-   **Technical Errors**: Errors triggered by the system because of technical issues, for example, a wrong password, the Web Service is down, scheduling errors, or mapping errors.
 
 -   **Business Errors**: Errors triggered by the target application itself. These errors can be, for example, an error while creating a business partner, or a response error while creating a sales order because the material number doesn’t exist in the target system.
 
@@ -25,7 +25,7 @@ In the middleware layer, you normally provide support for technical errors, whil
 
 ## Error Handling
 
-In SAP Process Orchestration, there’s a built-in mechanism to reprocess asynchronous error messages, or, depending on the business requirements, enable alerts via e-mail and customize a response error message to the source system \(in case of synchronous messages\). For point-to-point interfaces, you have the possibility to configure an error message while designing the interface in Enterprise Services Repository. Some communication channels also count with specific parameters to handle errors \(e.g., REST, SFTP\). When using SAP Business Process Management \(SAP BPM\), you can implement other types of error handling, such as generating a log file to an SFTP server and/or sending an asynchronous message to a third system. The following are the general recommendations while handling errors in SAP BPM:
+In SAP Process Orchestration, there’s a built-in mechanism to reprocess asynchronous error messages, or, depending on the business requirements, enable alerts via email and customize a response error message to the source system \(in case of synchronous messages\). For point-to-point interfaces, you have the possibility to configure an error message while designing the interface in Enterprise Services Repository. Some communication channels also count with specific parameters to handle errors \(e.g., REST, SFTP\). When using SAP Business Process Management \(SAP BPM\), you can implement other types of error handling, such as generating a log file to an SFTP server and/or sending an asynchronous message to a third system. The following are the general recommendations while handling errors in SAP BPM:
 
 -   Make the error as specific as possible and provide all the necessary information to facilitate the process for the future administrator who has to handle it.
 
@@ -36,7 +36,7 @@ In SAP Process Orchestration, there’s a built-in mechanism to reprocess asynch
 -   Create reusable exception processes, if possible, for different processes that share the same error handling.
 
 
-In Cloud Integration, if you don't use an external system or service to generate alerts via e-mail \(SAP Solution Manager, SAP Cloud ALM, SAP Alert Notification service for SAP BTP\) or use an asynchronous adapter with native support for reprocessing \(AS2, AMQP, JMS\), you can achieve both capabilities implementing exception subprocesses directly into the integration flow:
+In Cloud Integration, if you don't use an external system or service to generate alerts via email \(SAP Solution Manager, SAP Cloud ALM, SAP Alert Notification service for SAP BTP\) or use an asynchronous adapter with native support for reprocessing \(AS2, AMQP, JMS\), you can achieve both capabilities implementing exception subprocesses directly into the integration flow:
 
 ![](images/Error_Handling_IFlow_7eed8da.png)
 

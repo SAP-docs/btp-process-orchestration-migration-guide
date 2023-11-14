@@ -13,14 +13,10 @@ The different integration architecture approaches of SAP Process Orchestration c
 
 Assessment Criteria
 
-
-
 </th>
 <th valign="top">
 
 Description
-
-
 
 </th>
 </tr>
@@ -29,14 +25,10 @@ Description
 
 Administration
 
-
-
 </td>
 <td valign="top">
 
 Defines how difficult the overall landscape is to operate and maintain with respect to downtime, planned upgrades etc. The application of support packages, notes, and hot fixes are included in this criterion.
-
-
 
 </td>
 </tr>
@@ -45,14 +37,10 @@ Defines how difficult the overall landscape is to operate and maintain with resp
 
 Availability
 
-
-
 </td>
 <td valign="top">
 
 Relates to how available the SAP Process Integration system is for message processing. In distributed \(model 1\) and distributed \(model 2\) domain models, availability is improved through the decentralized message processing capability and technical abstraction.
-
-
 
 </td>
 </tr>
@@ -61,14 +49,10 @@ Relates to how available the SAP Process Integration system is for message proce
 
 Monitoring
 
-
-
 </td>
 <td valign="top">
 
 Defines the complexity and coverage of the monitoring solution in each deployment model. With SAP Process Integration, IT professionals can configure and monitor service-enabled applications across the landscape. Using the integrated capabilities of SAP Solution Manager and SAP NetWeaver, IT administrators can monitor the availability and performance of applications, processes, and services, as well as analyze the root cause of problems, and undertake optimization measures.
-
-
 
 </td>
 </tr>
@@ -77,14 +61,10 @@ Defines the complexity and coverage of the monitoring solution in each deploymen
 
 Total Cost of Ownership
 
-
-
 </td>
 <td valign="top">
 
 Defines the costs of implementing, operating, and supporting a given IT solution. This includes areas such as the technical infrastructure, software licensing, implementation costs, support costs, upgrade, and downtime costs.
-
-
 
 </td>
 </tr>
@@ -93,14 +73,10 @@ Defines the costs of implementing, operating, and supporting a given IT solution
 
 Internal Performance
 
-
-
 </td>
 <td valign="top">
 
 Covers the internal performance of the SAP application software, database, and operating system when processing a message in SAP Process Integration. It assumes that other variables such as message packaging and size of messages are constant, which is an indicate measurement for the relationship between each architectural model.
-
-
 
 </td>
 </tr>
@@ -109,14 +85,10 @@ Covers the internal performance of the SAP application software, database, and o
 
 Network Utilization
 
-
-
 </td>
 <td valign="top">
 
 Reflects the impact on or utilization of the physical communication network. It considers the geographical location of business systems, integration servers, and adapter engines, as well as latency and reliability.
-
-
 
 </td>
 </tr>
@@ -125,14 +97,10 @@ Reflects the impact on or utilization of the physical communication network. It 
 
 Common Business Process Delivery
 
-
-
 </td>
 <td valign="top">
 
 The ability to enforce common business processes across the SAP Process Integration landscape, including design-time object reuse and redundancy avoidance.
-
-
 
 </td>
 </tr>
@@ -141,14 +109,10 @@ The ability to enforce common business processes across the SAP Process Integrat
 
 Globalization & Localization
 
-
-
 </td>
 <td valign="top">
 
 The ability to meet local and global requirements both technically and on a business level. For example, a distributed \(model 2\)-domain solution with local governance can add flexibility and abstraction while a centralized governance model might not meet local requirements.
-
-
 
 </td>
 </tr>

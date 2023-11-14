@@ -22,21 +22,15 @@ For detailed documentation of the adapters in Cloud Integration, see [Configure 
 
 SAP Process Orchestration
 
-
-
 </th>
 <th valign="top">
 
 Cloud Integration
 
-
-
 </th>
 <th valign="top">
 
 Restrictions/Alternatives
-
-
 
 </th>
 </tr>
@@ -45,21 +39,15 @@ Restrictions/Alternatives
 
 AS2
 
-
-
 </td>
 <td valign="top">
 
 AS2, AS4
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -68,21 +56,15 @@ AS2, AS4
 
 EDISeparator
 
-
-
 </td>
 <td valign="top">
 
 Available through AS2, AS4, or SFTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Possible use of AS2/AS4/SFTP adapters with EDI Splitter step or EDI Validator step in integration flow.
-
-
 
 </td>
 </tr>
@@ -91,14 +73,10 @@ Alternative – Possible use of AS2/AS4/SFTP adapters with EDI Splitter step or 
 
 File
 
-
-
 </td>
 <td valign="top">
 
 Available through FTP or SFTP adapter
-
-
 
 </td>
 <td valign="top">
@@ -107,8 +85,6 @@ Alternative – Possible use of FTP or SFTP adapters.
 
 File Content Conversion can be performed in standard step CSV to XML or using a script step.
 
-
-
 </td>
 </tr>
 <tr>
@@ -116,21 +92,15 @@ File Content Conversion can be performed in standard step CSV to XML or using a 
 
 HTTP\_AAE
 
-
-
 </td>
 <td valign="top">
 
 HTTP
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -139,21 +109,15 @@ HTTP
 
 IDoc\_AAE
 
-
-
 </td>
 <td valign="top">
 
 IDoc
 
-
-
 </td>
 <td valign="top">
 
 Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(via RFC\) can't be used.
-
-
 
 </td>
 </tr>
@@ -162,21 +126,15 @@ Cloud Integration supports IDoc in HTTP protocol, which means that the tradition
 
 JDBC
 
-
-
 </td>
 <td valign="top">
 
 Planned for future
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Use timer event along with JDBC receiver adapter to achieve the same JDBC polling mechanism.
-
-
 
 </td>
 </tr>
@@ -185,21 +143,15 @@ Alternative – Use timer event along with JDBC receiver adapter to achieve the 
 
 JMS
 
-
-
 </td>
 <td valign="top">
 
 AMQP
 
-
-
 </td>
 <td valign="top">
 
 Although Cloud Integration supports the JMS adapter, it can only be used internally and not to external JMS servers. For this scenario, the AMQP adapter should be used instead.
-
-
 
 </td>
 </tr>
@@ -208,21 +160,15 @@ Although Cloud Integration supports the JMS adapter, it can only be used interna
 
 Mail
 
-
-
 </td>
 <td valign="top">
 
 Mail
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -231,21 +177,15 @@ Mail
 
 Marketplace
 
-
-
 </td>
 <td valign="top">
 
 Available through HTTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Possible use of the HTTP adapter with implementation of XSLT to convert from MML and XML or JSON.
-
-
 
 </td>
 </tr>
@@ -254,21 +194,15 @@ Alternative – Possible use of the HTTP adapter with implementation of XSLT to 
 
 OData
 
-
-
 </td>
 <td valign="top">
 
 OData
 
-
-
 </td>
 <td valign="top">
 
 SAP is working on supporting multiple cloud and on-premise database vendors.
-
-
 
 </td>
 </tr>
@@ -277,21 +211,15 @@ SAP is working on supporting multiple cloud and on-premise database vendors.
 
 OFTP \(Odette FTP\)
 
-
-
 </td>
 <td valign="top">
 
 Available through external application
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Possible use of an external application to make a bridge between HTTP requests and OFTP.
-
-
 
 </td>
 </tr>
@@ -300,8 +228,6 @@ Alternative – Possible use of an external application to make a bridge between
 
 REST
 
-
-
 </td>
 <td valign="top">
 
@@ -309,14 +235,10 @@ Planned for Cloud Integration
 
 Currently implemented through HTTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Use integration flow steps to handle HTTP verbs and decomposition of URIs.
-
-
 
 </td>
 </tr>
@@ -325,21 +247,15 @@ Alternative – Use integration flow steps to handle HTTP verbs and decompositio
 
 RFC
 
-
-
 </td>
 <td valign="top">
 
 Available through Web service
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Implement as a Web service in Cloud Integration and build an outbound SOAP proxy in your ABAP system to replace the RFC call.
-
-
 
 </td>
 </tr>
@@ -348,21 +264,15 @@ Alternative – Implement as a Web service in Cloud Integration and build an out
 
 SFSF
 
-
-
 </td>
 <td valign="top">
 
 SuccessFactors
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -371,22 +281,16 @@ SuccessFactors
 
 SFTP
 
-
-
 </td>
 <td valign="top">
 
 SFTP
-
-
 
 </td>
 <td valign="top">
 
 Limited support for advanced file selection.
 
-
-
 </td>
 </tr>
 <tr>
@@ -394,21 +298,15 @@ Limited support for advanced file selection.
 
 SOAP
 
-
-
 </td>
 <td valign="top">
 
 SOAP
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -417,21 +315,15 @@ SOAP
 
 WS\_AAE
 
-
-
 </td>
 <td valign="top">
 
 Implemented through SOAP adapter
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -440,21 +332,15 @@ Implemented through SOAP adapter
 
 X400
 
-
-
 </td>
 <td valign="top">
 
 Planned for future
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -465,21 +351,15 @@ Other adapters:
 
 BC, CIDX, Ebics, RNIF \(RosettaNet Implementation Framework\), RNIF11
 
-
-
 </td>
 <td valign="top">
 
 Planned for future
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -498,21 +378,15 @@ Planned for future
 
 SAP Process Orchestration
 
-
-
 </th>
 <th valign="top">
 
 Cloud Integration
 
-
-
 </th>
 <th valign="top">
 
 Restrictions/Alternatives
-
-
 
 </th>
 </tr>
@@ -521,21 +395,15 @@ Restrictions/Alternatives
 
 AS2
 
-
-
 </td>
 <td valign="top">
 
 AS2, AS4
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -544,21 +412,15 @@ AS2, AS4
 
 EDISeparator
 
-
-
 </td>
 <td valign="top">
 
 Available through AS2, AS4, or SFTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Possible use of AS2/AS4/SFTP adapters with EDI Splitter step or EDI Validator step in integration flow.
-
-
 
 </td>
 </tr>
@@ -567,14 +429,10 @@ Alternative – Possible use of AS2/AS4/SFTP adapters with EDI Splitter step or 
 
 File
 
-
-
 </td>
 <td valign="top">
 
 Available through FTP or SFTP adapter
-
-
 
 </td>
 <td valign="top">
@@ -583,8 +441,6 @@ Alternative – Possible use of FTP or SFTP adapters.
 
 File Content Conversion can be performed in standard step CSV to XML or using a script step.
 
-
-
 </td>
 </tr>
 <tr>
@@ -592,21 +448,15 @@ File Content Conversion can be performed in standard step CSV to XML or using a 
 
 HTTP\_AAE
 
-
-
 </td>
 <td valign="top">
 
 HTTP
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -615,21 +465,15 @@ HTTP
 
 IDoc\_AAE
 
-
-
 </td>
 <td valign="top">
 
 IDoc
 
-
-
 </td>
 <td valign="top">
 
 Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(via RFC\) can't be used.
-
-
 
 </td>
 </tr>
@@ -638,21 +482,15 @@ Cloud Integration supports IDoc in HTTP protocol, which means that the tradition
 
 JDBC
 
-
-
 </td>
 <td valign="top">
 
 JDBC
 
-
-
 </td>
 <td valign="top">
 
 Some limitations to which database vendors are currently supported.
-
-
 
 </td>
 </tr>
@@ -661,21 +499,15 @@ Some limitations to which database vendors are currently supported.
 
 JMS
 
-
-
 </td>
 <td valign="top">
 
 AMQP
 
-
-
 </td>
 <td valign="top">
 
 Although Cloud Integration supports the JMS adapter, it can only be used internally and not to external JMS servers. For this scenario, the AMQP adapter should be used instead.
-
-
 
 </td>
 </tr>
@@ -684,21 +516,15 @@ Although Cloud Integration supports the JMS adapter, it can only be used interna
 
 Mail
 
-
-
 </td>
 <td valign="top">
 
 Mail
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -707,21 +533,15 @@ Mail
 
 Marketplace
 
-
-
 </td>
 <td valign="top">
 
 Available through HTTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Possible use of the HTTP adapter with implementation of XSLT to convert from MML and XML or JSON.
-
-
 
 </td>
 </tr>
@@ -730,21 +550,15 @@ Alternative – Possible use of the HTTP adapter with implementation of XSLT to 
 
 OData
 
-
-
 </td>
 <td valign="top">
 
 OData
 
-
-
 </td>
 <td valign="top">
 
 SAP is working on supporting multiple cloud and on-premise database vendors.
-
-
 
 </td>
 </tr>
@@ -753,8 +567,6 @@ SAP is working on supporting multiple cloud and on-premise database vendors.
 
 REST
 
-
-
 </td>
 <td valign="top">
 
@@ -762,14 +574,10 @@ Planned for Cloud Integration
 
 Currently implemented through HTTP adapter
 
-
-
 </td>
 <td valign="top">
 
 Alternative – Use integration flow steps to handle HTTP verbs and decomposition of URIs.
-
-
 
 </td>
 </tr>
@@ -778,21 +586,15 @@ Alternative – Use integration flow steps to handle HTTP verbs and decompositio
 
 RFC
 
-
-
 </td>
 <td valign="top">
 
 RFC
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -801,21 +603,15 @@ RFC
 
 SFSF
 
-
-
 </td>
 <td valign="top">
 
 SuccessFactors
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -824,22 +620,16 @@ SuccessFactors
 
 SFTP
 
-
-
 </td>
 <td valign="top">
 
 SFTP
-
-
 
 </td>
 <td valign="top">
 
 Limited support for advanced file selection
 
-
-
 </td>
 </tr>
 <tr>
@@ -847,21 +637,15 @@ Limited support for advanced file selection
 
 SOAP
 
-
-
 </td>
 <td valign="top">
 
 SOAP
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -870,21 +654,15 @@ SOAP
 
 WS\_AAE
 
-
-
 </td>
 <td valign="top">
 
 Implemented through SOAP adapter
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -893,21 +671,15 @@ Implemented through SOAP adapter
 
 X400
 
-
-
 </td>
 <td valign="top">
 
 Planned for future
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>
@@ -918,21 +690,15 @@ Other adapters:
 
 BC, CIDX, Ebics, OFTP \(Odette FTP\), RNIF \(RosettaNet Implementation Framework\), RNIF11
 
-
-
 </td>
 <td valign="top">
 
 Planned for future
 
-
-
 </td>
 <td valign="top">
 
  
-
-
 
 </td>
 </tr>

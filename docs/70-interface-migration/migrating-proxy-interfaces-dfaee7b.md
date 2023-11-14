@@ -23,14 +23,10 @@ The following limitations apply when migrating proxy interfaces from SAP Process
 
 Limitations
 
-
-
 </th>
 <th valign="top">
 
 Workaround
-
-
 
 </th>
 </tr>
@@ -38,8 +34,6 @@ Workaround
 <td valign="top">
 
 ABAP Proxy generation using transaction SPROXY on the SAP system is not supported if you're using Cloud Integration.
-
-
 
 </td>
 <td valign="top">
@@ -60,14 +54,10 @@ ABAP Proxy generation using transaction SPROXY on the SAP system is not supporte
 
 Acknowledgement is not supported.
 
-
-
 </td>
 <td valign="top">
 
 There's currently no workaround for this limitation.
-
-
 
 </td>
 </tr>
@@ -76,14 +66,10 @@ There's currently no workaround for this limitation.
 
 ExactlyOnceInOrder \(EOIO\) is not supported.
 
-
-
 </td>
 <td valign="top">
 
 A custom solution can be built to read the messages from a data store and based on their entry sequence, using for instance a timestamp and/or sequence ID, deliver the message in order.
-
-
 
 </td>
 </tr>
@@ -92,14 +78,10 @@ A custom solution can be built to read the messages from a data store and based 
 
 There is a limit on the JMS resources.
 
-
-
 </td>
 <td valign="top">
 
 Analyze your landscape and according to the expected usage of the resources and decide on the number of queues, consumers, etc. See [JMS Resource Limits and Optimizing their Usage](https://help.sap.com/docs/CLOUD_INTEGRATION/368c481cd6954bdfa5d0435479fd4eaf/4857054e3f194ae6a7ed93a52002d556.html).
-
-
 
 </td>
 </tr>

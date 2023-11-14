@@ -21,14 +21,10 @@ We provide a [decision help](https://help.sap.com/viewer/368c481cd6954bdfa5d0435
 
 Transport Option
 
-
-
 </th>
 <th valign="top">
 
 Recommendations
-
-
 
 </th>
 </tr>
@@ -36,8 +32,6 @@ Recommendations
 <td valign="top">
 
 Manual export/import
-
-
 
 </td>
 <td valign="top">
@@ -59,8 +53,6 @@ Manual export/import
 <td valign="top">
 
 CTS+
-
-
 
 </td>
 <td valign="top">
@@ -84,8 +76,6 @@ CTS+
 
 SAP Cloud Transport Management service
 
-
-
 </td>
 <td valign="top">
 
@@ -104,8 +94,6 @@ SAP Cloud Transport Management service
 <td valign="top">
 
 MTAR Download
-
-
 
 </td>
 <td valign="top">

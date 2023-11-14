@@ -36,14 +36,10 @@ Various sender adapters allow you to enable a sender system to send messages to 
 
 Authentication
 
-
-
 </th>
 <th valign="top">
 
 Description
-
-
 
 </th>
 </tr>
@@ -51,8 +47,6 @@ Description
 <td valign="top">
 
 [Client certificate authentication](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7f84d16aa42741efb08dc9875743e47c.html) 
-
-
 
 </td>
 <td valign="top">
@@ -63,16 +57,12 @@ An SAP BTP tenant administrator can generate the [service key](https://help.sap.
 
 This process is also describes in the blog [How to Set Up Secure HTTP Inbound Connection with Client Certificates](https://blogs.sap.com/2019/08/14/cloud-integration-on-cf-how-to-setup-secure-http-inbound-connection-with-client-certificates/).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 [OAuth with client credentials grant](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6c052ce62b27449385d3e75aeeb08f05.html) 
-
-
 
 </td>
 <td valign="top">
@@ -81,16 +71,12 @@ The sender is authenticated based on an OAuth access token. The access token is 
 
 An SAP BTP tenant administrator can generate the [service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6c052ce62b27449385d3e75aeeb08f05.html) used for OAuth with client credentials grant.
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 [Basic Authentication for a user with client credentials from the service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/647eeb3eca5d4c299009cacd1332247e.html) 
-
-
 
 </td>
 <td valign="top">
@@ -99,8 +85,6 @@ The sender is authenticated based on user credentials that are generated togethe
 
 The steps to create service instance and service key are the same as for the option “OAuth with client credentials grant”. However, during runtime no access token is retrieved. Instead, the values of clientid and clientsecret from the service key are used for authentication.
 
-
-
 </td>
 </tr>
 <tr>
@@ -108,14 +92,10 @@ The steps to create service instance and service key are the same as for the opt
 
 [Basic authentication for user registered with an identity provider](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/5d46e56550a048e99995f23e1e20083a.html) 
 
-
-
 </td>
 <td valign="top">
 
 The sender is authenticated based on user credentials associated with a user registered at an identity provider \(IDP\).
-
-
 
 </td>
 </tr>
@@ -138,14 +118,10 @@ The following types of security material are supported:
 
 Material Type
 
-
-
 </th>
 <th valign="top">
 
 Description
-
-
 
 </th>
 </tr>
@@ -154,14 +130,10 @@ Description
 
 User Credentials
 
-
-
 </td>
 <td valign="top">
 
 Used for Basic Authentication \(with Username / Password combination\)
-
-
 
 </td>
 </tr>
@@ -170,8 +142,6 @@ Used for Basic Authentication \(with Username / Password combination\)
 
 OAuth2 Client Credentials
 
-
-
 </td>
 <td valign="top">
 
@@ -179,16 +149,12 @@ Many Web servers nowadays use OAuth credentials for authorization purposes. Clou
 
 For deployment information, see [Deploying an OAuth2 Client Credentials Artifact](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/801b106885b14d2788223956ce9786e5.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 OAuth2 SAML Bearer Assertion
-
-
 
 </td>
 <td valign="top">
@@ -199,16 +165,12 @@ For more information, see the blog [OAuth2 SAML Bearer/X.509 Certificate Authent
 
 For deployment information, see [Deploying an OAuth2 Bearer Assertion](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/3ee658286bac40829fcfa4e0c9044f75.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 OAuth2 Authorization Code
-
-
 
 </td>
 <td valign="top">
@@ -217,16 +179,12 @@ This is another form of use of OAuth2: if you use an OAuth2 authorization code, 
 
 For deployment information, see [Deploying an OAuth2 Authorization Code](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/081bfd7fe8b141219db523491e2b7023.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 Secure Parameters
-
-
 
 </td>
 <td valign="top">
@@ -235,16 +193,12 @@ Used to deploy confidential data, for example, key information such as passwords
 
 For deployment information, see [Deploying a Secure Parameter Artifact](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/4641d6c531d34cf7aef94ba5a873bf6e.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 Known Hosts \(SSH\)
-
-
 
 </td>
 <td valign="top">
@@ -253,16 +207,12 @@ The known hosts file contains the public keys for all hosts with which the Cloud
 
 For deployment information, see [Deploying an SSH Known Hosts Artifact](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/46da32434a4e4bb8a86c5bf7e7de214d.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 PGP Public Keyring
-
-
 
 </td>
 <td valign="top">
@@ -271,16 +221,12 @@ This artifact contains one or more public keys that enable the Cloud Integration
 
 For deployment information, see [Deploying a PGP Public Keyring](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7f04458e2f3e4493a4337db1d45099a2.html).
 
-
-
 </td>
 </tr>
 <tr>
 <td valign="top">
 
 PGP Secret Keyring
-
-
 
 </td>
 <td valign="top">
@@ -292,8 +238,6 @@ For deployment information, see [Deploying a PGP Secret Keyring](https://help.sa
 For details on how to create a key pair, see [Creating a Key Pair](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/bb416c51c3d64d3fba03bce1b5d06846.html).
 
 For more information about importing and exporting PGP secret keys, see the blog [Import and Export PGP Secret Key - Change PGP Secret Key Password](https://blogs.sap.com/2021/01/19/cloud-integration-import-and-export-pgp-secret-key-change-pgp-secret-key-password/).
-
-
 
 </td>
 </tr>
@@ -458,14 +402,10 @@ Currently, testing of the following adapter types is supported:
 
 Adapter Type
 
-
-
 </th>
 <th valign="top">
 
 Description
-
-
 
 </th>
 </tr>
@@ -474,14 +414,10 @@ Description
 
 TLS
 
-
-
 </td>
 <td valign="top">
 
 Checks HTTPS connectivity and allows you to verify that certificates are valid and trusted.
-
-
 
 </td>
 </tr>
@@ -489,8 +425,6 @@ Checks HTTPS connectivity and allows you to verify that certificates are valid a
 <td valign="top">
 
 SSH
-
-
 
 </td>
 <td valign="top">
@@ -511,14 +445,10 @@ Allows you to verify access to an SFTP server and verify that the credentials us
 
 FTP
 
-
-
 </td>
 <td valign="top">
 
 Allows verification of access to an FTP server \(on the Internet or on-premise\) and also verifies that the user credentials are accepted \(if authentication is required\).
-
-
 
 </td>
 </tr>
@@ -526,8 +456,6 @@ Allows verification of access to an FTP server \(on the Internet or on-premise\)
 <td valign="top">
 
 SMTP
-
-
 
 </td>
 <td valign="top">
@@ -550,8 +478,6 @@ Allows verification of SMTP connectivity to a mail server. Supported credential 
 
 IMAP
 
-
-
 </td>
 <td valign="top">
 
@@ -573,8 +499,6 @@ Allows verification of connectivity to an IMAP mail server. Supported credential
 
 POP3
 
-
-
 </td>
 <td valign="top">
 
@@ -594,14 +518,10 @@ Allows verification of connectivity to a POP3 mail server. Supported credential 
 
 AMQP
 
-
-
 </td>
 <td valign="top">
 
 Allows verification of connectivity to an AMQP server via either TCP or WebSocket transport protocol. Both Internet-based and on-premise \(via Cloud Connector\) connectivity is supported. Connectivity is via TLS and the test can also validate Server Certificates.
-
-
 
 </td>
 </tr>
@@ -610,14 +530,10 @@ Allows verification of connectivity to an AMQP server via either TCP or WebSocke
 
 Kafka
 
-
-
 </td>
 <td valign="top">
 
 Allows verification of connectivity to a Kafka broker using either SASL or Client Certificates over TLS.
-
-
 
 </td>
 </tr>
@@ -626,14 +542,10 @@ Allows verification of connectivity to a Kafka broker using either SASL or Clien
 
 Cloud Connector
 
-
-
 </td>
 <td valign="top">
 
 Validates that connectivity to a particular Cloud Connector instance is working. If multiple Cloud Connector instances are connected to the same SAP BTP tenant, the Location ID can be used to uniquely identify the correct target. See later section for details on Cloud Connector.
-
-
 
 </td>
 </tr>

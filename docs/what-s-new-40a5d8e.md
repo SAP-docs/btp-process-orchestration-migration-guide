@@ -17,14 +17,10 @@ Find out what's new in the migration guide for SAP Process Orchestration.
 
 Section
 
-
-
 </th>
 <th valign="top">
 
 Update
-
-
 
 </th>
 </tr>
@@ -33,14 +29,10 @@ Update
 
 [Adapter Modules](30-connectivity/adapter-modules-e402f4a.md)
 
-
-
 </td>
 <td valign="top">
 
 Learn how to migrate the archiver module `localejbs/ArchiverModuleBean` using the archiving feature provided by Cloud Integration.
-
-
 
 </td>
 </tr>
@@ -59,14 +51,10 @@ Learn how to migrate the archiver module `localejbs/ArchiverModuleBean` using th
 
 Section
 
-
-
 </th>
 <th valign="top">
 
 Update
-
-
 
 </th>
 </tr>
@@ -79,14 +67,10 @@ Update
 
 [Message Reprocessing](70-interface-migration/message-reprocessing-a98fbcf.md)
 
-
-
 </td>
 <td valign="top">
 
 There's now additional information available on the migration of proxy interfaces, such as known limitations, the procedure of setting up the XI proxy runtime, and general information on message reprocessing.
-
-
 
 </td>
 </tr>
@@ -105,14 +89,10 @@ There's now additional information available on the migration of proxy interface
 
 Section
 
-
-
 </th>
 <th valign="top">
 
 Update
-
-
 
 </th>
 </tr>
@@ -125,14 +105,10 @@ Update
 
 [Interface Design and Implementation](70-interface-migration/interface-design-and-implementation-b763478.md)
 
-
-
 </td>
 <td valign="top">
 
 The capability Migration Assessment and the migration tooling for Cloud Integration are now available in SAP Integration Suite. Both support you in your migration journey to the cloud. See [Assessing the Migration Strategy and Migrating Content](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/5ad08e16fe2645d291ea5e26a424619b.html?locale=en-US&version=CLOUD) in the documentation for SAP Integration Suite.
-
-
 
 </td>
 </tr>
@@ -141,14 +117,10 @@ The capability Migration Assessment and the migration tooling for Cloud Integrat
 
 [Directory API](70-interface-migration/directory-api-07096c2.md)
 
-
-
 </td>
 <td valign="top">
 
 Learn about the APIs Migration Assessment and Migration Tooling use to extract all necessary data for the migration from SAP Process Orchestration.
-
-
 
 </td>
 </tr>
@@ -167,14 +139,10 @@ Learn about the APIs Migration Assessment and Migration Tooling use to extract a
 
 Section
 
-
-
 </th>
 <th valign="top">
 
 Update
-
-
 
 </th>
 </tr>
@@ -183,14 +151,10 @@ Update
 
 [Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md) 
 
-
-
 </td>
 <td valign="top">
 
 In the section Interface Migration, you can now find information on how to migrate ESR proxies from the Enterprise Services Repository to the Metadata Repository.
-
-
 
 </td>
 </tr>
