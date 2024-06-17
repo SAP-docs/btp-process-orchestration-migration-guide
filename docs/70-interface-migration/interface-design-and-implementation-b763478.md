@@ -23,6 +23,11 @@ Migration Tooling, a feature in the Cloud Integration capability, can help you m
 
 -   **[Integration Patterns](integration-patterns-980eace.md "")**  
 
+-   **[Pipeline Concept](pipeline-concept-6e527fb.md "The pipeline concept allows you to set up
+		your asynchronous integration scenarios in Cloud Integration similarly to how messages are
+		processed in SAP Process Integration and SAP Process Orchestration, in
+		pipelines.")**  
+The **pipeline concept** allows you to set up your asynchronous integration scenarios in Cloud Integration similarly to how messages are processed in SAP Process Integration and SAP Process Orchestration, in pipelines.
 -   **[Additional References for Interface Development](additional-references-for-interface-development-6daed01.md "The following table provides additional resources for developing interfaces.")**  
 The following table provides additional resources for developing interfaces.
 

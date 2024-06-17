@@ -86,7 +86,7 @@ B2G
 </td>
 <td valign="top">
 
-Standard Content available via [SAP Business Accelerator Hub](https://api.sap.com) 
+Standard content is available via [SAP Business Accelerator Hub](https://api.sap.com).
 
 </td>
 </tr>
@@ -98,12 +98,9 @@ OP2OP
 </td>
 <td valign="top">
 
-> ### Restriction:  
-> This feature is planned for the future and is subject to change. For more information on new features and future releases, access the [Road Map Explorer](http://help.sap.com/disclaimer?site=https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and [What's New in SAP Integration Suite](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160?locale=en-US&version=CLOUD).
+For ground-to-ground scenarios, SAP provides a hybrid deployment option, Edge Integration Cell, with which you can leverage all the capabilities of Cloud Integration, but in a local deployment. See [What Is Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/what-is-sap-integration-suite-edge-integration-cell).
 
-For ground-to-ground scenarios, SAP plans to provide a [hybrid deployment option](https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST#;INNO=901B0ED1A0641EDABE80AF561BFAC0F8) with which you can leverage all the capabilities of the Cloud Integration, but in a local deployment.
-
-You can also use the Integration Gateway Component to execute and operate cloud integration content from the Cloud Integration in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentral Adapter Engine, SAP Process Orchestration and SAP PI dual usage type\).
+You can also use the Integration Gateway Component to execute and operate cloud integration content from Cloud Integration in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentral Adapter Engine, SAP Process Orchestration and SAP PI dual usage type\).
 
 See [Enable the Integration Gateway Component](https://help.sap.com/viewer/5cf7d2de571a45cc81f91261668b7361/7.5.21/en-US/a68695d0e6eb4552ace156cf5352a420.html) and SAP Note [2428801](https://me.sap.com/notes/2428801).
 
@@ -297,7 +294,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     However, local Java UDFs are supported and can be viewed and edited.
 
     > ### Note:  
-    > Lookups \(e.g., RFC, JDBC\) are not supported. Use additional integration flow steps instead.
+    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorial [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html).
 
 
     
@@ -366,7 +363,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     Message mapping containing reference to function libraries is not supported. You need to redesign these mappings, using Javascript/Groovy script. The scripts can be created locally in the integration flow or you can create a script collection to make it available for different integration flows inside your package. See the blog [Script collection reusable artifact in SAP Cloud Integration](https://blogs.sap.com/2021/06/07/script-reusable-artifact-in-sap-cloud-integration/).
 
     > ### Note:  
-    > Lookups \(e.g., RFC, JDBC\) are not supported. Use additional integration flow steps instead.
+    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorial [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html).
 
 
     
@@ -384,7 +381,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
 
     You can also work with Javascript/Groovy scripts, which is the preferable approach when working in Cloud Integration. In this option, you can edit the script without having to reimport a compiled version.
 
-    See the blog [Using Java Mappings in SAP Cloud Platform Integration](https://blogs.sap.com/2018/03/19/using-java-mappings-in-sap-cloud-platform-integration-cpi/).
+    See [Migrating Java Mappings](migrating-java-mappings-468c179.md).
     
     </td>
     </tr>

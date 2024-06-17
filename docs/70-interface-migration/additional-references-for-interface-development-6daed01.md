@@ -53,7 +53,7 @@ Interface Development
 </td>
 <td valign="top">
 
-Updated list on new enhancement and guidelines from SAP
+Updated list on new enhancements and guidelines from SAP
 
 </td>
 </tr>
@@ -88,6 +88,23 @@ Interface Development
 <td valign="top">
 
 Integration flows recipes
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Handling Mail Attachments in SAP Process Orchestration and SAP Cloud Integration](https://community.sap.com/t5/technology-blogs-by-sap/handling-mail-attachments-in-sap-process-orchestration-and-sap-cloud/ba-p/13624118?emcs_t=S2h8ZW1haWx8dG9waWNfc3Vic2NyaXB0aW9ufExUOTNCNVo1TzNQREZ8MTM2MjQxMTh8U1VCU0NSSVBUSU9OU3xoSw)
+
+</td>
+<td valign="top">
+
+Interface Development
+
+</td>
+<td valign="top">
+
+This blog guides you through the migration of emails and file handling processes from SAP Process Orchestration to Cloud Integration. It emphasizes scenarios like extracting email attachments and transferring files between SFTP and email while preserving original file names and functionalities.
 
 </td>
 </tr>
@@ -143,8 +160,4 @@ Blog about B2B Partner Directory
 </td>
 </tr>
 </table>
-
-
-
-
 

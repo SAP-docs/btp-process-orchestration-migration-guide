@@ -6,6 +6,108 @@ Find out what's new in the migration guide for SAP Process Orchestration.
 
 
 
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_qb4_g4g_mbc"/>
+
+## June 2024
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+</th>
+<th valign="top">
+
+Update
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Modernization Recommendations](70-interface-migration/modernization-recommendations-d337a6f.md)
+
+</td>
+<td valign="top">
+
+Use the modernization recommendations to align your current integration practices with contemporary standards and the integration strategy of SAP. They're provided as part of the Migration Assessment capability of SAP Integration Suite.
+
+</td>
+</tr>
+</table>
+
+
+
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_brs_xk1_r1c"/>
+
+## March 2024
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+</th>
+<th valign="top">
+
+Update
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md)
+
+</td>
+<td valign="top">
+
+Learn about the pipeline concept, which allows you to set up your asynchronous integration scenarios in Cloud Integration similarly to how messages are processed in SAP Process Orchestration, in pipelines.
+
+</td>
+</tr>
+</table>
+
+
+
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_yrr_vq4_h1c"/>
+
+## February 2024
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+</th>
+<th valign="top">
+
+Update
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Migrating Java Mappings](70-interface-migration/migrating-java-mappings-468c179.md)
+
+</td>
+<td valign="top">
+
+Migrate your Java mappings in SAP Process Orchestration to the more efficient Groovy script in Cloud Integration using Groovy script templates.
+
+</td>
+</tr>
+</table>
+
+
+
 <a name="loio40a5d8e489d946f7a901403d4675bf12__section_w2p_1z1_wyb"/>
 
 ## September 2023

@@ -19,10 +19,16 @@ As part of the testing phase in every migration project, several products on the
 		integration. The service interfaces are defined in the Enterprise Services Repository (ESR), which then generates the ABAP objects using the
 		SPROXY transaction on the SAP side.")**  
 When working with ABAP proxies in the context of SAP Process Orchestration, you need to follow certain steps to ensure successful integration. The service interfaces are defined in the Enterprise Services Repository \(ESR\), which then generates the ABAP objects using the SPROXY transaction on the SAP side.
+-   **[Migrating Java Mappings](migrating-java-mappings-468c179.md "Migrate your Java mappings in SAP Process Orchestration to the more efficient Groovy script in Cloud Integration using Groovy script
+		templates.")**  
+Migrate your Java mappings in SAP Process Orchestration to the more efficient Groovy script in Cloud Integration using Groovy script templates.
 -   **[Directory API](directory-api-07096c2.md "The SAP Process Orchestration Directory API is a set of SOAP APIs to read and change objects from the Integration Builder and Integration
 		Directory. ")**  
 The SAP Process Orchestration Directory API is a set of SOAP APIs to read and change objects from the Integration Builder and Integration Directory.
 -   **[Interface Design and Implementation](interface-design-and-implementation-b763478.md "In a migration project, you may need to redesign a particular integration flow or
 		develop one from scratch in an implementation project.")**  
 In a migration project, you may need to redesign a particular integration flow or develop one from scratch in an implementation project.
+-   **[Modernization Recommendations](modernization-recommendations-d337a6f.md "Learn about a set of recommendations aimed at aligning your integration practices with
+		contemporary standards and the integration strategy of SAP.")**  
+Learn about a set of recommendations aimed at aligning your integration practices with contemporary standards and the integration strategy of SAP.
 
