@@ -97,6 +97,8 @@ In the *Processing* tab of the idempotent process call step, set the idempotent 
 -   *Skip Process Call for Duplicates*: select the checkbox
 
 
+The idempotent process uses the exchange property `CamelDuplicateMessage` to identify duplicates. If the property isn't set, the message is sent to the JMS queue. If this succeeds, for all following calls of the idempotent process with the same unique ID, the exchange property `CamelDuplicateMessage` has the value `true`. In this case, the message isn't forwarded to the JMS queue again. Instead, the custom status is set to `DuplicateDiscarded`, which is displayed in the message processing log in the message monitor.
+
 As the outbound JMS queue, select the second JMS queue in your sequence of flows, assuming that for XI inbound scenarios you don't need an inbound conversion.
 
 The following is the generic XI inbound processing integration flow `Pipeline Generic Step01 - Inbound Processing for XI`:
@@ -111,7 +113,7 @@ The following is the generic XI inbound processing integration flow `Pipeline Ge
 
 For scenarios in which sender systems connect to Cloud Integration via the IDoc sender adapter, use a generic inbound flow acting as one single entry point for your IDoc inbound scenarios.
 
-As in the scenario-specific inbound integration flow, set the message headers for holding the sender system name and sender interface name. You can derive them from the IDoc control header.
+As in the scenario-specific inbound integration flow, the message headers for holding the sender system name and sender interface name must be set. You can derive them from the IDoc control header.
 
 In a content modifier step, the message headers are defined as follows:
 
@@ -133,6 +135,11 @@ Source Type
 Source Type
 
 </th>
+<th valign="top">
+
+Data Type
+
+</th>
 </tr>
 <tr>
 <td valign="top">
@@ -150,44 +157,109 @@ XPath
 `//EDI_DC40/SNDPRN` 
 
 </td>
-</tr>
-<tr>
 <td valign="top">
 
-`SAP_SenderInterface` 
-
-</td>
-<td valign="top">
-
-Header
-
-</td>
-<td valign="top">
-
-`sapidoctype` 
+java.lang.String
 
 </td>
 </tr>
 <tr>
 <td valign="top">
 
-`SAP_MessageType` 
+`testMode` 
 
 </td>
 <td valign="top">
 
-Header
+XPath
 
 </td>
 <td valign="top">
 
-`SAP_SenderInterface` 
+//\*:TEST != ''
+
+</td>
+<td valign="top">
+
+java.lang.Boolean
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`SAP_IDoc_EDIDC_MESTYP` 
+
+</td>
+<td valign="top">
+
+XPath
+
+</td>
+<td valign="top">
+
+//\*:MESTYP
+
+</td>
+<td valign="top">
+
+java.lang.String
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`SAP_IDoc_EDIDC_IDOCTYP` 
+
+</td>
+<td valign="top">
+
+XPath
+
+</td>
+<td valign="top">
+
+//\*:IDOCTYP
+
+</td>
+<td valign="top">
+
+java.lang.String
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`SAP_IDoc_EDIDC_CIMTYP` 
+
+</td>
+<td valign="top">
+
+XPath
+
+</td>
+<td valign="top">
+
+//\*:CIMTYP
+
+</td>
+<td valign="top">
+
+java.lang.String
 
 </td>
 </tr>
 </table>
 
+If you want to run your scenario in test mode, for example, for scenario regression tests, you can set the IDoc control header field `TEST` in the sender system, which sets the `testMode` header to `true`. This header is passed through the sequence of integration flows. You can then use it to define the processing behavior for scenario tests, for example, when sending the message to a mocked receiver instead of to the actual receiver.
+
+In a Groovy script, the `SAP_SenderInterface` is concatenated as a combination of the previously created headers `SAP_IDoc_EDIDC_MESTYP`, `SAP_IDoc_EDIDC_IDOCTYP`, and `SAP_IDoc_EDIDC_CIMTYP`. The latter is only added if the IDoc control header field `CIMTYP` isn't empty.
+
 The partner ID with which your read the Partner Directory is a combination of `SAP_Sender` and `SAP_SenderInterface` and it's used to read the scenario-specific retry handling.
+
+For improved monitoring of IDoc bulk messages, all IDoc numbers are stored in a custom header property.
 
 IDoc bulk messages are split using an IDoc Splitter step.
 
@@ -197,8 +269,10 @@ In the *Processing* tab of the idempotent process call step, set the idempotent 
 
 -   *Message ID*: `${property.uniqueID}`
 
--   *Skip Process Call for Duplicates*: select the checkbox
+-   *Skip Process Call for Duplicates*: don't select the checkbox
 
+
+The idempotent process uses the exchange property `CamelDuplicateMessage` to identify duplicates. If the property hasn’t been set yet, the message is sent to the JMS queue. If this succeeds, for all subsequent calls of the idempotent process with the same unique ID, the exchange property `CamelDuplicateMessage` has the value `true`. In this case, the message isn't forwarded to the JMS queue again. Instead, the custom status is set to `DuplicateDiscarded`, which is displayed in the message processing log in the message monitor.
 
 As the outbound JMS queue, select the second JMS queue in your sequence of flows, assuming that for IDoc inbound scenarios you don't need an inbound conversion.
 

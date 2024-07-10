@@ -70,6 +70,7 @@
                 -   [Special Cases](70-interface-migration/special-cases-1606af9.md)
                 -   [Monitoring and Error Handling in the Pipeline Concept](70-interface-migration/monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md)
                 -   [Customizing the Pipeline Concept](70-interface-migration/customizing-the-pipeline-concept-aeb106f.md)
+                -   [Testing the Pipeline](70-interface-migration/testing-the-pipeline-e373569.md)
             -   [Additional References for Interface Development](70-interface-migration/additional-references-for-interface-development-6daed01.md)
         -   [Modernization Recommendations](70-interface-migration/modernization-recommendations-d337a6f.md)
 

@@ -294,7 +294,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     However, local Java UDFs are supported and can be viewed and edited.
 
     > ### Note:  
-    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorial [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html).
+    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorials [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html) and [How to migrate RFC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-rfclookup.html).
 
 
     
@@ -363,7 +363,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     Message mapping containing reference to function libraries is not supported. You need to redesign these mappings, using Javascript/Groovy script. The scripts can be created locally in the integration flow or you can create a script collection to make it available for different integration flows inside your package. See the blog [Script collection reusable artifact in SAP Cloud Integration](https://blogs.sap.com/2021/06/07/script-reusable-artifact-in-sap-cloud-integration/).
 
     > ### Note:  
-    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorial [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html).
+    > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorials [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html) and [How to migrate RFC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-rfclookup.html).
 
 
     

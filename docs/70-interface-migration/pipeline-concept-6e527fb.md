@@ -109,4 +109,7 @@ Perform monitoring and error handling in the pipeline concept, for example by us
 -   **[Customizing the Pipeline Concept](customizing-the-pipeline-concept-aeb106f.md "You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or
 		define a different global maximum number of retries.")**  
 You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or define a different global maximum number of retries.
+-   **[Testing the Pipeline](testing-the-pipeline-e373569.md "SAP's partners provide regression test tools that you can use to test your integration scenarios and apply the pipeline
+		concept.")**  
+SAP's partners provide regression test tools that you can use to test your integration scenarios and apply the pipeline concept.
 

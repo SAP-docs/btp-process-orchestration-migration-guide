@@ -88,7 +88,7 @@ If no conversion is needed, the message is passed through and directly stored in
 If a conversion error occurs, the error is fetched in an exception subprocess, which first checks if the maximum number of retries have been exceeded. If they haven't been exceeded, the message remains in the first JMS queue from which it's retried. Otherwise, the message is parked in a so-called dead letter queue.
 
 > ### Note:  
-> You can define the maximum number of retries for a specific scenario. This is also stored in the Partner Directory. See [Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
+> You can define the maximum number of retries for a specific scenario. This is also stored in the Partner Directory. See [Standard Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
 
 The following screenshot is an example of a generic integration flow for inbound processing :
 
