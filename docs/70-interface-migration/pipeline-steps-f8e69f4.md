@@ -166,7 +166,7 @@ The following example shows the outcome when running the XSLT mapping:
   </ReceiverNotDetermined>
   <Receiver>
     <Service>Receiver_1</Service>
-    </Receiver>
+  </Receiver>
   <Receiver>
     <Service>Receiver_2</Service>
   </Receiver>
