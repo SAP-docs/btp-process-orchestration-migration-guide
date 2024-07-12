@@ -120,11 +120,11 @@ The fourth integration flow, `Pipeline Generic Step04 - Receiver Determination`,
 
 `${header.SAP_Sender}~${header.SAP_SenderInterface}`
 
-The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
+The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using a XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
-The following example shows what an XSLT mapping to execute the content-based routing condition to determine the receivers can look like:
+The following example shows what a XSLT mapping to execute the content-based routing condition to determine the receivers can look like:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -197,11 +197,11 @@ The fifth integration flow, `Pipeline Generic Step05 - Interface Determination`,
 
 `${header.SAP_Sender}~${header.SAP_SenderInterface}~${header.SAP_Receiver}`
 
-The generic interface determination integration flow reads the messages from the third JMS queue using a JMS sender adapter. For the interface determination, the same approach as the receiver determination is applied, that is, for each receiver you use an XSLT mapping to determine the receiver interface and mapping. The XSLT mapping containing the routing xpath conditions is read from the Partner Directory and then executed.
+The generic interface determination integration flow reads the messages from the third JMS queue using a JMS sender adapter. For the interface determination, the same approach as the receiver determination is applied, that is, for each receiver you use a XSLT mapping to determine the receiver interface and mapping. The XSLT mapping containing the routing xpath conditions is read from the Partner Directory and then executed.
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
-The following is an example of an XSLT mapping to execute the routing condition to determine the interfaces:
+The following is an example of a XSLT mapping to execute the routing condition to determine the interfaces:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
