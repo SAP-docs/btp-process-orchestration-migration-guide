@@ -12,11 +12,11 @@ The following fixed sequence of integration flows makes up the pipeline steps:
 
 2.  [Inbound Processing \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_ryf_vyk_31c): Dispatches the messages to the inbound conversion and handles the retry of messages with inbound conversion errors.
 
-3.  [Conversion at Inbound \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_q1q_vyk_31c): Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
+3.  [Conversion at Inbound \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_q1q_vyk_31c)
 
-4.  [Receiver Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario.
+4.  [Receiver Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario.: Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
 
-5.  [Interface Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c): Determines the receiver interfaces in an interface split scenario.
+5.  [Interface Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c):: Determines the receiver interfaces in an interface split scenario.
 
 6.  [Outbound Processing \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_yqj_xyk_31c): Dispatches the messages to the message outbound and handles the retry of failed messages.
 
