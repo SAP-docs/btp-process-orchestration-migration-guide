@@ -91,25 +91,122 @@ DELETE https://{{apihost}}/api/v1/StringParameters(Pid='your partner ID',Id='ID 
 Authorization: Bearer {{accesstoken}}
 ```
 
+The following example shows how to create an alternative partner:
+
+```
+### create alternative partner 
+POST https://{{apihost}}/api/v1/AlternativePartners 
+content-type: application/json 
+Authorization: Bearer {{accesstoken}} 
+X-CSRF-Token: {{xsrftoken}} 
+
+{ 
+    "Agency": "your agency", 
+    "Scheme": "your identification scheme", 
+    "Id": "identifier for the partner issued by the agency", 
+    "Pid": "your internal ID of the partner" 
+} 
+```
+
+The following example shows how to create a binary parameter:
+
+```
+### create string parameter 
+POST https://{{apihost}}/api/v1/BinaryParameters 
+content-type: application/json 
+Authorization: Bearer {{accesstoken}} 
+X-CSRF-Token: {{xsrftoken}} 
+
+{ 
+    "Pid": "your partner ID", 
+    "Id": "ID of the object", 
+    "ContentType": "content type such as xml, xsl, xsd, etc.", 
+    "Value": "Base64 encoded value of your binary" 
+} 
+```
+
+
+
+<a name="loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc"/>
+
+## Partner ID
+
+
+
+### 
+
+The partner ID unambiguously determines the configuration scenario. It’s based on the sender system name and the sender interface name. Two approaches are supported:
+
+-   Option 1: You define the partner ID as a combination of the **sender system name** and the **sender interface name**.
+
+-   Option 2: You define the partner ID as **configuration scenario name**, and you map **sender system name** and **sender interface name** to the partner ID using an **alternative partner**.
+
+
+During runtime, the generic inbound processing flow first checks if an alternative partner exists that matches the headers `SAP_Sender` and `SAP_SenderInterface`, which are passed from the scenario-specific inbound flows to the generic flows. If this is the case, the associated partner ID is used to read the Partner Directory parameters. Otherwise, the partner ID is constructed as a combination of the two header values.
+
+
+
+### Option 1: Combination of sender system and sender interface
+
+The partner ID can be defined as the combination of the sender system name and the sender interface name, separated with "~".
+
+The following is an example of a partner ID \(pid\):
+
+```
+@pid = Sender_1~Interface_1
+```
+
+> ### Note:  
+> The partner ID is restricted to a maximum length of 60 characters. Depending on your naming conventions for the sender system and the sender interface, you may exceed the maximum length. In this case, use an **alternative partner**. For information on length restrictions, see [Partner Directory](https://help.sap.com/docs/integration-suite/sap-integration-suite/partner-directory).
+
+
+
+### Option 2: Using alternative partner
+
+The alternative partner allows you to be more flexible in defining the partner ID. Firstly, you're less likely to run into any length restrictions: Agency and scheme have a maximum length of 120, while the external ID can be up to 255 characters. Secondly, so-called sender wildcard scenarios are supported more easily, which means you can map multiple sender systems to the same partner ID, assuming that the configuration is the same.
+
+To define an alternative partner, follow the following naming conventions:
+
+-   **Agency** equals sender system name
+
+-   **Scheme** is constant SenderInterface
+
+-   **ID** holds the sender interface name
+
+-   As **partner ID \(pid\)**, you can define a configuration scenario name
+
+
+The following is an example of an alternative partner:
+
+```
+### create alternative partner for Scenario 1 
+POST https://{{apihost}}/api/v1/AlternativePartners 
+content-type: application/json 
+Authorization: Bearer {{accesstoken}} 
+X-CSRF-Token: {{xsrftoken}} 
+					
+{ 
+	"Agency": "Sender_1", 
+	"Scheme": "SenderInterface", 					
+	"Id": "Interface_1", 
+	"Pid": "Scenario_1"
+} 
+```
+
 
 
 <a name="loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c"/>
 
 ## Message Processing Behavior
 
-The following table lists the different required string parameters that are used to dynamically define the message processing behavior:
+The following table lists the different required string parameters that are used to dynamically define the message processing behavior. They're read from the Partner Directory using the partner ID \(pid\) as defined in [Partner ID](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc).
 
 
 <table>
 <tr>
 <th valign="top">
 
-Pid
-
-</th>
-<th valign="top">
-
-Id
+ID
 
 </th>
 <th valign="top">
@@ -129,11 +226,6 @@ Description
 </th>
 </tr>
 <tr>
-<td valign="top">
-
-`<Sender system>~<Sender interface>`
-
-</td>
 <td valign="top">
 
 `InboundConversionEndpoint`
@@ -158,11 +250,6 @@ ProcessDirect endpoint of inbound conversion integration flow, if required
 <tr>
 <td valign="top">
 
-`<Sender system>~<Sender interface` 
-
-</td>
-<td valign="top">
-
 `MaxJMSRetries`
 
 </td>
@@ -183,11 +270,6 @@ Maximum number of retries
 </td>
 </tr>
 <tr>
-<td valign="top">
-
-`<Sender system>~<Sender interface>`
-
-</td>
 <td valign="top">
 
 `ReuseXRDEndpoint`
@@ -212,11 +294,6 @@ ProcessDirect endpoint of extended receiver determination integration flow, if r
 <tr>
 <td valign="top">
 
-`<Sender system>~<Sender interface>`
-
-</td>
-<td valign="top">
-
 `ReceiverNotDeterminedType`
 
 </td>
@@ -239,11 +316,6 @@ Behavior if receiver can't be determined
 <tr>
 <td valign="top">
 
-`<Sender system>~<Sender interface>`
-
-</td>
-<td valign="top">
-
 `ReceiverNotDeterminedDefault`
 
 </td>
@@ -263,12 +335,35 @@ Default receiver system name
 
 </td>
 </tr>
+</table>
+
+The following table lists the details for the required string parameter that is used to dynamically define the message processing behavior with partner ID equals receiver name:
+
+
+<table>
 <tr>
-<td valign="top">
+<th valign="top">
 
-`<Receiver system>`
+ID
 
-</td>
+</th>
+<th valign="top">
+
+Value
+
+</th>
+<th valign="top">
+
+Mandatory/Optional
+
+</th>
+<th valign="top">
+
+Description
+
+</th>
+</tr>
+<tr>
 <td valign="top">
 
 `ReceiverSpecificQueue`
@@ -298,13 +393,7 @@ Queue name for receiver system-specific outbound queue
 
 To determine whether your specific scenario needs an inbound conversion, create a string parameter holding the ProcessDirect endpoint of your scenario-specific inbound conversion flow.
 
-The partner ID is a combination of the sender system name and the sender interface name, separated with `~`.
-
-The following is an example of a partner ID \(`pid`\):
-
-```
-@pid = Sender_1~Interface_1
-```
+The partner ID is derived from the sender system name and the sender interface name, either using an alternative partner or a combination of the sender system name and the sender interface name. See [Partner ID](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc).
 
 If you need inbound conversion, define a Partner Directory entry with object ID `InboundConversionEndpoint`, which points to the ProcessDirect endpoint of the scenario-specific integration flow for inbound conversion.
 
@@ -328,12 +417,6 @@ X-CSRF-Token: {{token}}
 
 For each scenario, you can define a maximum number of retries to handle the retry behavior of your scenarios individually. This parameter is optional and the default is unlimited. You can edit the provided Groovy script and change the default to any valid global value. See [readRetryHandlingFromPD](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_jjn_gy2_j1c).
 
-Again, the partner ID is a combination of the sender system name and the sender interface name, separated with `~`.
-
-```
-@pid = Sender_1~Interface_1
-```
-
 The object ID is `MaxJMSRetries`. In the following example, the maximum number of retries is set to `3`.
 
 ```
@@ -355,12 +438,6 @@ X-CSRF-Token: {{token}}
 ### Reuse Extended Receiver Determination
 
 If your integrated configuration object in SAP Process Orchestration already uses the extended receiver determination feature, you can reuse the mapping instead of using the default option, which is an XSLT mapping stored in the Partner Directory. If you choose to reuse, you must create a string parameter that holds the ProcessDirect endpoint of your integration flow carrying out the mapping. Also, create a string parameter that defines the `Receiver not determined` behavior, which is alternatively defined within the XSLT mapping. If `Receiver not determined` type equals default, you must also define a string parameter that holds the default receiver system name.
-
-Again, the partner ID is a combination of the sender system name and the sender interface name, separated with `~`.
-
-```
-@pid = Sender_1~Interface_1
-```
 
 Define a Partner Directory entry with object ID ReuseXRDEndpoint as follows:
 
@@ -452,13 +529,7 @@ Unless you reuse the extended receiver determination mapping, you must create an
 > ### Note:  
 > The XSLT mapping is stored as binary, so you need to encode the XSLT before uploading to the Partner Directory.
 
-For the receiver determination XSLT, the partner ID is a combination of the sender system name and the sender interface name, separated with `~`.
-
-```
-@pid = Sender_1~Interface_1
-```
-
-The object ID is `receiverDetermination`. Let's assume that the encoded XSLT mapping is stored in the variable binary.
+For the receiver determination XSLT, the object ID is `receiverDetermination`. Let's assume that the encoded XSLT mapping is stored in the variable binary.
 
 ```
 POST https://{{apihost}}/api/v1/BinaryParameters
@@ -483,13 +554,10 @@ For each receiver of your scenario, you need to create an XSLT in the Partner Di
 > ### Note:  
 > The XSLT mapping is stored as binary, so you need to encode the XSLT before uploading to the Partner Directory.
 
-For the interface determination XSLT, the partner ID is a combination of the sender system name, the sender interface name, and the receiver system name, separated with `~`.
+For the interface determination XSLT, the object ID is a combination of a constant identifier `interfaceDetermination` and the receiver system name, separated with an underscore "\_". Let's assume that the encoded XSLT mapping is stored in the variable binary.
 
-```
-@pid = Sender_1~Interface_1~Receiver_3
-```
-
-The object ID is `interfaceDetermination`. Let's assume that the encoded XSLT mapping is stored in the variable binary.
+> ### Note:  
+> From version 1.0.6 of the provided standard integration package onwards, the partner ID \(pid\) and the identifier \(Id\) used to upload the interface determination XSLT to the Partner Directory have been changed to overcome the partner ID restrictions. This change is an incompatible change. Hence, you must change your code and update the Partner Directory entries accordingly.
 
 ```
 POST https://{{apihost}}/api/v1/BinaryParameters
@@ -499,9 +567,47 @@ X-CSRF-Token: {{token}}
 
 {
   "Pid": "{{pid}}",
-  "Id": "interfaceDetermination",
+  "Id": "interfaceDetermination_Receiver_1",
   "ContentType": "xsl",
   "Value": "{{binary}}"
 }
+```
+
+
+
+<a name="loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc"/>
+
+## Special Case: Point-to-Point Scenarios
+
+For Point-to-Point scenarios, you can bypass the two pipeline steps receiver determination and interface determination, which leads to an improved runtime behavior. In this case, you don't need to upload XSLT mappings to determine the list of receivers and receiver interfaces. Instead, create corresponding string parameters in the Partner Directory. See [Point-to-Point Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_bdm_kc3_hcc).
+
+Define a Partner Directory string parameter with object ID `receiverDetermination` as follows:
+
+```
+POST https://{{apihost}}/api/v1/StringParameters 
+content-type: application/json 
+Authorization: Bearer {{accesstoken}} 
+X-CSRF-Token: {{token}} 
+
+{ 
+    "Pid": "{{pid}}", 
+    "Id": "receiverDetermination", 
+    "Value": "Receiver_1" 
+} 
+```
+
+Additionally, define a Partner Directory string parameter with the object ID as combination of the constant identifier `interfaceDetermination` and the receiver system name, separated with an underscore "\_". As value, enter the `ProcessDirect` endpoint of the scenario-specific integration flow for outbound processing. The following is an example for this definition:
+
+```
+POST https://{{apihost}}/api/v1/StringParameters 
+content-type: application/json 
+Authorization: Bearer {{accesstoken}} 
+X-CSRF-Token: {{token}} 
+
+{ 
+    "Pid": "{{pid}}", 
+    "Id": "interfaceDetermination_Receiver_1", 
+    "Value": "/pip/07/scenario1" 
+} 
 ```
 

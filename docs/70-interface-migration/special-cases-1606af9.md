@@ -2,7 +2,7 @@
 
 # Special Cases
 
-Before you get started with the pipeline concept, consider a few special cases, like the XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, and receiver-specific outbound queues.
+Before you get started with the pipeline concept, consider a few special cases, like the XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, receiver-specific outbound queues, and the bypass option for Point-to-Point scenarios.
 
 
 
@@ -350,4 +350,27 @@ If you're using a receiver-specific outbound queue, create a receiver-specific o
 The following is an example of a receiver-specific outbound processing integration flow:
 
 ![The screenshot shows the integration flow editor with an example of a receiver-specific outbound processing integration flow.](images/PipelineConcept_Example_of_a_receiver-specific_outbound_processing_integration_flow_b6f6c52.png)
+
+
+
+<a name="loio1606af9b55bf4391bea01d2f7ee112af__section_bdm_kc3_hcc"/>
+
+## Point-to-Point Scenarios
+
+For Point-to-Point scenarios, that is, scenarios with only one receiver and one receiver interface, you can bypass the two pipeline steps receiver determination and interface determination, which leads to an improved runtime behavior.
+
+In this case, you don't have to upload XSLT mappings to determine the list of receivers and receiver interfaces, but instead you need to create corresponding string parameters in the Partner Directory.
+
+In the Groovy script `readBypassOption` within the generic inbound processing integration flow, the string parameters are read from the Partner Directory, and the exchange property <code><i>p2pBoolean</i></code> is set to either `true` or `false`.
+
+Furthermore, if `p2pBoolean` is `true`, the following headers are set:
+
+-   **SAP\_Receiver**: Receiver component name
+
+-   **SAP\_OutboundProcessingEndpoint**: ProcessDirect endpoint of the outbound processing integration flow
+
+
+You can check the value of the `p2pBoolean` property in a router step of the generic inbound processing integration flow. The default route stores the message to the receiver determination JMS queue where it's picked up by the generic receiver determination integration flow. If `p2pBoolean` is `true`, the lower route is carried out, storing the message to the outbound processing JMS queue and directly passing the message to the generic outbound processing integration flow. If you're using a receiver-specific outbound queue, the message is stored accordingly. See [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
+
+![](images/PipelineConcept_BypassOptionforP2P_5de4a4d.png)
 

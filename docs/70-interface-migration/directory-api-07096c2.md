@@ -172,7 +172,7 @@ See [Example for ReceiverAgreementInService](examples-for-directory-api-dc70456.
 
 ### ValueMappingInService
 
-With the **ValueMappingIn** API, you get detailed information about the sender agreement.
+With the **ValueMappingIn** API, you get detailed information about the value mapping.
 
 An XML file is created with the administrative data, value mapping ID, and group name.
 

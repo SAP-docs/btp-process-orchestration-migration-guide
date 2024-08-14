@@ -4,7 +4,23 @@
 
 You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or define a different global maximum number of retries.
 
-Depending on your needs, you can customize the identification of scenarios, the status of ProcessDirect flow, and retry handling.
+The pipeline concept package provided on the SAP Business Accelerator Hub supports some extension points that allow you to customize the message processing behavior without having to change the standard generic integration flows. This way, you can ensure that the standard integration content still receives updates. See [Updates for SAP's Integration Packages](https://help.sap.com/docs/integration-suite/sap-integration-suite/updates-for-sap-s-integration-packages).
+
+The following extensions and standard customizations are supported:
+
+-   You can implement your own custom exception handling. See [Custom Exception Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_pm1_ggs_5bc).
+
+-   You can configure the message end event type in case messages are stored in a dead letter queue. The default is *Escalated*. See [Standard Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
+
+-   You can configure a pipeline JMS queue prefix, which simplifies configuring queue names if you create another set of generic integration flows.
+
+-   As all adapter parameters of the generic integration flows have been externalized, you can configure their adapters.
+
+
+Depending on your needs, you can modify the provided standard package. For example, you can customize the identification of scenarios, the status of the ProcessDirect flow, and the retry handling.
+
+> ### Note:  
+> If you modify the standard integration flows, you won't receive any updates SAP provides for the pipeline concept package.
 
 
 
@@ -39,7 +55,7 @@ For a similar scenario, see [Handle Exceptions in Dependent Integration Flows](h
 
 ## Retry Handling
 
-For errors occurring in message processing, you can define a **scenario-specific maximum number of retries**. By default, if no such value is defined in the Partner Directory for the specific scenario, the number of retries is **unlimited**.
+For errors occurring in message processing, you can define a **scenario-specific maximum number of retries**. By default, if no such value is defined in the Partner Directory for the specific scenario, the number of retries is **5**.
 
 You can change the global setting to any other value by adapting the Groovy script `readRetryHandlingFromPD`. In the following example, the default value is `10`.
 

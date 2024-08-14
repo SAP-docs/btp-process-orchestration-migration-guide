@@ -6,6 +6,42 @@ Find out what's new in the migration guide for SAP Process Orchestration.
 
 
 
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_ivg_ztw_hcc"/>
+
+## August 2024
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+</th>
+<th valign="top">
+
+Update
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md)
+
+</td>
+<td valign="top">
+
+There have been multiple changes for the pipeline concept. For example, the definition of a partner ID \(pid\) has changed, and alternative partners were introduced to support sender wildcard scenarios. Additionally, a new special case with Point-to-Point scenarios is now described that allows you to bypass some of the pipeline steps for an improved runtime behavior, and two new scripts have been added to the script collection, determinePartnerID and readBypassOptionfromPD.
+
+For details, see [Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md) and its subordinate topics.
+
+</td>
+</tr>
+</table>
+
+
+
 <a name="loio40a5d8e489d946f7a901403d4675bf12__section_qb4_g4g_mbc"/>
 
 ## June 2024

@@ -86,6 +86,7 @@ Besides the generic cases, the pipeline concept also considers the following spe
 
 -   By default, each scenario uses the same set of generic JMS queues. For scenarios in which you want to **control the outbound delivery**, you can define receiver-specific JMS queues. See [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
 
+-   For Point-to-Point scenarios, you can skip the two pipeline steps `receiver determination` and `interface determination`. See [Point-to-Point Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_bdm_kc3_hcc).
 
 See [Special Cases](special-cases-1606af9.md).
 
@@ -100,9 +101,10 @@ In the pipeline concept, most generic integration flows rely on the Partner Dire
 -   **[Script Collection for Pipeline Concept](script-collection-for-pipeline-concept-05d9f8d.md "Use the scripts collected in this section to read the Partner Directory.")**  
 Use the scripts collected in this section to read the Partner Directory.
 -   **[Special Cases](special-cases-1606af9.md "Before you get started with the pipeline concept, consider a few special cases, like the
-		XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, and
-		receiver-specific outbound queues. ")**  
-Before you get started with the pipeline concept, consider a few special cases, like the XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, and receiver-specific outbound queues.
+		XI sender adapter, the IDoc sender adapter, reusing extended receiver determination,
+		receiver-specific outbound queues, and the bypass option for Point-to-Point
+		scenarios.")**  
+Before you get started with the pipeline concept, consider a few special cases, like the XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, receiver-specific outbound queues, and the bypass option for Point-to-Point scenarios.
 -   **[Monitoring and Error Handling in the Pipeline Concept](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md "Perform monitoring and error handling in the pipeline concept, for example by using
 		retry handling, message monitoring, and using the dead letter queue.")**  
 Perform monitoring and error handling in the pipeline concept, for example by using retry handling, message monitoring, and using the dead letter queue.

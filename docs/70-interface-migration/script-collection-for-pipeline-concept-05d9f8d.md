@@ -20,6 +20,8 @@ The following scripts are part of the script collection `Pipeline Generic - Scri
 
 -   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_yjh_bh4_vbc">displayBulkIDs</a></code>
 -   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_dp4_xj4_vbc">setIDocSenderInterface</a></code>
+-   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_ly4_j13_hcc">determinePartnerID</a></code>
+-   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_ep3_y13_hcc">readBypassOptionFromPD</a></code>
 
 
 
@@ -170,8 +172,8 @@ def Message processData(Message message) {
     def maxJMSRetries = service.getParameter("MaxJMSRetries", Pid , String.class);
     
     // if the value exists in the Partner Directory, create a new header holding the max number of retries incremented by 1
-    // otherwise, set the header to default which is unlimited
-    message.setHeader("maxJMSRetries", maxJMSRetries ? maxJMSRetries.toInteger() - 1 : 'unlimited');
+    // otherwise, set the header to default, which is 5 (incremented by 1)
+    message.setHeader("maxJMSRetries", maxJMSRetries ? maxJMSRetries.toInteger() - 1 : 4);
     
     return message;
 }
@@ -311,6 +313,104 @@ def Message processData(Message message) {
     // set sender interface name 
     message.setHeader("SAP_SenderInterface", map.get("SAP_IDoc_EDIDC_MESTYP") + "." + map.get("SAP_IDoc_EDIDC_IDOCTYP") + (map.get("SAP_IDoc_EDIDC_CIMTYP") ? "." +map.get("SAP_IDoc_EDIDC_CIMTYP") : "")) 
 
+    return message; 
+} 
+```
+
+
+
+<a name="loio05d9f8d85d7945af8d610dca81375b43__section_ly4_j13_hcc"/>
+
+## determinePartnerID
+
+Use the following Groovy script `determinePartnerID` to set the header partner ID either based on an alternative partner or as a combination of the sender component and the sender interface.
+
+```
+import com.sap.gateway.ip.core.customdev.util.Message; 
+import java.util.HashMap; 
+import com.sap.it.api.pd.PartnerDirectoryService; 
+import com.sap.it.api.ITApiFactory; 
+
+def Message processData(Message message) { 
+
+    // get headers 
+    def headers = message.getHeaders(); 
+    // get properties 
+    def properties = message.getProperties(); 
+     
+    // prep Alternative Partner 
+    String Agency = headers.get("SAP_Sender"); 
+    String Scheme = 'SenderInterface'; 
+    String AlternativePid = headers.get("SAP_SenderInterface"); 
+    String Pid; 
+  
+    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null);  
+        if (service == null){ 
+            throw new IllegalStateException("Partner Directory Service not found"); 
+    } 
+ 
+    // Use alternative partner if maintained 
+    Pid = service.getPartnerId(Agency, Scheme, AlternativePid);    
+
+    // Otherwise use a combination of sender component and sender interface 
+    if (Pid == null){ 
+        Pid = Agency + '~' + AlternativePid; 
+    }      
+
+    // create new header holding the Partner ID 
+    message.setHeader("partnerID", Pid);  
+
+    return message; 
+}  
+```
+
+
+
+<a name="loio05d9f8d85d7945af8d610dca81375b43__section_ep3_y13_hcc"/>
+
+## readBypassOptionFromPD
+
+Use the following Groovy script `readBypassOptionFromPD` to check if the integration scenario follows the pattern Point-to-Point. If it does, the pipeline steps `receiver determination` and `interface determination` are skipped.
+
+```
+import com.sap.gateway.ip.core.customdev.util.Message; 
+import java.util.HashMap; 
+import com.sap.it.api.pd.PartnerDirectoryService; 
+import com.sap.it.api.ITApiFactory; 
+
+def Message processData(Message message) {   
+
+    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null);  
+    if (service == null){ 
+        throw new IllegalStateException("Partner Directory Service not found"); 
+    }   
+
+    // get pid 
+    def headers = message.getHeaders(); 
+    def Pid = headers.get("partnerID"); 
+    String id; 
+    if (Pid == null){ 
+        throw new IllegalStateException("Partner ID not found in sent message");    
+    } 
+
+    // read receiverDetermination string parameter from the Partner Directory if any 
+    def receiverName = service.getParameter("receiverDetermination", Pid , String.class); 
+
+    // if the value exists, receiver and interface determination should be bypassed 
+    message.setProperty("p2pBoolean", receiverName ? 'true' : 'false'); 
+
+    // assign the value to the header SAP_Receiver 
+    message.setHeader("SAP_Receiver", receiverName ?: null); 
+
+    // read interfaceDetermination string parameter from the Partner Directory 
+    if (receiverName != null) { 
+        id = "interfaceDetermination_" + receiverName; 
+        def outboundEndpoint = service.getParameter(id, Pid , String.class); 
+        if (outboundEndpoint == null){ 
+            throw new IllegalStateException("Partner ID " + Pid + " not found or " + id + " parameter not found in the Partner Directory for the partner ID " + Pid);       
+        } 
+        message.setHeader("SAP_OutboundProcessingEndpoint", outboundEndpoint); 
+    } 
     return message; 
 } 
 ```

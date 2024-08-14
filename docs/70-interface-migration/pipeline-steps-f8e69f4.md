@@ -14,9 +14,9 @@ The following fixed sequence of integration flows makes up the pipeline steps:
 
 3.  [Conversion at Inbound \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_q1q_vyk_31c)
 
-4.  [Receiver Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario.: Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
+4.  [Receiver Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario. Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
 
-5.  [Interface Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c):: Determines the receiver interfaces in an interface split scenario.
+5.  [Interface Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c): Determines the receiver interfaces in an interface split scenario.
 
 6.  [Outbound Processing \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_yqj_xyk_31c): Dispatches the messages to the message outbound and handles the retry of failed messages.
 
@@ -24,7 +24,7 @@ The following fixed sequence of integration flows makes up the pipeline steps:
 
 
 > ### Note:  
-> Generic integration flows read from JMS queues, for which some capacity restraints apply. To meet the demands of your landscape and workload, you can customize the **number of concurrent processes**. The default value is `2` as delivered with the integration package. See [Configure the JMS Sender Adapter](https://help.sap.com/docs/integration-suite/sap-integration-suite/configure-jms-sender-adapter).
+> Generic integration flows read from JMS queues, for which some capacity restraints apply. To meet the demands of your landscape and workload, you can customize the JMS adapter parameters, for example, the **number of concurrent processes**. The default value is `2` as delivered with the integration package. See [Configure the JMS Sender Adapter](https://help.sap.com/docs/integration-suite/sap-integration-suite/configure-jms-sender-adapter).
 
 
 
@@ -52,7 +52,7 @@ The following message headers are defined:
 
 Usually, you can set the message headers as constants since the integration flow is scenario-specific anyway. Depending on your use case, you can also fetch the information from the message payload or adapter-specific headers or properties.
 
-After setting the message headers, the message is written to the first JMS queue using a JMS receiver adapter. It’s recommended to use externalized parameters for the queue name to be able to configure the JMS queue name without changing the integration flow.
+After setting the message headers, the message is written to the first JMS queue, the inbound processing queue, using a JMS receiver adapter. It’s recommended to use externalized parameters for the queue name to be able to configure the JMS queue name without changing the integration flow.
 
 The inbound processing integration flow is intentionally kept to a minimum to ensure message delivery. As the message is directly written to a JMS queue, the processing is decoupled from the sending system. If an error occurs in the subsequent message processing, the message is retried from this JMS queue.
 
@@ -77,20 +77,20 @@ The second integration flow in the sequence of flows, `Pipeline Generic Step02 -
 
 The generic inbound processing integration flow reads the messages from the first JMS queue. It then passes the messages to a scenario-specific integration flow to run scenario-specific inbound conversion steps like a JSON to XML conversion or conversion steps of the adapter module chain.
 
-The information about whether a conversion is needed is stored in the Partner Directory. If a conversion is needed, the end point of the ProcessDirect adapter of the scenario-specific conversion integration flow is read from the Partner Directory. The partner ID with which the information is fetched is a combination of the sender system name and the sender interface name, separated with `~`. It's defined as follows, using the respective message headers:
+The information about whether a conversion is needed is stored in the Partner Directory. If a conversion is needed, the end point of the ProcessDirect adapter of the scenario-specific conversion integration flow is read from the Partner Directory. The partner ID with which the information is fetched relies on the headers SAP\_Sender and SAP\_SenderInterface and is determined by running a Groovy script. It's either derived from an alternative partner or defined as a combination of the sender system name and the sender interface name. See [Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md).
 
-`${header.SAP_Sender}~${header.SAP_SenderInterface}`
+After the successful conversion, by default, the message is stored in the second JMS queue, the receiver determination queue, using a JMS receiver adapter.
 
-After the successful conversion, the message is stored in the second JMS queue using a JMS receiver adapter. Like in the first integration flow, use an externalized parameter for the queue name to be able to configure the JMS queue name without changing the integration flow.
+In the special case of a Point-to-Point scenario, you can skip the pipeline steps that determine the receivers and the receiver interfaces. The message then bypasses those two steps and is directly stored in the fourth JMS queue, the outbound processing queue.
 
-If no conversion is needed, the message is passed through and directly stored in the second JMS queue.
+If no conversion is needed, the message is passed through and directly stored in the respective JMS queue.
 
 If a conversion error occurs, the error is fetched in an exception subprocess, which first checks if the maximum number of retries have been exceeded. If they haven't been exceeded, the message remains in the first JMS queue from which it's retried. Otherwise, the message is parked in a so-called dead letter queue.
 
 > ### Note:  
 > You can define the maximum number of retries for a specific scenario. This is also stored in the Partner Directory. See [Standard Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
 
-The following screenshot is an example of a generic integration flow for inbound processing :
+The following screenshot is an example of a generic integration flow for inbound processing:
 
 ![The screenshot shows the integration flow editor with an example of a generic integration flow for inbound processing.](images/PipelineConcept_IntegrationFlow2_9f3b536.png) 
 
@@ -116,9 +116,7 @@ For this integration flow, the template `Pipeline Template Step03 - Inbound Conv
 
 ## Receiver Determination \(Generic\)
 
-The fourth integration flow, `Pipeline Generic Step04 - Receiver Determination`, is a generic integration flow that handles the receiver determination. Similarly as the other generic integration flows, use the Partner Directory to dynamically configure the message processing. The partner ID with which the information is fetched is a combination of the sender system name and the sender interface name, separated with `~` and defined as follows using the respective message headers:
-
-`${header.SAP_Sender}~${header.SAP_SenderInterface}`
+The fourth integration flow, `Pipeline Generic Step04 - Receiver Determination`, is a generic integration flow that handles the receiver determination. Similarly, as the other generic integration flows, use the Partner Directory to dynamically configure the message processing.
 
 The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
 
@@ -179,7 +177,7 @@ If the Receivers XML doesn't contain any Receiver nodes, the message processing 
 
 For all `receiver not determined` options, a custom status is maintained so that you have full transparency about why the processing has been terminated. For the *Default* option, the custom status is set to `ReceiverNotFoundDefault`, for *Ignore* it's set to `ReceiverNotFoundIgnored`, and for *Error*, it's set to `ReceiverNotFoundError`.
 
-Otherwise, in the default route, that is, if at least one receiver has been determined, the receivers XML message is split using an iterating splitter. For each split message, the standard message header `SAP_Receiver` is set with the name of the receiver system, the original payload is retrieved from the exchange property, and the message is then stored in the third JMS queue to be passed on to the next pipeline step.
+Otherwise, in the default route, that is, if at least one receiver has been determined, the receivers XML message is split using an iterating splitter. For each split message, the standard message header `SAP_Receiver` is set with the name of the receiver system, the original payload is retrieved from the exchange property, and the message is then stored in the third JMS queue, the interface determination queue, to be passed on to the next pipeline step.
 
 This way, you can ensure that the messages for different receivers are processed individually. If the processing for one receiver fails, it doesn't affect the processing of the messages of the other receivers.
 
@@ -193,9 +191,7 @@ The following screenshot is an example of a generic integration flow for receive
 
 ## Interface Determination \(Generic\)
 
-The fifth integration flow, `Pipeline Generic Step05 - Interface Determination`, is a generic integration flow that handles the interface determination and the interface split. Here, you can also use the Partner Directory to dynamically configure the message processing. In this case, the partner ID with which the information is fetched is a combination of the sender system name, the sender interface name, and the receiver system name, separated with `~` and defined as follows using the respective message headers:
-
-`${header.SAP_Sender}~${header.SAP_SenderInterface}~${header.SAP_Receiver}`
+The fifth integration flow, `Pipeline Generic Step05 - Interface Determination`, is a generic integration flow that handles the interface determination and the interface split. Here, you can also use the Partner Directory to dynamically configure the message processing.
 
 The generic interface determination integration flow reads the messages from the third JMS queue using a JMS sender adapter. For the interface determination, the same approach as the receiver determination is applied, that is, for each receiver you use an XSLT mapping to determine the receiver interface and mapping. The XSLT mapping containing the routing xpath conditions is read from the Partner Directory and then executed.
 
@@ -251,7 +247,7 @@ For the interface determination, SAP Process Orchestration doesn’t support a s
 
 If the Interfaces XML doesn't contain any interface nodes, the message processing continues in the `Interface not found` route and an error is raised. Besides the receiver determination, the interface determination in SAP Process Orchestration doesn’t distinguish between the different exception cases *Error*, *Ignore*, and *Default*. If no condition is met, an error is raised and the custom status is set to `InterfaceNotFoundError`.
 
-Otherwise, in the default route, that is, if at least one interface has been determined, the interface XML message is split using an iterating splitter. For each split message, the message headers `SAP_ReceiverInterfaceIndex` and `SAP_OutboundProcessingEndpoint` are set based on the split messages. The original payload is retrieved from the exchange property, and the message is stored in the fourth and last JMS queue to be passed to the next pipeline step. For a special case in which you can use a receiver-specific JMS queue, see [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
+Otherwise, in the default route, that is, if at least one interface has been determined, the interface XML message is split using an iterating splitter. For each split message, the message headers `SAP_ReceiverInterfaceIndex` and `SAP_OutboundProcessingEndpoint` are set based on the split messages. The original payload is retrieved from the exchange property, and the message is stored in the fourth and last JMS queue, the outbound processing queue, to be passed to the next pipeline step. For a special case in which you can use a receiver-specific JMS queue, see [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
 
 This way, you can ensure that the messages for different interfaces are processed individually. If the processing for one interface fails, it doesn't affect the processing of the messages of the other interfaces.
 
