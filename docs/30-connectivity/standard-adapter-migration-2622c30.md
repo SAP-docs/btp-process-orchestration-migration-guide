@@ -202,7 +202,7 @@ OData
 </td>
 <td valign="top">
 
-SAP is working on supporting multiple cloud and on-premise database vendors.
+ 
 
 </td>
 </tr>
@@ -558,7 +558,7 @@ OData
 </td>
 <td valign="top">
 
-SAP is working on supporting multiple cloud and on-premise database vendors.
+ 
 
 </td>
 </tr>
