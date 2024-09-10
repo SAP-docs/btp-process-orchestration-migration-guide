@@ -30,12 +30,31 @@ Reimplementation strategy
 <tr>
 <td valign="top">
 
+AF\_Modules/MessageTransformBean
+
+</td>
+<td valign="top">
+
+Use this module to transform the message during the runtime, which allows data to be converted from Plain format to XML and from XML to Plain format, according to various technical requirements.
+
+</td>
+<td valign="top">
+
+In Cloud Integration, you can use an XSLT in the step before the adapter call to transform your message.
+
+Alternatively, you can also use a Groovy script, which you can find in the community package [Message Transformation Utilities](https://api.sap.com/package/com.sap.integration.cloud.utilities.MessageTransformations/overview) on the SAP Business Accelerator Hub.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 AF\_Modules/PayloadSwapBean
 
 </td>
 <td valign="top">
 
-You use this module to replace the application payload of the XI message that contains the business data with another payload that is appended to the XI message as an additional attachment.
+Use this module to replace the application payload of the XI message that contains the business data with another payload that is appended to the XI message as an additional attachment.
 
 </td>
 <td valign="top">
@@ -63,7 +82,7 @@ AF\_Modules/StrictXml2PlainBean
 </td>
 <td valign="top">
 
-You use this module to convert an XML document that is in the main payload of the XI message to text format.
+Use this module to convert an XML document that is in the main payload of the XI message to text format.
 
 </td>
 <td valign="top">
@@ -80,14 +99,14 @@ AF\_Modules/XMLAnonymizerBean
 </td>
 <td valign="top">
 
-You use this module to anonymize XML elements and attributes by removing namespaces or namespace prefixes from the XML document of the main payload.
+Use this module to anonymize XML elements and attributes by removing namespaces or namespace prefixes from the XML document of the main payload.
 
 </td>
 <td valign="top">
 
 In Cloud Integration, you can use an XSLT in the step before the adapter call to change/remove the namespaces or prefixes.
 
-You can also use Groovy script to achieve it.
+Alternatively, you can also use a Groovy script, which you can find in the community package [Message Transformation Utilities](https://api.sap.com/package/com.sap.integration.cloud.utilities.MessageTransformations/overview) on the SAP Business Accelerator Hub.
 
 </td>
 </tr>
@@ -99,7 +118,7 @@ SAP\_XI\_IDOC/IDOCXmlToFlatConvertor
 </td>
 <td valign="top">
 
-You can use this module to convert IDoc XML to IDoc Flat format. If you add this module to the module chain, then it converts the data in the XI message payload from IDoc XML to IDoc Flat format. For example, you can add this module to the module chain of a receiver file adapter and create an IDoc Flat file.
+Use this module to convert IDoc XML to IDoc Flat format. If you add this module to the module chain, then it converts the data in the XI message payload from IDoc XML to IDoc Flat format. For example, you can add this module to the module chain of a receiver file adapter and create an IDoc Flat file.
 
 </td>
 <td valign="top">
@@ -116,7 +135,7 @@ SAP\_XI\_IDOC/IDOCFlatToXmlConvertor
 </td>
 <td valign="top">
 
-You can use this module to convert the data in the XI message payload from IDoc Flat format to XML format. For example, you can add this module in the module chain of a sender file adapter and create IDoc XML from IDoc Flat format.
+Use this module to convert the data in the XI message payload from IDoc Flat format to XML format. For example, you can add this module in the module chain of a sender file adapter and create IDoc XML from IDoc Flat format.
 
 </td>
 <td valign="top">
@@ -133,7 +152,7 @@ AF\_Modules/PayloadZipBean
 </td>
 <td valign="top">
 
-You use this module to compress one or more payloads or extract payloads from a compressed file.
+Use this module to compress one or more payloads or extract payloads from a compressed file.
 
 </td>
 <td valign="top">
@@ -150,7 +169,7 @@ AF\_Modules/DynamicConfigurationBean
 </td>
 <td valign="top">
 
-You use this module to edit the message header for adapter-specific message attributes. You can add attributes to the header or delete attributes from the header.
+Use this module to edit the message header for adapter-specific message attributes. You can add attributes to the header or delete attributes from the header.
 
 </td>
 <td valign="top">
@@ -169,7 +188,7 @@ localejbs/ArchiverModuleBean
 </td>
 <td valign="top">
 
-You use this module for archiving messages from the sender and receiver channels.
+Use this module to archive messages from the sender and receiver channels.
 
 </td>
 <td valign="top">

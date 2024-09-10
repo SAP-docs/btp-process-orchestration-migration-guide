@@ -6,6 +6,40 @@ Find out what's new in the migration guide for SAP Process Orchestration.
 
 
 
+<a name="loio40a5d8e489d946f7a901403d4675bf12__section_s2z_bnh_rcc"/>
+
+## September 2024
+
+
+<table>
+<tr>
+<th valign="top">
+
+Section
+
+</th>
+<th valign="top">
+
+Update
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+[Adapter Modules](30-connectivity/adapter-modules-e402f4a.md)
+
+</td>
+<td valign="top">
+
+A community package was released to address SAP Process Integration adapter modules and offers an alternative approach to their reimplementation. This initial version includes the modules `AF_Modules/XMLAnonymizerBean` and `AF_Modules/MessageTransformBean`.
+
+</td>
+</tr>
+</table>
+
+
+
 <a name="loio40a5d8e489d946f7a901403d4675bf12__section_ivg_ztw_hcc"/>
 
 ## August 2024
