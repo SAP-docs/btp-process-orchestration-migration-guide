@@ -313,6 +313,23 @@ SOAP
 <tr>
 <td valign="top">
 
+SOAP-XI
+
+</td>
+<td valign="top">
+
+XI
+
+</td>
+<td valign="top">
+
+The runtime and generation of XI proxies in SAP S/4HANA differ from those in Cloud Integration. See [Migrating Proxy Interfaces](../70-interface-migration/migrating-proxy-interfaces-dfaee7b.md).
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 WS\_AAE
 
 </td>
@@ -646,6 +663,23 @@ SOAP
 <td valign="top">
 
  
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+SOAP-XI
+
+</td>
+<td valign="top">
+
+XI
+
+</td>
+<td valign="top">
+
+The runtime and generation of XI proxies in SAP S/4HANA differ from those in Cloud Integration. See [Migrating Proxy Interfaces](../70-interface-migration/migrating-proxy-interfaces-dfaee7b.md).
 
 </td>
 </tr>

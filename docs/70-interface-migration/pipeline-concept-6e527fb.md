@@ -2,7 +2,7 @@
 
 # Pipeline Concept
 
-The **pipeline concept** allows you to set up your asynchronous integration scenarios in Cloud Integration similarly to how messages are processed in SAP Process Integration and SAP Process Orchestration, in pipelines.
+The **pipeline concept** allows you to set up your integration scenarios in Cloud Integration similarly to how messages are processed in SAP Process Integration and SAP Process Orchestration, in pipelines.
 
 
 
@@ -28,7 +28,7 @@ The applicability of the pipeline concept depends on the number and types of you
 
 The pipeline concept improves the JMS queue handling for asynchronous integration scenarios in Cloud Integration. As resources on an SAP Integration Suite tenant are limited, you must model your integration flows to suit the resource limits of your tenants. See [Run an Integration Flow Under Well-Defined Boundary Conditions](https://help.sap.com/docs/integration-suite/sap-integration-suite/run-integration-flow-under-well-defined-boundary-conditions). If you migrate your asynchronous integrated configuration scenarios in SAP Process Orchestration to integration flows in Cloud Integration one by one and use an own JMS queue for each integration flow to ensure exactly once delivery, you end up with a high number of JMS queues. Depending on your use case, you may need thousands of JMS queues.
 
-With the pipeline concept, you can reduce the number of JMS queues you need to run your integration scenarios on Cloud Integration. With proper usage of JMS queues and ProcessDirect adapters and relying on the Partner Directory to be able to dynamically configure your integration flows, you can reduce the number of required JMS queues to four. With four more JMS queues for the retry and dead letter handling, you arrive at eight required JMS queues. Even if you duplicate the set of integration flows to build up multiple pipelines, for example, to handle low, medium, and high priority scenarios, you only need a low number of JMS queues. These few JMS queues are easier to handle than the thousands of JMS queues of a typical migration use case.
+With the pipeline concept, you can reduce the number of JMS queues you need to run your integration scenarios on Cloud Integration. With proper usage of JMS queues and ProcessDirect adapters and relying on the Partner Directory to be able to dynamically configure your integration flows, you can reduce the number of required JMS queues to four. When you use the integrated messaging runtime in which inbound conversion, receiver, and interface determination are combined in one single pipeline step, you can even reduce the number of JMS queues to two. With the corresponding number of additional JMS queues for the retry and dead letter handling, you arrive at eight or respectively four required JMS queues overall. Even if you duplicate the set of integration flows to build up multiple pipelines, for example, to handle low, medium, and high priority scenarios, you only need a low number of JMS queues. These few JMS queues are easier to handle than the thousands of JMS queues of a typical migration use case.
 
 
 
@@ -44,7 +44,7 @@ In the pipeline concept, each step corresponds to an integration flow. There are
 
 In general, the integration flows are decoupled using JMS queues. This ensures that messages can be restarted and is a prerequisite for guaranteed delivery. Using pipelines, you can drastically reduce the number of required JMS queues.
 
-See [Pipeline Steps](pipeline-steps-f8e69f4.md).
+See [Fully Decoupled Pipeline](fully-decoupled-pipeline-f8e69f4.md).
 
 
 
@@ -52,7 +52,7 @@ See [Pipeline Steps](pipeline-steps-f8e69f4.md).
 
 Use the ProcessDirect adapter to call the scenario-specific integration flows. The adapter establishes fast and direct communication between integration flows by reducing latency and network overhead. A disadvantage of using the ProcessDirect adapter is that the connection between the integration flows is synchronous: If the integration flow called by ProcessDirect fails, it remains in the status `Failed` even if the calling integration flow can handle the retry of the message. Replacing the ProcessDirect connection with a JMS connection isn't an option as it would again result in a large number of JMS queues.
 
-You can overcome the ProcessDirect disadvantage in a way that balances handling resource limitations and operation costs. Monitoring and operation is improved by maintaining SAP headers and custom status. Furthermore, you can implement a retry handling of failed messages including dead letter queues in which the messages that have exceeded the maximum number of retries can be parked. See [Monitoring and Error Handling in the Pipeline Concept](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md).
+You can overcome the ProcessDirect disadvantage in a way that balances handling resource limitations and operation costs. Monitoring and operation are improved by maintaining SAP headers and custom status. Furthermore, you can implement a retry handling of failed messages including dead letter queues in which the messages that have exceeded the maximum number of retries can be parked. See [Monitoring and Error Handling in the Pipeline Concept](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md).
 
 
 
@@ -86,17 +86,21 @@ Besides the generic cases, the pipeline concept also considers the following spe
 
 -   By default, each scenario uses the same set of generic JMS queues. For scenarios in which you want to **control the outbound delivery**, you can define receiver-specific JMS queues. See [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
 
--   For Point-to-Point scenarios, you can skip the two pipeline steps `receiver determination` and `interface determination`. See [Point-to-Point Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_bdm_kc3_hcc).
+-   For Point-to-Point scenarios, you can skip the two pipeline steps `receiver determination` and `interface determination`. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+-   You can combine the receiver determination and the interface determination in a single XSLT. In this case, you can skip the `interface determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+-   For recipient list scenarios without interface split, you can skip the `interface determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+-   For interface split scenarios with only one receiver, you can skip the `receiver determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+-   You can set up so-called sender wildcard scenarios, which are scenarios in which the same configuration applies to different sender systems or different sender interfaces. See [Sender Wildcard Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_onv_nk5_g2c).
 
 See [Special Cases](special-cases-1606af9.md).
 
--   **[Pipeline Steps](pipeline-steps-f8e69f4.md "The pipeline concept works with a fixed sequence of integration flows, the pipeline
-		steps. ")**  
+-   **[Pipelines](pipelines-d3f428d.md "The pipeline concept works with a fixed sequence of integration flows, the pipeline
+		steps.")**  
 The pipeline concept works with a fixed sequence of integration flows, the pipeline steps.
 -   **[Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md "In the pipeline concept, most generic integration flows rely on the Partner Directory.
 		This topic discusses parameters in the Partner Directory that help to define the message
 		processing behavior and the XSLTs that are stored in the Partner Directory as binaries and
-		used to dynamically determine receivers and interfaces. ")**  
+		used to dynamically determine receivers and interfaces.")**  
 In the pipeline concept, most generic integration flows rely on the Partner Directory. This topic discusses parameters in the Partner Directory that help to define the message processing behavior and the XSLTs that are stored in the Partner Directory as binaries and used to dynamically determine receivers and interfaces.
 -   **[Script Collection for Pipeline Concept](script-collection-for-pipeline-concept-05d9f8d.md "Use the scripts collected in this section to read the Partner Directory.")**  
 Use the scripts collected in this section to read the Partner Directory.
@@ -108,6 +112,11 @@ Before you get started with the pipeline concept, consider a few special cases, 
 -   **[Monitoring and Error Handling in the Pipeline Concept](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md "Perform monitoring and error handling in the pipeline concept, for example by using
 		retry handling, message monitoring, and using the dead letter queue.")**  
 Perform monitoring and error handling in the pipeline concept, for example by using retry handling, message monitoring, and using the dead letter queue.
+-   **[Landscape Stages](landscape-stages-05cace1.md "Landscape stages allow you to run scenarios on different stages without changing the
+		Partner Directory configuration. Use it to automatically identify the landscape stage of
+		your tenant during runtime, map actual names to aliases, and maintain routing conditions for
+		integration scenarios.")**  
+Landscape stages allow you to run scenarios on different stages without changing the Partner Directory configuration. Use it to automatically identify the landscape stage of your tenant during runtime, map actual names to aliases, and maintain routing conditions for integration scenarios.
 -   **[Customizing the Pipeline Concept](customizing-the-pipeline-concept-aeb106f.md "You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or
 		define a different global maximum number of retries.")**  
 You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or define a different global maximum number of retries.

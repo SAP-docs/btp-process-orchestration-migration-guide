@@ -27,6 +27,10 @@ Get an overview of the main aspects of landscape, which are governance, business
 -   **[Check Connected Systems](check-connected-systems-9419834.md "One of the first steps in your migration journey is to evaluate is which systems are
 		currently connected to SAP Process Orchestration.")**  
 One of the first steps in your migration journey is to evaluate is which systems are currently connected to SAP Process Orchestration.
+-   **[Deployment Models](deployment-models-9d1b184.md "SAP Integration Suite offers different deployment models for integrating cloud and on-premises systems, the key deployment methods being
+		the full cloud deployment and the hybrid deployment with Edge Integration Cell. Both approaches are
+		designed to support the growing needs of businesses transitioning to a cloud-based or hybrid integration landscape.")**  
+SAP Integration Suite offers different deployment models for integrating cloud and on-premises systems, the key deployment methods being the **full cloud deployment** and the **hybrid deployment with Edge Integration Cell**. Both approaches are designed to support the growing needs of businesses transitioning to a cloud-based or hybrid integration landscape.
 -   **[Cloud Middleware](cloud-middleware-79980b3.md "Learn more about possible communications between Cloud Integration and an on-premise
 		system.")**  
 Learn more about possible communications between Cloud Integration and an on-premise system.

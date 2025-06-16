@@ -1,26 +1,24 @@
 <!-- loiof8e69f43059a44cdb891892f4ff083d8 -->
 
-# Pipeline Steps
+# Fully Decoupled Pipeline
 
-The pipeline concept works with a fixed sequence of integration flows, the pipeline steps.
+The fully decoupled pipeline consists of separate pipeline steps for the inbound processing, the receiver determination, the interface determination, and the outbound processing.
 
-You can find the generic integration flows, the corresponding script collection, and a set of templates for the scenario-specific integration flows in the integration package <code><a href="https://hub.sap.com/package/PIPipelineGenericIntegrationFlows/overview">Process Integration Pipeline - Generic Integration Flows &amp; Templates</a></code> on the [SAP Business Accelerator Hub](https://hub.sap.com/). The generic integration flows can be deployed on your tenant as they are, but you can also adapt them to your own needs. The scenario-specific integration flows can be created as copies of the templates. Note that the templates are not complete but function as examples. For example, you must add the end points as they aren't included, especially for templates with ProcessDirect. Copy or replicate the templates to use them in your system with your custom details.
+The following fixed sequence of integration flows makes up the pipeline steps of the fully decoupled pipeline:
 
-The following fixed sequence of integration flows makes up the pipeline steps:
+1.  [Inbound Processing \(Scenario-Specific\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_cfy_myk_31c): Handles the sender adapters.
 
-1.  [Inbound Processing \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_cfy_myk_31c): Handles the sender adapters.
+2.  [Inbound Processing \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_ryf_vyk_31c): Dispatches the messages to the inbound conversion and handles the retry of messages with inbound conversion errors.
 
-2.  [Inbound Processing \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_ryf_vyk_31c): Dispatches the messages to the inbound conversion and handles the retry of messages with inbound conversion errors.
+3.  [Conversion at Inbound \(Scenario-Specific\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_q1q_vyk_31c): Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
 
-3.  [Conversion at Inbound \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_q1q_vyk_31c)
+4.  [Receiver Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario.
 
-4.  [Receiver Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c): Determines the receivers in a content-based router or recipient list pattern scenario. Runs conversion at the Cloud Integration inbound such as JSON to XML conversion.
+5.  [Interface Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c): Determines the receiver interfaces in an interface split scenario.
 
-5.  [Interface Determination \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c): Determines the receiver interfaces in an interface split scenario.
+6.  [Outbound Processing \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_yqj_xyk_31c): Dispatches the messages to the message outbound and handles the retry of failed messages.
 
-6.  [Outbound Processing \(Generic\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_yqj_xyk_31c): Dispatches the messages to the message outbound and handles the retry of failed messages.
-
-7.  [Outbound Processing \(Scenario-Specific\)](pipeline-steps-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_e2p_xyk_31c): Handles the mappings and message outbound delivery.
+7.  [Outbound Processing \(Scenario-Specific\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_e2p_xyk_31c): Handles the mappings and message outbound delivery.
 
 
 > ### Note:  
@@ -49,6 +47,9 @@ The following message headers are defined:
 
 > ### Note:  
 > In SAP Process Orchestration, a scenario is uniquely defined using a combination of Sender Party, Sender System/Component, Sender Interface, Sender Interface Namespace, and, in some cases, Virtual Receivers. However, Sender Party, Sender Interface Namespace, and Virtual Receivers aren't used in Cloud Integration. Therefore, let's assume that the Sender System and Sender Interface sufficiently define an integration scenario.
+
+> ### Note:  
+> Optionally, depending on your scenario, you can directly create and maintain the header partnerID in the scenario-specific inbound processing flow holding the integration scenario name. The header partnerID is then passed to the next generic integration flow in the sequence of the pipeline where usually the partnerID is determined based on the sender information. However, if the partnerID is already prefilled, the partnerID determination step is skipped. This allows you to set up sender wildcard scenarios where for the same sender component and different sender interfaces, the same configuration scenario should be applied. See [Sender Wildcard Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_onv_nk5_g2c).
 
 Usually, you can set the message headers as constants since the integration flow is scenario-specific anyway. Depending on your use case, you can also fetch the information from the message payload or adapter-specific headers or properties.
 
@@ -100,7 +101,7 @@ The following screenshot is an example of a generic integration flow for inbound
 
 ## Conversion at Inbound \(Scenario-Specific\)
 
-The third integration flow is a scenario-specific integration flow that carries out message conversion at the Cloud Integration inbound. For example, if you want to migrate a scenario with a REST sender adapter and JSON to XML conversion, the JSON to XML conversion is done in this integration flow. Another example is a file sender adapter with flat file conversion option, for which the CSV to XML conversion is done here. Also, if you pick up a zipped file, you can perform the unzipping in the scenario-specific inbound conversion flow.
+The third integration flow is a scenario-specific integration flow that carries out message conversion at the Cloud Integration inbound. For example, if you want to migrate a scenario with a REST sender adapter and JSON to XML conversion, the JSON to XML conversion is done in this integration flow. Another example is a file sender adapter with a flat file conversion option, for which the CSV to XML conversion is done here. Also, if you pick up a zipped file, you can perform the unzipping in the scenario-specific inbound conversion flow.
 
 The scenario-specific integration flow is called by the second integration flow via the ProcessDirect adapter. If the conversion fails, the flow remains in status `Failed` because ProcessDirect connects synchronously. However, retrying the failed message is handled by the second integration flow. To mitigate the monitoring and error handling, you can define an exception subprocess as shown in the following example. In the exception subprocess, you must maintain the exchange property `SAP_MessageProcessingLogCustomStatus` to set a custom status. In this example, set the custom status value to `RetryViaParentFlow`, indicating that this failed message instance can be ignored. Ensure that the exception subprocess ends with an error end event. This way, the error is forwarded to the calling integration flow and the message isn't removed from the inbound JMS queue, but rather scheduled for a retry.
 
@@ -119,6 +120,9 @@ For this integration flow, the template `Pipeline Template Step03 - Inbound Conv
 The fourth integration flow, `Pipeline Generic Step04 - Receiver Determination`, is a generic integration flow that handles the receiver determination. Similarly, as the other generic integration flows, use the Partner Directory to dynamically configure the message processing.
 
 The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
+
+> ### Note:  
+> The generic receiver determination integration flow can now handle XSLT mappings that contain xpath conditions for both determining the list of receivers and the list of receiver interfaces. This way, you can bypass the generic interface determination integration flow which leads to an improved runtime behavior. See **Combined Receiver and Interface Determination in a Single XSLT** in [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
@@ -152,6 +156,9 @@ The following example shows what an XSLT mapping to execute the content-based ro
   </xsl:template>
 </xsl:stylesheet>
 ```
+
+> ### Note:  
+> If you want to define routing conditions based on headers or properties, see [Access Header and Properties in XSLT Mapping](https://help.sap.com/docs/integration-suite/sap-integration-suite/access-header-and-properties-in-xslt-mapping). More specifically, you can define routing conditions based on dynamic configuration parameters of the sender adapter or any other parameter defined in the scenario-specific inbound processing flow. To do so, pass those values to the generic integration flows using any header with the prefix `dc`.
 
 The following example shows the outcome when running the XSLT mapping:
 
@@ -226,6 +233,9 @@ The following is an example of an XSLT mapping to execute the routing condition 
   </xsl:template>
 </xsl:stylesheet>
 ```
+
+> ### Note:  
+> If you want to define routing conditions based on headers or properties, see [Access Header and Properties in XSLT Mapping](https://help.sap.com/docs/integration-suite/sap-integration-suite/access-header-and-properties-in-xslt-mapping). More specifically, you can define routing conditions based on dynamic configuration parameters of the sender adapter or any other parameter defined in the scenario-specific inbound processing flow. To do so, pass those values to the generic integration flows using any header with the prefix `dc`.
 
 The following is an example of the outcome of running the XSLT mapping:
 

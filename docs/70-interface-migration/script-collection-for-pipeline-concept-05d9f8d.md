@@ -4,414 +4,263 @@
 
 Use the scripts collected in this section to read the Partner Directory.
 
-The following scripts are part of the script collection `Pipeline Generic - Script Collection`:
+You can access the full script collection `Pipeline Generic - Script Collection` in the integration package [Process Integration Pipeline - Generic Integration Flows & Templates](https://hub.sap.com/package/PIPipelineGenericIntegrationFlows/scriptcollection) on the SAP Business Accelerator Hub.
 
--   [`attachAdditionalInformation`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_qdh_px2_j1c)
+The following table describes the scripts included in the script collection:
 
--   [`readInboundConversionFromPD`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_tf2_zx2_j1c)
 
--   [`readReceiverSpecificQueueFromPD`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_xzr_cy2_j1c)
+<table>
+<tr>
+<th valign="top">
 
--   [`readRetryHandlingFromPD`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_jjn_gy2_j1c)
+Script Name
 
--   [`reuseExtendedReceiverDetermination`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_ism_jy2_j1c)
+</th>
+<th valign="top">
 
--   [`readReceiverNotDeterminedFromPD`](script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_pmr_my2_j1c)
+Description
 
--   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_yjh_bh4_vbc">displayBulkIDs</a></code>
--   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_dp4_xj4_vbc">setIDocSenderInterface</a></code>
--   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_ly4_j13_hcc">determinePartnerID</a></code>
--   <code><a href="script-collection-for-pipeline-concept-05d9f8d.md#loio05d9f8d85d7945af8d610dca81375b43__section_ep3_y13_hcc">readBypassOptionFromPD</a></code>
+</th>
+</tr>
+<tr>
+<td valign="top">
 
+`addCustomHeaderProperties` 
 
+</td>
+<td valign="top">
 
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_qdh_px2_j1c"/>
+Use this script  to add custom header properties to the message processing log so you can search for message logs based on payload data.
 
-## attachAdditionalInformation
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-Use the following Groovy script `attachAdditionalInformation` to add information about the queue names to the message processing log if the message is parked in a dead letter queue. In addition, the log level is set to `DEBUG`.
+`attachAdditionalInformation` 
 
-```
-import com.sap.gateway.ip.core.customdev.util.Message 
-import java.util.HashMap 
-
-def Message processData(Message message) { 
+</td>
+<td valign="top">
 
-    // get queue names 
-    def propertyMap = message.getProperties() 
-    def incomingQueue = propertyMap.get("incomingQueue"); 
-    def deadLetterQueue = incomingQueue + '_DLQ'; 
+Use this script to add information about the queue names to the message processing log if the message is parked in a dead letter queue. In addition, the log level is set to `DEBUG`.
 
-    def messageLog = messageLogFactory.getMessageLog(message); 
-    if (messageLog != null) { 
-        def body = 'Maximum number of retries exceeded' 
-        body = body + '\nMessage removed from queue ' + incomingQueue + ' and sent to dead letter queue ' + deadLetterQueue; 
-    // add attachment to message processing log 
-        messageLog.addAttachmentAsString('Additional Information', body, 'text/plain'); 
-    // set log level to DEBUG at message level 
-        message.setHeader('SAP_MessageProcessingLogLevel', 'DEBUG'); 
-    } 
-    return message; 
-} 
-```
+</td>
+</tr>
+<tr>
+<td valign="top">
 
+`checkWellFormedXML` 
 
+</td>
+<td valign="top">
 
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_tf2_zx2_j1c"/>
+Use this script to check if the message body is in a well-formed XML format.
 
-## readInboundConversionFromPD
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-Use the following Groovy script `readInboundConversionFromPD` to check if an inbound conversion is needed by reading the corresponding ProcessDirect endpoint from the Partner Directory.
+`customInterfaceDetermination` 
 
-```
-import com.sap.gateway.ip.core.customdev.util.Message;
-import java.util.HashMap;
-import com.sap.it.api.pd.PartnerDirectoryService;
-import com.sap.it.api.ITApiFactory;
+</td>
+<td valign="top">
 
-def Message processData(Message message) {
-    
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null); 
-    if (service == null){
-        throw new IllegalStateException("Partner Directory Service not found");
-    }
-    
-    // get pid
-    def properties = message.getProperties(); 
-    def Pid = properties.get("partnerID");
-    if (Pid == null){
-        throw new IllegalStateException("Partner ID not found in sent message");   
-    }
-
-    // read the inbound conversion end point from the Partner Directory
-    def inbConvEndpoint = service.getParameter("InboundConversionEndpoint", Pid , String.class);
-    
-    // if the inbound conversion end point exists, create a new exchange property containing the end point
-    // otherwise, the exchange property is not created
-    message.setProperty("inbConvEndpoint", inbConvEndpoint ?: null);
-    
-    // create a new exchange property with value true or false depending on whether the end point exists
-    message.setProperty("inbConvBoolean", inbConvEndpoint ? 'true' : 'false');
+Use this script to check if a custom interface determination flow should be used by reading the corresponding ProcessDirect endpoint from the Partner Directory.
 
-    return message;
-}
-```
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_xzr_cy2_j1c"/>
-
-## readReceiverSpecificQueueFromPD
-
-Use the following Groovy script `readReceiverSpecificQueueFromPD` to read the outbound queue name from the Partner Directory if you need a receiver-specific queue.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message;
-import java.util.HashMap;
-import com.sap.it.api.pd.PartnerDirectoryService;
-import com.sap.it.api.ITApiFactory;
-
-def Message processData(Message message) {
-    
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null); 
-    if (service == null){
-        throw new IllegalStateException("Partner Directory Service not found");
-    }
-    
-    // get pid (pid equals SAP_Receiver)
-    def headers = message.getHeaders();
-    def Pid = headers.get("SAP_Receiver");
-    // throw exception if pid is missing
-    if (Pid == null){
-        throw new IllegalStateException("Partner ID not found in sent message");   
-    }
-    
-    // read the receiver-specific JMS queue from the Partner Directory
-    def receiverSpecificQueue = service.getParameter("ReceiverSpecificQueue", Pid , String.class);
-    
-    // if the receiver-specific queue exists, create a new exchange property containing the queue name
-    // otherwise, the exchange property is not created
-    message.setProperty("receiverSpecificQueueName", receiverSpecificQueue ?: null);
-    
-    // create a new exchange property with value true or false depending on whether the queue exists
-    message.setProperty("receiverSpecificQueueBoolean", receiverSpecificQueue ? 'true' : 'false');
-
-    return message;
-}
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_jjn_gy2_j1c"/>
-
-## readRetryHandlingFromPD
-
-Use the following Groovy script `readRetryHandlingFromPD` to read the maximum number of retries from the Partner Directory.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message;
-import java.util.HashMap;
-import com.sap.it.api.pd.PartnerDirectoryService;
-import com.sap.it.api.ITApiFactory;
-
-def Message processData(Message message) {
-    
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null); 
-    if (service == null){
-        throw new IllegalStateException("Partner Directory Service not found");
-    }
-    
-    // get pid
-    def properties = message.getProperties(); 
-    def Pid = properties.get("partnerID");
-    if (Pid == null){
-        throw new IllegalStateException("Partner ID not found in sent message");   
-    }
-
-    // read retry handling from the Partner Directory
-    def maxJMSRetries = service.getParameter("MaxJMSRetries", Pid , String.class);
-    
-    // if the value exists in the Partner Directory, create a new header holding the max number of retries incremented by 1
-    // otherwise, set the header to default, which is 5 (incremented by 1)
-    message.setHeader("maxJMSRetries", maxJMSRetries ? maxJMSRetries.toInteger() - 1 : 4);
-    
-    return message;
-}
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_ism_jy2_j1c"/>
-
-## reuseExtendedReceiverDetermination
-
-Use the following Groovy script `reuseExtendedReceiverDetermination` to check if an extended receiver determination mapping can be reused by reading the corresponding ProcessDirect endpoint from the Partner Directory.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message;
-import java.util.HashMap;
-import com.sap.it.api.pd.PartnerDirectoryService;
-import com.sap.it.api.ITApiFactory;
-
-def Message processData(Message message) {
-    
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null); 
-    if (service == null){
-        throw new IllegalStateException("Partner Directory Service not found");
-    }
-    
-    // get pid
-    def properties = message.getProperties(); 
-    def Pid = properties.get("partnerID");
-    if (Pid == null){
-        throw new IllegalStateException("Partner ID not found in sent message");   
-    }
-
-    // read the extended receiver determination end point from the Partner Directory
-    def reuseXRDEndpoint = service.getParameter("ReuseXRDEndpoint", Pid , String.class);
-    
-    // if the extended receiver determination end point exists, create a new exchange property containing the end point
-    // otherwise, the exchange property is not created
-    message.setProperty("reuseXRDEndpoint", reuseXRDEndpoint ?: null);
-    
-    // create a new exchange property with value true or false depending on whether the end point exists
-    message.setProperty("reuseXRDBoolean", reuseXRDEndpoint ? 'true' : 'false');
-    
-    return message;
-}
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_pmr_my2_j1c"/>
-
-## readReceiverNotDeterminedFromPD
-
-Use the following Groovy script `readReceiverNotDeterminedFromPD` to read the type of receiver-not-determined behavior from the Partner Directory if you're reusing an extended receiver determination mapping.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message;
-import java.util.HashMap;
-import com.sap.it.api.pd.PartnerDirectoryService;
-import com.sap.it.api.ITApiFactory;
-
-def Message processData(Message message) {
-    
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null); 
-    if (service == null){
-        throw new IllegalStateException("Partner Directory Service not found");
-    }
-    
-    // get pid
-    def properties = message.getProperties(); 
-    def Pid = properties.get("partnerID");
-    if (Pid == null){
-        throw new IllegalStateException("Partner ID not found in sent message");   
-    }
-
-    // read receiver not determined type from the Partner Directory
-    def receiverNotDeterminedType = service.getParameter("ReceiverNotDeterminedType", Pid , String.class);
-    
-    // if the value exists in the Partner Directory, assign the value to a new exchange property
-    // otherwise, set the property to default which is Error
-    message.setProperty("receiverNotDeterminedType", receiverNotDeterminedType ? receiverNotDeterminedType : 'Error');
-    
-    // depending on the type, read default receiver from the Partner Directory
-    if (receiverNotDeterminedType == 'Default') {
-        def receiverNotDeterminedDefault = service.getParameter("ReceiverNotDeterminedDefault", Pid , String.class);
-        if (receiverNotDeterminedDefault == null){
-            throw new IllegalStateException("Partner ID " + Pid + " not found or ReceiverNotDeterminedDefault parameter not found in the Partner Directory for the partner ID " + Pid);      
-        }
-        message.setProperty("receiverNotDeterminedDefault", receiverNotDeterminedDefault);
-    }
-    
-    return message;
-}
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_yjh_bh4_vbc"/>
-
-## displayBulkIDs
-
-Use the following Groovy script `displayBulkIDs` to display all IDoc numbers of an IDoc bulk message in the message monitor.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message 
-import org.w3c.dom.NodeList 
-
-def Message processData(Message message) { 
-    def nodes = message.getProperty('nodelistToHeader') as NodeList 
-    def headerName = message.getProperty('nodelistName') as String 
-    def messageLog = messageLogFactory.getMessageLog(message) 
-
-    for (i = 0; i < nodes.getLength(); i++) { 
-        messageLog?.addCustomHeaderProperty(headerName, nodes.item(i).getTextContent()) 
-    } 
-
-    return message 
-}
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_dp4_xj4_vbc"/>
-
-## setIDocSenderInterface
-
-Use the following Groovy script `setIDocSenderInterface` to concatenate the sender interface based on the IDoc control headers `MESTYP`, `IDOCTYP` and `CIMTYP`.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message; 
-import java.util.HashMap; 
-
-def Message processData(Message message) { 
-    // headers 
-    def map = message.getHeaders() 
-
-    // set sender interface name 
-    message.setHeader("SAP_SenderInterface", map.get("SAP_IDoc_EDIDC_MESTYP") + "." + map.get("SAP_IDoc_EDIDC_IDOCTYP") + (map.get("SAP_IDoc_EDIDC_CIMTYP") ? "." +map.get("SAP_IDoc_EDIDC_CIMTYP") : "")) 
-
-    return message; 
-} 
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_ly4_j13_hcc"/>
-
-## determinePartnerID
-
-Use the following Groovy script `determinePartnerID` to set the header partner ID either based on an alternative partner or as a combination of the sender component and the sender interface.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message; 
-import java.util.HashMap; 
-import com.sap.it.api.pd.PartnerDirectoryService; 
-import com.sap.it.api.ITApiFactory; 
-
-def Message processData(Message message) { 
-
-    // get headers 
-    def headers = message.getHeaders(); 
-    // get properties 
-    def properties = message.getProperties(); 
-     
-    // prep Alternative Partner 
-    String Agency = headers.get("SAP_Sender"); 
-    String Scheme = 'SenderInterface'; 
-    String AlternativePid = headers.get("SAP_SenderInterface"); 
-    String Pid; 
-  
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null);  
-        if (service == null){ 
-            throw new IllegalStateException("Partner Directory Service not found"); 
-    } 
- 
-    // Use alternative partner if maintained 
-    Pid = service.getPartnerId(Agency, Scheme, AlternativePid);    
-
-    // Otherwise use a combination of sender component and sender interface 
-    if (Pid == null){ 
-        Pid = Agency + '~' + AlternativePid; 
-    }      
-
-    // create new header holding the Partner ID 
-    message.setHeader("partnerID", Pid);  
-
-    return message; 
-}  
-```
-
-
-
-<a name="loio05d9f8d85d7945af8d610dca81375b43__section_ep3_y13_hcc"/>
-
-## readBypassOptionFromPD
-
-Use the following Groovy script `readBypassOptionFromPD` to check if the integration scenario follows the pattern Point-to-Point. If it does, the pipeline steps `receiver determination` and `interface determination` are skipped.
-
-```
-import com.sap.gateway.ip.core.customdev.util.Message; 
-import java.util.HashMap; 
-import com.sap.it.api.pd.PartnerDirectoryService; 
-import com.sap.it.api.ITApiFactory; 
-
-def Message processData(Message message) {   
-
-    def service = ITApiFactory.getApi(PartnerDirectoryService.class, null);  
-    if (service == null){ 
-        throw new IllegalStateException("Partner Directory Service not found"); 
-    }   
-
-    // get pid 
-    def headers = message.getHeaders(); 
-    def Pid = headers.get("partnerID"); 
-    String id; 
-    if (Pid == null){ 
-        throw new IllegalStateException("Partner ID not found in sent message");    
-    } 
-
-    // read receiverDetermination string parameter from the Partner Directory if any 
-    def receiverName = service.getParameter("receiverDetermination", Pid , String.class); 
-
-    // if the value exists, receiver and interface determination should be bypassed 
-    message.setProperty("p2pBoolean", receiverName ? 'true' : 'false'); 
-
-    // assign the value to the header SAP_Receiver 
-    message.setHeader("SAP_Receiver", receiverName ?: null); 
-
-    // read interfaceDetermination string parameter from the Partner Directory 
-    if (receiverName != null) { 
-        id = "interfaceDetermination_" + receiverName; 
-        def outboundEndpoint = service.getParameter(id, Pid , String.class); 
-        if (outboundEndpoint == null){ 
-            throw new IllegalStateException("Partner ID " + Pid + " not found or " + id + " parameter not found in the Partner Directory for the partner ID " + Pid);       
-        } 
-        message.setHeader("SAP_OutboundProcessingEndpoint", outboundEndpoint); 
-    } 
-    return message; 
-} 
-```
+`customReceiverDetermination` 
+
+</td>
+<td valign="top">
+
+Use this script to check if either a custom receiver determination flow or an extended receiver determination mapping should be used by reading the corresponding ProcessDirect endpoint from the Partner Directory.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`determinePartnerID` 
+
+</td>
+<td valign="top">
+
+Use this script  to set the header partner ID either based on an alternative partner or as a combination of the sender component and the sender interface.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`determinePartnerIDForXIInbound`
+
+</td>
+<td valign="top">
+
+Use this script for XI inbound scenarios to set the header partner ID, based on an alternative partner defined as a combination of the sender component, the sender interface and the sender interface namespace.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`displayBulkIDs` 
+
+</td>
+<td valign="top">
+
+Use this script  to display all IDoc numbers of an IDoc bulk message in the message monitor.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`logOutboundProcessingEndpoint` 
+
+</td>
+<td valign="top">
+
+Use this script to add outbound processing information to the pipeline processing log.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`mapMessageTypeToOperation` 
+
+</td>
+<td valign="top">
+
+Use this script to determine the service interface operation based on the message type.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`mapReceiverAliasToBusinessSystemName`
+
+</td>
+<td valign="top">
+
+Use this script to map the alias of the receiver system to the actual receiver business system name.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`PipelineLogger` 
+
+</td>
+<td valign="top">
+
+Use this script to add pipeline processing information to a header passed to the attachAdditionalInformation script.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readBypassOptionFromPD` 
+
+</td>
+<td valign="top">
+
+Use this script  to check if the integration scenario follows the pattern Point-to-Point. If it does, the pipeline steps `receiver determination` and `interface determination` are skipped.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readInboundConversionFromPD` 
+
+</td>
+<td valign="top">
+
+Use this script to check if an inbound conversion is needed by reading the corresponding ProcessDirect endpoint from the Partner Directory.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readInboundQueueFromPD`
+
+</td>
+<td valign="top">
+
+Use this script to read the scenario-specific inbound processing queue from the Partner Directory.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readReceiverNotDeterminedFromPD` 
+
+</td>
+<td valign="top">
+
+Use this script to read the type of receiver-not-determined behavior from the Partner Directory if you're reusing an extended receiver determination mapping.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readReceiverSpecificQueueFromPD` 
+
+</td>
+<td valign="top">
+
+Use this script to read the outbound queue name from the Partner Directory if you need a receiver-specific queue.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`readRetryHandlingFromPD` 
+
+</td>
+<td valign="top">
+
+Use this script to read the maximum number of retries from the Partner Directory.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`setIDocSenderInterface` 
+
+</td>
+<td valign="top">
+
+Use this script  to concatenate the sender interface based on the IDoc control headers `MESTYP`, `IDOCTYP` and `CIMTYP`.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`throwException`
+
+</td>
+<td valign="top">
+
+Use this script to throw an exception with the provided exception message.
+
+</td>
+</tr>
+</table>
 

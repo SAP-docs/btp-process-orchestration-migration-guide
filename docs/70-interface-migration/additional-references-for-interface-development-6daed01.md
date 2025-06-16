@@ -26,7 +26,7 @@ Description
 <tr>
 <td valign="top">
 
-[SFTP Poll-Enrich](https://blogs.sap.com/2021/05/12/cloud-integration-use-poll-enrich-with-sftp-adapter/) 
+[SFTP File Poll-Enrich](https://developers.sap.com/tutorials/ci-sftp-file-polling.html) 
 
 </td>
 <td valign="top">
@@ -36,7 +36,7 @@ Interface Development
 </td>
 <td valign="top">
 
-How to utilize this feature to enhance the SFTP Features
+Tutorial that describes how to migrate SFTP Advanced File Selection from SAP Process Orchestration to Cloud Integration
 
 </td>
 </tr>
@@ -54,23 +54,6 @@ Interface Development
 <td valign="top">
 
 Updated list on new enhancements and guidelines from SAP
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-[Asynchronous Messaging](https://blogs.sap.com/2017/06/19/cloud-integration-configure-asynchronous-messaging-with-retry-using-jms-adapter/) 
-
-</td>
-<td valign="top">
-
-Interface Development
-
-</td>
-<td valign="top">
-
-How to setup and configure asynchronous delivery on Cloud Integration
 
 </td>
 </tr>
@@ -111,24 +94,24 @@ This blog guides you through the migration of emails and file handling processes
 <tr>
 <td valign="top">
 
-[Guidelines to Migrate/Integrate Data Into Cloud from/to On-Premise Systems](https://blogs.sap.com/2019/07/19/explosion-of-sap-cloud-dataintegration-sap-tool-procurement-guidelines-to-migrateintegrate-data-into-cloud-fromto-on-premise-systems/) 
+[Migrate SOAP Axis \(WS-Security\) from SAP Process Orchestration to Cloud Integration](https://community.sap.com/t5/technology-blogs-by-sap/migrate-soap-axis-ws-security-from-sap-process-orchestration-po-to-cloud/ba-p/13936771)
 
 </td>
 <td valign="top">
 
-General
+WS-Security
 
 </td>
 <td valign="top">
 
-Comprehensive article discussing about Digital Transformation, SAP cloud solutions, and methodologies
+This blog guides you through the process of migrating SOAP Axis \(WS-Security\) from SAP Process Orchestration to Cloud Integration, using the SOAP receiver adapter as an example.
 
 </td>
 </tr>
 <tr>
 <td valign="top">
 
-[B2B Capabilities](https://blogs.sap.com/2018/01/14/b2b-capabilities-in-sap-cloud-platform-integration-part-1/) 
+[First release of B2B Integration Factory – Integration Packages and their Extensions](https://community.sap.com/t5/technology-blog-posts-by-sap/first-release-of-b2b-integration-factory-integration-packages-and-their/ba-p/13869848)
 
 </td>
 <td valign="top">
@@ -138,14 +121,14 @@ B2B
 </td>
 <td valign="top">
 
-Blog collections about B2B Integration
+The B2B integration factory community-based integration packages help extend SAP’s standard Trading Partner Management capabilities for B2B scenarios without modifying the standard content.
 
 </td>
 </tr>
 <tr>
 <td valign="top">
 
-[Partner Directory](https://blogs.sap.com/2017/07/25/cloud-integration-partner-directory-step-by-step-example/) 
+[Migrate Outbound B2B ASCX12 interfaces from SAP PI/PO to CI\(CPI\) using BIMA Package](https://community.sap.com/t5/technology-blog-posts-by-sap/migrate-outbound-b2b-ascx12-interfaces-from-sap-pi-po-to-ci-cpi-using-bima/ba-p/14099461)
 
 </td>
 <td valign="top">
@@ -155,7 +138,24 @@ B2B
 </td>
 <td valign="top">
 
-Blog about B2B Partner Directory
+This blog outlines how to migrate outbound B2B ASC X12 interfaces from SAP PI/PO to SAP Cloud Integration using the B2B interface migration accelerator – ASCX12. It enables you to reuse existing SAP PI/PO mappings by converting XML structures with XSLT and generic integration flows, streamlining EDI integration, and minimizing setup across multiple trading partners.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Migrate Inbound B2B ASCX12 interfaces from SAP PI/PO to CI\(CPI\) using BIMA Package](https://community.sap.com/t5/technology-blog-posts-by-sap/migrate-inbound-b2b-ascx12-interfaces-from-sap-pi-po-to-ci-cpi-using-bima/ba-p/14099425)
+
+</td>
+<td valign="top">
+
+B2B
+
+</td>
+<td valign="top">
+
+This blog outlines how to migrate inbound B2B ASC X12 interfaces from SAP PI/PO to SAP Cloud Integration using the B2B interface migration accelerator – ASCX12. It enables you to reuse existing SAP PI/PO mappings by converting XML structures with XSLT and generic integration flows, streamlining EDI integration, and minimizing setup across multiple trading partners.
 
 </td>
 </tr>

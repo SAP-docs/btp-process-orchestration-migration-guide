@@ -15,6 +15,9 @@ Get an overview of the scenarios and objects that are common scope of migration 
 		Test automation reduces risks to critical business processes and lowers the human effort to cover the test tasks of your
 		interfaces.")**  
 As part of the testing phase in every migration project, several products on the market help you to create automatic testing scenarios. Test automation reduces risks to critical business processes and lowers the human effort to cover the test tasks of your interfaces.
+-   **[Migrating B2B Interfaces](migrating-b2b-interfaces-fc315dc.md "Learn how to migrate B2B interfaces from SAP Process Integration and SAP Process
+		Orchestration to SAP Integration Suite.")**  
+Learn how to migrate B2B interfaces from SAP Process Integration and SAP Process Orchestration to SAP Integration Suite.
 -   **[Migrating Proxy Interfaces](migrating-proxy-interfaces-dfaee7b.md "When working with ABAP proxies in the context of SAP Process Orchestration, you need to follow certain steps to ensure successful
 		integration. The service interfaces are defined in the Enterprise Services Repository (ESR), which then generates the ABAP objects using the
 		SPROXY transaction on the SAP side.")**  

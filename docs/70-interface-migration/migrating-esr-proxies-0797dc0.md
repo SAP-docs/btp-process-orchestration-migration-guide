@@ -4,6 +4,9 @@
 
 Migrate existing ESR proxies from the Enterprise Services Repository \(ESR\) to the Metadata Repository \(MDR\).
 
+> ### Note:  
+> As long as Cloud Integration doesn't support the generation and re-generation of ABAP proxies, SAP recommends retaining your on-premise ESR in SAP Process Orchestration for this specific use case. While it's technically possible to migrate existing proxies to the MDR on SAP Integration Suite, this approach comes with functional restrictions and should be carefully evaluated. If you want to proceed despite the limitations, the following topic outlines the available options for migrating to the MDR.
+
 Use transaction *SPXNMIG* and report *SPROX\_MDR\_MIGRATION* to migrate existing ESR proxies to the MDR. The web services are then available locally in the backend system where they can be changed and extended.
 
 > ### Note:  
@@ -62,7 +65,7 @@ The following objects cannot be migrated and are therefore not displayed in the 
 
 Additionally, **inline types** cannot be migrated to the MDR automatically. You can migrate them manually by using one of the following options:
 
--   Change inline types to global types in the ESR and regenerating them to become global types. Instead of defining dependent elements inline, you need to create these elements separately and refer to them within the parent element. The following examples show the difference between an inline type and a global type:
+-   Change inline types to global types in the ESR and regenerate them to become global types. Instead of defining dependent elements inline, you need to create these elements separately and refer to them within the parent element. The following examples show the difference between an inline type and a global type:
 
     -   For the **inline type**, all XSD elements are contained within one sequence:
 

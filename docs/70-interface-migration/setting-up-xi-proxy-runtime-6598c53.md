@@ -289,7 +289,9 @@ You can also implement a router integration flow to receive multiples messages i
     
 9.  Finally, if you use the Cloud Integration runtime and no SLD business system is connected to your SAP system, verify that an entry in table `LCRT_CLNTCACHE` represents the business system of your SAP system.
 
-    You can do so by running transaction *SE16N* and maintaining an entry like the following:
+    If the business system name isn't represented correctly, use the report `SXMS_BS_CACHE` to create or update entries in `LCRT_CLNTCACHE`.
+
+    Execute the report by running transaction *SE38* and maintain an entry like the following:
 
 
     <table>
@@ -350,5 +352,10 @@ You can also implement a router integration flow to receive multiples messages i
     </table>
     
     You only have to perform this action once.
+
+    > ### Note:  
+    > During the lifetime of the current client, the business system name of the technical system doesn't change. If the SLD can't be reached the first time it's called on a given day, problems in the application can lead to a system standstill.
+    > 
+    > To prevent this, **deactivate the daily SLD access** using report **SXMS\_BS\_CACHE**. This way, the business system name is always read from the table `LCRT_CLNTCACHE`. See SAP Note [3547972](https://me.sap.com/notes/3547972).
 
 

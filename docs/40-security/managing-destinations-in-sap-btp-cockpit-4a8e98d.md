@@ -2,7 +2,7 @@
 
 # Managing Destinations in SAP BTP Cockpit
 
-Destinations are key building blocks in SAP BTP and are used to define connections for outbound communication from your application to remote systems. These remote systems can be on-premise or in the cloud. Typically, Cloud Integration can directly access the virtual systems exposed by the Cloud Connector, except for the RFC channel. In Cloud Integration, for the RFC channel it’s necessary to configure a destination in SAP BTP Cockpit.
+Destinations are key building blocks in SAP BTP and are used to define connections for outbound communication from your application to remote systems. These remote systems can be on-premise or in the cloud. Typically, Cloud Integration can directly access the virtual systems exposed by the Cloud Connector, except for the RFC channel. In Cloud Integration \(and for its Edge Integration Cell runtime\), for the RFC channel it’s necessary to configure a destination in SAP BTP Cockpit. See [RFC Destination](https://help.sap.com/docs/integration-suite/sap-integration-suite/creating-rfc-destination?version=CLOUD).
 
 Similar to destinations in SAP BTP, in SAP Process Orchestration, for some communication channels you can maintain RFC/HTTP destinations to reuse them as much as necessary, for example, when you want to connect SAP Process Orchestration to your ECC receiver.
 

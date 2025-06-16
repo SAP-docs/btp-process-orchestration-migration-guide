@@ -10,64 +10,47 @@ The following extensions and standard customizations are supported:
 
 -   You can implement your own custom exception handling. See [Custom Exception Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_pm1_ggs_5bc).
 
+-   You can implement your own custom receiver determination instead of performing the routing conditions in an XSLT retrieved from the Partner Directory. See [Custom Receiver Determination](customizing-the-pipeline-concept-aeb106f.md#loioaeb106f049144c71a0b7814a2ffedc3f__section_jqy_xh2_pdc).
+-   You can implement your own custom interface determination instead of performing the interface split conditions in an XSLT retrieved from the Partner Directory. See [Custom Interface Determination](customizing-the-pipeline-concept-aeb106f.md#loioaeb106f049144c71a0b7814a2ffedc3f__section_tbp_vh2_pdc).
 -   You can configure the message end event type in case messages are stored in a dead letter queue. The default is *Escalated*. See [Standard Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
 
 -   You can configure a pipeline JMS queue prefix, which simplifies configuring queue names if you create another set of generic integration flows.
 
 -   As all adapter parameters of the generic integration flows have been externalized, you can configure their adapters.
 
+-   You can pass a list of name and value pairs to the generic integration flows to create custom header properties. This way, you can search for message processing logs based on payload data. See [Custom Header Properties](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_c4h_dkz_zcc).
 
-Depending on your needs, you can modify the provided standard package. For example, you can customize the identification of scenarios, the status of the ProcessDirect flow, and the retry handling.
+-   You can pass any header starting with the prefix `dc` to the generic integration flows as dynamic configuration parameters. In addition to the payload-based routing conditions, this allows you to support header-based routing conditions.
 
-> ### Note:  
-> If you modify the standard integration flows, you won't receive any updates SAP provides for the pipeline concept package.
+-   You can customize the options of determining the partner ID. By default, only the recommended option using an alternative partner is supported. For compatibility reasons, you can switch on the fallback option using a combination of sender component and sender interface separated by a tilde. See [Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md).
 
-
-
-<a name="loioaeb106f049144c71a0b7814a2ffedc3f__section_dfx_r1f_j1c"/>
-
-## Identifying a Scenario
-
-In SAP Process Orchestration, a scenario is uniquely defined via party, sender component, sender interface, namespace, and virtual receiver. In the pipeline concept, a scenario is identified using only sender component and sender interface. Depending on your specific requirements, you can extend the scenario definition. For example, change the partner ID to fetch the Partner Directory information accordingly.
-
-
-
-<a name="loioaeb106f049144c71a0b7814a2ffedc3f__section_wzs_t1f_j1c"/>
-
-## Status of ProcessDirect Integration Flows
-
-If a scenario-specific integration flow that's called via the ProcessDirect adapter fails, the exception is fetched in an exception subprocess. In this exception subprocess, the custom status is set and the integration flow ends with an error end event. This ensures that the generic integration flow calling the scenario-specific integration flow keeps the message in the inbound queue until it's eventually retried. Furthermore, in the message monitor, the message processing log of the scenario-specific flow turns into status *Failed* with custom status *RetryViaParentFlow*.
-
-If you prefer the scenario-specific integration flow \(or child flow\) to be set to *Completed* instead of *Failed* because the retry is handled by calling the generic integration flow \(or parent flow\) anyway, you can change the child flow's exception subprocess as follows:
-
-1.  Switch the *error end event* with an *end event*.
-
-2.  Set a header such as `error_occured` with value `true`. The header is then passed to the parent flow, showing that an error occurred in the child flow.
-
-3.  In the parent flow, add a router after the request reply step that checks for the `error_occured` value, and, if `true`, raises an exception. Otherwise, the message in the parent flow isn't retried.
-
-
-For a similar scenario, see [Handle Exceptions in Dependent Integration Flows](https://help.sap.com/docs/integration-suite/sap-integration-suite/handle-exceptions-in-dependent-integration-flows).
-
-
-
-<a name="loioaeb106f049144c71a0b7814a2ffedc3f__section_sxr_51f_j1c"/>
-
-## Retry Handling
-
-For errors occurring in message processing, you can define a **scenario-specific maximum number of retries**. By default, if no such value is defined in the Partner Directory for the specific scenario, the number of retries is **5**.
-
-You can change the global setting to any other value by adapting the Groovy script `readRetryHandlingFromPD`. In the following example, the default value is `10`.
+> ### Caution:  
+> Depending on your needs, you can modify the provided standard package. However, if you modify the standard integration flows, you won't receive any updates SAP provides for the pipeline concept package.
 
 > ### Note:  
-> Since the header `SAPJMSRetries` is incremented after the retry, you must increment the `maxJMSRetries` by 1 to achieve 10 retries.
+> If the message body is not in XML format, you can use header-based routing conditions instead of xpath conditions in the XSLT mapping. Still, the XSLT runtime expects an XML body - otherwise it runs into an error. To avoid a processing error, a dummy XML body is defined right before running the XSLT and the original body is retrieved afterwards.
 
-```
-    // read retry handling from the Partner Directory
-    def maxJMSRetries = service.getParameter("MaxJMSRetries", Pid , String.class);
-    
-    // if the value exists in the Partner Directory, create a new header holding the max number of retries incremented by 1
-    // otherwise, set the header to default which is 10
-    message.setHeader("maxJMSRetries", maxJMSRetries ? maxJMSRetries.toInteger() - 1 : '9');
-```
+
+
+<a name="loioaeb106f049144c71a0b7814a2ffedc3f__section_jqy_xh2_pdc"/>
+
+## Custom Receiver Determination
+
+As an alternative to the standard receiver determination based on an XSLT from the Partner Directory, you can implement your own custom receiver determination. The generic Receiver Determination integration flow supports a custom exit you can use to run your own custom logic without changing the delivered generic integration flows. To do so, you must implement a separate scenario-specific integration flow that's called instead of the standard receiver determination.
+
+To enable the custom receiver determination for your scenario, define a Partner Directory entry with object ID `CustomXRDEndpoint` that points to the `ProcessDirect` endpoint of the scenario-specific custom receiver determination flow.
+
+You can either create your custom receiver determination flow from scratch or use the provided integration flow `Pipeline Template Step04 - Custom Receiver Determination` as template. The template contains the schema Receivers as local reference. The generic Receiver Determination integration flow expects an XML message containing the list of receivers \(and eventually the list of receiver interfaces\) in the format of the schema Receivers as response from the custom receiver determination. You can use a transformation program of your choice to create such an XML message. For example, you can create a message mapping or a Groovy script.
+
+
+
+<a name="loioaeb106f049144c71a0b7814a2ffedc3f__section_tbp_vh2_pdc"/>
+
+## Custom Interface Determination
+
+As an alternative to the standard interface determination based on an XSLT from the Partner Directory, you can implement your own custom interface determination. The generic Interface Determination integration flow supports a kind of custom exit that you can use to run your own custom logic without changing the delivered generic integration flows. To do so, you must implement a separate integration flow that's called instead of the standard interface determination.
+
+To enable the custom interface determination for your scenario, you need to define a Partner Directory entry with object ID `CustomXIDEndpoint` that points to the `ProcessDirect` endpoint of the scenario-specific custom interface determination flow.
+
+You can either create your custom interface determination flow from scratch or use the provided integration flow `Pipeline Template Step05 - Custom Interface Determination` as template. The template contains the schema Interfaces as local reference. The generic Interface Determination integration flow expects an XML message containing the list of interfaces in the format of the schema Interfaces as response from the custom interface determination. You can use a transformation program of your choice to create such an XML message. For example, you can create a message mapping or a Groovy script.
 

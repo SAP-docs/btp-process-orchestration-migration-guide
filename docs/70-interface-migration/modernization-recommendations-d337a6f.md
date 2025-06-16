@@ -16,6 +16,8 @@ The following modernization recommendations are covered, sorted by area:
 
     -   Replace custom interfaces with predelivered packages
 
+    -   Replace IDOCs with SOAP/OData APIs or Business Events
+
 
 -   [Integration Style](modernization-recommendations-d337a6f.md#loiod337a6f0d324405f9ef0c410fd0d3739__section_xqx_v5v_hbc):
 
