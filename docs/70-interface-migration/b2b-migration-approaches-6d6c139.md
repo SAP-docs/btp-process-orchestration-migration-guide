@@ -46,7 +46,7 @@ Scenarios with messages foreseen for frequent changes and the module Trading Par
 -   **[Migration to Cloud Integration](migration-to-cloud-integration-8e2cbe0.md "Learn how to migrate your B2B scenarios to Cloud Integration use cases that are based on
 		sample scenarios.")**  
 Learn how to migrate your B2B scenarios to Cloud Integration use cases that are based on sample scenarios.
--   **[Migration to Trading Partner Management, using Integration Advisor](migration-to-trading-partner-management-using-integration-advisor-0c7c320.md "Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use
+-   **[Migration to Trading Partner Management, Using Integration Advisor](migration-to-trading-partner-management-using-integration-advisor-0c7c320.md "Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use
 		of Integration Advisor.")**  
 Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use of Integration Advisor.
 
@@ -55,5 +55,5 @@ Learn how to migrate your B2B scenarios to Trading Partner Management, with part
 
 [Migration to Cloud Integration](migration-to-cloud-integration-8e2cbe0.md "Learn how to migrate your B2B scenarios to Cloud Integration use cases that are based on sample scenarios.")
 
-[Migration to Trading Partner Management, using Integration Advisor](migration-to-trading-partner-management-using-integration-advisor-0c7c320.md "Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use of Integration Advisor.")
+[Migration to Trading Partner Management, Using Integration Advisor](migration-to-trading-partner-management-using-integration-advisor-0c7c320.md "Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use of Integration Advisor.")
 

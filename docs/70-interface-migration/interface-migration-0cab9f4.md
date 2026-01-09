@@ -5,8 +5,8 @@
 Learn about the different aspects involved in migrating your interfaces from SAP Process Orchestration to SAP Integration Suite.
 
 -   **[Interface Migration Strategy](interface-migration-strategy-46c8a36.md "When migrating from SAP Process Orchestration to SAP Integration Suite on Cloud Foundry,
-		there are different options and strategies for the migration process itself.")**  
-When migrating from SAP Process Orchestration to SAP Integration Suite on Cloud Foundry, there are different options and strategies for the migration process itself.
+		there are different options and strategies for the migration process.")**  
+When migrating from SAP Process Orchestration to SAP Integration Suite on Cloud Foundry, there are different options and strategies for the migration process.
 -   **[Scenario and Object Assessment](scenario-and-object-assessment-1e83249.md "Get an overview of the scenarios and objects that are common scope of migration
 		projects, and learn about the coverage aspects between the two solutions, SAP Process
 		Orchestration and Cloud Integration.")**  

@@ -2,7 +2,7 @@
 
 # Introduction to SAP Integration Suite
 
-Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API Management, Open Connectors, and Integration Advisor.
+Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API Management, Integration Advisor, and Event Mesh.
 
 
 
@@ -16,11 +16,11 @@ SAP Integration Suite is an open and enterprise-grade integration platform that 
 
 **Key Highlights**
 
--   Leader in the Gartner 2020 Magic Quadrant™ for EiPaaS solutions
+-   SAP recognized as a Leader in the 2025 Gartner® Magic Quadrant™ for Integration Platform as a Service for the 5th consecutive time
 
 -   Simplified integrations with capabilities of Cloud Integration, API Management, Integration Advisor, AI-based development, SAP Integration Solution Advisory Methodology, the SAP Business Accelerator Hub, Cloud Connector, and Open Connectors for more than 170 non-SAP applications
 
--   Time-to-live is accelerated with 2200+ pre-built integrations, 2500 APIs, 160 business events
+-   Time-to-live is accelerated with 3,400+ pre-built integrations, 4000+ APIs, and 479 business events
 
 -   Modernization of integrations supported integration use cases/styles: cloud to cloud, cloud to ground, A2A, B2B/G, API-driven, event-driven
 
@@ -33,9 +33,9 @@ SAP Integration Suite is an open and enterprise-grade integration platform that 
 
 ## Capabilities of SAP Integration Suite
 
-![](images/Integration_Suite_Overview_1e7aa74.png)
+![](images/Capabilities_of_SAP_Integration_Suite_55f37fd.png)
 
-SAP Integration Suite has four main capabilities: Cloud Integration, API Management, Open Connectors, and Integration Advisor.
+SAP Integration Suite has four main capabilities: Cloud Integration, API Management, Event Mesh and Integration Advisor.
 
 **[Cloud Integration](https://help.sap.com/viewer/product/CLOUD_INTEGRATION/Cloud/en-US)**
 
@@ -49,9 +49,9 @@ Since Cloud Integration covers the majority of the capabilities provided by SAP 
 
 The SAP API Management capability allows you to publish, promote, oversee, and secure APIs in a scalable environment. SAP API Management technology helps you share digital assets and enable developer communities to consume these assets in new channels, devices, and user interfaces.
 
-**[Open Connectors](https://help.sap.com/viewer/product/OPEN_CONNECTORS/Cloud/en-US)** 
+**[Event Mesh](https://help.sap.com/docs/SAP_EM?version=Cloud)** 
 
-A third key capability is SAP Open Connectors, which provides out-of-the-box capabilities to connect to over 170 non-SAP services and applications on the market today. The number of standard connectors is growing and can be supplemented by the implementation of bespoke connectors. Once a particular Open Connector instance has been configured, it can be consumed in a homogeneous way within either Cloud Integration or API Management.
+This capability enables applications to exchange information asynchronously in real time through a network of event brokers, supporting event-driven architectures across distributed landscapes. It allows systems to publish and consume business events from SAP and non-SAP sources, ensuring reliable and decoupled communication. Operating across hybrid, multi-cloud, and edge environments, it supports scalable event processing and responsiveness. By propagating events instantly, it keeps systems and users informed of critical changes in business data. It also provides tools to manage, monitor, and visualize event flows across complex enterprise ecosystems.
 
 **[Integration Advisor](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6b9fe2d753534bebadcfa9080228bd94.html)** 
 
@@ -62,6 +62,6 @@ The final key capability is SAP Integration Advisor, a machine learning-based de
 		Orchestration. Here are a few significant points that highlight the value proposition of SAP
 		Integration Suite compared to SAP Process Orchestration.")**  
 SAP Integration Suite is a multi-cloud SaaS solution that offers a number of significant advantages over an on-premise offering like SAP Process Integration and SAP Process Orchestration. Here are a few significant points that highlight the value proposition of SAP Integration Suite compared to SAP Process Orchestration.
--   **[Transition to SAP Integration Suite](transition-to-sap-integration-suite-0efebfb.md "Review the approaches you can use to transition to SAP Integration Suite.")**  
-Review the approaches you can use to transition to SAP Integration Suite.
+-   **[Transition to SAP Integration Suite](transition-to-sap-integration-suite-0efebfb.md "Review the process for transitioning to SAP Integration Suite.")**  
+Review the process for transitioning to SAP Integration Suite.
 

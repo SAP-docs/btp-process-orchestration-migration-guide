@@ -36,7 +36,7 @@ See [Inbound Processing \(Scenario-Specific\)](https://help.sap.com/docs/migrati
 
 ## Integrated Messaging Runtime Async \(Generic\)
 
-The second integration flow in the sequence of flows, `Pipeline Generic Step02 - Integrated Messaging Runtime Async`, is a generic integration flow, which means it’s used across all integration scenarios and only must be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
+The second integration flow in the sequence of flows, `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Async` within the integration package **Cloud Integration Pipeline - Generic Pipelines**, is a generic integration flow, which means it’s used across all integration scenarios and only must be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
 
 The generic asynchronous integrated messaging runtime integration flow reads the messages from the first JMS queue \(by default `PIPX01`\). It then passes the messages to a scenario-specific integration flow to run scenario-specific inbound conversion steps like a JSON to XML conversion or conversion steps of the adapter module chain if needed.
 
@@ -44,12 +44,10 @@ The information about whether a conversion is needed is stored in the Partner Di
 
 After the successful conversion, the message is passed to the next flow step in the integration flow to determine the list of receivers and receiver interfaces. If no conversion is needed, the message is directly passed to the receiver and interface determination step without calling any scenario-specific inbound conversion.
 
-To determine the receivers and receiver interfaces, the XSLT mapping that contains the content-based routing xpath conditions is read from the Partner Directory and then executed.
+To determine the receivers and receiver interfaces, the XSLT mapping that contains the content-based routing XPath conditions is read from the Partner Directory and then executed.
 
 > ### Note:  
-> The generic integrated messaging runtime integration flow can handle only XSLT mappings that contain xpath conditions for both determining the list of receivers and the list of receiver interfaces. See *Combined Receiver and Interface Determination in a Single XSLT* in [Special Cases: Bypass Options](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc). For this reason, the special case in which you can reuse an existing extended receiver determination mapping is not supported.
-> 
-> However, custom receiver determination is supported as long as you provide an XML message containing both the list of receivers and the list of receiver interfaces. See [Custom Receiver Determination](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/customizing-pipeline-concept#custom-receiver-determination).
+> The generic integrated messaging runtime integration flow can handle only XSLT mappings that contain XPath conditions for both determining the list of receivers and the list of receiver interfaces. See *Combined Receiver and Interface Determination in a Single XSLT* in [Special Cases: Bypass Options](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc). For this reason, the special case in which you can reuse an existing extended receiver determination mapping is only supported using custom receiver determination and if you provide an XML message containing both the list of receivers and the list of receiver interfaces. See [Custom Receiver Determination](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/customizing-pipeline-concept#custom-receiver-determination).
 
 > ### Note:  
 > If you want to define routing conditions based on headers or properties, see [Access Header and Properties in XSLT Mapping](https://help.sap.com/docs/integration-suite/sap-integration-suite/access-header-and-properties-in-xslt-mapping). More specifically, you can define routing conditions based on dynamic configuration parameters of the sender adapter or any other parameter defined in the scenario-specific inbound processing flow. To do so, pass those values to the generic integration flows using any header with the prefix `dc`.
@@ -159,7 +157,7 @@ See [Conversion at Inbound \(Scenario-Specific\)](https://help.sap.com/docs/migr
 
 ## Outbound Processing \(Generic\)
 
-The fourth integration flow in the sequence of flows, `Pipeline Generic Step06 - Outbound Processing`, is a generic integration flow. It dispatches the messages to the right scenario-specific outbound processing and handles the retry if outbound conversion errors occur. It's identical to the sixth integration flow in the sequence of the fully decoupled pipeline.
+The fourth integration flow in the sequence of flows, `Pipeline v2 Generic Step06 - Outbound Processing` within the integration package **Cloud Integration Pipeline - Generic Outbound**, is a generic integration flow. It dispatches the messages to the right scenario-specific outbound processing and handles the retry if outbound conversion errors occur. It's identical to the sixth integration flow in the sequence of the fully decoupled pipeline.
 
 > ### Note:  
 > Steps four and five of the fully decoupled pipeline are skipped.

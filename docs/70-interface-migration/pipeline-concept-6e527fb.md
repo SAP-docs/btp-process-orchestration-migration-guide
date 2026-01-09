@@ -20,7 +20,7 @@ While you’re flexible in orchestrating the message flows in Cloud Integration,
 
 Use the pipeline concept either as an alternative approach or as an addition to the individual migration of single integration scenarios supported by the [migration tooling](https://help.sap.com/docs/integration-suite/sap-integration-suite/migration-tooling) within SAP Integration Suite or other migration tools by partners.
 
-The applicability of the pipeline concept depends on the number and types of your integration scenarios. If you only want to migrate a few integration scenarios to Cloud Integration, it can be easier to create individual integration flows for each of your original integration scenarios. If you have a **large number of integration scenarios**, the pipeline concept can speed up the migration project and reduce effort and cost, for example, for operating and monitoring your integration scenarios in the Cloud Integration.
+The applicability of the pipeline concept may depend on the number and types of your integration scenarios. If you only want to migrate a few integration scenarios to Cloud Integration, it can be easier to create individual integration flows for each of your original integration scenarios. If you have a **large number of integration scenarios**, the pipeline concept can speed up the migration project and reduce effort and cost, for example, for operating and monitoring your integration scenarios in the Cloud Integration. However, even if you only have a few integration scenarios, with the pipeline concept you can handle your scenarios in a common way and leverage its common error handling and restart capabilities.
 
 
 
@@ -66,7 +66,7 @@ See [Using the Partner Directory in the Pipeline Concept](using-the-partner-dire
 
 ### XSLT Mappings
 
-XSLT mappings are used to carry out the receiver determination and interface split pipeline steps. The idea comes from the extended receiver determination capability in SAP Process Orchestration, which allows you to run an operation mapping to determine your receivers in a content-based router or recipient list pattern. XSLT mappings simplify the integration flow models of the receiver determination and interface split: Instead of a combination of multicast branches and multiple routers for all your content-based router xpath expressions, which complicates your integration flow model, simply run the xpath expressions within an XSLT mapping. This makes the model more neat and easier to read. Additionally, the concept uses XSLT instead of graphical message mapping because the Partner Directory supports XSLT mappings. This way, the usage of XSLT in combination with the Partner Directory contributes to the reduction of the number of required JMS queues.
+XSLT mappings are used to carry out the receiver determination and interface split pipeline steps. The idea comes from the extended receiver determination capability in SAP Process Orchestration, which allows you to run an operation mapping to determine your receivers in a content-based router or recipient list pattern. XSLT mappings simplify the integration flow models of the receiver determination and interface split: Instead of a combination of multicast branches and multiple routers for all your content-based router XPath expressions, which complicates your integration flow model, simply run the XPath expressions within an XSLT mapping. This makes the model more neat and easier to read. Additionally, the concept uses XSLT instead of graphical message mapping because the Partner Directory supports XSLT mappings. This way, the usage of XSLT in combination with the Partner Directory contributes to the reduction of the number of required JMS queues.
 
 See [XSLT Mappings](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_thd_scz_31c).
 
@@ -78,10 +78,12 @@ See [XSLT Mappings](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.
 
 Besides the generic cases, the pipeline concept also considers the following special scenarios:
 
--   For scenarios in which **sender systems connect to Cloud Integration via the XI message protocol**, you can use a generic inbound integration flow that acts as one single entry point for XI proxy inbound scenarios. See [XI Sender Adapter](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_vcg_m1f_j1c).
+-   For scenarios in which **sender systems connect to Cloud Integration using the XI message protocol**, you can use a generic inbound integration flow that acts as one single entry point for XI proxy inbound scenarios. See [XI Sender Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_vcg_m1f_j1c).
 
--   For scenarios in which **sender systems connect to Cloud Integration via the IDoc sender adapter**, you can use a generic inbound integration flow that acts as one single entry point for IDoc inbound scenarios. See [IDoc Sender Adapter](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_tjw_z3f_j1c).
+-   For scenarios in which **sender systems connect to Cloud Integration using the IDoc sender adapter**, you can use a generic inbound integration flow that acts as one single entry point for IDoc inbound scenarios. See [IDoc Sender Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_tjw_z3f_j1c).
 
+-   For scenarios in which **Cloud Integration connects to receiver systems using the XI message protocol**, you can use a generic XI outbound integration flow. See [XI Receiver Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_kjy_1jf_j1c).
+-   For scenarios in which **Cloud Integration connects to receiver systems using the IDoc message protocol**, you can use a generic IDoc outbound integration flow. See [IDoc Receiver Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_idoc_receiver_adapter).
 -   If your integration scenario on SAP Process Orchestration uses the **extended receiver determination**, you can reuse the receiver determination mapping instead of the XSLT mapping. See [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c).
 
 -   By default, each scenario uses the same set of generic JMS queues. For scenarios in which you want to **control the outbound delivery**, you can define receiver-specific JMS queues. See [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
@@ -91,24 +93,26 @@ Besides the generic cases, the pipeline concept also considers the following spe
 -   For recipient list scenarios without interface split, you can skip the `interface determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
 -   For interface split scenarios with only one receiver, you can skip the `receiver determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
 -   You can set up so-called sender wildcard scenarios, which are scenarios in which the same configuration applies to different sender systems or different sender interfaces. See [Sender Wildcard Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_onv_nk5_g2c).
+-   You can set up scenarios using either sender parties or receiver parties.
 
 See [Special Cases](special-cases-1606af9.md).
 
 -   **[Pipelines](pipelines-d3f428d.md "The pipeline concept works with a fixed sequence of integration flows, the pipeline
 		steps.")**  
 The pipeline concept works with a fixed sequence of integration flows, the pipeline steps.
--   **[Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md "In the pipeline concept, most generic integration flows rely on the Partner Directory.
-		This topic discusses parameters in the Partner Directory that help to define the message
-		processing behavior and the XSLTs that are stored in the Partner Directory as binaries and
-		used to dynamically determine receivers and interfaces.")**  
+-   **[Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md "In the pipeline concept, most generic integration flows rely on the Partner
+		Directory. This topic discusses parameters in the Partner Directory that help to define the
+		message processing behavior and the XSLTs that are stored in the Partner Directory as
+		binaries and used to dynamically determine receivers and interfaces.")**  
 In the pipeline concept, most generic integration flows rely on the Partner Directory. This topic discusses parameters in the Partner Directory that help to define the message processing behavior and the XSLTs that are stored in the Partner Directory as binaries and used to dynamically determine receivers and interfaces.
--   **[Script Collection for Pipeline Concept](script-collection-for-pipeline-concept-05d9f8d.md "Use the scripts collected in this section to read the Partner Directory.")**  
-Use the scripts collected in this section to read the Partner Directory.
--   **[Special Cases](special-cases-1606af9.md "Before you get started with the pipeline concept, consider a few special cases, like the
-		XI sender adapter, the IDoc sender adapter, reusing extended receiver determination,
-		receiver-specific outbound queues, and the bypass option for Point-to-Point
-		scenarios.")**  
-Before you get started with the pipeline concept, consider a few special cases, like the XI sender adapter, the IDoc sender adapter, reusing extended receiver determination, receiver-specific outbound queues, and the bypass option for Point-to-Point scenarios.
+-   **[Scripts for the Pipeline Concept](scripts-for-the-pipeline-concept-05d9f8d.md "Use the scripts collected in this section to read the Partner Directory and to
+        perform pipeline-specific tasks.")**  
+Use the scripts collected in this section to read the Partner Directory and to perform pipeline-specific tasks.
+-   **[Special Cases](special-cases-1606af9.md "Before you get started with the pipeline concept, consider a few special cases, like
+		reusing extended receiver determination, receiver-specific outbound queues, the bypass
+		option for Point-to-Point scenarios, sender wildcard scenarios, sender service interfaces
+		with multiple operations, and scenarios with sender or receiver parties.")**  
+Before you get started with the pipeline concept, consider a few special cases, like reusing extended receiver determination, receiver-specific outbound queues, the bypass option for Point-to-Point scenarios, sender wildcard scenarios, sender service interfaces with multiple operations, and scenarios with sender or receiver parties.
 -   **[Monitoring and Error Handling in the Pipeline Concept](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md "Perform monitoring and error handling in the pipeline concept, for example by using
 		retry handling, message monitoring, and using the dead letter queue.")**  
 Perform monitoring and error handling in the pipeline concept, for example by using retry handling, message monitoring, and using the dead letter queue.
@@ -117,8 +121,9 @@ Perform monitoring and error handling in the pipeline concept, for example by us
 		your tenant during runtime, map actual names to aliases, and maintain routing conditions for
 		integration scenarios.")**  
 Landscape stages allow you to run scenarios on different stages without changing the Partner Directory configuration. Use it to automatically identify the landscape stage of your tenant during runtime, map actual names to aliases, and maintain routing conditions for integration scenarios.
--   **[Customizing the Pipeline Concept](customizing-the-pipeline-concept-aeb106f.md "You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or
-		define a different global maximum number of retries.")**  
+-   **[Customizing the Pipeline Concept](customizing-the-pipeline-concept-aeb106f.md "You can apply the pipeline concept as a template and fit it to your custom needs. For
+		example, implement your own exception handling, or define a different global maximum number
+		of retries.")**  
 You can apply the pipeline concept as a template and fit it to your custom needs. For example, implement your own exception handling, or define a different global maximum number of retries.
 -   **[Testing the Pipeline](testing-the-pipeline-e373569.md "SAP's partners provide regression test tools that you can use to test your integration scenarios and apply the pipeline
 		concept.")**  

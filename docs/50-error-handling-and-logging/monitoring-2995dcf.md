@@ -85,7 +85,7 @@ Displays an overview of background jobs \(adapter engine, adapter framework sche
 
 ### More Information
 
--   You can also [centralize the Process Integration monitoring with SAP Solution Manager](https://wiki.scn.sap.com/wiki/display/TechOps/Central+PI+Monitoring+with+SAP+Solution+Manager+7.2).
+-   You can also [centralize the Process Integration monitoring with SAP Solution Manager](https://support.sap.com/en/alm/solution-manager/expert-portal/process-integration-monitoring.html).
 
 -   SAP Process Orchestration has a standard functionality called [Component-Based Message Alerting](https://help.sap.com/viewer/bdfc9b7d99b544d8bbda40546b70967a/7.5.latest/en-US/2cf0a3d4540c4c9a9af65139801ef826.html) which allows you to create alert rules to your interfaces.
 
@@ -138,7 +138,7 @@ SAP Cloud ALM is an offering for application lifecycle management. It's intended
 -   Understand solution health and efficiency with advanced analytics and intelligence.
 
 
-For more information, access the openSAP courses [SAP Cloud ALM in a Nutshell](https://open.sap.com/courses/calm1) and [Accelerate Cloud Implementations with SAP Cloud ALM](https://open.sap.com/courses/calm2).
+For more information, see the learning journey [Introducing SAP Cloud ALM](https://learning.sap.com/learning-journeys/introducing-sap-cloud-alm).
 
 You can also access the SAP Support pages [SAP Cloud ALM for Implementation](https://support.sap.com/en/alm/sap-cloud-alm/implementation.html) and [SAP Cloud ALM for Operations](https://support.sap.com/en/alm/sap-cloud-alm/operations.html).
 

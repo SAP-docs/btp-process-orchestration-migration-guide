@@ -36,7 +36,7 @@ In SAP Process Orchestration, there’s a built-in mechanism to reprocess asynch
 -   Create reusable exception processes, if possible, for different processes that share the same error handling.
 
 
-In Cloud Integration, if you don't use an external system or service to generate alerts via email \(SAP Solution Manager, SAP Cloud ALM, SAP Alert Notification service for SAP BTP\) or use an asynchronous adapter with native support for reprocessing \(AS2, AMQP, JMS\), you can achieve both capabilities implementing exception subprocesses directly into the integration flow:
+In Cloud Integration, if you don't use an external system or service to generate alerts via email \(SAP Solution Manager, SAP Cloud ALM, SAP Alert Notification service for SAP BTP\) or use an asynchronous adapter with native support for reprocessing \(AS2, AMQP, JMS, XI\), you can achieve both capabilities implementing exception subprocesses directly into the integration flow:
 
 ![](images/Error_Handling_IFlow_7eed8da.png)
 

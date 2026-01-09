@@ -1,6 +1,6 @@
 <!-- loio0c7c320bd1324002be0c642309120817 -->
 
-# Migration to Trading Partner Management, using Integration Advisor
+# Migration to Trading Partner Management, Using Integration Advisor
 
 Learn how to migrate your B2B scenarios to Trading Partner Management, with partial use of Integration Advisor.
 
@@ -69,12 +69,12 @@ The following example uses the pattern `Point-to-Point Asynchronous`.
 3.  Add the EDI splitter and add it to the XML converter. Select the Cloud Integration-specific `ANSI X12 810` schema. You can use it from Integration Advisor or the source payload from your SAP Process Orchestration system.
 4.  Use the XSLT mapping to convert the Cloud Integration-specific `ANSI X12 810` XML structure to the SAP Process Orchestration-specific `ANSI X12 810` XML structure.
 
-    \[SCREENSHOT\]
+    ![](images/B2B_Semi-automatic_inbound_e71095d.png)
 
 5.  Create the process direct sender channel that Trading Partner Management should call, and delete the sender/receiver channel.
-6.  To incorporate the imported mappings in Trading Partner Management, create the necessary objects, such as company profiles and trading partner profiles, and agreements, including the B2B scenario. See  <?sap-ot O2O class="- topic/xref " href="085c974e9cb04fef827190b2a31730e4.xml" text="" desc="" xtrc="xref:6" xtrf="file:/home/builder/src/dita-all/rqs1627049557344/loio2fb418ef35ea47f9ad0d99b3ed84b370_en-US/src/content/localization/en-us/0c7c320bd1324002be0c642309120817.xml" output-class="" outputTopicFile="file:/home/builder/tp.net.sf.dita-ot/2.3/plugins/com.elovirta.dita.markdown_1.3.0/xsl/dita2markdownImpl.xsl" ?> . In the source and target interchange step, assign the XSDs from Integration Advisor. Select the Process Direct step referring to the URL of the integration flow as alternative mapping in Trading Partner Management.
+6.  To incorporate the imported mappings in Trading Partner Management, create the necessary objects, such as company profiles and trading partner profiles, and agreements, including the B2B scenario. In the source and target interchange step, assign the XSDs from Integration Advisor. Select the Process Direct step referring to the URL of the integration flow as alternative mapping in Trading Partner Management.
 
-If Cloud Integration is connected to ES Repository in SAP Process Orchestration, individually migrate your objects to integration flows in Cloud Integration. See [Import Mapping Content from ES Repository](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/importing-mapping-content-from-es-repository) .
+If Cloud Integration is connected to ES Repository in SAP Process Orchestration, individually migrate your objects to integration flows in Cloud Integration. See [Import Mapping Content from ES Repository](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/importing-mapping-content-from-es-repository).
 
 
 
@@ -103,7 +103,7 @@ The following steps refer to the example using the pattern **Point-to-Point Asyn
 3.  Use XSLT mapping to convert the SAP Process Orchestration-specific `ANSI X12 810` XML structure to the Cloud Integration-specific `ANSI X12 810` XML structure. You can use it from Integration Advisor or the source payload from your SAP Process Orchestration system.
 4.  Add XML to the EDI converter and select the Cloud Integration-specific `ANSI X12 810` schema.
 5.  If you want to use Trading Partner Management, create a process direct sender channel that Trading Partner Management should call, and delete the sender/receiver channel.
-6.  To use your integration scenario with Trading Partner Management, create company profiles and trading partner profiles, and agreements, including the B2B scenario. See  <?sap-ot O2O class="- topic/xref " href="085c974e9cb04fef827190b2a31730e4.xml" text="" desc="" xtrc="xref:8" xtrf="file:/home/builder/src/dita-all/rqs1627049557344/loio2fb418ef35ea47f9ad0d99b3ed84b370_en-US/src/content/localization/en-us/0c7c320bd1324002be0c642309120817.xml" output-class="" outputTopicFile="file:/home/builder/tp.net.sf.dita-ot/2.3/plugins/com.elovirta.dita.markdown_1.3.0/xsl/dita2markdownImpl.xsl" ?> . In the source and target interchange step, assign the XSDs from Integration Advisor and select the Process Direct step referring to the URL of the integration flow as alternative mapping in Trading Partner Management.
+6.  To use your integration scenario with Trading Partner Management, create company profiles and trading partner profiles, and agreements, including the B2B scenario. In the source and target interchange step, assign the XSDs from Integration Advisor and select the Process Direct step referring to the URL of the integration flow as alternative mapping in Trading Partner Management.
 
 ![](images/b2b_migration-TPM-outbound_747a650.png)
 

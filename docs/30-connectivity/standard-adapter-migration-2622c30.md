@@ -85,6 +85,8 @@ Alternative – Possible use of FTP or SFTP adapters.
 
 File Content Conversion can be performed in standard step CSV to XML or using a script step.
 
+Alternatively, message conversion can be implemented using a script step. For more advanced or reusable transformations \(for example, CSV ↔ XML, plain text, JSON\), consider using the [Message Transformation Utilities](https://api.sap.com/package/com.sap.integration.cloud.utilities.MessageTransformations/integrationflow) package available on the SAP Business Accelerator Hub.
+
 </td>
 </tr>
 <tr>
@@ -117,7 +119,7 @@ IDoc
 </td>
 <td valign="top">
 
-Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(via RFC\) can't be used.
+Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(using RFC\) can't be used.
 
 </td>
 </tr>
@@ -134,7 +136,7 @@ Planned for future
 </td>
 <td valign="top">
 
-Alternative – Use timer event along with JDBC receiver adapter to achieve the same JDBC polling mechanism.
+Alternative – Use timer event along with JDBC receiver adapter to achieve the same JDBC polling mechanism. Note that transaction handling is limited. For more information, see [Known Limitations of Migration Tooling](https://help.sap.com/docs/integration-suite/sap-integration-suite/known-limitations?version=CLOUD).
 
 </td>
 </tr>
@@ -146,12 +148,14 @@ JMS
 </td>
 <td valign="top">
 
-AMQP
+AMQP or IBM MQ
 
 </td>
 <td valign="top">
 
 Although Cloud Integration supports the JMS adapter, it can only be used internally and not to external JMS servers. For this scenario, the AMQP adapter should be used instead.
+
+IBM MQ - The IBM MQ adapter enables seamless and efficient integration with IBM MQ systems. It is available for Standard service plans and above of SAP Integration Suite
 
 </td>
 </tr>
@@ -231,9 +235,7 @@ REST
 </td>
 <td valign="top">
 
-Planned for Cloud Integration
-
-Currently implemented through HTTP adapter
+RESTful communication is currently handled using the HTTP adapter
 
 </td>
 <td valign="top">
@@ -250,7 +252,7 @@ RFC
 </td>
 <td valign="top">
 
-Available through Web service
+Available for Edge Integration Cell
 
 </td>
 <td valign="top">
@@ -456,7 +458,11 @@ Available through FTP or SFTP adapter
 
 Alternative – Possible use of FTP or SFTP adapters.
 
-File Content Conversion can be performed in standard step CSV to XML or using a script step.
+File Content Conversion can be configured in the adapter \(for example, FTP/SFTP sender\) for CSV to XML transformation.
+
+Alternatively, message conversion can be implemented using a script step.
+
+For more advanced or reusable transformations \(for example, CSV ↔ XML, plain text, JSON\), consider using the [Message Transformation Utilities](https://api.sap.com/package/com.sap.integration.cloud.utilities.MessageTransformations/integrationflow) package available on the SAP Business Accelerator Hub.
 
 </td>
 </tr>
@@ -490,7 +496,7 @@ IDoc
 </td>
 <td valign="top">
 
-Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(via RFC\) can't be used.
+Cloud Integration supports IDoc in HTTP protocol, which means that the traditional IDoc with packing \(using RFC\) can't be used.
 
 </td>
 </tr>
@@ -519,12 +525,14 @@ JMS
 </td>
 <td valign="top">
 
-AMQP
+AMQP or IBM MQ
 
 </td>
 <td valign="top">
 
 Although Cloud Integration supports the JMS adapter, it can only be used internally and not to external JMS servers. For this scenario, the AMQP adapter should be used instead.
+
+The IBM MQ adapter enables seamless and efficient integration with IBM MQ systems. It's available for standard service plans and above of SAP Integration Suite
 
 </td>
 </tr>
@@ -587,9 +595,7 @@ REST
 </td>
 <td valign="top">
 
-Planned for Cloud Integration
-
-Currently implemented through HTTP adapter
+RESTful communication is currently handled using the HTTP adapter
 
 </td>
 <td valign="top">

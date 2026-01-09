@@ -8,11 +8,11 @@ Plan, prepare, and implement a migration strategy for B2B integration scenarios 
 
     -   Evaluate the number and complexity of your integration scenarios for migration using [Migration Assessment](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/5c5e50ee2d644cc59d864409d5b7871c.html?locale=en-US&version=CLOUD) or optional advisory services .
 
-    -   Analyze the current and the target landscape, for example, using the [SAP Integration Solution Advisory Methodology](https://help.sap.com/docs/link-disclaimer?site=https%3A%2F%2Fblogs.sap.com%2F2019%2F02%2F24%2Fintegration-solution-advisory-methodology-isa-m-define-integration-guidelines-for-your-organization%2F) . as well p Plan the number of systems \(2 or 3-tier\) foreseen you want to use for the B2B content lifecycle.
+    -   Analyze the current and the target landscape, for example, using the [SAP Integration Solution Advisory Methodology](https://help.sap.com/docs/link-disclaimer?site=https%3A%2F%2Fblogs.sap.com%2F2019%2F02%2F24%2Fintegration-solution-advisory-methodology-isa-m-define-integration-guidelines-for-your-organization%2F). Also, plan the number of systems \(2 or 3-tier\) you want to use for the B2B content lifecycle.
 
-    -   Create a high-level architecture for the connected systems and list these systems with the B2B related communication protocols, adapters, needed certificates and authentication methods \(for example, AS2 with/without authentication\) used.
+    -   Create a high-level architecture for the connected systems and list these systems with the B2B related communication protocols, adapters, needed certificates, and authentication methods \(for example, AS2 with/without authentication\) used.
 
-    -   Check if there are other Verify the different options offered available to for integrating the scenarios based on the published integration packages on the [SAP Business Accelerator Hub](http://hub.sap.com), such as Cloud Trading Partner Management or Integration Advisor.
+    -   Verify the options available for integrating the scenarios based on the published integration packages on the [SAP Business Accelerator Hub](http://hub.sap.com), such as Cloud Trading Partner Management or Integration Advisor.
 
 
 2.  **Plan** your migration by creating a strategy
@@ -48,7 +48,7 @@ Plan, prepare, and implement a migration strategy for B2B integration scenarios 
 
         -   Configure standard content \(see the pre-packaged integration content for [Trading Partner Management](https://api.sap.com/package/CloudIntegrationTradingPartnerManagement/integrationflow) or [Integration Advisor](https://api.sap.com/package/ICAPrepackagedContent/integrationflow)\)
 
-        -   Import content of [Message Mapping](https://help.sap.com/docs/help/90c8ad90cb684ee5979856093efe7462/1e83249a0b444a268f1df3dd3c806ce3.html?locale=en-US#loio1e83249a0b444a268f1df3dd3c806ce3__section_glt_51j_qqb) , [Function Library](https://blogs.sap.com/2023/05/30/sap-integration-suite-import-pi-po-function-library-into-cloud-integration/), [Message Type / Data Type](https://blogs.sap.com/2023/06/08/sap-integration-suite-import-pi-po-datatype-and-messagetype-objects-into-sap-cloud-integration/) 
+        -   Import content of [Message Mapping](https://help.sap.com/docs/help/90c8ad90cb684ee5979856093efe7462/1e83249a0b444a268f1df3dd3c806ce3.html?locale=en-US#loio1e83249a0b444a268f1df3dd3c806ce3__section_glt_51j_qqb), [Function Library](https://blogs.sap.com/2023/05/30/sap-integration-suite-import-pi-po-function-library-into-cloud-integration/), [Message Type / Data Type](https://blogs.sap.com/2023/06/08/sap-integration-suite-import-pi-po-datatype-and-messagetype-objects-into-sap-cloud-integration/) 
 
         -   Reimplement redesigned interfaces and objects not supported by the migration tooling
 
@@ -56,6 +56,6 @@ Plan, prepare, and implement a migration strategy for B2B integration scenarios 
 
 4.  **Test**
 
-    Run test phases to test the migrated content \(see the blog [Int4 Suite for SAP BTP Integration Suite testing fully integrated with SAP Cloud ALM](https://blogs.sap.com/2023/07/06/int4-suite-for-sap-btp-integration-suite-testing-fully-integrated-with-sap-cloud-alm/)\).
+    Run test phases to test the migrated content.
 
 

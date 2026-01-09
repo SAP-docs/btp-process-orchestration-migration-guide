@@ -34,6 +34,8 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 
 -   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md)**: Discover the different aspects involved in moving interfaces from SAP Process Integration and SAP Process Orchestration to SAP Integration Suite, as well as scenario and object assessment and how testing can be automated.
 
+-   **[Modernization Recommendations](70-interface-migration/modernization-recommendations-d337a6f.md)**: Learn how you can align your integration practices with modern standards and the SAP Integration Suite strategy. Identify legacy elements and improve protocols, mapping, security, and integration style to support a clean core and scalable, cloud-ready architecture.
+
 
 
 
@@ -54,31 +56,4 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 > -   [Introduction Video: Open Documentation Initiative](https://www.youtube.com/watch?v=WJ0oarMlVW4)
 > 
 > -   [Blog Post: Introducing the Open Documentation Initiative](https://blogs.sap.com/2021/05/20/introducing-the-open-documentation-initiative/)
-
--   **[What's New](what-s-new-40a5d8e.md "Find out what's new in the migration guide for SAP Process Orchestration.")**  
-Find out what's new in the migration guide for SAP Process Orchestration.
--   **[Introduction to SAP Integration Suite](10-introduction/introduction-to-sap-integration-suite-f2d8c9c.md "Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API
-		Management, Open Connectors, and Integration Advisor.")**  
-Get to know SAP Integration Suite and its main capabilities, Cloud Integration, API Management, Open Connectors, and Integration Advisor.
--   **[Landscape](20-landscape/landscape-ca24a08.md "Get an overview of the important aspects regarding integration landscape, which must be
-		evaluated before migrating from SAP Process Orchestration to SAP Integration Suite in SAP
-		BTP, Cloud Foundry Environment.")**  
-Get an overview of the important aspects regarding integration landscape, which must be evaluated before migrating from SAP Process Orchestration to SAP Integration Suite in SAP BTP, Cloud Foundry Environment.
--   **[Connectivity](30-connectivity/connectivity-94ab030.md "Get an overview of the important aspects regarding the connectivity migration, for
-		example, where it’s necessary to identify the systems in use, their protocols, if custom
-		adapters are used, and more.")**  
-Get an overview of the important aspects regarding the connectivity migration, for example, where it’s necessary to identify the systems in use, their protocols, if custom adapters are used, and more.
--   **[Security](40-security/security-dd0fb21.md "Discover the important aspects regarding security that must be evaluated before
-		migrating from SAP Process Orchestration to Cloud Integration.")**  
-Discover the important aspects regarding security that must be evaluated before migrating from SAP Process Orchestration to Cloud Integration.
--   **[Error Handling and Logging Strategy](50-error-handling-and-logging/error-handling-and-logging-strategy-8faa23e.md "Before migrating from SAP Process Orchestration to Cloud Integration, important aspects
-		of the error handling and logging strategy that must be evaluated.")**  
-Before migrating from SAP Process Orchestration to Cloud Integration, important aspects of the error handling and logging strategy that must be evaluated.
--   **[Interface Governance](60-interface-governance/interface-governance-e8819d7.md "Discover important aspects regarding the tools and services available that support the
-		management, auditing, and governance surrounding the transport of integration artifacts
-		within a Cloud Integration landscape.")**  
-Discover important aspects regarding the tools and services available that support the management, auditing, and governance surrounding the transport of integration artifacts within a Cloud Integration landscape.
--   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md "Learn about the different aspects involved in migrating your interfaces from SAP Process
-		Orchestration to SAP Integration Suite.")**  
-Learn about the different aspects involved in migrating your interfaces from SAP Process Orchestration to SAP Integration Suite.
 

@@ -53,8 +53,8 @@ Plan, prepare, and implement a migration strategy for B2B integration scenarios 
 -   **[B2B Migration Approaches](b2b-migration-approaches-6d6c139.md "Learn about the different options that you have for migrating your B2B
 		interfaces.")**  
 Learn about the different options that you have for migrating your B2B interfaces.
--   **[Limitations & Workarounds for B2B Migration](limitations-workarounds-for-b2b-migration-75be745.md "")**  
-
+-   **[Limitations & Workarounds for B2B Migration](limitations-workarounds-for-b2b-migration-75be745.md "Learn about the current limitations for B2B migration and their workarounds.")**  
+Learn about the current limitations for B2B migration and their workarounds.
 
 **Related Information**  
 

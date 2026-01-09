@@ -26,7 +26,7 @@ For more information about how to install Cloud Connector, see [SAP BTP Connecti
 
 ## Setup of Cloud Connector
 
-Cloud Connector can be used to control access for both On-Premise-to-Cloud and Cloud-to-On-Premise communication. However, the On-Premise-To-Cloud scenario is only used when connecting an on-premise application with an SAP HANA database on SAP BTP. Since the SAP Integration Suite can only utilize the feature to set up a connection to on-premise systems, the trigger of the integration scenario must always be SAP BTP.
+Use Cloud Connector to control access for both on-premise to cloud and cloud to on-premise communication. Since SAP Integration Suite can only use the feature to set up a connection to on-premise systems, the trigger of the integration scenario must always be SAP BTP.
 
 Currently, the following protocols are supported:
 
@@ -50,7 +50,7 @@ Currently, the following protocols are supported:
 > 
 > -   take the recommended security measures for your SAP BTP \(sub\)account, as described in section [Security](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/e129aa20c78c4a9fb379b9803b02e5f6.html) in the SAP BTP documentation.
 
-For more information on configuration, operation, and security, see the [Cloud Connector](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/e6c7616abb5710148cfcf3e75d96d596.html) help documentation.
+For more information on the supported On-Premise to Cloud scenarios, see [Connectivity Scenarios](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/1e4b878a6a1942d8967442205e02f955.html?version=Cloud#scenario:-on-premise-to-cloud).
 
 
 

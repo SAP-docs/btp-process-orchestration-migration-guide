@@ -28,26 +28,91 @@ Update
 <tr>
 <td valign="top">
 
-[Setting Up XI Proxy Runtime](70-interface-migration/setting-up-xi-proxy-runtime-6598c53.md)
-
-[Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md)
+[Generating ABAP Proxies](70-interface-migration/generating-abap-proxies-02f233b.md)
 
 </td>
 <td valign="top">
 
-If you're working with proxies, consider the following updates:
+You can now find information on generating ABAP proxies using the service interface object in SAP Integration Suite.
 
--   In [Setting Up XI Proxy Runtime](70-interface-migration/setting-up-xi-proxy-runtime-6598c53.md), step 9 has been corrected with a new table name and transaction. Also, pay attention to the note about deactivating the daily SLD access.
-
--   In [Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md), a new note informs you about the recommendation to retain your on-premise ESR in SAP Process Orchestration.
-
-
-
+The service interface object in SAP Integration Suite streamlines ABAP proxy lifecycle management by eliminating the need to migrate ESR proxies to the Metadata Repository. This feature ensures seamless integration between cloud and on-premise systems, enhancing efficiency and consistency in managing SAP Integration Suite artifacts.
 
 </td>
 <td valign="top">
 
-June 2025
+November 2025
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md)
+
+</td>
+<td valign="top">
+
+The pipeline concept has been extended by the chapter [Generic Inbound and Outbound](70-interface-migration/generic-inbound-and-outbound-5e2fdf8.md), in which you can find information on scenarios that use IDoc or XI protocol, both inbound and outbound.
+
+</td>
+<td valign="top">
+
+November 2025
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Custom Preprocessing Exit](70-interface-migration/customizing-the-pipeline-concept-aeb106f.md#loioaeb106f049144c71a0b7814a2ffedc3f__section_uqy_gdd_kgc)
+
+</td>
+<td valign="top">
+
+If you want to embed custom logic at the very beginning of the generic pipeline steps, you can now call a custom exit integration flow without having to edit the provided generic flows. To do so, you must implement a separate integration flow that can be called at the very beginning of each generic integration flow. You can configure the custom exit either globally or scenario-specifically.
+
+</td>
+<td valign="top">
+
+August 2025
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Message Processing Behavior](70-interface-migration/using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c)
+
+</td>
+<td valign="top">
+
+With the `KeepBulk` feature, you can keep IDoc bulk messages intact without splitting them into single messages for specific scenarios. This feature is useful for maintaining the integrity of bulk data processing, ensuring efficient handling of large data sets in pipeline steps. By default, IDoc bulk messages are split into single IDoc messages, so you have to enable `KeepBulk` by setting it to `true`.
+
+</td>
+<td valign="top">
+
+August 2025
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md)
+
+</td>
+<td valign="top">
+
+The Cloud Integration pipeline integration packages replace the [Process Integration Pipeline - Generic Integration Flows and Templates](https://help.sap.com/docs/link-disclaimer?site=https%3A%2F%2Fhub.sap.com%2Fpackage%2FPIPipelineGenericIntegrationFlows%2Foverview) package, which was split into four packages. This way, it allows you more flexibility in setting up your different pipelines, sender-specific IDoc and XI inbound flows, and receiver-specific outbound flows. For the same reason, the script collection was also replaced with local scripts.
+
+The previous integration package will soon be deprecated. All new feature increments will only be shipped with the new integration packages.
+
+For details on all ensuing changes, see [Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md).
+
+</td>
+<td valign="top">
+
+August 2025
 
 </td>
 </tr>
@@ -59,7 +124,26 @@ June 2025
 </td>
 <td valign="top">
 
-In this new chapter, you can learn how to migrate your B2B scenarios to SAP Integration Suite. You can perform the migration using Cloud Integration or Trading Partner Management, with the optional addition of Integration Advisor.
+Learn how to migrate your B2B scenarios to SAP Integration Suite. You can perform the migration using Cloud Integration or Trading Partner Management, with the optional addition of Integration Advisor.
+
+</td>
+<td valign="top">
+
+June 2025
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Setting Up XI Proxy Runtime](70-interface-migration/setting-up-xi-proxy-runtime-6598c53.md) 
+
+</td>
+<td valign="top">
+
+If you're working with proxies, consider the following update:
+
+In [Setting Up XI Proxy Runtime](70-interface-migration/setting-up-xi-proxy-runtime-6598c53.md), step 9 has been corrected with a new table name and transaction. Also, pay attention to the note about deactivating the daily SLD access.
 
 </td>
 <td valign="top">
@@ -336,23 +420,6 @@ Learn about the APIs Migration Assessment and Migration Tooling use to extract a
 <td valign="top">
 
 February 2023
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-[Migrating ESR Proxies](70-interface-migration/migrating-esr-proxies-0797dc0.md)
-
-</td>
-<td valign="top">
-
-In the section Interface Migration, you can now find information on how to migrate ESR proxies from the Enterprise Services Repository to the Metadata Repository.
-
-</td>
-<td valign="top">
-
-July 2022
 
 </td>
 </tr>

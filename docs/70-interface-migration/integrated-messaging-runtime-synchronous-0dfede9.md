@@ -22,7 +22,7 @@ The first integration flow in the sequence of flows represents the sender adapte
 > Unlike the asynchronous pipelines, the inbound conversion doesn’t need to be called explicitly from the generic inbound processing flow. Instead, you can maintain the conversion in this scenario-specific integration flow.
 
 > ### Note:  
-> Depending on your specific use cases, you can also configure inbound processing integration flows, which are used across multiple scenarios. See, for example, [XI Sender Adapter](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/special-cases#loio1606af9b55bf4391bea01d2f7ee112af__section_vcg_m1f_j1c). For this special case, you can use the generic integration flow `Pipeline Generic Step01 - Inbound Processing for XI`.
+> Depending on your specific use cases, you can also configure inbound processing integration flows, which are used across multiple scenarios. See, for example, [XI Sender Adapter](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/special-cases#loio1606af9b55bf4391bea01d2f7ee112af__section_vcg_m1f_j1c). For this special case, you can use the generic integration flow `Pipeline v2 Generic Step01 - Inbound Processing for XI` from the integration package `Cloud Integration Pipeline - Generic Inbound`.
 
 In the scenario-specific inbound integration flow, you first configure the sender adapter, followed by a content modifier step in which the scenario-specific message headers are set. The message headers are needed for the subsequent processing, such as fetching the right receiver determination in case of content-based router scenarios, and are passed to the rest of the integration flows. While the headers that are allowed are already preconfigured in generic integration flows, for scenario-specific integration flows, you must maintain the list of allowed headers in the runtime configuration. If you use the provided scenario-specific templates, the headers that are allowed are already preconfigured.
 
@@ -42,7 +42,7 @@ In a request reply flow step, the generic synchronous integrated messaging runti
 
 After the request reply flow step, you can call a local subprocess to convert the message response, for example, from XML to JSON. Before passing the response to the actual sender, the headers that are used to exchange data between the pipeline steps are removed.
 
-For this integration flow, use the template `Pipeline Template Step01 - Inbound Processing Synchronous`, which is available in the integration package.
+For this integration flow, use the template `Pipeline v2 Template Step01 - Inbound Processing Synchronous` from the integration package **Cloud Integration Pipeline - Templates**, which is available in the integration package.
 
 
 
@@ -50,14 +50,14 @@ For this integration flow, use the template `Pipeline Template Step01 - Inbound 
 
 ## Integrated Messaging Runtime Sync \(Generic\)
 
-The second integration flow in the sequence of flows, `Pipeline Generic Step02 - Integrated Messaging Runtime Sync`, is a generic integration flow, which means it’s used across all integration scenarios and only has to be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
+The second integration flow in the sequence of flows, `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Sync` within the integration package **Cloud Integration Pipeline - Generic Pipelines**, is a generic integration flow, which means it’s used across all integration scenarios and only has to be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
 
 The generic synchronous integrated messaging runtime integration flow is directly called by the scenario-specific inbound processing flow using the ProcessDirect adapter. By default, its ProcessDirect endpoint equals `/PIP/XS01`.
 
-To determine the receiver and its receiver interface, an XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The partner ID with which the information is fetched relies on the headers `SAP_Sender` and `SAP_SenderInterface` and is determined by running a Groovy script. It's either derived from an alternative partner or defined as a combination of the sender system name and the sender interface name. See [Using the Partner Directory in the Pipeline Concept](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept).
+To determine the receiver and its receiver interface, an XSLT mapping containing the content-based routing XPath conditions is read from the Partner Directory and then executed. The partner ID with which the information is fetched relies on the headers `SAP_Sender` and `SAP_SenderInterface` and is determined by running a Groovy script. It's either derived from an alternative partner or defined as a combination of the sender system name and the sender interface name. See [Using the Partner Directory in the Pipeline Concept](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept).
 
 > ### Note:  
-> The generic integrated messaging runtime integration flow can handle only XSLT mappings that contain xpath conditions for both determining the receiver and the receiver interface. See *Combined Receiver and Interface Determination in a Single XSLT* in [Special Cases: Bypass Options](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc). Therefore, the special case in which you can reuse an existing extended receiver determination mapping is not supported here.
+> The generic integrated messaging runtime integration flow can handle only XSLT mappings that contain XPath conditions for both determining the receiver and the receiver interface. See *Combined Receiver and Interface Determination in a Single XSLT* in [Special Cases: Bypass Options](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/using-partner-directory-in-pipeline-concept#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc). Therefore, the special case in which you can reuse an existing extended receiver determination mapping is not supported here.
 > 
 > However, you can use custom receiver determination if you provide an XML message containing both the receiver and the receiver interface. See [Custom Receiver Determination](https://help.sap.com/docs/migration-guide-po/migration-guide-for-sap-process-orchestration/customizing-pipeline-concept#custom-receiver-determination).
 
@@ -92,5 +92,5 @@ In a request reply flow step, you then pass the request to the receiving system.
 
 After the request reply flow step, you can call a local subprocess to convert and map the message response if necessary.
 
-For this integration flow, use the template `Pipeline Template Step07 - Outbound Processing Synchronous`, which is available in the integration package.
+For this integration flow, use the template `Pipeline v2 Template Step07 - Outbound Processing Synchronous` from the integration package `Cloud Integration Pipeline - Templates`, which is available in the integration package.
 

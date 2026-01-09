@@ -249,7 +249,7 @@ The following screenshot shows the local integration flow as it calls the custom
 
 ![](images/Call_custom_error_handling_a64762d.png)
 
-You can either create your custom exception handling flow from scratch or use the provided integration flow `Pipeline Template – Custom Error Handling` as template. The `Pipeline Template - Custom Error Handling` has implemented a similar logic like the standard retry handling. If you define your own integration flow from scratch, ensure that the allowed headers are set as described in the previous steps. You also need to pass back the headers *customXError\_Status* and *customXError\_EndEvent*.
+You can either create your custom exception handling flow from scratch or use the provided integration flow `Pipeline v2 Template – Custom Error Handling` from the integration package **Cloud Integration Pipeline - Templates** as template. The `Pipeline v2 Template - Custom Error Handling` has implemented a similar logic like the standard retry handling. If you define your own integration flow from scratch, ensure that the allowed headers are set as described in the previous steps. You also need to pass back the headers *customXError\_Status* and *customXError\_EndEvent*.
 
 
 
@@ -288,7 +288,7 @@ The following is an example of additional information:
 Once you've fixed the root cause of the error, you can reprocess the messages in the dead letter queue: simply move the message from the dead letter queue to the corresponding inbound queue.
 
 > ### Note:  
-> Currently, you can't move a **single message** from one queue to another. The move feature in the queue monitor only enables you to move **all messages within a queue**.
+> In the past, the move feature in the queue monitor only enabled you to move **all messages within a queue**. With the latest software update, you can move a **single message** or **selected messages** from one queue to another.
 
 The following is an example of how to reprocess messages in dead letter queues:
 
@@ -347,7 +347,7 @@ In the message monitor, the custom headers are displayed in the Properties tab o
 
 ### Provided Templates
 
-The templates `Pipeline Template Step01 - Inbound Processing At Least Once`, `Pipeline Template Step01 - Inbound Processing Exactly Once`, and `Pipeline Template Step01 - Inbound Processing Synchronous` contain content modifier flow steps and a Groovy script flow step that support the custom header properties.
+The templates `Pipeline v2 Template Step01 - Inbound Processing At Least Once`, `Pipeline v2 Template Step01 - Inbound Processing Exactly Once`, and `Pipeline v2 Template Step01 - Inbound Processing Synchronous` from the integration package **Cloud Integration Pipeline - Templates** contain content modifier flow steps and a Groovy script flow step that support the custom header properties.
 
 If you go for the recommended option, you only need one content modifier in which you define the exchange properties with prefix `customHeader_` and source type `XPath` parsing the incoming XML message. For example, `customHeader_prop_1` and `customHeader_prop_2`.
 
@@ -355,7 +355,7 @@ If you decide to apply the alternative option, in the first content modifier ste
 
 `name_1:${property.prop_1}|name_2:${property.prop_2}`
 
-If your incoming payload isn't in XML format, create a script to parse the body of your message. Alternatively, you can define the custom header properties in the scenario-specific inbound conversion flow, if applicable. In this case, refer to the template `Pipeline Template Step03 - Inbound Conversion`.
+If your incoming payload isn't in XML format, create a script to parse the body of your message. Alternatively, you can define the custom header properties in the scenario-specific inbound conversion flow, if applicable. In this case, refer to the template `Pipeline v2 Template Step03 - Inbound Conversion` from the integration package **Cloud Integration Pipeline - Templates**.
 
 Depending on the option you choose, delete the unnecessary message header or exchange property from the template copy. If you don’t need custom header properties, delete the unnecessary flow steps from the template copy.
 

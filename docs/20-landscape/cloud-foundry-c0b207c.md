@@ -4,21 +4,7 @@
 
 The Cloud Foundry environment allows you to create polyglot cloud applications. It contains the Cloud Foundry runtime for SAP BTP, which is based on the open-source application platform managed by the Cloud Foundry Foundation.
 
-The Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services. You can leverage a multitude of build packs, including community innovations and self-developed build packs. For more information, see the official [Cloud Foundry documentation](https://docs.cloudfoundry.org/).
-
-The following hyperscales and datacenters are available:
-
--   Microsoft Azure
-
--   Amazon Web Services
-
--   Alibaba
-
--   Google Cloud
-
-    > ### Restriction:  
-    > The availability on Google Cloud is planned for the future and is subject to change. For more information on new features and future releases, access the [Road Map Explorer](http://help.sap.com/disclaimer?site=https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and the [What's New section](https://help.sap.com/doc/7ac9748e20cf453a94efda779542d34e/sap.cp.integration.suite/en-US/c10c21cd7c684f0885fa8b5db2982284.html) of SAP Integration Suite.\)
-
+The Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services. You can leverage a multitude of build packs, including community innovations and self-developed build packs. Cloud Foundry relies on hyperscalers and their datacenters to provide the infrastructure for scalable, reliable, and high-performance cloud environments. For more information about the availability of hyperscales and datacenters, see [Regions and API Endpoints Available for the Cloud Foundry Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/regions-and-api-endpoints-available-for-cloud-foundry-environment).
 
 
 
@@ -30,11 +16,11 @@ With the cloud-centric model on SAP Business Technology Platform, slightly diffe
 
 ![](images/Landscape_AccountProvisioning_697ee3f.png)
 
-Customers can deploy applications in different **regions**. Each region represents a geographical location \(for example, Europe, US East\) in which applications, data, or services are hosted. Regions are provided either by SAP or by our Infrastructure-as-a-Service \(IaaS\) partners Amazon Web Services \(AWS\), Microsoft Azure, Google Cloud, and Alibaba Cloud. The third-party region providers operate the infrastructure layer of the regions, while SAP operates the platform layer and Cloud Foundry.
+You can deploy applications in different **regions**. Each region represents a geographical location \(for example, Europe, US East\) in which applications, data, or services are hosted. Regions are provided either by SAP or by our Infrastructure-as-a-Service \(IaaS\) partners Amazon Web Services \(AWS\), Microsoft Azure, Google Cloud, and Alibaba Cloud. The third-party region providers operate the infrastructure layer of the regions, while SAP operates the platform layer and Cloud Foundry.
 
 Separated subaccounts can be provisioned to cater for the different environment requirements at the time so customers could have subaccounts for production, test, development environments etc. Subaccounts can also be provisioned on a temporary basis \(e.g., to support a fixed-time-frame project\) and deleted later, releasing any services and resources used. Since the license costs reside at the global account level, you can have as many subaccounts as needed.
 
-Subaccounts enable companies to have a dedicated dev subaccount per development project. After the development and test phases, the app can be published in one single test subaccount and then one production subaccount. This is especially suited for companies with a focus on continuous integration and continuous delivery, as it creates isolation and independency for the different environments. For more details, see [Account Model 5: Create a Staged Development Environment Per Functional Area](https://help.sap.com/viewer/df50977d8bfa4c9a8a063ddb37113c43/Cloud/en-US/8f5753517acb40d58efc564471f95f52.html) in the Best Practices for SAP BTP.
+Subaccounts enable companies to have a dedicated dev subaccount per development project. After the development and test phases, the app can be published in one single test subaccount and then one production subaccount. This is especially suited for companies with a focus on continuous integration and continuous delivery, as it creates isolation and independence for the different environments. For more details, see [Setting Up Your Account Model ](https://help.sap.com/docs/btp/btp-admin-guide/setting-up-your-account-model)in the Best Practices for SAP BTP.
 
 
 
@@ -42,7 +28,7 @@ Subaccounts enable companies to have a dedicated dev subaccount per development 
 
 ## SAP Integration Suite on Multi-Cloud
 
-SAP Integration Suite is an enterprise integration platform as a service \(EiPaaS\) that allows you to connect applications, processes, and people with speed and ease. It runs on the hyperscalers and includes different capabilities like Cloud Integration, API Management, Integration Advisor, and Open Connectors to solve integration challenges.
+SAP Integration Suite is an enterprise integration platform as a service \(EiPaaS\) that allows you to connect applications, processes, and people with speed and ease. It runs on the hyperscalers and includes different capabilities like Cloud Integration, API Management, Integration Advisor, and Event Mesh to solve integration challenges.
 
 Since Cloud Integration is the main capability used during the migration of SAP Process Integration and SAP Process Orchestration to SAP Integration Suite, it's described in the following chapters.
 
@@ -52,7 +38,7 @@ Since Cloud Integration is the main capability used during the migration of SAP 
 
 ## Cloud Integration Landscape
 
-The technical approach in Cloud Integration differs from the SAP Process Integration and SAP Process Orchestration landscape. In Cloud Integration, the integration platform is designed as a containerized and clustered integration platform. Messages processed by integration flows from different customers are handled on different parts of the platform \(referred to as tenants\). Tenants processing integration flows from different customers are strictly separated from each other in terms of CPU, data storage, and user access. For more information, see [Technical Landscape, Cloud Foundry Environment](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/cc22301edf174cc9bf7337c6c66fb704.html)\)
+The technical approach in Cloud Integration differs from the SAP Process Integration and SAP Process Orchestration landscape. In Cloud Integration, the integration platform is designed as a containerized and clustered integration platform. Messages processed by integration flows from different customers are handled on different parts of the platform \(referred to as tenants\). Tenants processing integration flows from different customers are strictly separated from each other in terms of CPU, data storage, and user access. For more information, see [Technical Landscape, Cloud Foundry Environment](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/cc22301edf174cc9bf7337c6c66fb704.html).
 
 The following diagram describes the high-level architecture of Cloud Integration:
 
@@ -380,5 +366,5 @@ Within the distributed \(model 2\) domain architecture, you can have different g
 -   **Mixed**: Changes are made centrally and locally, but with strict control mechanisms to ensure some object reuse is possible and redundancies are minimized. This needs to be defined as an enterprise-wide practice by your organization. An example of such a mechanism is enforcing naming conventions or scenario-specific object separation. There could be common or global packages and some specific local packages.
 
 
-![](images/Landscape_divided_a8a5cb4.png)
+![](images/integration_suite_and_business_system_map_ede4c1a.png)
 

@@ -8,7 +8,7 @@ Learn more about the different transport management options that are available t
 
 <a name="loio085fb3419c9640dfae9f5f5653bf0c9b__section_dqq_4lz_mqb"/>
 
-## Multi-tier Environments
+## Multi-Tier Environments
 
 For SAP Process Integration and SAP Process Orchestration, it's recommended to set up separate landscapes for development, test, and productive system. In any organization using Cloud Integration as their integration middleware service, there's typically what is commonly referred to as a multi-tier environment, like in PI/PO. In both cases, this concept supports the capability for an organization to have a ‘live’ production middleware service in place that handles the actual movement of business messages between production systems, while still being able to develop, perform quality assurance, and fix and test new or revised integration content before deploying to production where the real business processes are performed.
 
@@ -37,7 +37,42 @@ Governing, and managing the proper testing and audited transport of integration 
 
 
 
-<a name="loio085fb3419c9640dfae9f5f5653bf0c9b__section_ktw_4lz_mqb"/>
+<a name="loio085fb3419c9640dfae9f5f5653bf0c9b__section_dzy_4lz_mqb"/>
+
+## SAP Cloud Transport Management Service
+
+SAP Cloud Transport Management service is a core SAP BTP service designed to support the transport of integration artifacts, application-specific content \(such as those from Cloud Integration\), and other cloud-based development objects built using SAP BTP technologies \(e.g., Java, Node.js, SAPUI5\).
+
+It enables you to manage software deliverables across subaccounts and environments \(such as the Cloud Foundry environment\), facilitating transport across different runtimes. As a multi-tenant application, it ensures tenant separation and structured content lifecycle management.
+
+![](images/InterfGov_CTMS_8e7a9ff.png)
+
+Cloud Transport Management has the following capabilities:
+
+-   Change control – managing how and when content is moved toward production.
+
+-   Cloud-native operation – no on-premise infrastructure needed.
+
+-   Integration – direct triggering from tools like SAP Cloud Integration Web UI.
+
+-   Supported content types – MTA archives, iFlows, and other app-specific content.
+
+-   Landscape modeling – representing complex topologies like star configurations.
+
+-   Cloud Transport Management is not planned to cover on-premise transports.
+
+-   CI/CD complement – integrates with automated pipelines while keeping manual control when needed.
+
+-   Flexible imports – bulk, selective, or scheduled imports.
+
+-   Multi-environment availability – runs in Cloud Foundry and Kyma with tenant separation.
+
+
+For more information, see the [SAP Cloud Transport Management documentation](https://help.sap.com/viewer/7f7160ec0d8546c6b3eab72fb5ad6fd8/Cloud/en-US/5fef9d6b1cb047b2b18d9eb57aa15352.html).
+
+
+
+<a name="loio085fb3419c9640dfae9f5f5653bf0c9b__section_yjd_kjd_kgc"/>
 
 ## Enhanced Change and Transport System \(CTS+\)
 
@@ -68,35 +103,6 @@ CTS+ has been extended to handle transports in SAP BTP:
 
 
 For more information, see [Transporting Multitarget Applications in Cloud Foundry using CTS+](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c9a406970bb84b37ae8a5a5620ae0739.html), the [support page for CTS+](https://support.sap.com/en/tools/software-logistics-tools/enhanced-change-and-transport-system.html), and the blog [Setting up a CTS+ enabled transport landscape in SAP Cloud Platform](https://blogs.sap.com/2017/03/29/setting-up-a-cts-enabled-transport-landscape-in-sap-cloud-platform/).
-
-
-
-<a name="loio085fb3419c9640dfae9f5f5653bf0c9b__section_dzy_4lz_mqb"/>
-
-## SAP Cloud Transport Management Service
-
-The SAP Cloud Transport Management service is a new service that has been built directly on the SAP BTP to support the transport of not only integration artifacts and application-specific content for Cloud Integration, but also other cloud-based development objects built using the various technologies \(e.g., Java, Node.JS, SAPUI5\) available on SAP BTP.
-
-SAP Cloud Transport Management allows you to manage software deliverables between accounts of different environments \(like Cloud Foundry environment\) by transporting them across runtimes. It's a multi-tenant application and provides a tenant separation.
-
-![](images/InterfGov_CTMS_8e7a9ff.png)
-
-Cloud Transport Management has the following capabilities:
-
--   It's the officially recommended solution for transporting in the cloud
-
--   It can transport development artifacts \(via MTA\) and application-specific content
-
--   It will cover further content types in the future \(see the [roadmap for SAP Cloud Transport Management](https://roadmaps.sap.com/board?PRODUCT=73554900100800001901&range=CURRENT-LAST)\)
-
--   It covers the SAP BTP, Cloud Foundry environment and is planned to be extended to further multi-environments and to SAP SaaS solutions \(such as SAP Cloud Price Quote\)
-
--   Cloud Transport Management and CTS+ can be used in parallel: Cloud Transport Management for cloud transports, and CTS+ for ABAP and non-ABAP on-premise transports.
-
--   Cloud Transport Management is not planned to cover on-premise transports.
-
-
-For more information, see the [SAP Cloud Transport Management documentation](https://help.sap.com/viewer/7f7160ec0d8546c6b3eab72fb5ad6fd8/Cloud/en-US/5fef9d6b1cb047b2b18d9eb57aa15352.html).
 
 
 

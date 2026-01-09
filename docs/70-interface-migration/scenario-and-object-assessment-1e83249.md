@@ -67,14 +67,9 @@ B2B
 </td>
 <td valign="top">
 
-There are some limitations compared to SAP Process Orchestration regarding adapters and features.
+Use the Integration Advisor and Trading partner Management capabilities in SAP Integration Suite.
 
-> ### Note:  
-> For more information on new features and future releases, access the [Road Map Explorer](http://help.sap.com/disclaimer?site=https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and [What's New in SAP Integration Suite](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160?locale=en-US&version=CLOUD).
-
-Regarding B2B Scenarios, SAP recommends using the [Integration Content Advisor](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/6b9fe2d753534bebadcfa9080228bd94.html).
-
-For more information, see the blog [Partner Directory - Step-by-Step example](https://blogs.sap.com/2017/07/25/cloud-integration-partner-directory-step-by-step-example/).
+For more information, see the section [Migrating B2B Interfaces](migrating-b2b-interfaces-fc315dc.md) in this guide.
 
 </td>
 </tr>
@@ -86,7 +81,9 @@ B2G
 </td>
 <td valign="top">
 
-Standard content is available via [SAP Business Accelerator Hub](https://api.sap.com).
+For compliance-related B2G requirements, such as electronic invoicing and statutory reporting, explore [SAP Document and Reporting Compliance](https://help.sap.com/docs/SLH_advanced_compliance_reporting_service/7a60944343e543a1ab99e9b2904dab09/ea800701610a4718b9637c9f40ab69ab.html). This solution delivers pre-configured content and integrations aligned with country-specific mandates and can be used with SAP Integration Suite.
+
+For more information on supported countries and scenarios, see [Document and Reporting Compliance](https://help.sap.com/docs/cloud-edition).
 
 </td>
 </tr>
@@ -212,26 +209,7 @@ SWCV
 
 Cloud Integration doesn't have the concept of software component \(defined in SLD\) and namespace.
 
-Instead, you can create a package into your tenant and create some design artifacts, such as integration flow and value mapping. The following artifacts can be created inside a package:
-
--   Integration Flow
-
--   REST API
-
--   Message Mapping
-
--   SOAP API
-
--   Value Mapping
-
--   OData API
-
--   Script Collection
-
--   Integration Adapter
-
-
-
+Instead, you can create a package in your tenant and create some design artifacts, such as integration flow, message mapping, script collection, and value mapping. For the full list, see [Integration Artifact Types](https://help.sap.com/docs/integration-suite/sap-integration-suite/integration-artifact-types).
 
 </td>
 </tr>
@@ -320,9 +298,7 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </td>
     <td valign="top">
     
-    Message mapping containing reference to value mapping is not supported at runtime. Instead, redesign your message mapping and use the value mapping of Cloud Integration.
-
-    See also [Migration of Value Mappings](../30-connectivity/migration-of-value-mappings-f2621ed.md).
+    Message mappings imported from SAP Process Orchestration and referencing value mappings aren't supported directly at runtime. However, value mappings are supported in Cloud Integration and can be used in graphical message mapping.
     
     </td>
     </tr>
@@ -360,7 +336,9 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </td>
     <td valign="top">
     
-    Message mapping containing reference to function libraries is not supported. You need to redesign these mappings, using Javascript/Groovy script. The scripts can be created locally in the integration flow or you can create a script collection to make it available for different integration flows inside your package. See the blog [Script collection reusable artifact in SAP Cloud Integration](https://blogs.sap.com/2021/06/07/script-reusable-artifact-in-sap-cloud-integration/).
+    Message mappings containing references to function libraries are supported for migration and can be converted into Java code.
+
+    Custom logic may need to be reviewed and refined into compatible or reusable JavaScript or Groovy scripts. The scripts can be created locally in the integration flow or you can create a script collection to make it available for different integration flows inside your package. See the blog [Script collection reusable artifact in SAP Cloud Integration](https://blogs.sap.com/2021/06/07/script-reusable-artifact-in-sap-cloud-integration/).
 
     > ### Note:  
     > Lookups \(for example, RFC, JDBC\) are not supported. Use additional integration flow steps instead. For instructions, see the tutorials [Learn how to migrate JDBC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-jdbc-lookup.html) and [How to migrate RFC Lookups from SAP Process Orchestration to Cloud Integration](https://developers.sap.com/tutorials/ci-rfclookup.html).
@@ -413,6 +391,4 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </tr>
     </table>
     
-
-For more information about how to set up the connection between SAP Process Orchestration and Cloud Integration, see [Configuring Connectivity to ES Repository](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/LATEST/en-US/8c36fd29df9a4e7bae8ce2699f6abbfd.html) or the blog [How to connect CPI and PI system to import mappings via SAP Cloud Connector](https://blogs.sap.com/2018/11/26/how-to-connect-cpi-and-pi-system-to-import-mappings-via-sap-cloud-connector/).
 

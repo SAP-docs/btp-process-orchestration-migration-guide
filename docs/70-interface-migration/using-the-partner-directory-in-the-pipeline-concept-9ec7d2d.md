@@ -12,7 +12,7 @@ For an overview of the Partner Directory API, see [Partner Directory](https://he
 
 <a name="loio9ec7d2dce72d423abff80543f11b2091__section_jjh_gty_31c"/>
 
-## Accessing the Partner Directory using API
+## Accessing the Partner Directory Using API
 
 > ### Note:  
 > The REST client used in the tests for the pipeline concept is **Visual Studio Code**, so the example requests follow the syntax of this extension for Visual Studio Code.
@@ -137,15 +137,23 @@ X-CSRF-Token: {{xsrftoken}}
 
 ### 
 
-The partner ID unambiguously determines the configuration scenario. It’s based on the sender system name and the sender interface name. The following approaches are supported:
+The partner ID unambiguously determines the configuration scenario. It’s based on the sender system name and the sender interface information. The following approaches are supported:
 
 -   **Recommended option**: You define the partner ID as **configuration scenario name**, and you map **sender system name** and **sender interface name** to the partner ID using an **alternative partner**.
--   **Recommended option for XI inbound scenarios**: You define the partner ID as **configuration scenario name**, and map **sender system name**, **sender interface name**, and **sender interface namespace** to the partner ID using an **alternative partner**.
 -   **Alternative option**: You define the partner ID as a combination of the **sender system name** and the **sender interface name**.
 
-During runtime, the generic inbound processing flow first checks if an alternative partner exists that matches the headers `SAP_Sender` and `SAP_SenderInterface`, which are passed from the scenario-specific inbound flows to the generic flows. If this is the case, the associated partner ID is used to read the Partner Directory parameters. Otherwise, the partner ID is constructed as a combination of the two header values, unless is option is switched off, as described in the following.
+> ### Note:  
+> The recommended option has been extended for higher flexibility during the setup of your configuration scenario. This means you define the partner ID as **configuration scenario name**, and map **sender system name**, **sender interface name**, and **sender interface namespace** to the partner ID using an **alternative partner**. Since the alternative partner is defined differently compared to the standard option, this option is only supported if the sender interface name doesn't exceed 120 characters.
+
+During runtime, the generic inbound processing flow first checks if an alternative partner exists that matches the headers `SAP_Sender`, `SAP_SenderInterface`, and `SapInterfaceNamespace`, which are passed from the scenario-specific inbound flows to the generic flows. If there's a match, the associated partner ID is used to read the Partner Directory parameters. If such an alternative partner doesn’t exist in the Partner Directory, in a second attempt, the standard option is applied. The standard option checks for an alternative partner that matches only the **sender system name** and the **sender interface name**.
 
 For the generic XI inbound processing flow, in a first attempt, the partner ID is determined based on the headers `SapSenderService`, `SapInterfaceName` and `SapInterfaceNamespace`. These headers are passed from the XI sender adapter. If such an alternative partner doesn’t exist in the Partner Directory, in a second attempt, the standard option is applied, which checks for an alternative partner that matches the headers `SapSenderService` and `SapInterfaceName`.
+
+For the generic IDoc inbound processing flow, in a first attempt, the partner ID is determined based on the **sender system name**, **sender interface name**, and the constant namespace `urn:sap-com:document:sap:idoc:messages`. The **sender system name** and the **sender interface name** are derived from the IDoc control header. The **sender system name** equals the sender partner number `SNDPRN` whereas the **sender interface name** is defined as combination of the message type `MESTYP`, the IDoc type `IDOCTYP` and eventually the extension type `CIMTYP`. The latter is only added if the IDoc control header field `CIMTYP` isn't empty.
+
+If such an alternative partner doesn’t exist in the Partner Directory, in a second attempt, the standard option is applied.
+
+If the partner ID still couldn't be determined, in a third attempt, the partner ID is constructed as a combination of the two header values **sender system name** and **sender interface name**, unless the option is switched off, as described in the following.
 
 > ### Note:  
 > You should only use the **recommended option** of using an alternative partner since the alternative option of using a combination of sender system and sender interface is only supported for compatibility reasons.
@@ -153,15 +161,15 @@ For the generic XI inbound processing flow, in a first attempt, the partner ID i
 > With the recommended option, not only are you less likely to run into any length restrictions of the partner ID, but it also supports sender wildcard scenarios, and allows you to group all your entries in the Partner Directory user interface using a scenario ID. Furthermore, only the recommended option supports the landscape stages feature.
 
 > ### Note:  
-> From version 1.0.11 of the script collection included in the integration package [Process Integration Pipeline - Generic Integration Flows and Templates](https://hub.sap.com/package/PIPipelineGenericIntegrationFlows/scriptcollection) onwards, the alternative option of using a combination of sender system and sender interface is **switched off by default**. This way, if the partner ID can’t be determined based on an alternative partner, for example, due to inconsistencies or missing configuration in the Partner Directory, the processed message goes into an error instead of unintentionally constructing a wrong partner ID.
+> The alternative option of using a combination of sender system and sender interface is **switched off by default**. This way, if the partner ID can’t be determined based on an alternative partner, for example, due to inconsistencies or missing configuration in the Partner Directory, the processed message goes into an error instead of unintentionally constructing a wrong partner ID.
 > 
 > If you still want to use a combination of sender system and sender interface, you must configure the externalized parameter `CustomXPid_SwitchOffTilde` by changing from the default value `true` to `false` for the following integration flows:
 > 
-> -   `Pipeline Generic Step01 - Inbound Processing for Idoc`
-> -   `Pipeline Generic Step01 - Inbound Processing for XI`
-> -   `Pipeline Generic Step02 - Inbound Processing`
-> -   `Pipeline Generic Step02 - Integrated Messaging Runtime Async`
-> -   `Pipeline Generic Step02 - Integrated Messaging Runtime Sync`
+> -   `Pipeline v2 Generic Step01 - Inbound Processing for Idoc`
+> -   `Pipeline v2 Generic Step01 - Inbound Processing for XI`
+> -   `Pipeline v2 Generic Step02 - Inbound Processing`
+> -   `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Async`
+> -   `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Sync`
 
 
 
@@ -197,7 +205,7 @@ X-CSRF-Token: {{xsrftoken}}
 } 
 ```
 
-For XI inbound scenarios, define an alternative partner as follows:
+For XI inbound scenarios, you can define an alternative partner as follows:
 
 -   **Agency** equals the sender system name
 -   **Scheme** holds the sender interface name
@@ -218,6 +226,30 @@ X-CSRF-Token: {{xsrftoken}}
 	"Scheme": "Interface_2", 					 
 	"Id": "http://namespace_2.com",  
 	"Pid": "Scenario_2" 
+}
+```
+
+For IDoc inbound scenarios, you can define an alternative partner as follows:
+
+-   **Agency** equals the sender partner number.
+-   **Scheme** holds the sender interface name.
+-   **ID** holds the sender interface namespace `urn:sap-com:document:sap:idoc:messages`.
+-   As **partner ID \(pid\)**, define a configuration scenario name.
+
+The following is an example of an alternative partner:
+
+```
+### create alternative partner for Scenario 3  
+POST https://{{apihost}}/api/v1/AlternativePartners  
+content-type: application/json  
+Authorization: Bearer {{accesstoken}}  
+X-CSRF-Token: {{xsrftoken}}  
+					 
+{
+	"Agency": "SNDCLNT100",  
+	"Scheme": "MATMAS.MATMAS05", 					 
+	"Id": "urn:sap-com:document:sap:idoc:messages",
+	"Pid": "Scenario_3" 
 }
 ```
 
@@ -303,7 +335,7 @@ ProcessDirect endpoint of inbound conversion integration flow, if required
 </td>
 <td valign="top">
 
-Optional, default is unlimited
+Optional, default is 5
 
 </td>
 <td valign="top">
@@ -444,6 +476,72 @@ Overwriting the default inbound processing JM queue, if required
 
 </td>
 </tr>
+<tr>
+<td valign="top">
+
+**KeepBulk**
+
+</td>
+<td valign="top">
+
+`Boolean`
+
+</td>
+<td valign="top">
+
+Optional, default is **false**
+
+</td>
+<td valign="top">
+
+Only relevant for IDoc bulk messages. Set to *true* if the IDoc bulk message should not be split into single IDoc messages.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**CustomXPreEnabled**
+
+</td>
+<td valign="top">
+
+`String`
+
+</td>
+<td valign="top">
+
+Optional
+
+</td>
+<td valign="top">
+
+List of pipeline steps for which a custom exit integration flow for preprocessing should be called
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**CustomXPreEndpoint**
+
+</td>
+<td valign="top">
+
+`String`
+
+</td>
+<td valign="top">
+
+Required if *CustomXPreEnabled* is maintained
+
+</td>
+<td valign="top">
+
+ProcessDirect endpoint of custom exit integration flow, if required
+
+</td>
+</tr>
 </table>
 
 The following table lists the details for the required string parameter that is used to dynamically define the message processing behavior with partner ID equals receiver name:
@@ -500,11 +598,15 @@ Queue name for receiver system-specific outbound queue
 
 ### Inbound Conversion
 
-To determine whether your specific scenario needs an inbound conversion, create a string parameter holding the ProcessDirect endpoint of your scenario-specific inbound conversion flow.
+To determine whether your specific scenario needs an inbound conversion, create a string parameter holding the ProcessDirect endpoint of your scenario-specific inbound conversion flow. This can be defined either scenario-specific or for each sender system.
+
+If you need inbound conversion and you only have one sender for your configuration scenario, create one scenario-specific inbound conversion flow. Then, configure a string parameter in the Partner Directory that points to the ProcessDirect endpoint of the scenario-specific integration flow.
+
+If there are sender wildcard scenarios, that is, scenarios in which the same configuration applies to different sender systems, you have two options. If your inbound conversion is the same for each sender system, create a single scenario-specific inbound conversion flow, which means you only have to maintain one configuration parameter. If the inbound conversion differs depending on the sender systems, create scenario-specific inbound conversion flows for each sender system, which means you can maintain configuration parameters for each sender system.
 
 The partner ID is derived from the sender system name and the sender interface name, either using an alternative partner or a combination of the sender system name and the sender interface name. See [Partner ID](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc).
 
-If you need inbound conversion, define a Partner Directory entry with object ID `InboundConversionEndpoint`, which points to the ProcessDirect endpoint of the scenario-specific integration flow for inbound conversion.
+If there's a single inbound conversion for your configuration scenario, define a Partner Directory entry with the object ID `InboundConversionEndpoint`, which points to the ProcessDirect endpoint of the scenario-specific integration flow for inbound conversion.
 
 ```
 ### create string parameter: InboundConversionEndpoint
@@ -520,11 +622,27 @@ X-CSRF-Token: {{token}}
 }
 ```
 
+If you need multiple inbound conversions for your scenario depending on the sender systems, for each sender system, define a Partner Directory entry with the object ID being a combination of the constant identifier `InboundConversionEndpoint` and the sender system name, separated by an underscore "\_". As value, enter the ProcessDirect endpoint of the corresponding scenario-specific integration flow for inbound conversion.
+
+```
+### create string parameter: InboundConversionEndpoint
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "InboundConversionEndpoint_Sender_2",
+    "Value": "/pip/03/scenario1/sender2"
+}
+```
+
 
 
 ### Maximum Number of JMS Retries
 
-For each scenario, you can define a maximum number of retries to handle the retry behavior of your scenarios individually. This parameter is optional and the default is unlimited. You can edit the provided Groovy script and change the default to any valid global value. See the script `readRetryHandlingFromPD` in the script collection for the pipeline concept in the integration package [https://hub.sap.com/package/PIPipelineGenericIntegrationFlows/scriptcollection](https://hub.sap.com/package/PIPipelineGenericIntegrationFlows/scriptcollection).
+For each scenario, you can define a maximum number of retries to handle the retry behavior of your scenarios individually. This parameter is optional and the default is 5.
 
 The object ID is `MaxJMSRetries`. In the following example, the maximum number of retries is set to `3`.
 
@@ -664,17 +782,75 @@ X-CSRF-Token: {{token}}
 
 
 
+### Keep IDoc Bulk
+
+For IDoc inbound scenarios, by default, IDoc bulk messages are split into single IDoc messages. Each single IDoc message is passed to the next pipeline step. If you want to keep the IDoc bulk and not split the IDoc bulk message for a specific scenario, create a string parameter with value *true*. This parameter is optional and the default is *false*.
+
+The object ID is `KeepBulk`. In the following example, the parameter is set to `true`.
+
+```
+### create string parameter: KeepBulk
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "KeepBulk",
+    "Value": "true"
+}
+```
+
+
+
+### Custom Preprocessing Exit
+
+If you want to embed custom logic at the very beginning of the pipeline steps, you can call a custom exit integration flow without having to edit the provided generic flows. Custom preprocessing is supported globally, which means that the custom exit integration flow is called for all of your integration scenarios, or it can be configured scenario-specific. For scenario-specific configuration, you can define for which pipeline steps the custom exit integration flow should be called. For this, create a string parameter **CustomXPreEnabled** in which you define the list of pipeline steps separated by pipe.
+
+Assuming that you want to enable the custom exit for the generic XI inbound processing \(step 01\), the generic integrated messaging runtime \(step 02\) and the generic outbound processing flow \(step 06\), define a Partner Directory entry with object ID **CustomXPreEnabled** as follows:
+
+```
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "CustomXPreEnabled",
+    "Value": "01|02|06"
+}
+```
+
+If you've defined such a string parameter, you also need to define another Partner Directory entry with object ID `CustomXPreEndpoint`, which points to the ProcessDirect endpoint of the custom exit integration flow.
+
+```
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "CustomXPreEndpoint",
+    "Value": "/pip/custom/preProcessing/scenario4"
+}
+```
+
+
+
 ### Receiver-Specific Outbound Queue
 
-By default, each scenario uses the same set of generic JMS queues. For receivers for which you want to control the outbound delivery, you can define receiver-specific JMS queues.
+By default, each scenario uses the same set of generic JMS queues. For receivers for which you want to control the outbound delivery, you can define receiver-specific JMS queues. This can be either defined globally or scenario specific. For the latter, you can define different receiver-specific queues for the same receiver depending on your particular configuration scenario. The scenario-specific setting overrides the global setting.
 
-This time, the partner ID is the receiver system name.
+To use a receiver-specific JMS outbound queue across all your scenarios, use the partner ID as the receiver system name.
 
 ```
 @pid = Receiver_3
 ```
 
-The object ID is `ReceiverSpecificQueue`. This parameter is optional. If not set, the default outbound queue is used.
+The object ID is `ReceiverSpecificQueue`. As value, enter the receiver-specific queue name. This parameter is optional. If not set, the default outbound queue is used.
 
 ```
 POST https://{{apihost}}/api/v1/StringParameters
@@ -690,19 +866,41 @@ X-CSRF-Token: {{token}}
 
 ```
 
+To define a receiver-specific JMS outbound queue for a particular configuration scenario only, use the partner ID as the configuration scenario name.
+
+```
+@pid = Scenario_2
+```
+
+In this case, the object ID is a combination of the constant identifier `ReceiverSpecificQueue` and the business system name, separated by an underscore "\_". As value, enter the receiver-specific queue name. This parameter is optional. If not set, the default outbound queue is used.
+
+```
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "ReceiverSpecificQueue_Receiver_3",
+    "Value": "PIPQ04_CS2R3"
+}
+
+```
+
 
 
 <a name="loio9ec7d2dce72d423abff80543f11b2091__section_thd_scz_31c"/>
 
 ## XSLT Mappings
 
-This section discusses the different XSLTs that are used to execute the xpath conditions for either determining the receivers or the interfaces.
+This section discusses the different XSLTs that are used to execute the XPath conditions for either determining the receivers or the interfaces.
 
 
 
 ### XSLT Mapping for Determining Receivers
 
-Unless you reuse the extended receiver determination mapping, you must create an XSLT in the Partner Directory for each scenario. The XSLT mapping carries out the xpath routing conditions to determine the list of receivers. For an example, see [Receiver Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c).
+Unless you reuse the extended receiver determination mapping, you must create an XSLT in the Partner Directory for each scenario. The XSLT mapping carries out the XPath routing conditions to determine the list of receivers. For an example, see [Receiver Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_qbb_wyk_31c).
 
 > ### Note:  
 > The XSLT mapping is stored as binary. When using the API, you need to encode the XSLT before uploading to the Partner Directory. When you upload the XSLT using the Partner Directory user interface, selecting the content type `xsl` and the encoding `UTF-8` automatically encodes the XSLT.
@@ -727,7 +925,7 @@ X-CSRF-Token: {{token}}
 
 ### XSLT Mapping for Determining Interfaces
 
-For each receiver of your scenario, you need to create an XSLT in the Partner Directory that carries out the xpath routing conditions to determine the interfaces. For an example, see [Interface Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c).
+For each receiver of your scenario, you need to create an XSLT in the Partner Directory that carries out the XPath routing conditions to determine the interfaces. For an example, see [Interface Determination \(Generic\)](fully-decoupled-pipeline-f8e69f4.md#loiof8e69f43059a44cdb891892f4ff083d8__section_drs_wyk_31c).
 
 > ### Note:  
 > The XSLT mapping is stored as binary. When using the API, you need to encode the XSLT before uploading to the Partner Directory. When you upload the XSLT using the Partner Directory user interface, selecting the content type `xsl` and the encoding `UTF-8` automatically encodes the XSLT.
@@ -806,7 +1004,7 @@ X-CSRF-Token: {{token}}
 
 ### Combined Receiver and Interface Determination in a Single XSLT
 
-In general, you can combine the receiver determination and the interface determination in one single XSLT instead of defining separate XSLTs for the receiver determination and an interface determination for each receiver. This allows you to only upload one single XSLT that carries out the xpath routing conditions to determine the list of receivers and the xpath conditions to determine the list of receiver interfaces. This way, you can bypass the interface determination step.
+In general, you can combine the receiver determination and the interface determination in one single XSLT instead of defining separate XSLTs for the receiver determination and an interface determination for each receiver. This allows you to only upload one single XSLT that carries out the XPath routing conditions to determine the list of receivers and the XPath conditions to determine the list of receiver interfaces. This way, you can bypass the interface determination step.
 
 For the combined receiver and interface determination XSLT, the object ID is `receiverDetermination`, same as for the receiver determination XSLT. Assume that the encoded XSLT mapping is stored in the variable binary.
 
@@ -830,13 +1028,13 @@ X-CSRF-Token: {{token}}
 
 This bypass option is a subset of the combined receiver and interface determination option. It applies to Recipient List scenarios without interface split, that is, scenarios in which each receiver has only a single receiver interface. This way, you can bypass the interface determination step.
 
-The configuration is similar to the combined receiver and interface determination option. You only need to upload a single XSLT that carries out the xpath routing conditions to determine the list of receivers. However, you must define a fixed receiver interface in the XSLT for each receiver.
+The configuration is similar to the combined receiver and interface determination option. You only need to upload a single XSLT that carries out the XPath routing conditions to determine the list of receivers. However, you must define a fixed receiver interface in the XSLT for each receiver.
 
 
 
 ### Bypass Receiver Determination
 
-For interface split scenarios with only a single receiver, you can bypass the receiver determination step. In this case, you don't need to upload an XSLT mapping to determine the list of receivers. Instead, create a corresponding string parameter in the Partner Directory. However, for the interface determination, you must create an XSLT in the Partner Directory that carries out the xpath routing conditions to determine the interfaces.
+For interface split scenarios with only a single receiver, you can bypass the receiver determination step. In this case, you don't need to upload an XSLT mapping to determine the list of receivers. Instead, create a corresponding string parameter in the Partner Directory. However, for the interface determination, you must create an XSLT in the Partner Directory that carries out the XPath routing conditions to determine the interfaces.
 
 Define a Partner Directory string parameter with object ID `receiverDetermination` as follows:
 

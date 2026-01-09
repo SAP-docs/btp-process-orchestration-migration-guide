@@ -11,7 +11,7 @@ To set up the support for landscape stages, you need to create the business syst
 For this mapping, you can either use the **Partner Directory API** \(see [Partner Directory](https://help.sap.com/docs/integration-suite/sap-integration-suite/partner-directory)\) or the new **Partner Directory user interface** \(see [Managing Partner Directory Entries](https://help.sap.com/docs/integration-suite/sap-integration-suite/managing-partner-directory-entries)\).
 
 > ### Note:  
-> When connecting to ABAP proxies using the XI protocol or when exchanging IDoc messages, the business system names and logical system names depend on the landscape stages. In this case, you need a a landscape stage setup.
+> When connecting to ABAP proxies using the XI protocol or when exchanging IDoc messages, the business system names and logical system names depend on the landscape stages. In this case, you need a landscape stage setup.
 > 
 > However, not all scenarios require different business system names based on the landscape stage: If your **business system names for a particular scenario remain the same on all stages**, you don't need to maintain the mapping between actual names and alias. During the pipeline processing, the alias names are then used instead.
 

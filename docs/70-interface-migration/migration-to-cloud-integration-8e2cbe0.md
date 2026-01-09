@@ -48,7 +48,9 @@ The second step of the integration involves the following substeps:
 3.  The configured source and target message and envelopes are transformed from `ANSI X12 – 810 XML` file to an `IDOC INVOIC.INVOIC02 XML` format. Inbuilt mapping functions and UDFs are used to design any mapping operations.
 4.  With the help of the receiver channel, the generated `IDOC INVOIC.INVOIC02 XML` is sent to the target system.
 
-\[SCREENSHOT\]
+For an overview of the process, see the following graphic and screenshot:
+
+![](images/Migration_to_CI_inbound_EDI_to_own_system_19b9fca.png)![](images/Migration_to_CI_inbound_EDI_to_own_system2_2aaf322.png)
 
 
 
@@ -77,7 +79,9 @@ The following example uses the pattern **point-to-point asynchronous**.
 
 4.  Use XSLT mapping to convert the Cloud Integration-specific `ANSI X12 810` XML structure to the SAP Process Orchestration-specific `ANSI X12 810` XML structure.
 
-    The following example shows the integration processes: ![](images/b2b-migration-ci-inbound-semi-automatic_5573610.png)
+    The following example shows the integration processes:
+
+    ![](images/b2b-migration-ci-inbound-semi-automatic_5573610.png)
 
 
 If Cloud Integration is connected to ES Repository in SAP Process Orchestration, individually migrate your objects to integration flows in Cloud Integration. See [Import Mapping Content from ES Repository](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/importing-mapping-content-from-es-repository) .
@@ -95,7 +99,9 @@ In the following example for an outbound interface, `INVOIC02` IDocs are sent fr
 3.  In the mapping step, `INVOIC.INVOIC02` IDocs are transformed to `ANSI X12 – 810` XML files.
 4.  In the receiver channel, the generated `ANSI X12 – 810` XML files are converted to `ANSI X12 – 810` flat files using the X12ConverterModule.
 
-\[SCREENSHOT\]
+For an overview of the process, see the following graphic and screenshot:
+
+![](images/Migration_to_CI_inbound_own_system_to_TP1_6ef510f.png)![](images/Migration_to_CI_inbound_own_system_to_TP2_3ef2cf2.png)
 
 
 

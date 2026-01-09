@@ -294,6 +294,132 @@ None
 
 
 
+### Replace IDocs with SOAP/OData APIs or Business Events
+
+
+<table>
+<tr>
+<th valign="top">
+
+Category
+
+</th>
+<th valign="top">
+
+Description
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+**Possible Modernization**
+
+</td>
+<td valign="top">
+
+IDoc
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Recommendation**
+
+</td>
+<td valign="top">
+
+Adopt standard SAP APIs \(OData or SOAP\) and Business Events as per published on the [SAP Business Accelerator Hub](https://api.sap.com/) 
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Benefits**
+
+</td>
+<td valign="top">
+
+-   Real-time integration and reduced latency
+
+-   Better scalability and extensibility
+
+-   Decoupled architecture \(using events\)
+
+-   Aligns with SAP’s Clean Core strategy
+
+-   Improved observability and monitoring through SAP Integration Suite
+
+
+
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Checks**
+
+</td>
+<td valign="top">
+
+-   Review if the functional process has equivalent APIs or events using SAP Business Accelerator Hub and the Enterprise Event Enablement Explorer.
+
+-   Check consumer systems’ capability to consume APIs or events.
+
+-   Evaluate whether reliable asynchronous messaging is required \(events\) or transactional integrity is key \(APIs\).
+
+
+
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Applicable Scenarios**
+
+</td>
+<td valign="top">
+
+-   Consider SOAP for bulk load, complex objects handling, asynchronous delivery, and scenario in which you need WS-Security.
+
+-   Consider OData/REST for single objects handling, bulk loads and operations using resource IDs.
+
+
+
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Not Applicable Scenarios**
+
+</td>
+<td valign="top">
+
+-   Legacy systems that require IDoc structures and cannot consume modern APIs.
+
+-   Scenarios requiring complex transactional control across multiple systems not easily decoupled.
+
+-   Environments where asynchronous reliability with ordered delivery is critical and business events are not yet available.
+
+-   APIs don’t offer the same critical extensibility points which IDoc already offers.
+
+
+
+
+</td>
+</tr>
+</table>
+
+For a detailed explanation and practical guidance on how to replace IDocs with APIs and Business Events as part of a clean core modernization strategy, see the SAP Community blog post [Modernizing for a Clean Core – IDoc to Events & APIs in SAP PI/PO to Integration Suite Migrations](https://community.sap.com/t5/technology-blog-posts-by-sap/modernizing-for-a-clean-core-idoc-to-events-amp-apis-in-sap-pi-po-to/ba-p/14144273).
+
+
+
 <a name="loiod337a6f0d324405f9ef0c410fd0d3739__section_xqx_v5v_hbc"/>
 
 ## Integration Style

@@ -16,6 +16,16 @@ For more details and setup instructions, see the wiki page [Interface Documentat
 
 
 
+<a name="loio290ede0489be41928543d3ec666ee143__section_uvq_xkd_kgc"/>
+
+## **LeanIX for Interface Documentation** 
+
+Interface data documented in SAP Solution Manager 7.2 \(for example, technologies, source/target systems, attributes\) can be imported or referenced in SAP LeanIX to provide an enterprise-wide view of integrations across the IT landscape. By using the LeanIX interface fact sheet, you can visualize SAP and non-SAP application interactions, link interfaces to business capabilities, and support transformation initiatives like SAP S/4HANA migrations.
+
+This approach complements technical documentation in Solution Manager with business and architectural context in LeanIX. For more information, see [Getting Started](https://help.sap.com/docs/leanix/ea/getting-started) and [Interface Modeling Guidelines](https://help.sap.com/docs/leanix/ea/interface-modeling-guidelines?version=CLOUD).
+
+
+
 <a name="loio290ede0489be41928543d3ec666ee143__section_qhh_htz_mqb"/>
 
 ## Documenting APIs with OpenAPI

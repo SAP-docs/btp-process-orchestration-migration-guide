@@ -41,7 +41,7 @@ The retention time in the database for the messages is 30 days. The retention ti
 
 Although the data stores are a powerful resource, they must not be used as a database to keep data indefinitely. For more information about the guidelines while using data store, see [Data Storages](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/a836b4e38d1a45f6be7071b9b697c2a3.html) in the Cloud Integration documentation.
 
-If long-term storage of message logs or data is required \(for example, for legal or compliance reasons\), it’s recommended to use a separate storage mechanism such as a separate SAP HANA database instance and publish APIs that can be invoked from Cloud Integration to post any data. However, keep in mind that the introduction of these capabilities increases the processing time for integration flows.
+If you need long-term storage of message logs or payloads \(for example, for legal or compliance reasons\), you can use the content management service in SAP Integration Suite to archive selected messages externally. For more information, see [Archiving Data, Cloud Foundry Environment](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/archiving-data-cloud-foundry-environment).
 
 
 

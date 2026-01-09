@@ -30,7 +30,7 @@ The following fixed sequence of integration flows makes up the pipeline steps of
 
 ## Inbound Processing \(Scenario-Specific\)
 
-The first integration flow in the sequence of flows represents the sender adapter processing. It's usually scenario-specific, for example, a file sender adapter polling files for a specific scenario. Depending on your specific use cases, you can also configure inbound processing integration flows, which are used across multiple scenarios. See, for example, [XI Sender Adapter](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_vcg_m1f_j1c) and [IDoc Sender Adapter](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_tjw_z3f_j1c). For these special cases, you can use the generic integration flows `Pipeline Generic Step01 - Inbound Processing for Idoc` and `Pipeline Generic Step01 - Inbound Processing for XI`.
+The first integration flow in the sequence of flows represents the sender adapter processing. It's usually scenario-specific, for example, a file sender adapter polling files for a specific scenario. Depending on your specific use cases, you can also configure inbound processing integration flows, which are used across multiple scenarios. See, for example, [XI Sender Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_vcg_m1f_j1c) and [IDoc Sender Adapter](generic-inbound-and-outbound-5e2fdf8.md#loio5e2fdf8dfb8e457087ffd39bdd55781b__section_tjw_z3f_j1c). For these special cases, you can use the generic integration flows `Pipeline v2 Generic Step01 - Inbound Processing for Idoc` and `Pipeline v2 Generic Step01 - Inbound Processing for XI` from the integration package `Cloud Integration Pipeline - Generic Inbound`.
 
 In the scenario-specific inbound integration flow, you first configure the sender adapter, followed by a content modifier step in which the scenario-specific message headers are set. The message headers are needed for the subsequent processing, such as fetching the right receiver determination, and are passed to the rest of the integration flows. While the headers that are allowed are already preconfigured in generic integration flows, for scenario-specific integration flows, you must maintain the list of allowed headers in the runtime configuration. If you use the provided scenario-specific templates, the headers that are allowed are already preconfigured.
 
@@ -61,11 +61,11 @@ The following screenshot is an example of a scenario-specific integration flow f
 
 ![The screenshot shows the integration flow editor with an example of a scenario-specific integration flow for inbound processing.](images/PipelineConcept_IntegrationFlow1_7bbf018.png)
 
-For this integration flow, the following templates are available in the integration package:
+For this integration flow, the following templates are available in the integration package **Cloud Integration Pipeline - Templates**:
 
--   `Pipeline Template Step01 - Inbound Processing At Least Once`
+-   `Pipeline v2 Template Step01 - Inbound Processing At Least Once`
 
--   `Pipeline Template Step01 - Inbound Processing Exactly Once`
+-   `Pipeline v2 Template Step01 - Inbound Processing Exactly Once`
 
 
 
@@ -74,7 +74,7 @@ For this integration flow, the following templates are available in the integrat
 
 ## Inbound Processing \(Generic\)
 
-The second integration flow in the sequence of flows, `Pipeline Generic Step02 - Inbound Processing`, is a generic integration flow, which means it’s used across all integration scenarios and only must be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
+The second integration flow in the sequence of flows, `Pipeline v2 Generic Step02 - Inbound Processing` from the integration package **Cloud Integration Pipeline - Generic Pipelines**, is a generic integration flow, which means it’s used across all integration scenarios and only must be deployed once. In this case, use the Partner Directory to dynamically configure the message processing.
 
 The generic inbound processing integration flow reads the messages from the first JMS queue. It then passes the messages to a scenario-specific integration flow to run scenario-specific inbound conversion steps like a JSON to XML conversion or conversion steps of the adapter module chain.
 
@@ -109,7 +109,7 @@ The following screenshot is an example of a scenario-specific integration flow f
 
 ![The screenshot shows the integration flow editor with an example of a scenario-specific integration flow for inbound conversion.](images/PipelineConcept_IntegrationFlow3_fbc903f.png) 
 
-For this integration flow, the template `Pipeline Template Step03 - Inbound Conversion` is available in the integration package.
+For this integration flow, the template `Pipeline v2 Template Step03 - Inbound Conversion` is available in the integration package **`Cloud Integration Pipeline - Templates`**.
 
 
 
@@ -117,12 +117,12 @@ For this integration flow, the template `Pipeline Template Step03 - Inbound Conv
 
 ## Receiver Determination \(Generic\)
 
-The fourth integration flow, `Pipeline Generic Step04 - Receiver Determination`, is a generic integration flow that handles the receiver determination. Similarly, as the other generic integration flows, use the Partner Directory to dynamically configure the message processing.
+The fourth integration flow, `Pipeline v2 Generic Step04 - Receiver Determination` within the integration package **Cloud Integration Pipeline - Generic Pipelines**, is a generic integration flow that handles the receiver determination. Similarly, as the other generic integration flows, use the Partner Directory to dynamically configure the message processing.
 
-The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing xpath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
+The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing XPath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
 
 > ### Note:  
-> The generic receiver determination integration flow can now handle XSLT mappings that contain xpath conditions for both determining the list of receivers and the list of receiver interfaces. This way, you can bypass the generic interface determination integration flow which leads to an improved runtime behavior. See **Combined Receiver and Interface Determination in a Single XSLT** in [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+> The generic receiver determination integration flow can now handle XSLT mappings that contain XPath conditions for both determining the list of receivers and the list of receiver interfaces. This way, you can bypass the generic interface determination integration flow which leads to an improved runtime behavior. See **Combined Receiver and Interface Determination in a Single XSLT** in [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
@@ -178,7 +178,7 @@ The following example shows the outcome when running the XSLT mapping:
 </ns0:Receivers>
 ```
 
-The XML format resembles the format of the extended receiver determination message type of SAP Process Orchestration. For each receiver for whom the xpath condition applies, a receiver node with service node and the receiver system name is added. For simplification purposes, the Party part of the standard message format is removed here. However, the format has been extended with configuration information about how the processing should behave in case that no xpath condition is met, that is, if no receiver could be determined. In the example, an error should be raised. Other options are `Ignore` and `Default`. In the `Default` case, a default receiver must be maintained in the same format as the receiver node.
+The XML format resembles the format of the extended receiver determination message type of SAP Process Orchestration. For each receiver for whom the XPath condition applies, a receiver node with service node and the receiver system name is added. For simplification purposes, the Party part of the standard message format is removed here. However, the format has been extended with configuration information about how the processing should behave in case that no XPath condition is met, that is, if no receiver could be determined. In the example, an error should be raised. Other options are `Ignore` and `Default`. In the `Default` case, a default receiver must be maintained in the same format as the receiver node.
 
 If the Receivers XML doesn't contain any Receiver nodes, the message processing continues in the `Receiver not found` route. Depending on the settings for `Receiver not found`, either an error is raised, the message is ignored, or the message is sent to a default receiver. If an *Error* occurs, the message is kept in the inbound JMS queue and eventually retried until the maximum number of retries is reached. If *Ignore* is set, the message is ended without an error and the message status is set to `Completed`. If *Default* is set, the default receiver name is fetched from the payload and the message processing continues.
 
@@ -198,9 +198,9 @@ The following screenshot is an example of a generic integration flow for receive
 
 ## Interface Determination \(Generic\)
 
-The fifth integration flow, `Pipeline Generic Step05 - Interface Determination`, is a generic integration flow that handles the interface determination and the interface split. Here, you can also use the Partner Directory to dynamically configure the message processing.
+The fifth integration flow, `Pipeline v2 Generic Step05 - Interface Determination` within the integration package **Cloud Integration Pipeline - Generic Pipelines**, is a generic integration flow that handles the interface determination and the interface split. Here, you can also use the Partner Directory to dynamically configure the message processing.
 
-The generic interface determination integration flow reads the messages from the third JMS queue using a JMS sender adapter. For the interface determination, the same approach as the receiver determination is applied, that is, for each receiver you use an XSLT mapping to determine the receiver interface and mapping. The XSLT mapping containing the routing xpath conditions is read from the Partner Directory and then executed.
+The generic interface determination integration flow reads the messages from the third JMS queue using a JMS sender adapter. For the interface determination, the same approach as the receiver determination is applied, that is, for each receiver you use an XSLT mapping to determine the receiver interface and mapping. The XSLT mapping containing the routing XPath conditions is read from the Partner Directory and then executed.
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
@@ -253,7 +253,7 @@ The following is an example of the outcome of running the XSLT mapping:
 </ns0:Interfaces>
 ```
 
-For the interface determination, SAP Process Orchestration doesn’t support a similar capability as for the extended receiver determination. So, we came up with a new XML format in sync with the receiver determination XML format. For each condition in the interface determination of the integrated configuration object in SAP Process Orchestration, assign an index number. Because there can be two different conditions for the same receiver interface, don't work with receiver interface names here but rather use the interface index. Whenever the xpath condition applies, an interface node with index node and service node is added. The value of the service node holds the ProcessDirect endpoint of the scenario-specific outbound processing integration flow.
+For the interface determination, SAP Process Orchestration doesn’t support a similar capability as for the extended receiver determination. So, we came up with a new XML format in sync with the receiver determination XML format. For each condition in the interface determination of the integrated configuration object in SAP Process Orchestration, assign an index number. Because there can be two different conditions for the same receiver interface, don't work with receiver interface names here but rather use the interface index. Whenever the XPath condition applies, an interface node with index node and service node is added. The value of the service node holds the ProcessDirect endpoint of the scenario-specific outbound processing integration flow.
 
 If the Interfaces XML doesn't contain any interface nodes, the message processing continues in the `Interface not found` route and an error is raised. Besides the receiver determination, the interface determination in SAP Process Orchestration doesn’t distinguish between the different exception cases *Error*, *Ignore*, and *Default*. If no condition is met, an error is raised and the custom status is set to `InterfaceNotFoundError`.
 
@@ -271,7 +271,7 @@ The following screenshot is an example of a generic integration flow for interfa
 
 ## Outbound Processing \(Generic\)
 
-The sixth integration flow in the sequence of flows, `Pipeline Generic Step06 - Outbound Processing`, is a generic integration flow. The task of this integration flow is to dispatch the messages to the right scenario-specific outbound processing and to handle the retry if outbound conversion errors occur. So, it reads the messages from the fourth JMS queue, sets a unique ID based on the MPL ID and then calls the scenario-specific outbound processing flow via ProcessDirect adapter whereas the ProcessDirect endpoint of the scenario-specific outbound processing flow was passed from the previous generic flow. The unique ID is eventually used in the subsequent integration flow to guarantee exactly once delivery in case that the final receiver system isn't idempotent.
+The sixth integration flow in the sequence of flows, `Pipeline v2 Generic Step06 - Outbound Processing` within the integration package **Cloud Integration Pipeline - Generic Outbound**, is a generic integration flow. The task of this integration flow is to dispatch the messages to the right scenario-specific outbound processing and to handle the retry if outbound conversion errors occur. So, it reads the messages from the fourth JMS queue, sets a unique ID based on the MPL ID and then calls the scenario-specific outbound processing flow via ProcessDirect adapter whereas the ProcessDirect endpoint of the scenario-specific outbound processing flow was passed from the previous generic flow. The unique ID is eventually used in the subsequent integration flow to guarantee exactly once delivery in case that the final receiver system isn't idempotent.
 
 The following screenshot is an example of a generic integration flow for outbound processing:
 
@@ -304,14 +304,14 @@ The following screenshot is an example of a scenario-specific outbound integrati
 
 ![The screenshot shows the integration flow editor with an example of a scenario-specific outbound integration flow.](images/PipelineConcept_IntegrationFlow7_3a02fda.png)
 
-For this integration flow, the following templates are available in the integration package:
+For this integration flow, the following templates are available in the integration package **Cloud Integration Pipeline - Templates**:
 
--   `Pipeline Template Step07 - Outbound Processing Point-to-Point`
+-   `Pipeline v2 Template Step07 - Outbound Processing Point-to-Point`
 
--   `Pipeline Template Step07 - Outbound Processing One-to-Many with One Message Type`
+-   `Pipeline v2 Template Step07 - Outbound Processing One-to-Many with One Message Type`
 
--   `Pipeline Template Step07 - Outbound Processing One-to-Many with Multiple Message Types`
+-   `Pipeline v2 Template Step07 - Outbound Processing One-to-Many with Multiple Message Types`
 
--   `Pipeline Template Step07 - Outbound Processing Maintain Order At Runtime`
+-   `Pipeline v2 Template Step07 - Outbound Processing Maintain Order At Runtime`
 
 

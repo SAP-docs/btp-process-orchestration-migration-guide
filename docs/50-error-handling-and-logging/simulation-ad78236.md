@@ -18,7 +18,7 @@ Similar to the SAP Process Orchestration mapping test, within the *Design Enviro
 
 In Cloud Integration, you can use the *Display Queue* functionality, previously available in SAP Process Orchestration, to examine the context queue of any target element. The result mapping can also be downloaded if needed.
 
-For more information, see the blog [Message Mapping Simulation in SAP Cloud Platform Integration](https://blogs.sap.com/2017/05/26/message-mapping-simulation-in-sap-cloud-platform-integration/).
+For more information, see [Test Message Mapping](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/test-message-mapping).
 
 **Simulate Integration Flow**
 

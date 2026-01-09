@@ -55,7 +55,7 @@ Using this option, authentication of a sender is performed based on a client cer
 
 An SAP BTP tenant administrator can generate the [service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7a9b282981784f399615b2fda3cda062.html) used for certificate-based authentication.
 
-This process is also describes in the blog [How to Set Up Secure HTTP Inbound Connection with Client Certificates](https://blogs.sap.com/2019/08/14/cloud-integration-on-cf-how-to-setup-secure-http-inbound-connection-with-client-certificates/).
+This process is also described in the blog [How to Set Up Secure HTTP Inbound Connection with Client Certificates](https://blogs.sap.com/2019/08/14/cloud-integration-on-cf-how-to-setup-secure-http-inbound-connection-with-client-certificates/).
 
 </td>
 </tr>
@@ -83,7 +83,7 @@ An SAP BTP tenant administrator can generate the [service key](https://help.sap.
 
 The sender is authenticated based on user credentials that are generated together with a service key.
 
-The steps to create service instance and service key are the same as for the option “OAuth with client credentials grant”. However, during runtime no access token is retrieved. Instead, the values of clientid and clientsecret from the service key are used for authentication.
+The steps to create service instance and service key are the same as for the option “OAuth with client credentials grant”. However, during runtime, no access token is retrieved. Instead, the values of clientid and clientsecret from the service key are used for authentication.
 
 </td>
 </tr>
@@ -175,7 +175,7 @@ OAuth2 Authorization Code
 </td>
 <td valign="top">
 
-This is another form of use of OAuth2: if you use an OAuth2 authorization code, the authentication is performed via a separate authorization server as an intermediary step. The client can exchange the OAuth2 authorization code for an access token that is granted by the authorisation server and typically has a restricted Time-To-Live \(TTL\). This way the actual user credentials are never shared with the client, and the owner of the user credentials can revoke the authorisation code at any time.
+This is another form of use of OAuth2: if you use an OAuth2 authorization code, the authentication is performed via a separate authorization server as an intermediary step. The client can exchange the OAuth2 authorization code for an access token that is granted by the authorization server and typically has a restricted Time-To-Live \(TTL\). This way the actual user credentials are never shared with the client, and the owner of the user credentials can revoke the authorization code at any time.
 
 For deployment information, see [Deploying an OAuth2 Authorization Code](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/081bfd7fe8b141219db523491e2b7023.html).
 
@@ -208,6 +208,60 @@ The known hosts file contains the public keys for all hosts with which the Cloud
 For deployment information, see [Deploying an SSH Known Hosts Artifact](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/46da32434a4e4bb8a86c5bf7e7de214d.html).
 
 </td>
+</tr>
+<tr>
+<td valign="top">
+
+PGP Public Keyring
+
+</td>
+<td valign="top">
+
+This artifact contains one or more public keys that enable the Cloud Integration tenant to encrypt or verify messages using the Pretty Good Privacy \(PGP\) encryption standard as part of support for Message Layer Security \(MLS\).
+
+For deployment information, see [Deploying a PGP Public Keyring](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7f04458e2f3e4493a4337db1d45099a2.html).
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+PGP Secret Keyring
+
+</td>
+<td valign="top">
+
+This artifact contains one or more public and private key pairs for the usage of Open Pretty Good Privacy \(PGP\). The private key enables the Cloud Integration tenant to decrypt or sign messages as part of Message Layer Security \(MLS\).
+
+For deployment information, see [Deploying a PGP Secret Keyring](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/9d8e1a9504ed4da0bc9b4377e1f27c9b.html).
+
+For details on how to create a key pair, see [Creating a Key Pair](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/bb416c51c3d64d3fba03bce1b5d06846.html).
+
+For more information about importing and exporting PGP secret keys, see the blog [Import and Export PGP Secret Key - Change PGP Secret Key Password](https://blogs.sap.com/2021/01/19/cloud-integration-import-and-export-pgp-secret-key-change-pgp-secret-key-password/).
+
+</td>
+</tr>
+</table>
+
+
+
+<a name="loio09ec01662efc4886afbbc7e8dddc8bdc__section_h3v_l4x_kgc"/>
+
+## PGP Key Management
+
+
+<table>
+<tr>
+<th valign="top">
+
+Material Type
+
+</th>
+<th valign="top">
+
+Description
+
+</th>
 </tr>
 <tr>
 <td valign="top">
@@ -284,21 +338,9 @@ By default, SAP NetWeaver Java comes with some keystore views serving different 
 -   TrustedCAs \(contains trusted server certificates\)
 
 
-For more information about how to import a certificate into the keystore view, see [Uploading Certificates to SAP Process Integration](https://help.sap.com/viewer/d0802f41861a4f81a3610d873fdcf148/LBN/en-US/ed2d035ec16d44c387e93602f029cf52.html) and SAP Note [2056672](https://me.sap.com/notes/2056672).
-
 **Importing Certificates to Cloud Integration**
 
-The Keystore Monitor in Cloud Integration allows a tenant administrator to manage the tenant keystore and its entries \(i.e., X.509 certificates and key pairs\).
-
-Connections between a Cloud Integration tenant and a remote system can be secured in different ways, such as basic authentication, client authentication, or OAuth2. Using client authentication, you must maintain these certificates in the keystore.
-
-In Cloud Integration, you can access the *Keystore* tile in the *Manage Security* section.
-
-A keystore typically contains entries that belong to the tenant administrator \(customer\) and entries that are owned by SAP. Each entry is uniquely identified by an alias.
-
-The operations you can perform on a keystore entry depend on whether it's owned by SAP or the tenant administrator. As the tenant administrator, you can, for example, delete or backup entries that are owned by the tenant administrator. SAP can't access or download any keystore entries owned by the tenant administrator.
-
-In Cloud Integration, there’s the concept of security material, which is stored in the tenant and enables the reuse of some parameters such as authentication parameters \(for Basic authentication\), PGP private and public keys \(to support encryption and decryption for Message Layer Security\), and OAuth2 credentials.
+The Keystore Monitor in Cloud Integration allows a tenant administrator to manage the tenant keystore and its entries \(for example, X.509 certificates and key pairs\). For more information, see [Managing Keystore Entries](https://help.sap.com/docs/integration-suite/sap-integration-suite/managing-keystore-entries).
 
 
 
@@ -306,7 +348,7 @@ In Cloud Integration, there’s the concept of security material, which is store
 
 ## Managing Access Policies
 
-Access Policies serve two purposes: first, to restrict the tasks that can be performed in an artifact at design-time, and second, to restrict the data that can be displayed at runtime level, such as the access to Message Processing Log Attachments, trace data, data stores, and variables.
+Access Policies serve two purposes: first, to restrict the tasks that can be performed in an artifact at design-time, and second, to restrict the data that can be displayed at runtime level, such as the access to message processing log attachments, trace data, data stores, and variables.
 
 Access policies provide an extra layer of granularity in terms of controlling how artifacts can be accessed, and by whom, at a deeper level than the standard User Roles provide as part of the standard SAP BTP authorization model.
 
@@ -327,7 +369,7 @@ Currently, access policies can be used to control access to the following integr
 -   Global variables
 
 
-A single access policy can be used to control access to multiple types of objects. The actual names of the objects can be specified by using a specific name, or a regular expression \(e.g., HR, Finance\) can be used to protect multiple objects.
+A single access policy can be used to control access to multiple types of objects. The actual names of the objects can be specified by using a specific name, or a regular expression \(for example, HR, Finance\) can be used to protect multiple objects.
 
 Access policy can help in segregating data even on a single tenant.
 
@@ -350,7 +392,7 @@ To define the access policies in Cloud Integration, follow these steps:
 
 With the access policies, the following actions are restricted: edit, copy, download, delete, configure, mass delete and download, and simulation of integration flow.
 
-For more information, see [Managing Access Policies, Cloud Foundry Environment](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7db3c87f6c744016b7eed9838912e123.html), as well as the blogs [Access policy for securing design artifacts](https://blogs.sap.com/2021/06/07/access-policy-for-securing-design-artifacts-and-control-access-to-integration-flow-in-the-sap-cloud-integration/) and [Access Policies: Defining Roles on Artifact Level](https://blogs.sap.com/2020/06/12/cloud-integration-access-policies-defining-roles-on-artifact-level/).
+For more information, see [Managing Access Policies, Cloud Foundry Environment](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/managing-access-policies-cloud-foundry-environment), as well as the blog [SAP Integration Suite – Access Policies for Integration Packages](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-integration-suite-access-policies-for-integration-packages/ba-p/13648901), and [Managing Access Policies](https://help.sap.com/docs/integration-suite/sap-integration-suite/managing-access-policies).
 
 
 
@@ -377,11 +419,11 @@ In this section, two types of JDBC-related material are stored:
 
 ## Managing User Roles
 
-A user account represents an individual person and can have one or more roles associated. These roles define the user’s permissions in organizations and spaces. The user role management determines which features users can view, check, access, and what kind of actions users can do. In this case, each role has a set of permissions.
+A user account represents an individual and can be associated with one or more roles. These roles in Integration Suite define the user's runtime permissions for accessing specific integration artifacts, such as iFlows. In this context, each role governs which integration flows a user is authorized to trigger or access during execution.
 
-In order to access user roles, in the *Monitor* view, click the *User Roles* tile in the *Manage Security* section. User roles defined by SAP and by the tenant administrator are displayed.
+To access user roles, in the **Monitor** view, choose the **User Roles** tile in the **Manage Security** section. User roles defined by SAP and by the tenant administrator are displayed.
 
-In this app, roles can be added, changed \(only the description\), or deleted. The actual assignment to users in the system must, however, still be performed by an administrator that has the authorization to modify roles, role collections, and role assignment in the SAP BTP Cockpit. This process is described in the section [Securing User Access to Cloud Integration](security-dd0fb21.md).
+In this app, roles can be added, changed \(only the description\), or deleted. The actual assignment to users in the system must, however, still be performed by an administrator that has the authorization to modify roles, role collections, and role assignment in the SAP BTP Cockpit. This process is described in the section [Securing User Access to Cloud Integration](https://help.sap.com/docs/help/90c8ad90cb684ee5979856093efe7462/dd0fb21d47c54fff9ccab9667f3b4de7.html).
 
 
 

@@ -59,7 +59,7 @@ Use this module to replace the application payload of the XI message that contai
 </td>
 <td valign="top">
 
-This module is normally used while sending a single attachment as the application payload with Mail adapter.
+This module is normally used while sending a single attachment as the application payload with the Mail adapter.
 
 Cloud Integration offers multiple options to handle this:
 
@@ -87,7 +87,7 @@ Use this module to convert an XML document that is in the main payload of the XI
 </td>
 <td valign="top">
 
-In Cloud Integration, you have different ways to convert your XML document to text format. The most common way is to use the conversion steps available \(e.g., XML to CSV, XML to EDI, XML to JSON\). You can also use Groovy script to convert the XML message as you want in a step before the adapter call.
+In Cloud Integration, you have different ways to convert your XML document to text format. The most common way is to use the conversion steps available \(for example, XML to CSV, XML to EDI, XML to JSON\). You can also use Groovy script to convert the XML message as you want in a step before the adapter call.
 
 </td>
 </tr>
@@ -174,7 +174,7 @@ Use this module to edit the message header for adapter-specific message attribut
 </td>
 <td valign="top">
 
-In Cloud Integration, you don’t have the same concept of adapter-specific attributes but you can use external parameters or runtime parameters \(e.g., $\{property.queryOptions\}\) while defining dynamic attributes in your adapter.
+In Cloud Integration, you don’t have the same concept of adapter-specific attributes but you can use external parameters or runtime parameters \(for example, $\{property.queryOptions\}\) while defining dynamic attributes in your adapter.
 
 For more information about external parameters, see the blog [Externalizing parameters using SAP Cloud Platform Integration's Web Application](https://blogs.sap.com/2017/06/20/externalizing-parameters-using-sap-cloud-platform-integrations-web-application/).
 
@@ -200,6 +200,16 @@ In Cloud Integration, you can either use the standard archiving feature \(see [C
 </table>
 
 For more information on the standard adapter modules, see [Adding Modules to the Module Processor](https://help.sap.com/docs/SAP_NETWEAVER_750/2462a9a468b1491b91fda1923d23f667/cd5af7c0c994e24fb0d0088443513de2.html).
+
+
+
+<a name="loioe402f4a382cb4088a16ef715edc7f956__section_csd_hzc_kgc"/>
+
+## **Message Transformation Utilities** 
+
+In Cloud Integration, message transformation utilities replicate the functionality of the message transform bean from SAP Process Integration and SAP Process Orchestration, which does not have a direct equivalent in SAP Integration Suite. These utilities enable you to perform runtime message format conversions, allowing data to be transformed seamlessly between different structures and formats. By enabling this kind of flexible message handling, they help maintain compatibility across systems with varying format requirements and support smooth integration in complex landscapes.
+
+You can find this utility in the [Message Transformation Utilities](https://api.sap.com/package/com.sap.integration.cloud.utilities.MessageTransformations/integrationflow) package on the SAP Business Accelerator Hub.
 
 
 
