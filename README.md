@@ -28,7 +28,7 @@ Adhere to the [SAP Open Source Code of Conduct](https://github.com/SAP-docs/.git
 
 ## Licensing
 
-See our [LICENSE](LICENSE) for copyright and license information.
+See our [LICENSE](LICENSE) for copyright and license information. 
 
 
 
