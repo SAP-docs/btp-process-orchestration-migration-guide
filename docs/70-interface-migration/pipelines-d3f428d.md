@@ -280,3 +280,5 @@ For scenarios that use the IDoc or XI protocol, you can simplify the configurati
 
 [Integrated Messaging Runtime \(Synchronous\)](integrated-messaging-runtime-synchronous-0dfede9.md "The synchronous integrated messaging runtime is used for handling synchronous content-based router scenarios. Unlike the asynchronous messaging, the synchronous pipeline doesn't use JMS queues, but instead connects the pipeline steps using the ProcessDirect adapter, which is synchronous by nature.")
 
+[Generic Inbound and Outbound](generic-inbound-and-outbound-5e2fdf8.md "For scenarios that use the IDoc or XI protocol, you can simplify the configuration of your scenarios by leveraging generic integration flows for the following:")
+

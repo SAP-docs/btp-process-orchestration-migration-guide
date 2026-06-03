@@ -702,7 +702,7 @@ To enable custom preprocessing globally, configure each generic integration flow
 
 ### Scenario-Specific Setting
 
-For scenario-specific configuration, you can define for which pipeline steps the custom exit integration flow should be called. For this, you need to create the corresponding parameters in the Partner Directory. See [Message Processing Behavior](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c).
+For scenario-specific configuration, you can define for which pipeline steps the custom exit integration flow should be called. For this, you need to create the corresponding parameters in the Partner Directory. See [Message Processing Behavior](message-processing-behavior-501b81a.md).
 
 For each scenario that should call the custom preprocessing flow, configure the Partner Directory as follows:
 

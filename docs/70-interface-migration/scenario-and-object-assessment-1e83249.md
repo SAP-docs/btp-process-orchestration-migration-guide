@@ -97,7 +97,7 @@ OP2OP
 
 For ground-to-ground scenarios, SAP provides a hybrid deployment option, Edge Integration Cell, with which you can leverage all the capabilities of Cloud Integration, but in a local deployment. See [What Is Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/what-is-sap-integration-suite-edge-integration-cell).
 
-You can also use the Integration Gateway Component to execute and operate cloud integration content from Cloud Integration in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentral Adapter Engine, SAP Process Orchestration and SAP PI dual usage type\).
+You can also use the Integration Gateway Component to perform and operate cloud integration content from Cloud Integration in the Advanced Adapter Engine with all the deployment options \(PI-AEX, decentral Adapter Engine, SAP Process Orchestration and SAP PI dual usage type\).
 
 See [Enable the Integration Gateway Component](https://help.sap.com/viewer/5cf7d2de571a45cc81f91261668b7361/7.5.21/en-US/a68695d0e6eb4552ace156cf5352a420.html) and SAP Note [2428801](https://me.sap.com/notes/2428801).
 
@@ -298,7 +298,9 @@ To import or migrate import mapping artifacts from SAP Process Orchestration to 
     </td>
     <td valign="top">
     
-    Message mappings imported from SAP Process Orchestration and referencing value mappings aren't supported directly at runtime. However, value mappings are supported in Cloud Integration and can be used in graphical message mapping.
+    Message mappings imported from SAP Process Orchestration and referencing value mappings are supported directly at runtime. The value mapping artifact must be migrated in an additional step and deployed in the Cloud Integration capability of SAP Integration Suite.
+
+    See [Migrating Value Mappings](migrating-value-mappings-a65145c.md).
     
     </td>
     </tr>

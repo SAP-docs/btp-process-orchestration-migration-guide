@@ -122,7 +122,7 @@ The fourth integration flow, `Pipeline v2 Generic Step04 - Receiver Determinatio
 The generic receiver determination integration flow reads the messages from the second JMS queue using a JMS sender adapter. By default, the XSLT mapping containing the content-based routing XPath conditions is read from the Partner Directory and then executed. The special case in which you can reuse an existing extended receiver determination mapping is described in [Reuse Extended Receiver Determination](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_kjy_1jf_j1c). As mentioned previously, by using an XSLT mapping for the receiver determination instead of explicit multicasts and routers, the integration flow model can be kept concise and easy to read.
 
 > ### Note:  
-> The generic receiver determination integration flow can now handle XSLT mappings that contain XPath conditions for both determining the list of receivers and the list of receiver interfaces. This way, you can bypass the generic interface determination integration flow which leads to an improved runtime behavior. See **Combined Receiver and Interface Determination in a Single XSLT** in [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+> The generic receiver determination integration flow can now handle XSLT mappings that contain XPath conditions for both determining the list of receivers and the list of receiver interfaces. This way, you can bypass the generic interface determination integration flow which leads to an improved runtime behavior. See **Combined Receiver and Interface Determination in a Single XSLT** in [Special Cases: Bypass Options](special-cases-bypass-options-524073e.md).
 
 Before the XSLT mapping is run, the incoming message body is stored in an exchange property because the execution of the mapping overwrites the body.
 
@@ -182,7 +182,7 @@ The XML format resembles the format of the extended receiver determination messa
 
 If the Receivers XML doesn't contain any Receiver nodes, the message processing continues in the `Receiver not found` route. Depending on the settings for `Receiver not found`, either an error is raised, the message is ignored, or the message is sent to a default receiver. If an *Error* occurs, the message is kept in the inbound JMS queue and eventually retried until the maximum number of retries is reached. If *Ignore* is set, the message is ended without an error and the message status is set to `Completed`. If *Default* is set, the default receiver name is fetched from the payload and the message processing continues.
 
-For all `receiver not determined` options, a custom status is maintained so that you have full transparency about why the processing has been terminated. For the *Default* option, the custom status is set to `ReceiverNotFoundDefault`, for *Ignore* it's set to `ReceiverNotFoundIgnored`, and for *Error*, it's set to `ReceiverNotFoundError`.
+For all `receiver not determined` options, a custom status is maintained so that you have full transparency about why the processing has been canceled. For the *Default* option, the custom status is set to `ReceiverNotFoundDefault`, for *Ignore* it's set to `ReceiverNotFoundIgnored`, and for *Error*, it's set to `ReceiverNotFoundError`.
 
 Otherwise, in the default route, that is, if at least one receiver has been determined, the receivers XML message is split using an iterating splitter. For each split message, the standard message header `SAP_Receiver` is set with the name of the receiver system, the original payload is retrieved from the exchange property, and the message is then stored in the third JMS queue, the interface determination queue, to be passed on to the next pipeline step.
 
@@ -215,18 +215,21 @@ The following is an example of an XSLT mapping to execute the routing condition 
       <Interface>
         <Index>1</Index>
         <Service>/pip/07/scenario1/rcvidx1/ifidx1</Service>
+        <Name>Interface_1</Name>
       </Interface>
     </xsl:if>
     <xsl:if test="/*:Item/CurrencyCode = 'EUR'">
       <Interface>
         <Index>2</Index>
         <Service>/pip/07/scenario1/rcvidx1/ifidx2</Service>
+        <Name>Interface_3</Name>
       </Interface>
     </xsl:if>
     <xsl:if test="/*:Item/Quantity != '10'">
       <Interface>
         <Index>3</Index>
         <Service>/pip/07/scenario1/rcvidx1/ifidx3</Service>
+        <Name>Interface_3</Name>
       </Interface>
     </xsl:if>
     </ns0:Interfaces>
@@ -237,6 +240,9 @@ The following is an example of an XSLT mapping to execute the routing condition 
 > ### Note:  
 > If you want to define routing conditions based on headers or properties, see [Access Header and Properties in XSLT Mapping](https://help.sap.com/docs/integration-suite/sap-integration-suite/access-header-and-properties-in-xslt-mapping). More specifically, you can define routing conditions based on dynamic configuration parameters of the sender adapter or any other parameter defined in the scenario-specific inbound processing flow. To do so, pass those values to the generic integration flows using any header with the prefix `dc`.
 
+> ### Note:  
+> The node **Name** is optional. If set, the generic flows set the header **SAP\_ReceiverInterface** based on **Name**'s value. If **Name** is not set, you can define the header **SAP\_ReceiverInterface** or the header **SAP\_MessageType** in the scenario-specific outbound processing flow.
+
 The following is an example of the outcome of running the XSLT mapping:
 
 ```
@@ -245,10 +251,12 @@ The following is an example of the outcome of running the XSLT mapping:
   <Interface>
     <Index>1</Index>
     <Service>/pip/07/scenario1/rcvidx1/ifidx1</Service>
+    <Name>Interface_1</Name>
   </Interface>
   <Interface>
     <Index>2</Index>
     <Service>/pip/07/scenario1/rcvidx1/ifidx2</Service>
+    <Name>Interface_2</Name>
   </Interface>
 </ns0:Interfaces>
 ```

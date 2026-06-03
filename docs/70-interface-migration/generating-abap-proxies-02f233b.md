@@ -8,9 +8,9 @@ ABAP proxy generation is fully supported on SAP Integration Suite through the se
 
 The following high-level steps summarize how to generate ABAP proxies based on the new service interface import approach:
 
-1.  **Import the required service interface from the ESR source system to the Design section of SAP Integration Suite**.
+1.  **Create or import the required service interface into the Design section of SAP Integration Suite**.
 
-    Currently, you can't create or modify service interfaces directly in SAP Integration Suite.
+    In addition to importing existing service interfaces from ESR-based systems, you can define new service interfaces directly in SAP Integration Suite. This way, you remove the dependency on the ESR in SAP Process Orchestration for future developments.
 
 2.  **Configure the connection with SAP Integration Suite**.
 

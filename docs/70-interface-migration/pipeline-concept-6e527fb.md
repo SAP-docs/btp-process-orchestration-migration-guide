@@ -68,7 +68,7 @@ See [Using the Partner Directory in the Pipeline Concept](using-the-partner-dire
 
 XSLT mappings are used to carry out the receiver determination and interface split pipeline steps. The idea comes from the extended receiver determination capability in SAP Process Orchestration, which allows you to run an operation mapping to determine your receivers in a content-based router or recipient list pattern. XSLT mappings simplify the integration flow models of the receiver determination and interface split: Instead of a combination of multicast branches and multiple routers for all your content-based router XPath expressions, which complicates your integration flow model, simply run the XPath expressions within an XSLT mapping. This makes the model more neat and easier to read. Additionally, the concept uses XSLT instead of graphical message mapping because the Partner Directory supports XSLT mappings. This way, the usage of XSLT in combination with the Partner Directory contributes to the reduction of the number of required JMS queues.
 
-See [XSLT Mappings](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_thd_scz_31c).
+See [XSLT Mappings](xslt-mappings-f7fb3ca.md).
 
 
 
@@ -88,10 +88,10 @@ Besides the generic cases, the pipeline concept also considers the following spe
 
 -   By default, each scenario uses the same set of generic JMS queues. For scenarios in which you want to **control the outbound delivery**, you can define receiver-specific JMS queues. See [Receiver-Specific Outbound Queues](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_n2d_cjf_j1c).
 
--   For Point-to-Point scenarios, you can skip the two pipeline steps `receiver determination` and `interface determination`. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
--   You can combine the receiver determination and the interface determination in a single XSLT. In this case, you can skip the `interface determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
--   For recipient list scenarios without interface split, you can skip the `interface determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
--   For interface split scenarios with only one receiver, you can skip the `receiver determination` pipeline step. See [Special Cases: Bypass Options](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_lsh_hkp_hcc).
+-   For Point-to-Point scenarios, you can skip the two pipeline steps `receiver determination` and `interface determination`. See [Point-to-Point Scenarios](special-cases-bypass-options-524073e.md#loio524073ea3c9c46ba9a76fbae00b82a55__section_point-to-point).
+-   You can combine the receiver determination and the interface determination in a single XSLT. In this case, you can skip the `interface determination` pipeline step. See [Combined Receiver and Interface Determination in a Single XSLT](special-cases-bypass-options-524073e.md#loio524073ea3c9c46ba9a76fbae00b82a55__section_single_xslt).
+-   For recipient list scenarios without interface split, you can skip the `interface determination` pipeline step. See [Bypass Interface Determination](special-cases-bypass-options-524073e.md#loio524073ea3c9c46ba9a76fbae00b82a55__section_bypass_interface).
+-   For interface split scenarios with only one receiver, you can skip the `receiver determination` pipeline step. See [Bypass Receiver Determination](special-cases-bypass-options-524073e.md#loio524073ea3c9c46ba9a76fbae00b82a55__section_bypass_receiver).
 -   You can set up so-called sender wildcard scenarios, which are scenarios in which the same configuration applies to different sender systems or different sender interfaces. See [Sender Wildcard Scenarios](special-cases-1606af9.md#loio1606af9b55bf4391bea01d2f7ee112af__section_onv_nk5_g2c).
 -   You can set up scenarios using either sender parties or receiver parties.
 
@@ -100,11 +100,11 @@ See [Special Cases](special-cases-1606af9.md).
 -   **[Pipelines](pipelines-d3f428d.md "The pipeline concept works with a fixed sequence of integration flows, the pipeline
 		steps.")**  
 The pipeline concept works with a fixed sequence of integration flows, the pipeline steps.
--   **[Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md "In the pipeline concept, most generic integration flows rely on the Partner
-		Directory. This topic discusses parameters in the Partner Directory that help to define the
+-   **[Using the Partner Directory in the Pipeline Concept](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md "In the pipeline concept, most generic integration flows rely on the Partner Directory.
+		The following topics discuss the parameters in the Partner Directory that help to define the
 		message processing behavior and the XSLTs that are stored in the Partner Directory as
 		binaries and used to dynamically determine receivers and interfaces.")**  
-In the pipeline concept, most generic integration flows rely on the Partner Directory. This topic discusses parameters in the Partner Directory that help to define the message processing behavior and the XSLTs that are stored in the Partner Directory as binaries and used to dynamically determine receivers and interfaces.
+In the pipeline concept, most generic integration flows rely on the Partner Directory. The following topics discuss the parameters in the Partner Directory that help to define the message processing behavior and the XSLTs that are stored in the Partner Directory as binaries and used to dynamically determine receivers and interfaces.
 -   **[Scripts for the Pipeline Concept](scripts-for-the-pipeline-concept-05d9f8d.md "Use the scripts collected in this section to read the Partner Directory and to
         perform pipeline-specific tasks.")**  
 Use the scripts collected in this section to read the Partner Directory and to perform pipeline-specific tasks.
@@ -118,9 +118,9 @@ Before you get started with the pipeline concept, consider a few special cases, 
 Perform monitoring and error handling in the pipeline concept, for example by using retry handling, message monitoring, and using the dead letter queue.
 -   **[Landscape Stages](landscape-stages-05cace1.md "Landscape stages allow you to run scenarios on different stages without changing the
 		Partner Directory configuration. Use it to automatically identify the landscape stage of
-		your tenant during runtime, map actual names to aliases, and maintain routing conditions for
-		integration scenarios.")**  
-Landscape stages allow you to run scenarios on different stages without changing the Partner Directory configuration. Use it to automatically identify the landscape stage of your tenant during runtime, map actual names to aliases, and maintain routing conditions for integration scenarios.
+		your tenant during runtime, map actual business system names to aliases or business
+		component names, and maintain routing conditions for integration scenarios.")**  
+Landscape stages allow you to run scenarios on different stages without changing the Partner Directory configuration. Use it to automatically identify the landscape stage of your tenant during runtime, map actual business system names to aliases or business component names, and maintain routing conditions for integration scenarios.
 -   **[Customizing the Pipeline Concept](customizing-the-pipeline-concept-aeb106f.md "You can apply the pipeline concept as a template and fit it to your custom needs. For
 		example, implement your own exception handling, or define a different global maximum number
 		of retries.")**  

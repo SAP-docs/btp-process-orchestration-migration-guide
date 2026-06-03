@@ -25,6 +25,9 @@ When working with ABAP proxies in the context of SAP Process Orchestration, you 
 -   **[Migrating Java Mappings](migrating-java-mappings-468c179.md "Migrate your Java mappings in SAP Process Orchestration to the more efficient Groovy script in Cloud Integration using Groovy script
 		templates.")**  
 Migrate your Java mappings in SAP Process Orchestration to the more efficient Groovy script in Cloud Integration using Groovy script templates.
+-   **[Migrating Value Mappings](migrating-value-mappings-a65145c.md "Learn how to migrate your value mappings from SAP Process Orchestration to SAP
+		Integration Suite.")**  
+Learn how to migrate your value mappings from SAP Process Orchestration to SAP Integration Suite.
 -   **[Directory API](directory-api-07096c2.md "The SAP Process Orchestration Directory API is a set of SOAP APIs to read and change objects from the Integration Builder and Integration
 		Directory. ")**  
 The SAP Process Orchestration Directory API is a set of SOAP APIs to read and change objects from the Integration Builder and Integration Directory.

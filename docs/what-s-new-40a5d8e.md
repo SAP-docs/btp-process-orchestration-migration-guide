@@ -28,6 +28,44 @@ Update
 <tr>
 <td valign="top">
 
+[Migrating Value Mappings](70-interface-migration/migrating-value-mappings-a65145c.md)
+
+</td>
+<td valign="top">
+
+You can now learn about different migration approaches for value mapping groups from SAP Process Orchestration to Cloud Integration. Use them to transform multi-directional value mappings into strictly bidirectional mappings while maintaining functional consistency, either through automated Integration Directory import or manual CSV file transfer.
+
+</td>
+<td valign="top">
+
+May 2026
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+[Partner ID](70-interface-migration/partner-id-7b226f5.md)
+
+[Landscape Stages](70-interface-migration/landscape-stages-05cace1.md)
+
+</td>
+<td valign="top">
+
+The pipeline concept now supports IDocs with partner types other than `LS`, such as `LI` or `KU`. Furthermore, can include **virtual receivers** to determine the partner ID, similarly to how we support IDoc inbound scenarios in SAP Process Orchestration.
+
+Additionally, **more flexible landscape stages** are now supported, considering different landscape stages of your business systems compared to the number of SAP Integration Suite tenants. For example, if you have two tenants \(DEV/QA and PROD\), you can now define multiple stages per tenant. Additionally, you can define stage rules in case you want to route a message from one stage to another. Furthermore, the following options for determining the stage are supported: using an authorized user, using a header passed to the pipeline steps, or using configuration parameters in the Partner Directory.
+
+</td>
+<td valign="top">
+
+March 2026
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 [Generating ABAP Proxies](70-interface-migration/generating-abap-proxies-02f233b.md)
 
 </td>
@@ -81,7 +119,7 @@ August 2025
 <tr>
 <td valign="top">
 
-[Message Processing Behavior](70-interface-migration/using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c)
+[Message Processing Behavior](70-interface-migration/message-processing-behavior-501b81a.md)
 
 </td>
 <td valign="top">

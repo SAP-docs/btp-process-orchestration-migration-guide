@@ -149,13 +149,15 @@ The following example shows what a combined XSLT mapping to execute the routing 
           <xsl:if test="$dc_country = 'DE'"> 
             <Interface> 
               <Index>1</Index> 
-              <Service>/pip/07/scn1/rcv1/ifidx1</Service> 
+              <Service>/pip/07/scn1/rcv1/ifidx1</Service>
+              <Name>Interface_1</Name>
             </Interface> 
           </xsl:if> 
           <xsl:if test="$dc_country != 'DE'"> 
             <Interface> 
               <Index>2</Index> 
-              <Service>/pip/07/scn1/rcv1/ifidx2</Service> 
+              <Service>/pip/07/scn1/rcv1/ifidx2</Service>
+              <Name>Interface_2</Name>
             </Interface> 
           </xsl:if> 
         </Interfaces> 
@@ -168,13 +170,15 @@ The following example shows what a combined XSLT mapping to execute the routing 
           <xsl:if test="/*:Item/CurrencyCode = 'EUR'"> 
             <Interface> 
               <Index>1</Index> 
-              <Service>/pip/07/scn1/rcv2/ifidx1</Service> 
+              <Service>/pip/07/scn1/rcv2/ifidx1</Service>
+              <Name>Interface_1</Name>
             </Interface> 
           </xsl:if> 
           <xsl:if test="(/*:Item/CurrencyCode != 'EUR') or (/*:Item/Quantity = '10')">"> 
             <Interface> 
               <Index>2</Index> 
-              <Service>/pip/07/scn1/rcv2/ifidx2</Service> 
+              <Service>/pip/07/scn1/rcv2/ifidx2</Service>
+              <Name>Interface_2</Name>
             </Interface> 
           </xsl:if> 
         </Interfaces> 
@@ -184,6 +188,9 @@ The following example shows what a combined XSLT mapping to execute the routing 
   </xsl:template> 
 </xsl:stylesheet> 
 ```
+
+> ### Note:  
+> The node **Name** is optional. If set, the generic flows set the header **SAP\_ReceiverInterface** based on **Name**'s value. Otherwise, you can define the header **SAP\_ReceiverInterface** or the header **SAP\_MessageType** in your scenario-specific outbound processing flow. You can access the supported **Receivers** XSD from the template `Pipeline v2 Template Step04 - Custom Receiver Determination` in the integration package **Cloud Integration Pipeline - Templates**.
 
 The following example shows the outcome of running the combined XSLT mapping:
 
@@ -200,6 +207,7 @@ The following example shows the outcome of running the combined XSLT mapping:
       <Interface> 
         <Index>1</Index> 
         <Service>/pip/07/scn1/rcv1/ifidx1</Service> 
+        <Name>Interface_1</Name>
       </Interface> 
     </Interfaces> 
   </Receiver> 
@@ -209,10 +217,12 @@ The following example shows the outcome of running the combined XSLT mapping:
       <Interface> 
         <Index>1</Index> 
         <Service>/pip/07/scn1/rcv2/ifidx1</Service> 
+        <Name>Interface_1</Name>
       </Interface> 
       <Interface> 
         <Index>2</Index> 
         <Service>/pip/07/scn1/rcv2/ifidx2</Service> 
+        <Name>Interface_2</Name>
       </Interface> 
     </Interfaces> 
   </Receiver> 
@@ -331,7 +341,7 @@ You can set up so-called sender wildcard scenarios, which are scenarios in which
 
 For this specific case, multiple sender systems exchange messages using the same sender interface. The routing rules and mappings are the same across all sender systems. For example, you exchange messages with your partners using the same interface.
 
-You can easily configure this option when you're using alternative partners for your partner ID. For each sender system, maintain a corresponding alternative partner. During the pipeline processing, the sender system and sender interface is then mapped to the same integration scenario. See *Option 2: Using alternative partner* in [Partner ID](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc).
+You can easily configure this option when you're using alternative partners for your partner ID. For each sender system, maintain a corresponding alternative partner. During the pipeline processing, the sender system and sender interface is then mapped to the same integration scenario. See [Recommended: Using Alternative Partner](partner-id-7b226f5.md#loio7b226f5757d046ae9ea1d410a3513550__section_partnerid_recommended).
 
 > ### Example:  
 > The following example shows a wildcard scenario with sender systems `Sender_1`, `Sender_2`, and interface `Interface_1`:

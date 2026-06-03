@@ -128,12 +128,60 @@ In the *Processing* tab of the idempotent process call step, set the idempotent 
 
 The idempotent process uses the exchange property `CamelDuplicateMessage` to identify duplicates. If the property isn't set, the message is sent to the JMS queue. If this succeeds, for all following calls of the idempotent process with the same unique ID, the exchange property `CamelDuplicateMessage` has the value `true`. In this case, the message isn't forwarded to the JMS queue again. Instead, the custom status is set to `DuplicateDiscarded`, which is displayed in the message processing log in the message monitor.
 
-Next, as the outbound JMS queue, configure the queue name of the first JMS queue in the sequence of flows, namely the inbound processing queue. For the fully decoupled pipeline, the default queue name is `PIPQ01`, and for the integrated messaging runtime, the default queue name is `PIPX01`. If you want to overwrite your configuration for a specific scenario, you need to maintain the string parameter `InboundQueue` in the Partner Directory. See [Message Processing Behavior](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c).
+Next, as the outbound JMS queue, configure the queue name of the first JMS queue in the sequence of flows, namely the inbound processing queue. For the fully decoupled pipeline, the default queue name is `PIPQ01`, and for the integrated messaging runtime, the default queue name is `PIPX01`. If you want to overwrite your configuration for a specific scenario, you need to maintain the string parameter `InboundQueue` in the Partner Directory. See [Message Processing Behavior](message-processing-behavior-501b81a.md).
 
 > ### Note:  
 > The default inbound processing queue is defined as `PIPX01`, following the recommendation of using the integrated messaging runtime. Before, the default value was `PIPQ01`.
 
 For synchronous content-based router scenarios, send the messages to the synchronous integrated messaging runtime using the ProcessDirect adapter. When you're using synchronous point-to-point scenarios, the pipeline can be bypassed, and the message directly routed to the corresponding scenario-specific outbound flow.
+
+
+
+### Dynamic Headers
+
+The XI sender adapter supports dynamic headers within XI messages, see [Dynamic Headers](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/configure-xi-receiver-adapter?version=Cloud#dynamic-headers). If the sender sends dynamic configurations in the XI header as part of the `DynamicConfiguration` tag, the XI sender adapter converts them into a pair of exchange properties with the prefix `SapDynamicConfiguration`: one exchange property for the parameter name and value and one for its namespace. To pass the dynamic configurations to the subsequent pipeline steps, the generic XI inbound processing flow automatically creates corresponding headers with the prefix `dc_SapDynamicConfiguration`. For each record in the `DynamicConfiguration` tag, the following two headers are created:
+
+
+<table>
+<tr>
+<th valign="top">
+
+Header Name
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`dc_SapDynamicConfiguration_<Name of the Record>` 
+
+</td>
+<td valign="top">
+
+Value of the record
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`dc_SapDynamicConfiguration_<Name of the Record>_Namespace` 
+
+</td>
+<td valign="top">
+
+Namespace of the record
+
+</td>
+</tr>
+</table>
+
+You can read or modify those headers in a content modifier step or using script in your scenario-specific integration flows.
 
 
 
@@ -287,9 +335,9 @@ If you want to run your scenario in test mode, for example, for scenario regress
 
 In a Groovy script, `SAP_SenderInterface` is concatenated as a combination of the previously created headers `SAP_IDoc_EDIDC_MESTYP`, `SAP_IDoc_EDIDC_IDOCTYP`, and `SAP_IDoc_EDIDC_CIMTYP`. The latter is only added if the IDoc control header field `CIMTYP` isn't empty.
 
-The partner ID with which you read the Partner Directory is derived from `SAP_Sender`, `SAP_SenderInterface` and the fixed namespace `urn:sap-com:document:sap:idoc:messages`. It's used to read the scenario-specific retry handling. See [Partner ID](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_oy4_t1p_hcc).
+The partner ID with which you read the Partner Directory is derived from `SAP_Sender`, `SAP_SenderInterface` and the fixed namespace `urn:sap-com:document:sap:idoc:messages`. It's used to read the scenario-specific retry handling. See [Partner ID](partner-id-7b226f5.md).
 
-For improved monitoring of IDoc bulk messages, all IDoc numbers are stored in a custom header property. The leading zeros are removed from the IDoc numbers to make it easier to search for a message in the message monitor. Also, IDoc bulk messages are split using an IDoc Splitter step, unless you've defined the string parameter **KeepBulk** in the Partner Directory. See [Message Processing Behavior](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c).
+For improved monitoring of IDoc bulk messages, all IDoc numbers are stored in a custom header property. The leading zeros are removed from the IDoc numbers to make it easier to search for a message in the message monitor. Also, IDoc bulk messages are split using an IDoc Splitter step, unless you've defined the string parameter **KeepBulk** in the Partner Directory. See [Message Processing Behavior](message-processing-behavior-501b81a.md).
 
 > ### Note:  
 > You can configure the way IDoc numbers of IDoc bulk messages are displayed in the message processing log in the message monitor. By default, each IDoc number is displayed as an individual header property. If you'd prefer to display all IDoc numbers as array, change the configuration parameter `IDocIndividualHeaderInBulk` of the integration flow `Pipeline v2 Generic Step01 - Inbound Processing for Idoc` to `false`.
@@ -308,7 +356,7 @@ The idempotent process uses the exchange property `CamelDuplicateMessage` to ide
 > ### Note:  
 > For testing purposes, you can disable the duplicate check, which is enabled by default. To do so, change the configuration parameter `CustomXTest_SkipDuplicateCheck` of the generic IDoc inbound flow from `false` to `true`.
 
-As the outbound JMS queue, configure the queue name of the first JMS queue in the sequence of flows, namely the inbound processing queue. For the fully decoupled pipeline, the default queue name is `PIPQ01`, and for the integrated messaging runtime, the default queue name is `PIPX01`. If you want to overwrite your configuration for a specific scenario, maintain the string parameter `InboundQueue` in the Partner Directory. See [Message Processing Behavior](using-the-partner-directory-in-the-pipeline-concept-9ec7d2d.md#loio9ec7d2dce72d423abff80543f11b2091__section_bxk_wty_31c).
+As the outbound JMS queue, configure the queue name of the first JMS queue in the sequence of flows, namely the inbound processing queue. For the fully decoupled pipeline, the default queue name is `PIPQ01`, and for the integrated messaging runtime, the default queue name is `PIPX01`. If you want to overwrite your configuration for a specific scenario, maintain the string parameter `InboundQueue` in the Partner Directory. See [Message Processing Behavior](message-processing-behavior-501b81a.md).
 
 > ### Note:  
 > The default inbound processing queue is defined as `PIPX01`, following the recommendation of using the integrated messaging runtime. Before, the default value was `PIPQ01`.
@@ -868,6 +916,57 @@ For the connection parameters, the following guidelines apply:
 
 -   If there's one generic XI outbound integration flow for each receiving system, configure the connection parameters either as **externalized parameters \(option 1\)** or as **Partner Directory parameters \(option 2\)**.
 
+
+
+
+### Dynamic Headers
+
+The XI receiver adapter supports dynamic headers within XI messages, see [Dynamic Headers](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/configure-xi-receiver-adapter?version=Cloud#dynamic-headers). To pass dynamic configurations to the generic XI outbound flow, you need to create corresponding headers with the prefix `dc_SapDynamicConfiguration` in the scenario-specific outbound processing flow. For each record tat should be added to the `DynamicConfiguration` tag, the following two headers must be created:
+
+
+<table>
+<tr>
+<th valign="top">
+
+Header Name
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`dc_SapDynamicConfiguration_<Name of the Record>` 
+
+</td>
+<td valign="top">
+
+Value of the record
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`dc_SapDynamicConfiguration_<Name of the Record>_Namespace` 
+
+</td>
+<td valign="top">
+
+Namespace of the record
+
+</td>
+</tr>
+</table>
+
+The generic XI outbound processing flow automatically creates corresponding exchange properties with prefix *`SapDynamicConfiguration`*. The receiver adapter checks for those exchange properties and adds them as records within the `DynamicConfiguration` tag of the outgoing XI message.
+
+> ### Note:  
+> In case of an integration scenario with XI sender adapter and XI receiver adapter, you may need to delete the headers in your scenario-specific outbound processing flow unless you want to pass all dynamic XI headers of the sender to the receiver. You can delete headers using a content modifier.
 
 
 

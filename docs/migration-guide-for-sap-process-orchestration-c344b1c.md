@@ -34,6 +34,9 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 
 -   **[Interface Migration](70-interface-migration/interface-migration-0cab9f4.md)**: Discover the different aspects involved in moving interfaces from SAP Process Integration and SAP Process Orchestration to SAP Integration Suite, as well as scenario and object assessment and how testing can be automated.
 
+    -   **[Pipeline Concept](70-interface-migration/pipeline-concept-6e527fb.md)**: The pipeline concept allows you to set up your integration scenarios in Cloud Integration similarly to how messages are processed in SAP Process Integration and SAP Process Orchestration, in pipelines.
+
+
 -   **[Modernization Recommendations](70-interface-migration/modernization-recommendations-d337a6f.md)**: Learn how you can align your integration practices with modern standards and the SAP Integration Suite strategy. Identify legacy elements and improve protocols, mapping, security, and integration style to support a clean core and scalable, cloud-ready architecture.
 
 
@@ -44,7 +47,7 @@ This guide describes what you need to know when you want to migrate from SAP Pro
 > 
 > -   *Feedback* \> *Create issue*: Provide feedback about a documentation page. This option opens an issue on GitHub.
 > 
-> -   *Feedback* \> *Edit page*: Contribute to a documentation page. This option opens a pull request on GitHub.
+> -   *Feedback* \> *Edit on GitHub*: Contribute to a documentation page. This option opens a pull request on GitHub.
 > 
 > 
 > You need a GitHub account to use these options.

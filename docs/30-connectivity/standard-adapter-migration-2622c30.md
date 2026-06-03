@@ -157,6 +157,8 @@ Although Cloud Integration supports the JMS adapter, it can only be used interna
 
 IBM MQ - The IBM MQ adapter enables seamless and efficient integration with IBM MQ systems. It is available for Standard service plans and above of SAP Integration Suite
 
+For more information on mapping and configuring JMS \(IBM MQ\) adapters, see [Mapping SAP Process Orchestration JMS \(IBM MQ\) Adapter to SAP Integration Suite IBM MQ Adapter](https://community.sap.com/t5/integration-blog-posts/mapping-sap-process-orchestration-jms-ibm-mq-adapter-to-sap-integration/ba-p/14347177)
+
 </td>
 </tr>
 <tr>

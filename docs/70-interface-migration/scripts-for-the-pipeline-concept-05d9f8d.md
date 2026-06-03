@@ -65,6 +65,23 @@ This script is called by all generic flows and can also be added in your scenari
 <tr>
 <td valign="top">
 
+`addPartyForXIInbound` 
+
+</td>
+<td valign="top">
+
+Use this script to add the party name to the header SAP\_Sender when the XI header contains a sender party.
+
+</td>
+<td valign="top">
+
+This script is called by the integration flow `Pipeline v2 Generic Step01 - Inbound Processing for XI`.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 `attachAdditionalInformation` 
 
 </td>
@@ -93,6 +110,40 @@ Use this script to check if the message body is in a well-formed XML format.
 <td valign="top">
 
 This script is called by the generic receiver determination flow and by the integrated messaging flows for both asynchronous and synchronous message processing.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`createHeadersFromSapDynamicConfiguration`
+
+</td>
+<td valign="top">
+
+Use this script to convert the exchange properties that were created based on the dynamic XI header of the incoming message to message headers to pass the values to the subsequent pipeline steps.
+
+</td>
+<td valign="top">
+
+This script is called by the integration flow `Pipeline v2 Generic Step01 - Inbound Processing for XI`.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`createSapDynamicConfigurationFromHeaders`
+
+</td>
+<td valign="top">
+
+Use this script to convert the dynamic configuration headers passed to the generic XI outbound flow to exchange properties that are in the format that the XI receiver adapter expects to add the corresponding dynamic XI headers to the outgoing XI message.
+
+</td>
+<td valign="top">
+
+This script is called by the integration flow `Pipeline v2 Generic Step08 - Outbound Processing for XI`.
 
 </td>
 </tr>
@@ -150,17 +201,34 @@ This script is called by most of the generic inbound flows and by the integrated
 <tr>
 <td valign="top">
 
+`determinePartnerIDForIDocInbound`
+
+</td>
+<td valign="top">
+
+Use this script  for IDoc inbound scenarios to set the header partner ID based on the IDoc control record of the incoming IDoc message.
+
+</td>
+<td valign="top">
+
+This script is called by the integration flow `Pipeline v2 Generic Step01 - Inbound Processing for Idoc`.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 `determinePartnerIDForXIInbound`
 
 </td>
 <td valign="top">
 
-Use this script for XI inbound scenarios to set the header partner ID, based on an alternative partner defined as a combination of the sender component, the sender interface and the sender interface namespace.
+This script has been replaced by the `determinePartnerID` script.
 
 </td>
 <td valign="top">
 
-This script is called by the integration flow `Pipeline v2 Generic Step01 - Inbound Processing for XI`.
+Not in use
 
 </td>
 </tr>
@@ -229,6 +297,23 @@ Use this script to map the alias of the receiver system to the actual receiver b
 <td valign="top">
 
 This script is called by the generic receiver determination flow and the integrated messaging flows for both asynchronous as well as synchronous message processing.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`mapSenderStageToReceiverStage`
+
+</td>
+<td valign="top">
+
+Use this script to read the stage rule from the Partner Directory and to map the sender landscape stage to the receiver landscape stage, if applicable.
+
+</td>
+<td valign="top">
+
+This script is called by the integration flows `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Async`, `Pipeline v2 Generic Step02 - Integrated Messaging Runtime Sync` and `Pipeline v2 Generic Step04 - Receiver Determination`.
 
 </td>
 </tr>
@@ -444,7 +529,7 @@ This script is used in the integration flow `Pipeline v2 Generic Step01 - Inboun
 </td>
 <td valign="top">
 
-Use this script  to concatenate the sender interface based on the IDoc control headers `MESTYP`, `IDOCTYP` and `CIMTYP`.
+Use this script  to concatenate the sender interface based on the IDoc control headers `MESTYP`, `IDOCTYP` and `CIMTYP`. In addition, the sender interface namespace and the quality of service are set as well.
 
 </td>
 <td valign="top">
