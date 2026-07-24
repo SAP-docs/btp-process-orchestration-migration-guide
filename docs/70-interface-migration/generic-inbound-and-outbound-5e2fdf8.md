@@ -557,140 +557,287 @@ Receiver party name
 
 In the Partner Directory, you can configure the connection parameters of the receiving systems. As a prerequisite for this option, set up your landscape stages. See [Landscape Stages](landscape-stages-05cace1.md).
 
-1.  First, maintain the configuration parameters for the partner ID representing the business system alias. To distinguish between the different stages, you need to add the actual business system name as a suffix to the parameters.
+To maintain the connection parameters of the receiving systems, decide between the following options:
 
-2.  Then, for each business system, configure the following string parameters in the Partner Directory:
+-   **Option 2a**: If you have set up your landscape stages, you should have created a business system alias for your receiver anyway. This way, you can maintain the configuration parameters for the partner ID representing the business system alias. To distinguish between the different stages, add the actual business system name as a suffix to the parameters.
+-   **Option 2b**: Optionally, for each stage you can create a partner ID representing the actual business system. You can then maintain the configuration parameters for the partner ID representing the business system. In this case, the parameters don't need a suffix added like in the previous option.
+-   **Option 2c**: Some connection parameters can be maintained for the partner ID representing the configuration scenario. Choose this option if each receiver interface requires its own credentials.
 
-
-    <table>
-    <tr>
-    <th valign="top">
-
-    String Parameter
-    
-    </th>
-    <th valign="top">
-
-    Value
-    
-    </th>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XIEndpoint_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    XI endpoint of the receiving system, for example, `https://<host name>:<port>/sap/xi/engine?type=receiver&sap-client=<client>`
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XIProxyType_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    `On-Premise` or `Internet`
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XICCLocationId_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    If proxy type is `On-Premise`: Cloud Connector location ID
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XIAuthenticationType_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    `None`, `Basic`, `ClientCertificate`, `PrincipalPropagation`
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XICredentialName_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    If authentication type is `Basic`: Credential alias
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `XIPrivateKeyAlias_<business system name>`
-    
-    </td>
-    <td valign="top">
-    
-    If authentication type is `Client Certificate`: Private key alias
-    
-    </td>
-    </tr>
-    </table>
-    
-3.  Finally, maintain the XI integration scenario-related configuration parameters \(`Service Interface` and `Service Interface Namespace`\) in the partner ID representing the configuration scenario:
+If you choose **option 2a**, maintain the configuration parameters for the partner ID representing the business system alias. To distinguish between the different stages, add the actual business system name as a suffix to the parameters. For each business system, configure the following string parameters in the Partner Directory:
 
 
-    <table>
-    <tr>
-    <th valign="top">
+<table>
+<tr>
+<th valign="top">
 
-    String Parameter
-    
-    </th>
-    <th valign="top">
+String Parameter
 
-    Value
-    
-    </th>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `InterfaceNameDetermination_<receiver system alias>` 
-    
-    </td>
-    <td valign="top">
-    
-    Enter the name of the `Receiver Interface` or `Service Interface` that is part of the XI Identifiers for the receiver in the XI Receiver adapter. This parameter can be helpful in point-to-point scenarios \(bypass option\) when receiver and outbound service are also set as string parameters.
-    
-    </td>
-    </tr>
-    <tr>
-    <td valign="top">
-    
-    `InterfaceNamespaceDetermination_<service interface name>` 
-    
-    </td>
-    <td valign="top">
-    
-    Specify the namespace of the service interface used in the XI identifiers for the receiver within the XI Receiver adapter. This parameter is optional since the namespace can also be assigned dynamically using XPath. The suffix refers to the service interface name configured in the previous parameter.
-    
-    </td>
-    </tr>
-    </table>
-    
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`XIEndpoint_<business system name>`
+
+</td>
+<td valign="top">
+
+XI endpoint of the receiving system, for example, `https://<host name>:<port>/sap/xi/engine?type=receiver&sap-client=<client>`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIProxyType_<business system name>`
+
+</td>
+<td valign="top">
+
+`On-Premise` or `Internet`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XICCLocationId_<business system name>`
+
+</td>
+<td valign="top">
+
+If proxy type is `On-Premise`: Cloud Connector location ID
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIAuthenticationType_<business system name>`
+
+</td>
+<td valign="top">
+
+`None`, `Basic`, `ClientCertificate`, `PrincipalPropagation`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XICredentialName_<business system name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Basic`: Credential alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIPrivateKeyAlias_<business system name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Client Certificate`: Private key alias
+
+</td>
+</tr>
+</table>
+
+If you choose **option 2b**, create a partner ID representing the actual business system for each stage. For each business system, configure the following string parameters in the Partner Directory:
+
+
+<table>
+<tr>
+<th valign="top">
+
+String Parameter
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`XIEndpoint`
+
+</td>
+<td valign="top">
+
+XI endpoint of the receiving system, for example, `https://<host name>:<port>/sap/xi/engine?type=receiver&sap-client=<client>`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIProxyType`
+
+</td>
+<td valign="top">
+
+`On-Premise` or `Internet`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XICCLocationId`
+
+</td>
+<td valign="top">
+
+If proxy type is `On-Premise`: Cloud Connector location ID
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIAuthenticationType`
+
+</td>
+<td valign="top">
+
+`None`, `Basic`, `ClientCertificate`, `PrincipalPropagation`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XICredentialName`
+
+</td>
+<td valign="top">
+
+If authentication type is `Basic`: Credential alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIPrivateKeyAlias`
+
+</td>
+<td valign="top">
+
+If authentication type is `Client Certificate`: Private key alias
+
+</td>
+</tr>
+</table>
+
+For **option 2c**, maintain a subset of the connection parameters in the partner ID representing the configuration scenario. In this case, the parameters depend on the business system alias name and the receiver interface name.
+
+
+<table>
+<tr>
+<th valign="top">
+
+String Parameter
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`XIAuthenticationType_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+`None`, `Basic`, `ClientCertificate`, `PrincipalPropagation`
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XICredentialName_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Basic`: Credential alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`XIPrivateKeyAlias_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Client Certificate`: Private key alias
+
+</td>
+</tr>
+</table>
+
+Finally, for any option, maintain the XI integration scenario-related configuration parameters \(`Service Interface` and `Service Interface Namespace`\) in the partner ID representing the configuration scenario:
+
+
+<table>
+<tr>
+<th valign="top">
+
+String Parameter
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`InterfaceNameDetermination_<receiver system alias>` 
+
+</td>
+<td valign="top">
+
+Enter the name of the `Receiver Interface` or `Service Interface` that is part of the XI Identifiers for the receiver in the XI Receiver adapter. This parameter can be helpful in point-to-point scenarios \(bypass option\) when receiver and outbound service are also set as string parameters.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`InterfaceNamespaceDetermination_<service interface name>` 
+
+</td>
+<td valign="top">
+
+Specify the namespace of the service interface used in the XI identifiers for the receiver within the XI Receiver adapter. This parameter is optional since the namespace can also be assigned dynamically using XPath. The suffix refers to the service interface name configured in the previous parameter.
+
+</td>
+</tr>
+</table>
 
 
 
@@ -898,7 +1045,14 @@ Receiver interface namespace
 
 Duplicate handling in the XI receiver adapter of the generic XI outbound flow is based on the header **UniqueID**. The header is passed from the generic outbound processing flow and routed through the scenario-specific outbound processing flow to the generic XI outbound flow. By default, the header `UniqueID` equals the message processing log ID \(header `SAP_MessageProcessingLogID`\) of the generic outbound processing flow. If an error happens during the sequence of flows, the generic outbound processing flow handles the retry of the failed message while the message processing log ID for this particular message remains the same.
 
-If you prefer using a functional ID, such as an order ID or an invoice ID, instead of the technical ID, you can override the header `UniqueID` in your scenario-specific outbound processing flow.
+If you have a message split in your scenario-specific outbound processing flow, you need to modify the header `UniqueID` by adding the split index to the header value. As a prerequisite, the iterative or generic splitter needs to run sequentially. This ensures that each split message has a unique ID and in case of a message restart this unique ID remains the same.
+
+If you prefer using a functional ID, such as an order ID or an invoice ID, instead of the technical ID, you can override the header `UniqueID` in your scenario-specific outbound processing flow. If there's a message split in your scenario-specific outbound processing flow, ensure that each split message has a unique ID, for example, by adding an item number to the order ID.
+
+If you have an integration scenario with XI sender adapter and XI receiver adapter, you can pass the XI message from the sender system to the receiver system. This allows you to track the same XI message ID from end to end. To enable this feature for your specific configuration scenario, create a string parameter `PassMessageIdFromE2E` with value `true` to the partner ID representing the configuration scenario.
+
+> ### Note:  
+> If there's a message split in your scenario-specific outbound processing flow that uses either an iterative or a generic splitter, the parameter `PassMessageIdFromE2E` is ignored to avoid that split messages are identified as duplicates by error. Instead, the header `UniqueID` is used to generate the XI message ID at the receiver. Not all such situations may be automatically identified. So, use the parameter `PassMessageIdFromE2E` with caution to avoid potential data loss.
 
 
 
@@ -981,7 +1135,10 @@ Both options are supported: either use a single generic IDoc outbound integratio
 > ### Note:  
 > For the latter case, copy the integration package `Cloud Integration Pipeline - Generic Outbound`, which you can find in SAP Integration Suite at *Discover* \> *Integrations*, and provide a corresponding suffix for the copied package and integration flows. This way, you ensure that the copied packages receive the regular updates.
 
-For IDoc outbound scenarios, as for any other scenario, you need to create a scenario-specific outbound processing flow. For this integration flow, use the template `Pipeline v2 Template Step07 - Outbound Processing Point-to-Point to Generic IDoc Outbound` from the integration package **Cloud Integration Pipeline - Templates**. In this flow, you run your mappings and transformation steps, if any, and configure the IDoc receiver adapter. However, instead of an IDoc receiver adapter, you need to create a ProcessDirect receiver adapter to pass the message to the generic XI outbound integration flow. The generic IDoc outbound integration flow then takes care of delivering the message to the actual receiver using the IDoc protocol.
+For IDoc outbound scenarios, as for any other scenario, you need to create a scenario-specific outbound processing flow. In this flow, you run your mappings and transformation steps, if any, and configure the IDoc receiver adapter. However, instead of an IDoc receiver adapter, you need to create a ProcessDirect receiver adapter to pass the message to the generic IDoc outbound integration flow. The generic IDoc outbound integration flow then takes care of delivering the message to the actual receiver using the IDoc protocol. For this integration flow, the following templates are available in the integration package **Cloud Integration Pipeline - Templates**:
+
+-   Use the template `Pipeline v2 Template Step07 - Outbound Processing Point-to-Point to Generic IDoc Outbound` if you want to pass a single IDoc message to the IDoc outbound integration flow.
+-   Use the template `Pipeline v2 Template Step07 - Outbound Processing One-to-Many to Generic IDoc Outbound` if you want to split an IDoc bulk message at the outbound and passing the split messages to the IDoc outbound integration flow.
 
 > ### Note:  
 > By default, the ProcessDirect endpoint of the generic IDoc outbound integration flow equals `/generic/step08/idoc`. Before deploying the generic flow, change the endpoint to your preference. If you create multiple generic IDoc outbound integration flows, make sure to configure a unique endpoint for each. Otherwise, the deployment fails.
@@ -1231,9 +1388,13 @@ Specifies the default values to be assigned to the corresponding control record 
 
 In the Partner Directory, you can configure the connection parameters of the receiving systems and the IDoc control header of the configuration scenarios. As a prerequisite for maintaining the connection parameters, set up your landscape stages. See [Landscape Stages](landscape-stages-05cace1.md).
 
-You maintain the connectivity-related configuration parameters in the partner ID representing the business system alias. To distinguish between the different stages, add the actual business system name as a suffix to the parameters.
+To maintain the connection parameters of the receiving systems, decide between the following options:
 
-For each business system, you can configure the following string parameters in the Partner Directory:
+-   **Option 2a**: If you have set up your landscape stages, you should have created a business system alias for your receiver anyway. This way, you can maintain the configuration parameters for the partner ID representing the business system alias. To distinguish between the different stages, add the actual business system name as a suffix to the parameters.
+-   **Option 2b**: Optionally, for each stage you can create a partner ID representing the actual business system. You can then maintain the configuration parameters for the partner ID representing the business system. In this case, the parameters don't need a suffix added like in the previous option.
+-   **Option 2c**: Some connection parameters can be maintained for the partner ID representing the configuration scenario. Choose this option if each receiver interface requires its own credentials.
+
+If you choose for **option 2a**, maintain the connectivity-related configuration parameters for the partner ID representing the business system alias. To distinguish between the different stages, add the actual business system name as a suffix to the parameters. For each business system, configure the following string parameters in the Partner Directory:
 
 
 <table>
@@ -1347,7 +1508,187 @@ Logical system
 </tr>
 </table>
 
-Maintain the IDoc control header-related configuration parameters in the partner ID representing the configuration scenario. By default, the parameters are defined in the Partner Directory for each receiver interface. For this, you need to add the receiver interface name as a suffix to the parameters.
+If you choose for **option 2b**, for each stage create a partner ID representing the actual business system. For each business system, configure the following string parameters in the Partner Directory:
+
+
+<table>
+<tr>
+<th valign="top">
+
+String Parameter
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocEndpoint`
+
+</td>
+<td valign="top">
+
+IDoc endpoint of the receiving system, for example, `https://<host name>:<port>/sap/bc/idoc_xml?sap-client=<client>` 
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocProxyType`
+
+</td>
+<td valign="top">
+
+`On-Premise` or `Internet` 
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocCCLocationId`
+
+</td>
+<td valign="top">
+
+If proxy type is `On-Premise`: Cloud Connector location ID
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocAuthenticationType`
+
+</td>
+<td valign="top">
+
+`None`, `Basic`, `ClientCertificate`, or `PrincipalPropagation` 
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocCredentialName`
+
+</td>
+<td valign="top">
+
+If authentication type is `Basic`: Credential alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocPrivateKeyAlias`
+
+</td>
+<td valign="top">
+
+If authentication type is `Client Certificate`: Private key alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocLogicalSystem`
+
+</td>
+<td valign="top">
+
+Logical system
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocContentType`
+
+</td>
+<td valign="top">
+
+`Application/x-sap.idoc` or `Text/XML` 
+
+</td>
+</tr>
+</table>
+
+For **option 2c,** you can maintain a subset of the connection parameters in the partner ID representing the configuration scenario. In this case, the parameters depend on the business system alias name and the receiver interface name, as follows.
+
+
+<table>
+<tr>
+<th valign="top">
+
+String Parameter
+
+</th>
+<th valign="top">
+
+Value
+
+</th>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocAuthenticationType<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+`None`, `Basic`, `ClientCertificate`, or `PrincipalPropagation` 
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocCredentialName_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Basic`: Credential alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocPrivateKeyAlias_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+If authentication type is `Client Certificate`: Private key alias
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+`IDocContentType_<business system alias>_<receiver interface name>`
+
+</td>
+<td valign="top">
+
+`Application/x-sap.idoc` or `Text/XML` 
+
+</td>
+</tr>
+</table>
+
+For any option, maintain the IDoc control header-related configuration parameters in the partner ID representing the configuration scenario. By default, the parameters are defined in the Partner Directory for each receiver interface. For this, you need to add the receiver interface name as a suffix to the parameters.
 
 > ### Note:  
 > The receiver interface name for IDoc messages is derived from the IDoc message type `MESTYP`, the IDoc basic type `IDOCTYP`, and the extension type `CIMTYP`. The latter is only added if the corresponding IDoc control header isn’t empty.
@@ -1357,7 +1698,7 @@ Maintain the IDoc control header-related configuration parameters in the partner
 If you use the default behavior, for each receiver interface, maintain the IDoc control header that should be overridden as string parameter, for example, string parameter ID equaling `RCVPRN_INVOIC.INVOIC02` with value equaling the receiver partner number.
 
 > ### Note:  
-> The prerequisite for this behavior is that the IDoc control header is maintained in the message header `SAP_IDoc_EDIDC_overrideControlRecordParameters`, as mentioned previously.
+> The prerequisite for this behavior is that the IDoc control header is maintained in the message header `SAP_IDoc_EDIDC_overrideControlRecordParameters`, as mentioned previously. Optionally, you can maintain the list of IDoc control headers as string parameter `overrideControlRecordParameters_<receiver interface name>` in the partner ID representing the configuration scenario. Here, you also need to add the receiver interface name as a suffix to the parameter, for example, string parameter ID equaling `overrideControlRecordParameters_INVOIC.INVOIC02` with value equaling the comma separated list of IDoc control headers which should be overridden.
 
 
 

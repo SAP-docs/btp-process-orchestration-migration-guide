@@ -6,6 +6,11 @@ The partner ID clearly determines the configuration scenario. It’s based on th
 
 
 
+> ### Note:  
+> In SAP Process Orchestration, a configuration scenario is a container that groups all configuration artifacts such as Integrated Configuration Objects \(ICO\), communication components, or communication channels belonging to a specific business process. As such, one configuration scenario can hold multiple ICOs.
+> 
+> In Cloud Integration however, one configuration scenario would correspond to one ICO only.
+
 The following partner ID approaches are supported:
 
 -   **Recommended**: You define the partner ID as **configuration scenario name**, and you map **sender system name** and **sender interface name** to the partner ID using an **alternative partner**. See [Recommended: Using Alternative Partner](partner-id-7b226f5.md#loio7b226f5757d046ae9ea1d410a3513550__section_partnerid_recommended).

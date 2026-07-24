@@ -270,6 +270,28 @@ ProcessDirect endpoint of custom exit integration flow, if required
 
 </td>
 </tr>
+<tr>
+<td valign="top">
+
+`PassMessageIdFromE2E`
+
+</td>
+<td valign="top">
+
+`Boolean`
+
+</td>
+<td valign="top">
+
+Optional, default is **false**
+
+</td>
+<td valign="top">
+
+Only relevant for XI to XI scenarios. Set to *true* if the XI message ID from sender should be passed to the XI receiver.
+
+</td>
+</tr>
 </table>
 
 The following table lists the details for the required string parameter that is used to dynamically define the message processing behavior with partner ID equals receiver name:
@@ -579,6 +601,30 @@ X-CSRF-Token: {{token}}
     "Pid": "{{pid}}",
     "Id": "CustomXPreEndpoint",
     "Value": "/pip/custom/preProcessing/scenario4"
+}
+```
+
+
+
+<a name="loio501b81a050ad4f0fb421cdac5581011e__section_pass_message_e2e"/>
+
+## Pass Message ID From End-to-End
+
+For integration scenarios with XI sender adapter and XI receiver adapter, you can pass the XI message from the sender system to the receiver system. This allows you to track the same XI message ID from end to end. To enable this feature for your specific configuration scenario, create a string parameter with the value *true*. This parameter is optional and the default is *false*.
+
+The object ID is `PassMessageIdFromE2E`. In the following example, the parameter is set to `true`.
+
+```
+### create string parameter: PassMessageIdFromE2E
+POST https://{{apihost}}/api/v1/StringParameters
+content-type: application/json
+Authorization: Bearer {{accesstoken}}
+X-CSRF-Token: {{token}}
+
+{
+    "Pid": "{{pid}}",
+    "Id": "PassMessageIdFromE2E",
+    "Value": "true"
 }
 ```
 

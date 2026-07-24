@@ -13,6 +13,7 @@ The following measures improve monitoring and error handling in the pipeline con
 -   Set a **custom status** for more information on the error root cause.
 -   Use **retry handling** to limit the number of overall retries. See [Standard Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_l3k_qrn_j1c).
 
+-   Customize the retry handling by configuring the **skip retry handling** for errors where an automatic retry does not make sense. See [Skip Retry Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_skip_retry_handling).
 -   User **custom exception handling** as an alternative to the standard retry handling and implement your own logic. See [Custom Exception Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_pm1_ggs_5bc).
 -   With a **dead letter queue**, you can park messages for which the maximum number of retries has been exceeded. See [Dead Letter Queue Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_lq1_2sn_j1c).
 
@@ -31,7 +32,16 @@ If you want to define a scenario-specific retry behavior, you need to create a s
 
 In all generic integration flows that read from a JMS queue, the following standard retry handling is implemented. For custom retry handling, see [Custom Exception Handling](monitoring-and-error-handling-in-the-pipeline-concept-ed9b82c.md#loioed9b82cb928049e6990a4d784aa6aac7__section_pm1_ggs_5bc).
 
-Depending on whether a splitter is used within the generic integration flow, the implementation of the standard retry handling differs slightly. For the generic receiver determination and interface determination integration flows where the message is split, transaction handling ensures that split messages are rolled back in case of an error. However, if the message is forwarded to the dead letter queue, the message processing ends with either a message end event or an escalation end event so that already split messages are committed. If the message is moved from the dead letter queue to the actual queue for reprocessing, this may lead to duplicates. To avoid duplicates, an additional restart is required after the maximum number of retries have been actually exceeded. Its check needs to be done at the beginning of the integration flows, before splitting the message.
+Depending on whether a splitter is used within the generic integration flow, the implementation of the standard retry handling differs slightly. For the integrated messaging runtime, the generic receiver determination and the interface determination integration flows where the message is split, transaction handling ensures that split messages are rolled back in case of an error. However, if the message is forwarded to the dead letter queue, the message processing ends with either a message end event or an escalation end event so that already split messages are committed. If the message is moved from the dead letter queue to the actual queue for reprocessing, this may lead to duplicates. To avoid duplicates, an additional restart is required after the maximum number of retries have been actually exceeded. Its check needs to be done at the beginning of the integration flows, before splitting the message.
+
+> ### Note:  
+> Because of the additional retry, the original error message is lost. To retrieve the original error message, you can configure the integrated messaging runtime, the generic receiver determination and the interface determination integration flows as follows. As prerequisite, in the SAP BTP Cockpit, you've created a service key of service `SAP Process Integration Runtime` and plan `api`.
+> 
+> -   Set the externalized parameter `CI_ODataAPI_TokenURL` to equal the tenant-specific OAuth token URL from your service key.
+> -   Set the externalized parameter `CI_ODataAPI_URL` to equal the tenant-specific OData API URL from your service key.
+> -   Create a new user credential and set the externalized parameter `CI_ODataAPI_UserCredentials` to equal the alias of the user credential containing the service key’s client ID and client secret from your service key.
+> 
+> Before the message is stored in the dead letter queue, the original error message is retrieved from the last failed message processing log of the corresponding correlation ID using the OData API, and is added to the log.
 
 In general, if a message processing error occurs, the error is fetched in an exception subprocess. Within the exception subprocess, a local integration process is called.
 
@@ -66,6 +76,76 @@ For failed test messages, that is, failed messages for which the header `testMod
 The following is an example of retry handling:
 
 ![The screenshot shows the integration flow editor with an example of retry handling using an exception subprocess and a dead letter queue.](images/PipelineConcept_RetryHandling_99dcda0.png)
+
+
+
+<a name="loioed9b82cb928049e6990a4d784aa6aac7__section_skip_retry_handling"/>
+
+## Skip Retry Handling
+
+In error cases in which automatic retries don't make sense, you can deviate from the standard retry handling to reduce unnecessary load on the tenant runtime. The failed messages are then directly stored in the dead letter queue.
+
+For the integrated messaging runtime, the generic receiver determination, and the interface determination integration flows, the retry is skipped in the following cases:
+
+-   Partner ID couldn't be determined.
+-   Configuration option isn't supported.
+-   Receiver couldn't be determined if Receiver Not Found option equals Error.
+-   Receiver interface couldn't be determined.
+
+For all other error cases, the standard retry handling applies.
+
+For the generic outbound processing flow, you can configure skip retry handling. We distinguish between global and scenario-specific settings. By default, the global skip retry handling is enabled, that is, the externalized parameter `SkipRetriesGlobal_Enabled` of the generic outbound processing flow equals `true`. If you want to disable the skip retry handling, change the parameter to `false`. The following options are supported:
+
+-   **Hard coded**: Retry is skipped for mapping errors only. For all other error cases, the standard retry handling applies. This is the default setting.
+-   Lookup the skip retry handling from a predefined value mapping. Here, you can customize the skip retry option for particular error classes by configuring a value mapping provided as part of the standard packages. Since you can't deploy a copy of the provided value mapping with the same combination of agency and scheme, choose this option if you want to customize the skip retry handling globally across all scenarios.
+-   Lookup the skip retry handling from a global partner ID. Here, for each copied generic outbound processing flow, you can maintain an own skip retry profile as partner ID in the Partner Directory. This gives you a bit more flexibility compared to the previous value mapping option. For example, if you share your tenant across multiple units within your organization where each unit has its own set of pipelines, you can setup skip retry profiles for each unit.
+-   Define the skip retry handling scenario-specific by configuring a corresponding parameter in the partner ID representing your configuration scenario. If maintained, this overrules the global settings for the particular configuration scenario.
+
+
+
+### Global Default Option
+
+To use the default, option, keep the externalized parameter `SkipRetriesGlobal_Source` of the generic outbound processing flow equaling `Default`. Retry is then skipped for mapping errors only \(exception class `com.sap.xi.mapping.camel.XiMappingException`\). For all other error cases, the standard retry handling applies.
+
+
+
+### Global Value Mapping Option
+
+To configure the skip retry handling in a value mapping, change the externalized parameter `SkipRetriesGlobal_Source` of the generic outbound processing flow to `ValueMapping`.
+
+The prerequisite is that you've deployed the value mapping **Pipeline V2 - Value Mapping - Skip Retry Configuration** from the integration package **Cloud Integration Pipeline - Templates**.
+
+By default, the skip retry handling of the value mapping behaves like the hard-coded default option. The retry is only skipped for mapping errors, that is, the exception class `com.sap.xi.mapping.camel.XiMappingException` is mapped to `true`. In the standard delivery of the value mapping, all other exception classes are mapped to `false`. If you want to change the behavior for a particular exception class, configure the mapped value to `true` and redeploy the value mapping.
+
+
+
+### Global Partner ID Profile
+
+If you like want configure the skip retry handling using the Partner Directory, create a new partner ID that acts as a skip retry handling profile. You can use the profile for a particular generic outbound processing flow or across multiple copied generic outbound processing flows. For each exception class for which message retry should be skipped, add a string parameter with ID equaling the exception class and value `true`.
+
+> ### Note:  
+> To create the profile from scratch, look up the names of the exception classes from the provided value mapping table **Pipeline V2 - Value Mapping - Skip Retry Configuration**. Alternatively, you can have the profile be generated automatically using the helper integration flow **Pipeline v2 - Partner Directory Upload Helper - Skip Retry Configuration** from the integration package **Cloud Integration Pipeline - Templates**. The helper integration flow runs only once upon deployment. Before deploying the helper flow, make sure to configure it properly. You can reconfigure and redeploy to get multiple profiles created. As prerequisite, in the SAP BTP cockpit, you've created a service key of service `SAP Process Integration Runtime` and plan `api`. Furthermore, you've created a credential of type `OAuth2 Client Credentials`. Configure the helper flow as follows, then deploy:
+> 
+> -   Set the externalized parameter `API_URL` to equal the tenant-specific OData API URL from your service key.
+> -   Set the externalized parameter `API_Credential_Alias` to equal the alias of the previously created user credential of type `OAuth2 Client Credentials`.
+> -   Maintain the target profile name in the externalized parameter `PartnerDirectory_PID`. By default, the value equals `SAP_Integration_Suite_SkipRetryGlobalProfile` \(see the following\). Change the name to your own preferences.
+> -   Maintain the technical ID of the source value mapping in the externalized parameter `ValueMapping_TechnicalID`. By default, the value equals `com.sap.integration.cloud.pipeline.v2.value.mapping.skipretry`. Unless you've copied the original value mapping, keep the value unchanged.
+> -   Maintain the source value mapping version in the externalized parameter `ValueMapping_Version`. By default, the value equals `1.0.1`.
+> 
+> Once you've deployed the helper flow, a new profile with the partner ID as configured in the helper flow is created, the value mappings are read from the value mapping table, and the corresponding exception classes are added as string parameters with the mapped values from the value mapping. You may have to change your profile to your needs.
+
+Next, configure the generic outbound processing flow as follows:
+
+-   Change the externalized parameter `SkipRetriesGlobal_Source` to `PartnerDirectory`.
+-   Furthermore, maintain the externalized parameter `SkipRetriesGlobal_SourcePidProfile` to hold the name of the partner ID created previously. By default, the name equals `SAP_Integration_Suite_SkipRetryGlobalProfile`. Change the value to the name you chose previously.
+
+
+
+### Scenario-Specific Profile
+
+To configure the skip retry handling for a particular configuration scenario, first create and maintain a new skip retry handling profile in the Partner Directory as described in the previous section.
+
+Then, for your partner ID representing your configuration scenario, create a string parameter `SkipRetriesProfile` with the value equaling the partner ID of the skip retry handling profile. In this case, the global settings are overridden by the scenario-specific profile.
 
 
 
@@ -299,6 +379,33 @@ The following is an example of how to reprocess messages in dead letter queues:
 <a name="loioed9b82cb928049e6990a4d784aa6aac7__section_c4h_dkz_zcc"/>
 
 ## Custom Header Properties
+
+By default, the generic integration flows automatically add information to the message processing log that help you to better monitor, search, and filter your messages. This information is added as custom header properties. The following custom header properties have been added:
+
+> ### Note:  
+> The following list is not complete and can vary depending on the flow and use case.
+
+-   `partnerID`: Partner ID of the configuration scenario.
+-   `QualityOfService`: Either `ExactlyOnce` for asynchronous message processing or `BestEffort` for synchronous message processing.
+-   `SenderJMSQueue`: JMS queue from which the generic flows reads the message.
+-   `ReceiverJMSQueue`: JMS queue to which the generic flows stores the message.
+-   `tenantStage`: The virtual landscape stage if landscape staging is used, for example, DEV, DQ, PRD.
+-   `SenderAlias`: Sender alias name of landscape staging is used. Otherwise, the alias is displayed as Sender in the Properties section of the message processing log.
+-   `ReceiverAlias`: Receiver alias name if landscape staging is used. Otherwise, the alias is displayed as Receiver in the Properties section of the message processing log.
+-   `SenderParty`: Sender party name if applicable.
+-   `ReceiverParty`: Receiver party name if applicable.
+-   `SAP_SenderOperation`: Service interface operation if applicable.
+-   `originalPayloadSizeBytes`: Size of the payload at integration flow inbound.
+
+For IDoc inbound and outbound processing, the following custom header properties have been added:
+
+-   `IDocSenderPartner`: Combination of sender partner type, partner number, and port.
+-   `IDocReceiverPartner`: Combination of receiver partner type, partner number, and port.
+-   `SapIDocTransferId` and `SapIDocDbId`.
+-   `overrideControlRecordParameters`: List of IDoc control headers which got overridden.
+-   `overrideResultValues`: Corresponding values to parameter before.
+-   `AlternativePartner`: Alternative partner of the partner ID to get full transparency about which rule led to the partner ID determination.
+-   `SenderLogicalSystem`: Logical system of sender.
 
 If you want to search the message processing logs based on any payload data, you can create custom header properties in the generic integration flows. To do so, you must configure and pass the header `customHeaderProperties` to the generic integration flows.
 
