@@ -7,7 +7,7 @@ Get an overview of the scenarios and objects that are common scope of migration 
 > ### Note:  
 > Before performing the necessary analyses of your migration project, access the [SAP Business Accelerator Hub](https://api.sap.com/) to find predelivered templates, packages, and blueprints for various market cloud solutions.
 > 
-> Since SAP regularly delivers updates and features to SAP Integration Suite, follow the previous and future releases in the [Road Map Explorer](https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and [What's New in SAP Integration Suite](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160?locale=en-US&version=CLOUD).
+> Since SAP regularly delivers updates and features to SAP Integration Suite, follow the previous and future releases in the [Road Map Explorer](https://roadmaps.sap.com/board?PRODUCT=73554900100800003241&range=CURRENT-LAST#Q2%202026) and [What's New in SAP Integration Suite](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160?locale=en-US&version=CLOUD).
 
 You can use the SAP Integration Suite capability [Migration Assessment](https://help.sap.com/docs/SAP_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/5c5e50ee2d644cc59d864409d5b7871c.html?locale=en-US&version=CLOUD) to estimate the technical effort involved in the migration process and evaluate how your integration scenarios might be migrated.
 

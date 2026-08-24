@@ -23,8 +23,6 @@ Therefore, the integration platform must fulfill the following main requirements
 
 For full help information on the security capabilities of Cloud Integration in the Cloud Foundry environment, see [Security, Cloud Foundry Environment](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/eb9923e8c533493997e233286cfa1bc7.html).
 
-For access to the recommended Learning Journey to learn all about security from an SAP BTP perspective, go to [Security with SAP BTP](https://help.sap.com/doc/221f8f84afef43d29ad37ef2af0c4adf/HP_2.0/en-US/69aca66b45a74a73b4cc0efddd6ae63f.html).
-
 
 
 <a name="loiodd0fb21d47c54fff9ccab9667f3b4de7__section_cpr_lxd_mqb"/>

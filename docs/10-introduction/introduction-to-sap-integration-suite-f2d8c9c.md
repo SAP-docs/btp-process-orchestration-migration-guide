@@ -12,15 +12,15 @@ Get to know SAP Integration Suite and its main capabilities, Cloud Integration, 
 
 SAP Integration Suite is an open and enterprise-grade integration platform that is a fully vendor-managed multi-cloud offering. It's SAP’s recommended integration platform for simplifying and accelerating integrations for both SAP and third-party integration scenarios. SAP Integration Suite supports integration in a holistic manner and provides prebuilt integration packages to enable accelerated integrations. It supports a range of integrations, including the integration of applications in the cloud and on premise, master data integration, B2B and electronic data interchange \(EDI\) integration, business-to-government \(B2G\) integration, data integration and pipelines, event-driven integration, and integration based on application programming interfaces \(APIs\). It also supports design and runtime governance of APIs and acts as the foundation for process excellence across the value chain. In summary, you have all the features necessary to build an Intelligent Enterprise.
 
-![](images/Benefits_SuiteQualities_6eb9330.png)
+![Suite Qualities diagram showing seven key features with icons and descriptions.](images/Benefits_SuiteQualities_6eb9330.png)
 
 **Key Highlights**
 
--   SAP recognized as a Leader in the 2025 Gartner® Magic Quadrant™ for Integration Platform as a Service for the 5th consecutive time
+-   SAP recognized as a Leader in the 2026 Gartner® Magic Quadrant™ for Integration Platform as a Service for the 6th consecutive time
 
 -   Simplified integrations with capabilities of Cloud Integration, API Management, Integration Advisor, AI-based development, SAP Integration Solution Advisory Methodology, the SAP Business Accelerator Hub, Cloud Connector, and Open Connectors for more than 170 non-SAP applications
 
--   Time-to-live is accelerated with 3,400+ pre-built integrations, 4000+ APIs, and 479 business events
+-   Time-to-live is accelerated with 3800+ pre-built integrations, 4,300+ integration flows, 5,200+ APIs, 600+ business events, and new AI resources on SAP Business Accelerator Hub.
 
 -   Modernization of integrations supported integration use cases/styles: cloud to cloud, cloud to ground, A2A, B2B/G, API-driven, event-driven
 
@@ -33,7 +33,7 @@ SAP Integration Suite is an open and enterprise-grade integration platform that 
 
 ## Capabilities of SAP Integration Suite
 
-![](images/Capabilities_of_SAP_Integration_Suite_55f37fd.png)
+![Diagram showing SAP Integration Suite architecture with managed integration, SAP apps, third-party apps, and B2B partners.](images/Capabilities_of_SAP_Integration_Suite_55f37fd.png)
 
 SAP Integration Suite has four main capabilities: Cloud Integration, API Management, Event Mesh and Integration Advisor.
 

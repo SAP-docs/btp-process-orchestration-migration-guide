@@ -155,7 +155,7 @@ For detailed information on the capabilities and setup procedures to connect SAP
 ### SAP Cloud ALM vs SAP Solution Manager
 
 > ### Restriction:  
-> Some features mentioned on this site are planned for the future and are subject to change. For more information on new features and future releases, access the [Road Map Explorer](http://help.sap.com/disclaimer?site=https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and the [What's New section](https://help.sap.com/doc/7ac9748e20cf453a94efda779542d34e/sap.cp.integration.suite/en-US/c10c21cd7c684f0885fa8b5db2982284.html) of SAP Integration Suite.
+> Some features mentioned on this site are planned for the future and are subject to change. For more information on new features and future releases, access the [Road Map Explorer](https://roadmaps.sap.com/board?PRODUCT=73554900100800003241&range=CURRENT-LAST#Q2%202026) and the [What's New section](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160) of SAP Integration Suite.
 
 Though SAP Solution Manager can currently be used for cloud products and SAP Cloud ALM can also be used for hybrid scenarios as part of future roadmap, it's important to understand the positioning of these two different products. SAP Solution Manager is recommended for on-premise products and SAP Cloud ALM is engineered keeping the cloud applications in mind. Both of these products have different use cases, and both serve a different market.
 

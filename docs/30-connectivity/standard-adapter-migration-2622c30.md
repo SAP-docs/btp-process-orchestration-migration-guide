@@ -7,7 +7,7 @@ SAP Process Orchestration provides many adapter types as standard. Depending on 
 For detailed documentation of the adapters in Cloud Integration, see [Configure Adapter in Communication Channels](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/1f066330e8314324bf3ebe3b6adc21b2.html).
 
 > ### Restriction:  
-> Some adapters mentioned on this site are planned for the future and are subject to change. For more information on new features and future releases, access the [Road Map Explorer](http://help.sap.com/disclaimer?site=https://roadmaps.sap.com/board?CB=901B0ED1A0641ED8B4D1230C6387E0DB&range=CURRENT-LAST) and the [What's New section](https://help.sap.com/doc/7ac9748e20cf453a94efda779542d34e/sap.cp.integration.suite/en-US/c10c21cd7c684f0885fa8b5db2982284.html) of SAP Integration Suite.
+> Some adapters mentioned on this site are planned for the future and are subject to change. For more information on new features and future releases, access the [Road Map Explorer](https://roadmaps.sap.com/board?PRODUCT=73554900100800003241&range=CURRENT-LAST#Q2%202026) and the [What's New section](https://help.sap.com/whats-new/5793247a5d5741beb0decc5b7dee1160) of SAP Integration Suite.
 
 
 
@@ -97,7 +97,7 @@ HTTP\_AAE
 </td>
 <td valign="top">
 
-HTTP
+HTTPS
 
 </td>
 <td valign="top">

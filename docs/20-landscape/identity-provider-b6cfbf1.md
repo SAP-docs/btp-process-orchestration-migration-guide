@@ -6,19 +6,16 @@ Learn more about identity providers and user governance in SAP BTP.
 
 
 
-The users of SAP BTP are provided by identity providers. You can either use the default SAP identity provider \(SAP ID service\) with your email ID or configure your own corporate identity provider \(e.g. SAP Cloud Identity Services - Identity and Authentication service or Azure Active Directory\). If you use an external identity provider, you must configure a trust relationship between SAP BTP and the identity provider.
+The users of SAP BTP are provided by identity providers. You can either use the default SAP identity provider \(SAP ID service\) with your email ID or configure your own corporate identity provider \(for example, SAP Cloud Identity Services - Identity and Authentication service or Azure Active Directory\). If you use an external identity provider, you must configure a trust relationship between SAP BTP and the identity provider.
 
-For more information on how to connect with different Active Directory services, see the tutorial [Integrate Microsoft Azure AD with SAP BTP, Cloud Foundry environment](https://developers.sap.com/tutorials/cp-azure-ad-saml.html) and the blog [How to integrate Azure AD with SAP BTP, Cloud Foundry environment](https://blogs.sap.com/2019/03/07/how-to-integrate-azure-ad-with-sap-cloud-platform-cloud-foundry/).
+For more information on how to connect with different Active Directory services, see the blog [How to integration Azure AD with SAP BTP, Cloud Foundry environment](https://help.sap.com/docs/link-disclaimer?site=https%3A%2F%2Fblogs.sap.com%2F2019%2F03%2F07%2Fhow-to-integrate-azure-ad-with-sap-cloud-platform-cloud-foundry%2F).
 
-Additionally, you can enable single sign-on using the Identity Authentication service and an external Active Directory as described in the following tutorials:
-
--   [Connect Azure Active Directory to Identity Authentication Service](https://developers.sap.com/tutorials/cp-ias-azure-ad.html)
--   [Register SAP BTP, Cloud Foundry Subaccount in Identity Authentication Service](https://developers.sap.com/tutorials/cp-ias-azure-ad-cf.html)
+Additionally, you can enable single sign-on using the Identity Authentication service and an external Active Directory as described in the tutorial [Connect Azure Active Directory to Identity Authentication Service](https://developers.sap.com/tutorials/cp-ias-azure-ad.html).
 
 > ### Note:  
 > Once the custom IDP configuration is complete, it's necessary to grant permissions to users for SAP BTP applications through the SAP BTP cockpit before they try to access them. See [Configuring User Access to the Application](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/ed6033b2eabe4a64a20cce1e6076bacf.html).
 > 
-> You can find the different personas for administering the roles in [Persona](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/2937e5ca6ef448cfb21451a2461cc2a6.html) in the Cloud Integration documentation and in SAP Note [2872526](https://me.sap.com/notes/2872526) on roles in API Management.
+> You can find the different personas for administering the roles in [Users and Roles in SAP BTP](https://help.sap.com/docs/btp/sap-business-technology-platform/users-and-roles) or in [SAP API Management Standalone Service-Tasks and Corresponding Roles](https://help.sap.com/docs/sap-api-management/sap-api-management-iat/assign-user-roles)
 
 
 
@@ -26,7 +23,7 @@ Additionally, you can enable single sign-on using the Identity Authentication se
 
 ## User Governance
 
-The global account and subaccounts get their users from identity providers. Administrators make sure that users can only access their dedicated subaccount by making sure that there's a dedicated trust relationship only between the identity providers and the respective subaccounts. Developers configure and deploy application-based security artifacts containing authorizations, and administrators assign these authorizations using the SAP BTP cockpit.
+The global account and subaccounts get their users from identity providers. Administrators make sure that users can only access their dedicated subaccount by ensuring that there's a dedicated trust relationship only between the identity providers and the respective subaccounts. Developers configure and deploy application-based security artifacts containing authorizations, and administrators assign these authorizations using the SAP BTP cockpit.
 
 The SAP Integration Suite is a bundle of services running on SAP BTP. The authorization groups, roles, and their assignments of the SAP Integration Suite are managed through the SAP BTP cockpit and can be managed via web browser. There's also the option to perform Authorization Management using SAP BTP APIs.
 

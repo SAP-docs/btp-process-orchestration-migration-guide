@@ -53,7 +53,7 @@ Description
 
 Using this option, authentication of a sender is performed based on a client certificate. At runtime, the system checks if a service key that contains the client certificate provided by the sender is available. If a service key is available, the system checks if the associated service instance has a role specified that grants permissions to call the integration flow endpoint.
 
-An SAP BTP tenant administrator can generate the [service key](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/7a9b282981784f399615b2fda3cda062.html) used for certificate-based authentication.
+An SAP BTP tenant administrator can generate the service key used for certificate-based authentication.
 
 This process is also described in the blog [How to Set Up Secure HTTP Inbound Connection with Client Certificates](https://blogs.sap.com/2019/08/14/cloud-integration-on-cf-how-to-setup-secure-http-inbound-connection-with-client-certificates/).
 
